@@ -1,0 +1,14 @@
+
+.header-geral-sisi{
+  background-color: #990000;
+  width: 100%;
+
+  // LOGO - DESKTOP
+  @media (min-width: 768px) {
+      img{
+          width: 430px;
+      }
+  }
+
+}
+
