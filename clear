@@ -1,0 +1,60 @@
+[33mcommit 78ccce3f58a2de550d574161a0467ce30a81192d[m[33m ([m[1;36mHEAD -> [m[1;32mfeature/frt-0002[m[33m)[m
+Merge: 466ad99 045ad76
+Author: David Christian <christian.chloe@outlook.com>
+Date:   Tue Oct 9 08:58:30 2018 -0300
+
+    01.01 - feature/frt-0002 - Adicionado componente header de develop
+
+[33mcommit 045ad760c6d8a257d2cfe1f1f2a2800917e808a3[m[33m ([m[1;31morigin/develop[m[33m)[m
+Merge: 568c032 a4f5993
+Author: David Christian <43011695+ChrisChloe@users.noreply.github.com>
+Date:   Tue Oct 9 08:51:50 2018 -0300
+
+    Merge pull request #2 from unifg/feature/frt-0001
+    
+    01.01 - feature/frt-0001 - Criado componente header
+
+[33mcommit a4f5993f725a6cce1e7c3f01664625bd4c1b5edc[m[33m ([m[1;31morigin/feature/frt-0001[m[33m, [m[1;32mfeature/frt-0001[m[33m)[m
+Author: David Christian <christian.chloe@outlook.com>
+Date:   Tue Oct 9 08:39:54 2018 -0300
+
+    01.01 - feature/frt-0001 - Criado componente header
+
+[33mcommit 568c032200fd218db1979a1fcacc0394444d5f3c[m[33m ([m[1;32mdevelop[m[33m)[m
+Merge: d4c8858 645081e
+Author: David Christian <43011695+ChrisChloe@users.noreply.github.com>
+Date:   Tue Oct 9 06:15:02 2018 -0300
+
+    Merge pull request #1 from unifg/feature/frt-0001
+    
+    01.01 - feature/frt-0001-header geral adicionado
+
+[33mcommit 466ad9911f177642d1a7599082546a314036d3cb[m[33m ([m[1;31morigin/feature/frt-0002[m[33m)[m
+Author: Wagner Quintas <wagnerquintas@outlook.com>
+Date:   Tue Oct 9 02:01:38 2018 -0300
+
+    SPT01 - FRT-0002 - TELA LOGIN
+
+[33mcommit 645081ef17fcf4c7e0b2b5d4bf0df118c5311ff3[m
+Author: Miguel Angelo <miguel.angelo.felix96@gmail.com>
+Date:   Sun Oct 7 21:41:15 2018 -0300
+
+    01.01 - feature/frt-0001-header geral adicionado
+
+[33mcommit d4c8858b7620c65ed1c2302aced1fb8efc5f43d3[m[33m ([m[1;31morigin/feature/frt-0005[m[33m, [m[1;31morigin/feature/frt-0004[m[33m, [m[1;31morigin/feature/frt-0003[m[33m)[m
+Author: David Christian <christian.chloe@outlook.com>
+Date:   Sun Oct 7 19:09:30 2018 -0300
+
+    01.01 - develop - Adicionado assets
+
+[33mcommit 2238e4f959124154d3999da2f2a6b0e20b0cba87[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmaster[m[33m)[m
+Author: Miguel Angelo <miguel.angelo.felix96@gmail.com>
+Date:   Sat Oct 6 17:03:23 2018 -0300
+
+    First Commit
+
+[33mcommit 04769a7507fe0e8d1d45d80471c670e62d24fec4[m
+Author: alunofg <43285586+alunofg@users.noreply.github.com>
+Date:   Fri Oct 5 21:09:29 2018 -0300
+
+    Initial commit
