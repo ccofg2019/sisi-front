@@ -1,26 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
 
-.header-geral-sisi{
-    background-color: #990000;
-    width: 100%;
-
-    // LOGO - DESKTOP
-    @media (min-width: 768px) {
-        img{
-            width: 430px;
-        }
-    }
-
-} 
-
-.background-sisi{
-    background-image: url("assets/background.png");
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: 100% 100%;
-}
-
- 
 
 
 
