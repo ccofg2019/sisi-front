@@ -1,14 +1,26 @@
-<app-login></app-login>
-  <form (submit)="loginUser($event)">
-  <div class="container">
-    <div>
-      <input type="text" autocomplete="off" placeholder="Username" id="username">
-    </div>
-    <div>
-      <input type="password" autocomplete="off" placeholder="Password" id="password">
-    </div>
-    <div>
-      <button type="submit" id="submit">Entrar</button>
-    </div>
+<div class="background-sisi">
+  <div id="topnav">
+    <button type="submit" id="cadastro" class="btn btn-primary">Cadastro</button>
   </div>
-</form>
+  <form (submit)="loginUser($event)" class="background-sisi">
+    <div class="container">
+      <div id="logo">
+        <img src="../assets/sisi-logo.png" alt="SISI" height="120" width="250" />
+      </div>
+
+      <div id="inputs">
+        <div class="form-group">
+          <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="E-mail">
+        </div>
+        <div class="form-group">
+          <input type="password" class="form-control" id="password" placeholder="Senha">
+        </div>
+      <div>
+        <a id="forget-pass" href=""> Esqueceu a senha?</a>
+      </div>
+    </div>
+      <div>
+        <button type="submit" id="submit" class="button btn btn-primary">Entrar</button>
+      </div>
+    </div>
+  </form>
