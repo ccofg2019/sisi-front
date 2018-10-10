@@ -1,5 +1,3 @@
-$color: #990000;
-
 form {
   display: flex;
   position: absolute;
@@ -14,7 +12,7 @@ form {
   padding: 20px;
   background: #eee;
   border-radius: 7px;
-  width: 530px;
+  max-width: 500px;
 }
 
 div#logo {
@@ -32,15 +30,14 @@ div#logo {
   margin-top: 10px;
 }
 
-input#email, input#password {
-  outline: 0;
-  font-size: 20px;
+.input-sisi {
+  font-size: 10px;
   padding: 5px 10px;
   min-width: 350px;
   border: none;
   border-radius: 6px;
 }
-
+$color: #990000;
 button {
   background: $color;
   color: #fff;
