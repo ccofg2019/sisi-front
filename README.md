@@ -8,6 +8,7 @@
 
 - Html5
 - Css3
+- Sass
 - Angular 6.1
 - NodeJS >= 12.2
 
