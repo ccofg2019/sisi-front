@@ -12,7 +12,7 @@ describe('FormOccurenceComponent', () => {
     })
     .compileComponents();
   }));
-
+ 
   beforeEach(() => {
     fixture = TestBed.createComponent(FormOccurenceComponent);
     component = fixture.componentInstance;
