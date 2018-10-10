@@ -16,7 +16,7 @@
 
 ### Ambiente Windows 10:
 
-1. Instalar nodeJS ( https://nodejs.org/en/ )
+1. [Instalar nodeJS](https://nodejs.org/en/)
 2. Iniciar o cmd
 3. npm install -g typescript
 4. npm install -g @angular/cli
