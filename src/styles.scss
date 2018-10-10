@@ -1,38 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
 
-
-.background-sub-menu-sisi{
-    background-color: #831010;
-    height: 50px;
-}
-
-.form-default-sisi{
-  width: 100%;
-  padding: 10px;
-  padding-top: 20px;
-  height: 80%;
-  background-color: #0000001a;
-
-  form{
-    padding: 10px;
-    padding-top: 100px;
-  }
-
-  button{
-    background-color: #990000;
-    border: #990000;
-  }
-}
-
 .background-sisi{
-  background-image: url("assets/background.png");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: 100% 100%;
+  background-image: url("assets/background.png");
+}
+#topnav {
+  background: #000000;
+  height: 70px;
+  width: 100%;
 }
 
-.padding-top-sisi{
-  padding-top: 5%;
-}
+
 
 

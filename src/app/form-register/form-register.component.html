@@ -1,86 +1,80 @@
-<div class="container-fluid background-sub-menu-sisi">
-    <div class="btn-group btn-group-toggle" data-toggle="buttons">
-        <label class="btn btn-secondary active">
-          <input type="radio" name="options" id="option1" autocomplete="off" checked> Login
-        </label>
-    </div>   
-</div>
 
-<div class="container-fluid background-sisi">
-  <div class="container padding-top-sisi">
-    <div class="">
-      
+    <div>
+      <div id="topnav">
+        <a routerLink=""><button class="btn btn-primary" >Login</button></a>
+      </div>
         <form class="form-default-sisi">
             <h3>Formulário de Cadastro</h3>
             <div class="form-row">
               <div class="form-group col-md-6">
-                <label for="inputEmail4">Nome:</label>
-                <input type="text" class="form-control" id="inputEmail4" placeholder="nome">
+                <label for="inputName">Nome</label>
+                <input type="text" class="form-control" id="inputName" placeholder="Nome">
               </div>
               <div class="form-group col-md-3">
-                <label for="inputPassword4">Password</label>
-                <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+                <label for="inputPassword">Senha</label>
+                <input type="password" class="form-control" id="inputPassword" placeholder="Senha">
               </div>
               <div class="form-group col-md-3">
-                  <label for="inputPassword4">Confirm Password</label>
-                  <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+                  <label for="inputConfirmPassword">Confirme a Senha</label>
+                  <input type="password" class="form-control" id="inputConfirmPassword" placeholder="Senha">
               </div>
             </div>
             <div class="form-group">
-              <label for="inputAddress">Email</label>
-              <input type="email" class="form-control" id="inputAddress"  placeholder="exemple@email.com">
+              <label for="inputEmail">Email</label>
+              <input type="email" class="form-control" id="inputEmail"  placeholder="exemplo@email.com">
             </div>
-            
+
             <div class="form-row">
                 <div class="form-group col-md-3">
-                    <label for="inputAddress">Cpf</label>
-                    <input type="text" class="form-control" id="inputAddress" placeholder="000.000.000-00">
+                    <label for="inputCPF">CPF</label>
+                    <input type="text" class="form-control" id="inputCPF" placeholder="000.000.000-00">
                 </div>
 
                 <div class="form-group col-md-3">
-                    <label for="inputAddress">Data nascimento</label>
-                    <input type="date" class="form-control" id="inputAddress">
+                    <label for="inputBirthDate">Data Nascimento</label>
+                    <input type="date" class="form-control" id="inputBirthDate">
                 </div>
 
                 <div class="form-group col-md-3">
-                    <label for="inputAddress">Gênero</label>
-                    <select id="genero" class="form-control">
+                    <label for="selectGender">Gênero</label>
+                    <select id="selectGender" class="form-control">
                         <option selected>Escolha uma opção</option>
-                        <option>gênero exemple 01</option>
-                        <option>gênero exemple 02</option>
-                        <option>gênero exemple 03</option>
+                        <option value="m">Masculino</option>
+                        <option value="f">Feminino</option>
+                        <option value="tm">Trans-Masculino </option>
+                        <option value="tf">Trans-Feminino</option>
+                        <option value="ndg">Não Declarado</option>
                       </select>
                 </div>
 
                 <div class="form-group col-md-3">
-                    <label for="inputAddress">Etnia</label>
-                    <select id="genero" class="form-control">
+                    <label for="selectRace">Etnia</label>
+                    <select id="selectRace" class="form-control">
                         <option selected>Escolha uma opção</option>
-                        <option>Etnia exemple 01</option>
-                        <option>Etnia exemple 02</option>
-                        <option>Etnia exemple 03</option>
+                        <option value="b">Branca</option>
+                        <option value="n">Negra</option>
+                        <option value="p">Parda</option>
+                        <option value="i">Indígena</option>
+                        <option value="ndr">Não Declarado</option>
                       </select>
                 </div>
 
-                
+
             </div>
 
             <div class="form-row">
               <div class="form-group col-md-6">
-                <label for="inputCity">Telefone Residencial</label>
-                <input type="text" class="form-control" id="inputCity" placeholder="(00) 0000-0000">
+                <label for="inputPhone">Telefone Residencial</label>
+                <input type="text" class="form-control" id="inputPhone" placeholder="(00) 0000-0000">
               </div>
               <div class="form-group col-md-6">
-                  <label for="inputCity">Telefone Celular</label>
-                  <input type="text" class="form-control" id="inputCity" placeholder="(00) 9 0000-0000">
+                  <label for="inputCellPhone">Telefone Celular</label>
+                  <input type="text" class="form-control" id="inputCellPhone" placeholder="(00) 9 0000-0000">
                 </div>
             </div>
             <button type="submit" class="btn btn-primary">Cadastrar</button>
           </form>
-    </div> 
-  </div>
-</div>
+    </div>
 
 
 
-  

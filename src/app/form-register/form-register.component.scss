@@ -1,8 +1,44 @@
-.btn-secondary:not(:disabled):not(.disabled).active, .btn-secondary:not(:disabled):not(.disabled):active, .show>.btn-secondary.dropdown-toggle{
-    color: #fff;
-    background-color: #990000;
-    border-color: #990000;
-    height: 50px;
-    border-radius: 0px;
+$color:#990000 ;
+button {
+  background: $color;
+  color: #fff;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: bold;
+  font-family: Trebuchet MS, Helvetica, sans-serif;
+  height: 50px;
+  width: 140px;
+  margin: 10px;
+  float: right;
+  border: none;
+  transition: background 0.2s ease-in-out;
+  &:hover {
+    background: darken($color, 5);
+  }
+  &:disabled {
+    opacity: 0.5;
+  }
 }
 
+
+.background-sub-menu-sisi{
+  background-color: #831010;
+  height: 50px;
+}
+
+.form-default-sisi{
+width: 100%;
+padding: 10px;
+padding-top: 20px;
+height: 80%;
+background-color: #0000001a;
+
+form{
+  padding: 10px;
+  padding-top: 100px;
+}
+}
+
+.padding-top-sisi{
+padding-top: 5%;
+}

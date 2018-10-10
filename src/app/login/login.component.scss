@@ -1,0 +1,67 @@
+$color: #990000;
+
+form {
+  display: flex;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+.container {
+  padding: 20px;
+  background: #eee;
+  border-radius: 7px;
+  width: 530px;
+}
+
+div#logo {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+#inputs {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+input#email, input#password {
+  outline: 0;
+  font-size: 20px;
+  padding: 5px 10px;
+  min-width: 350px;
+  border: none;
+  border-radius: 6px;
+}
+
+button {
+  background: $color;
+  color: #fff;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: bold;
+  font-family: Trebuchet MS, Helvetica, sans-serif;
+  height: 50px;
+  width: 140px;
+  margin: 10px;
+  float: right;
+  border: none;
+  transition: background 0.2s ease-in-out;
+  &:hover {
+    background: darken($color, 5);
+  }
+  &:disabled {
+    opacity: 0.5;
+  }
+}
+#forget-pass {
+  font-size: 15px;
+  margin-right: 210px;
+}
