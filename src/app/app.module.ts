@@ -12,7 +12,7 @@ import { LoginComponent } from './login/login.component';
 import { HeaderComponent } from './header/header.component';
 import { FormRegisterComponent } from './form-register/form-register.component';
 import { HomeComponent } from './home/home.component';
-
+import { FormOccurenceComponent } from './form-occurence/form-occurence.component';
 // Services
 import {TokenInterceptor} from './services/token/token.interceptor';
 import {AuthGuardService} from './services/auth/auth-guard.service';
@@ -44,13 +44,15 @@ import {
 } from '@angular/material';
 import {NotifierModule} from 'angular-notifier';
 
+
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FormRegisterComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    FormOccurenceComponent
   ],
   imports: [
     BrowserModule,
