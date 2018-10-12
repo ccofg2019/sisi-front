@@ -5,9 +5,9 @@
   export const environment = {
     production: false,
     NODE_ENV: 'dev',
-    API_URL: 'http://104.131.99.239:5050',
+    API_URL: 'http://sisi.eastus.cloudapp.azure.com/',
     GRANT_TYPE: 'password',
-    CLIENT_SECRET: 'g422Ugg1VaW9UcXaqrUKe6hJNb7tETtViB9AtY4X',
+    CLIENT_SECRET: 'QNaA2U2nAaCdYZnYMcV1bCOPbXXt4oXm2RFSVLjy',
     CLIENT_ID:  2,
     scope: '*',
   };

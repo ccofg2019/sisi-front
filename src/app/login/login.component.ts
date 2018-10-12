@@ -64,6 +64,7 @@ export class LoginComponent implements OnInit {
 
       this.authService.loginUser(this.form.value.email, this.form.value.password).subscribe(
         (res) => {
+          console.log('test');
           this.router.navigate(['home']);
           this.loginSubmit.emit(true);
 
@@ -93,5 +94,4 @@ export class LoginComponent implements OnInit {
     });
 
   }
-
 }

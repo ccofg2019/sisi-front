@@ -13,14 +13,14 @@
           <mat-form-field style="width:100%" appearance="outline">
             <mat-label>Email</mat-label>
             <input type="email" matInput name="email" formControlName="email"/>
-            <mat-hint *ngIf="status.error || form.controls.errors" style="color: red;font-size: 14px">Email inválido</mat-hint>
+            <mat-hint *ngIf="status.error || form.controls['errors']" style="color: red;font-size: 14px">Email inválido</mat-hint>
           </mat-form-field>
         </div>
         <div class="form-group">
           <mat-form-field appearance="outline">
             <mat-label>Senha</mat-label>
             <input type="password" autocomplete="off" matInput name="password" formControlName="password"/>
-            <mat-hint *ngIf="status.error || form.controls.errors" style="color: red; font-size: 14px">Senha inválida</mat-hint>
+            <mat-hint *ngIf="status.error || form.controls['errors']" style="color: red; font-size: 14px">Senha inválida</mat-hint>
           </mat-form-field>
         </div>
       <div>
