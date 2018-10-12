@@ -42,3 +42,11 @@ form{
 .padding-top-sisi{
 padding-top: 5%;
 }
+
+.error{
+  color: red;
+  padding: 2px
+}
+button[_ngcontent-c2]:disabled{
+  background-color: red;
+}
