@@ -12,7 +12,7 @@ describe('FormRegisterComponent', () => {
     })
     .compileComponents();
   }));
-
+ 
   beforeEach(() => {
     fixture = TestBed.createComponent(FormRegisterComponent);
     component = fixture.componentInstance;
