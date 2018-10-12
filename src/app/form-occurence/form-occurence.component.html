@@ -6,12 +6,12 @@
         <a routerLink=""><button class="btn btn-primary" >Mapa</button></a>
       </div>
       <div class="form-default-sisi row"> 
-        <form class="col-md-8">
+        <form class="col-md-8" #formCadastroOccurence="ngForm" (ngSubmit)="onSubmit(formCadastroOccurence)">
             <h3>Registro de Ocorrência</h3>
             <div class="form-row">
               <div class="form-group col-md-4">
-                <label for="selectGender">Tipo de Ocorrência</label>
-                <select id="selectGender" class="form-control">
+                <label for="ocorrencia">Tipo de Ocorrência</label>
+                <select id="ocorrencia" class="form-control" name="ocorrencia" ngModel #ocorrencia="ngModel">
                     <option selected>Escolha uma opção</option>
                     <option value="rb">Roubo</option>
                     <option value="ft">Furto</option>
@@ -20,49 +20,54 @@
               </div>
 
               <div class="form-group col-md-4">
-                  <label for="selectGender">Hora</label> 
-                  <input type="time" class="form-control" id="dataHora">
-              
+                  <label for="dataHora">Hora</label> 
+                  <input type="time" class="form-control" id="dataHora" name="dataHora" ngModel #dataHora="ngModel">
               </div>
 
               <div class="form-group col-md-4">
-                <label for="selectGender">Objetos Associados</label>
-                <select id="selectGender" class="form-control">
+                <label for="objAssociados">Objetos Associados</label>
+                <select id="objAssociados" class="form-control" name="objAssociados" ngModel #objAssociados="ngModel">
                     <option selected>Escolha uma opção</option>
                     <option value="cell">Celular</option>
                     <option value="pc">Computador</option>
                     <option value="dinheiro">Dinheiro</option>
-                  </select>
+                </select>
               </div>
 
             </div>
-            <div class="form-group">
-              <label for="inputEmail">Endereço</label>
-              <input type="text" class="form-control" id="endereco"  placeholder="informe o endereço">
-            </div>
-
+            
             <div class="form-row">
                 <div class="form-group col-md-3">
-                    <label for="inputCPF">Nº</label>
-                    <input type="text" class="form-control" id="inputCPF" placeholder="Nº">
+                    <label for="numeroRua">Nº</label>
+                    <input type="text" class="form-control" id="numeroRua" name="numeroRua" ngModel #numeroRua="ngModel" placeholder="Nº">
                 </div>
 
-                <div class="form-group col-md-9">
-                    <label for="inputBirthDate">Bairro</label>
-                    <input type="text" class="form-control" id="inputBirthDate" placeholder="bairro">
+                <div class="form-group col-md-3">
+                  <label for="cep">Cep</label>
+                  <input type="text" class="form-control" id="cep" name="cep" ngModel #cep="ngModel" (blur)="consultaCEP($event.target.value, formCadastroOccurence)" placeholder="informe um cep">
+              </div>
+
+                <div class="form-group col-md-6">
+                    <label for="bairro">Bairro</label>
+                    <input type="text" class="form-control" id="bairro" name="bairro" ngModel #bairro="ngModel" placeholder="bairro">
                 </div>
 
+            </div>
+
+            <div class="form-group">
+              <label for="endereco">Endereço</label>
+              <input type="text" class="form-control" id="endereco" name="endereco" ngModel #endereco="ngModel" placeholder="informe o endereço">
             </div>
 
             <div class="form-row">
               <div class="form-group col-md-12">
-                <label for="exampleFormControlTextarea1">Descrição da Ocorrência</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Descrição da Ocorrência"></textarea>
+                <label for="descOcorrencua">Descrição da Ocorrência</label>
+                <textarea class="form-control" id="descOcorrencua" rows="3" name="descOcorrencua" ngModel #descOcorrencua="ngModel" placeholder="Descrição da Ocorrência"></textarea>
               </div>
               
             </div>
             <button type="submit" class="btn btn-primary">Salvar Ocorrência</button>
-            <button type="submit" class="btn btn-primary">Adicionar Envolvidos</button>
+            <button type="" class="btn btn-primary">Adicionar Envolvidos</button>
           </form>
 
           <div class="col-md-4">
