@@ -37,7 +37,7 @@ export class FormRegisterComponent implements OnInit {
     */
     this.http.post('https://httpbin.org/post', JSON.stringify(form.value)).map(res => res).subscribe(dados => console.log(dados));
   }
-  
+
   constructor(private http: Http) { }
 
 
