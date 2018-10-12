@@ -10,20 +10,18 @@ import 'rxjs/add/operator/map';
 export class FormRegisterComponent implements OnInit {
 
   usuario: any = {
-    nome: '',
-    senha: '',
-    senha2: '',
+    name: '',
+    password: '',
     cpf: '',
-    nascimento: '',
-    genero: '',
-    etinia: '',
-    telefone1: '',
-    telefone2: '',
-    email: ''
+    birthdate: '',
+    gender: '',
+    skin_color: '',
+    ethnicity: '',
+    cellphone: '',
+    status: 'ATIVO'
   };
 
   onSubmit(form) {
-    // console.log(form);
     console.log(this.usuario);
 
     /*
