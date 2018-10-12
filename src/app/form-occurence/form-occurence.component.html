@@ -1,0 +1,79 @@
+
+    <div>
+      <div id="topnav">
+        <a routerLink=""><button class="btn btn-primary" >Perfil</button></a>
+        <a routerLink=""><button class="btn btn-primary" >Registrar Reclamação</button></a>
+        <a routerLink=""><button class="btn btn-primary" >Mapa</button></a>
+      </div>
+      <div class="form-default-sisi row"> 
+        <form class="col-md-8">
+            <h3>Registro de Ocorrência</h3>
+            <div class="form-row">
+              <div class="form-group col-md-4">
+                <label for="selectGender">Tipo de Ocorrência</label>
+                <select id="selectGender" class="form-control">
+                    <option selected>Escolha uma opção</option>
+                    <option value="rb">Roubo</option>
+                    <option value="ft">Furto</option>
+                    <option value="acd">Acidente</option>
+                  </select>
+              </div>
+
+              <div class="form-group col-md-4">
+                  <label for="selectGender">Hora</label> 
+                  <input type="time" class="form-control" id="dataHora">
+              
+              </div>
+
+              <div class="form-group col-md-4">
+                <label for="selectGender">Objetos Associados</label>
+                <select id="selectGender" class="form-control">
+                    <option selected>Escolha uma opção</option>
+                    <option value="cell">Celular</option>
+                    <option value="pc">Computador</option>
+                    <option value="dinheiro">Dinheiro</option>
+                  </select>
+              </div>
+
+            </div>
+            <div class="form-group">
+              <label for="inputEmail">Endereço</label>
+              <input type="text" class="form-control" id="endereco"  placeholder="informe o endereço">
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-3">
+                    <label for="inputCPF">Nº</label>
+                    <input type="text" class="form-control" id="inputCPF" placeholder="Nº">
+                </div>
+
+                <div class="form-group col-md-9">
+                    <label for="inputBirthDate">Bairro</label>
+                    <input type="text" class="form-control" id="inputBirthDate" placeholder="bairro">
+                </div>
+
+            </div>
+
+            <div class="form-row">
+              <div class="form-group col-md-12">
+                <label for="exampleFormControlTextarea1">Descrição da Ocorrência</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Descrição da Ocorrência"></textarea>
+              </div>
+              
+            </div>
+            <button type="submit" class="btn btn-primary">Salvar Ocorrência</button>
+            <button type="submit" class="btn btn-primary">Adicionar Envolvidos</button>
+          </form>
+
+          <div class="col-md-4">
+            <div class="map">
+              
+            </div>
+          </div>
+        </div> <!-- div background  -->
+
+        
+    </div>
+
+
+

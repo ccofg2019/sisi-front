@@ -1,0 +1,84 @@
+
+    <div>
+      <div id="topnav">
+        <a routerLink=""><button class="btn btn-primary" >Login</button></a>
+      </div>
+        <form class="form-default-sisi" #formCadastroUser="ngForm" (ngSubmit)="onSubmit(formCadastroUser)">
+            <h3>Formulário de Cadastro</h3>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="nome">Nome</label>
+                <input type="text" class="form-control" id="nome" name="nome" [(ngModel)]="usuario.nome" placeholder="Nome" required #nome="ngModel">
+                <div *ngIf="!nome.valid && nome.touched" class="error">por favor informe um nome*</div>
+              </div>
+              <div class="form-group col-md-3">
+                <label for="senha">Senha</label>
+                <input type="password" class="form-control" id="senha" name="senha" [(ngModel)]="usuario.senha" placeholder="Senha" required #senha="ngModel">
+                <div *ngIf="!senha.valid && senha.touched" class="error">por favor informe uma senha*</div>
+              </div>
+              <div class="form-group col-md-3">
+                  <label for="senha2">Confirme a Senha</label>
+                  <input type="password" class="form-control" id="senha2" name="senha2" [(ngModel)]="usuario.senha2" placeholder="Senha" required #senha2="ngModel">
+                  <div *ngIf="!senha2.valid && senha2.touched" class="error">por favor informe uma senha*</div>
+                </div>
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" class="form-control" id="email" name="email" [(ngModel)]="usuario.email" required #email="ngModel" placeholder="exemplo@email.com">
+              <div *ngIf="!email.valid && email.touched" class="error">por favor informe um email*</div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-3">
+                    <label for="cpf">CPF</label>
+                    <input type="text" class="form-control" id="cpf" name="cpf" [(ngModel)]="usuario.cpf" placeholder="000.000.000-00">
+                </div>
+
+                <div class="form-group col-md-3">
+                    <label for="nascimento">Data Nascimento</label>
+                    <input type="date" class="form-control" id="nascimento" name="nascimento" [(ngModel)]="usuario.nascimento">
+                </div>
+
+                <div class="form-group col-md-3">
+                    <label for="genero">Gênero</label>
+                    <select id="genero" name="genero" [(ngModel)]="usuario.genero" class="form-control">
+                        <option selected>Escolha uma opção</option>
+                        <option value="m">Masculino</option>
+                        <option value="f">Feminino</option>
+                        <option value="tm">Trans-Masculino </option>
+                        <option value="tf">Trans-Feminino</option>
+                        <option value="ndg">Não Declarado</option>
+                      </select>
+                </div>
+
+                <div class="form-group col-md-3">
+                    <label for="etnia">Etnia</label>
+                    <select id="etnia" name="etinia" [(ngModel)]="usuario.etinia" class="form-control">
+                        <option selected>Escolha uma opção</option>
+                        <option value="b">Branca</option>
+                        <option value="n">Negra</option>
+                        <option value="p">Parda</option>
+                        <option value="i">Indígena</option>
+                        <option value="ndr">Não Declarado</option>
+                    </select>
+                </div>
+
+
+            </div>
+
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="telefone1">Telefone Residencial</label>
+                <input type="text" class="form-control" id="telefone1" name="telefone1"[(ngModel)]="usuario.telefone1" placeholder="(00) 0000-0000">
+              </div>
+              <div class="form-group col-md-6">
+                  <label for="telefone2">Telefone Celular</label>
+                  <input type="text" class="form-control" id="telefone2" name="telefone2" [(ngModel)]="usuario.telefone2" placeholder="(00) 9 0000-0000">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary" [disabled]="!formCadastroUser.valid">Cadastrar</button>
+          </form>
+    </div>
+
+
+
