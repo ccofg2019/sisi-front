@@ -16,6 +16,8 @@ import { FormOccurenceComponent } from './form-occurence/form-occurence.componen
 // Services
 import {TokenInterceptor} from './services/token/token.interceptor';
 import {AuthGuardService} from './services/auth/auth-guard.service';
+import { UserService } from './services/user.service';
+import { AlertService } from './services/alert.service';
 
 // Libraries
 import {
@@ -90,6 +92,8 @@ import { HttpModule } from '@angular/http';
   ],
   providers: [
     AuthGuardService,
+    UserService,
+    AlertService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
