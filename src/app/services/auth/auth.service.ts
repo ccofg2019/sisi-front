@@ -157,8 +157,7 @@ export class AuthService {
    * @returns {Observable<any>}
    */
   public getUserAuthenticated(): Observable<any> {
-
-    return this.http.post(`${environment.API_URL}/api/user`, {});
+    return this.http.get(`${environment.API_URL}/api/users`, {});
 
   }
 
