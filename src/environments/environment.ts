@@ -5,9 +5,9 @@
   export const environment = {
     production: false,
     NODE_ENV: 'dev',
-    API_URL: 'http://sisi.eastus.cloudapp.azure.com/',
+    API_URL: 'http://sisiuni.eastus.cloudapp.azure.com',
     GRANT_TYPE: 'password',
-    CLIENT_SECRET: 'QNaA2U2nAaCdYZnYMcV1bCOPbXXt4oXm2RFSVLjy',
+    CLIENT_SECRET: 'n7F2I1hAZzNdEu0iif4Dm9re5WdsxcQtFzzADRot',
     CLIENT_ID:  2,
     scope: '*',
   };
@@ -20,3 +20,10 @@
  * on performance if an error is thrown.
  */
 // import 'zone.js/dist/zone-error';  // Included with Angular CLI.
+
+
+/*
+
+miguel@gmail.com - 123
+
+*/
