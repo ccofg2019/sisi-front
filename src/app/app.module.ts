@@ -13,10 +13,12 @@ import { HeaderComponent } from './header/header.component';
 import { FormRegisterComponent } from './form-register/form-register.component';
 import { HomeComponent } from './home/home.component';
 import { FormOccurenceComponent } from './form-occurence/form-occurence.component';
+
 // Services
 import {TokenInterceptor} from './services/token/token.interceptor';
 import {AuthGuardService} from './services/auth/auth-guard.service';
 import { UserService } from './services/user.service';
+import { OccurenceService } from './services/occurence.service';
 import { AlertService } from './services/alert.service';
 
 // Libraries
@@ -93,6 +95,7 @@ import { HttpModule } from '@angular/http';
   providers: [
     AuthGuardService,
     UserService,
+    OccurenceService,
     AlertService,
     {
       provide: HTTP_INTERCEPTORS,
