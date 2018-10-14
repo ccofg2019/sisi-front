@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Http } from '@angular/http';
-import 'rxjs/add/operator/map';
+import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { first } from 'rxjs/operators';
+import { UserService } from '../services/user.service';
+import { AlertService } from '../services/alert.service';
 
 @Component({
   selector: 'app-form-register',
@@ -9,39 +12,55 @@ import 'rxjs/add/operator/map';
 })
 export class FormRegisterComponent implements OnInit {
 
-  usuario: any = {
-    nome: '',
-    senha: '',
-    senha2: '',
-    cpf: '',
-    nascimento: '',
-    genero: '',
-    etinia: '',
-    telefone1: '',
-    telefone2: '',
-    email: ''
-  };
+  registerForm: FormGroup;
+  loading = false;
+  submitted;
 
-  onSubmit(form) {
-    // console.log(form);
-    console.log(this.usuario);
-
-    /*
-    Resolução do erro .map()
-    1- Importar no componete usar o comando -> import 'rxjs/add/operator/map';
-    2- Usar o codigo -> npm install --save rxjs-compat
-
-    JSON.stringify(form.value) -> pega toda a informação do formulário e converte em JSON
-    testar a requisição post - https://resttesttest.com/
-    */
-    this.http.post('https://httpbin.org/post', JSON.stringify(form.value)).map(res => res).subscribe(dados => console.log(dados));
-  }
-
-  constructor(private http: Http) { }
-
-
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private userService: UserService,
+    private alertService: AlertService
+    ) { }
 
   ngOnInit() {
+    this.registerForm = this.formBuilder.group({
+      name: ['', Validators.required],
+      password: ['', Validators.required],
+      email: ['', Validators.required],
+      cpf: ['', Validators.required],
+      birthdate: ['', Validators.required],
+      gender: ['', Validators.required],
+      skin_color: ['', Validators.required],
+      cellphone: ['', Validators.required],
+      phone: ['', Validators.required],
+      status: 'ATIVO'
+    });
   }
+
+  get f() {return this.registerForm.controls;}
+
+  onSubmit(){
+    this.submitted = true;
+
+        // stop here if form is invalid
+        if (this.registerForm.invalid) {
+            return;
+        }
+
+        this.loading = true;
+        this.userService.register(this.registerForm.value)
+            .pipe(first())
+            .subscribe(
+                data => {
+                  this.alertService.success('Registration successful', true);
+                    this.router.navigate(['']);
+                },
+                error => {
+                  this.alertService.error(error);
+                    this.loading = false;
+                });
+  }
+  
 
 }
