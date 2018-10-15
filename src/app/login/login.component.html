@@ -1,0 +1,35 @@
+<div>
+  <div id="topnav">
+    <a routerLink="register"><button class="btn btn-primary" >Cadastro</button></a>
+  </div>
+  <form (keyup.enter)="login()" [formGroup]="form" (submit)="login()">
+    <div class="container">
+      <div id="logo">
+        <img src="../assets/sisi-logo.png" alt="SISI" height="120" width="250" />
+      </div>
+
+      <div id="inputs">
+        <div class="form-group">
+          <mat-form-field style="width:100%" appearance="outline">
+            <mat-label>Email</mat-label>
+            <input type="email" matInput name="email" formControlName="email"/>
+            <mat-hint *ngIf="status.error || form.controls['errors']" style="color: red;font-size: 14px">Email inválido</mat-hint>
+          </mat-form-field>
+        </div>
+        <div class="form-group">
+          <mat-form-field appearance="outline">
+            <mat-label>Senha</mat-label>
+            <input type="password" autocomplete="off" matInput name="password" formControlName="password"/>
+            <mat-hint *ngIf="status.error || form.controls['errors']" style="color: red; font-size: 14px">Senha inválida</mat-hint>
+          </mat-form-field>
+        </div>
+      <div>
+        <a id="forget-pass" href=""> Esqueceu a senha?</a>
+      </div>
+    </div>
+      <div>
+        <button [disabled]="status.loading" mat-raised-button class="login-btn">{{btn_title}}</button>
+      </div>
+    </div>
+  </form>
+</div>
