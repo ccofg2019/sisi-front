@@ -5,7 +5,7 @@
   export const environment = {
     production: false,
     NODE_ENV: 'dev',
-    API_URL: 'http://sisiuni.eastus.cloudapp.azure.com',
+    API_URL: 'http://sisiuni.eastus.cloudapp.azure.com:8083/',
     GRANT_TYPE: 'password',
     CLIENT_SECRET: 'n7F2I1hAZzNdEu0iif4Dm9re5WdsxcQtFzzADRot',
     CLIENT_ID:  2,

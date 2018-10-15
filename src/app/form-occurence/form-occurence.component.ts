@@ -37,14 +37,14 @@ export class FormOccurenceComponent implements OnInit {
 
       involved_person: this.formBuilder.group({
         name: [''],
-        cpf: ['', Validators.maxLength(10)],
+        cpf: [''],
         gender: [''],
         skin_color: [''],
         type: ['']
       }),
 
       occurrence_objects: this.formBuilder.group({
-        object_id: Number 
+        object_id: [Number, Validators.required] 
       })
 
     });
@@ -66,9 +66,8 @@ export class FormOccurenceComponent implements OnInit {
             .pipe(first())
             .subscribe(
                 data => {
+                  this.router.navigate(['/home']);
                   this.alertService.success('Registration successful', true);
-                    this.router.navigate(['']);
-                    
                 },
                 error => {
                   this.alertService.error(error);

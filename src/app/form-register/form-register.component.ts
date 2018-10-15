@@ -53,8 +53,8 @@ export class FormRegisterComponent implements OnInit {
             .pipe(first())
             .subscribe(
                 data => {
+                  this.router.navigate(['']);
                   this.alertService.success('Registration successful', true);
-                    this.router.navigate(['']);
                 },
                 error => {
                   this.alertService.error(error);

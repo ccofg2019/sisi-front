@@ -13,7 +13,7 @@
                 [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
 
                 <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
-                  <div *ngIf="f.name.errors.required"> campo obrigatório*</div>
+                  <div *ngIf="f.name.errors.required"> Campo obrigatório*</div>
                 </div>
               </div>
 
@@ -22,7 +22,7 @@
                 <input type="email" class="form-control" id="email" name="email" formControlName="email" placeholder="exemplo@email.com"
                 [ngClass]="{ 'is-invalid': submitted && f.email.errors }" /> 
                 <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-                    <div *ngIf="f.email.errors.required"> campo obrigatório*</div>
+                    <div *ngIf="f.email.errors.required"> Campo obrigatório*</div>
                 </div>
               </div>
 
@@ -32,7 +32,7 @@
                 [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
 
                 <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-                  <div *ngIf="f.password.errors.required">campo obrigatório*</div>
+                  <div *ngIf="f.password.errors.required">Campo obrigatório*</div>
                 </div>
               </div>
 
@@ -47,7 +47,7 @@
                     />
 
                     <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-                        <div *ngIf="f.cpf.errors.required"> campo obrigatório*</div>
+                        <div *ngIf="f.cpf.errors.required"> Campo obrigatório*</div>
                     </div>
                 </div>
 
@@ -57,28 +57,28 @@
                     [ngClass]="{ 'is-invalid': submitted && f.birthdate.errors }" />
 
                     <div *ngIf="submitted && f.birthdate.errors" class="invalid-feedback">
-                        <div *ngIf="f.birthdate.errors.required">campo obrigatório*</div>
+                        <div *ngIf="f.birthdate.errors.required">Campo obrigatório*</div>
                     </div>
                 </div>
 
                 <div class="form-group col-md-3">
                     <label for="gender">Gênero</label>
                     <select id="gender" name="gender" formControlName="gender" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.gender.errors }">
-                        <option selected>Escolha uma opção</option>
+                        <option value="" disable selected>Escolha uma opção</option>
                         <option value="MASCULINO">Masculino</option>
                         <option value="FEMININO">Feminino</option>
                         <option value="TRANS_MASC">Trans-Masculino </option>
                         <option value="TRANS_FEM">Trans-Feminino</option>
                       </select>
                       <div *ngIf="submitted && f.gender.errors" class="invalid-feedback">
-                          <div *ngIf="f.gender.errors.required">campo obrigatório*</div>
+                          <div *ngIf="f.gender.errors.required">Campo obrigatório*</div>
                       </div>
                 </div>
 
                 <div class="form-group col-md-3">
                     <label for="skin_color">Etnia</label>
                     <select id="skin_color" name="skin_color" formControlName="skin_color" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.skin_color.errors }">
-                        <option selected>Escolha uma opção</option>
+                        <option value="" disable selected>Escolha uma opção</option>
                         <option value="BRANCO">Branca</option>
                         <option value="NEGRO">Negro</option>
                         <option value="PARDO">Pardo</option>
@@ -86,7 +86,7 @@
                         <option value="AMARELO">Amarelo</option>
                     </select>
                     <div *ngIf="submitted && f.skin_color.errors" class="invalid-feedback">
-                        <div *ngIf="f.skin_color.errors.required">campo obrigatório*</div>
+                        <div *ngIf="f.skin_color.errors.required">Campo obrigatório*</div>
                     </div>
                 </div>
 
@@ -100,7 +100,7 @@
                 [ngClass]="{ 'is-invalid': submitted && f.cellphone.errors }" />
 
                 <div *ngIf="submitted && f.cellphone.errors" class="invalid-feedback">
-                    <div *ngIf="f.cellphone.errors.required">campo obrigatório*</div>
+                    <div *ngIf="f.cellphone.errors.required">Campo obrigatório*</div>
                 </div>
               </div>
               <div class="form-group col-md-6">
@@ -109,7 +109,7 @@
                   [ngClass]="{ 'is-invalid': submitted && f.phone.errors }" />
 
                   <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
-                      <div *ngIf="f.phone.errors.required">campo obrigatório*</div>
+                      <div *ngIf="f.phone.errors.required">Campo obrigatório*</div>
                   </div>
               </div>
               
