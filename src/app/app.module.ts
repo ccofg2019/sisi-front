@@ -48,6 +48,7 @@ import {
 } from '@angular/material';
 import {NotifierModule} from 'angular-notifier';
 import { HttpModule } from '@angular/http';
+import { ListUserComponent } from './list-user/list-user.component';
 
 
 @NgModule({
@@ -57,7 +58,8 @@ import { HttpModule } from '@angular/http';
     FormRegisterComponent,
     LoginComponent,
     HomeComponent,
-    FormOccurenceComponent
+    FormOccurenceComponent,
+    ListUserComponent
   ],
   imports: [
     BrowserModule,
