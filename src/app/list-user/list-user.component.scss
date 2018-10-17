@@ -1,0 +1,43 @@
+// VARIÁVEIS
+$color:#990000 ;
+
+
+// CSS
+button {
+    background: $color;
+    color: #fff;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: Trebuchet MS, Helvetica, sans-serif;
+    height: 50px;
+    width: 210px;
+    margin: 10px;
+    float: right;
+    border: none;
+    transition: background 0.2s ease-in-out;
+    &:hover {
+      background: darken($color, 5);
+    }
+    &:disabled {
+      opacity: 0.5;
+    }
+  }
+
+  .margin-top-sisi{
+    margin-top: 2%;
+
+    h2{
+      font-weight: bold;
+      padding-left: 10px;
+    }
+  }
+
+  .thead-sisi{
+    background: #000000;
+    color: #fff;
+  }
+  
+  .padding-thead-sisi{
+    padding: 19px;
+  }
