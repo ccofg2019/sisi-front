@@ -53,12 +53,14 @@ export class FormRegisterComponent implements OnInit {
             .pipe(first())
             .subscribe(
                 data => {
+                  alert("Cadastro realizado com sucesso!");
                   this.router.navigate(['']);
                   this.alertService.success('Registration successful', true);
                 },
                 error => {
                   this.alertService.error(error);
-                    this.loading = false;
+                  this.loading = false;
+                  alert("Ocorreu um problema ao cadastrar sua conta.");
                 });
   }
   
