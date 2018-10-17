@@ -3,6 +3,8 @@
       <div id="topnav">
         <a routerLink=""><button class="btn btn-primary" >Login</button></a>
       </div>
+
+      <div class="container-fluid" style="padding:0px;">
         <form class="form-default-sisi" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
             <h3>Formulário de Cadastro</h3>
             <div class="form-row">
@@ -112,10 +114,11 @@
                       <div *ngIf="f.phone.errors.required">Campo obrigatório*</div>
                   </div>
               </div>
-              
+              <button [disabled]="loading" class="btn btn-primary">Cadastrar</button>
             </div>
-            <button [disabled]="loading" class="btn btn-primary">Cadastrar</button>
+            
           </form>
+        </div> 
     </div>
 
 

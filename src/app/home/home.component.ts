@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 declare let L;
 
 @Component({
@@ -17,4 +18,7 @@ export class HomeComponent implements OnInit {
       attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
   }
+  exit() {
+    confirm('Tem certeza que deseja sair?');
+}
 }

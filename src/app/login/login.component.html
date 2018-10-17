@@ -1,6 +1,6 @@
 <div>
   <div id="topnav">
-    <a routerLink="register"><button class="btn btn-primary" >Cadastro</button></a>
+    
   </div>
   <form (keyup.enter)="login()" [formGroup]="form" (submit)="login()">
     <div class="container">
@@ -23,13 +23,17 @@
             <mat-hint *ngIf="status.error || form.controls['errors']" style="color: red; font-size: 14px">Senha inválida</mat-hint>
           </mat-form-field>
         </div>
-      <div>
-        <a id="forget-pass" href=""> Esqueceu a senha?</a>
       </div>
-    </div>
       <div>
         <button [disabled]="status.loading" mat-raised-button class="login-btn">{{btn_title}}</button>
+        <a routerLink="register"><button class="btn btn-primary" >Cadastro</button></a>
       </div>
+      
+     
     </div>
+   
+    
+   
   </form>
+  
 </div>
