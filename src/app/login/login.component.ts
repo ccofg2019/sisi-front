@@ -65,15 +65,13 @@ export class LoginComponent implements OnInit {
       this.authService.loginUser(this.form.value.email, this.form.value.password).subscribe(
         (res) => {
           this.router.navigate(['home']);
-         
           this.loginSubmit.emit(true);
-          alert("Login realizado com sucesso, Bem vindo!");
+          alert('Login realizado com sucesso, Bem vindo!');
 
         },
         (err) => {
-          alert("Falha ao tentar realizar login.");
+          alert('Ocorreu um erro ao tentar realizar login.');
           this.controlStateLogin('error');
-
         });
 
     }

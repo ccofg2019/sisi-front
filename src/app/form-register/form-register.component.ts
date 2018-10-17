@@ -38,14 +38,15 @@ export class FormRegisterComponent implements OnInit {
     });
   }
 
-  get f() {return this.registerForm.controls;}
+  get f() {return this.registerForm.controls; }
 
-  onSubmit(){
+  onSubmit() {
     this.submitted = true;
 
         // stop here if form is invalid
         if (this.registerForm.invalid) {
-            return;
+          alert('Erro ao tentar cadastrar, confira se os campos foram preenchidos corretamente.');
+          return;
         }
 
         this.loading = true;
@@ -53,16 +54,14 @@ export class FormRegisterComponent implements OnInit {
             .pipe(first())
             .subscribe(
                 data => {
-                  alert("Cadastro realizado com sucesso!");
+                  alert('Cadastro realizado com sucesso!');
                   this.router.navigate(['']);
                   this.alertService.success('Registration successful', true);
                 },
                 error => {
                   this.alertService.error(error);
                   this.loading = false;
-                  alert("Ocorreu um problema ao cadastrar sua conta.");
+                  alert('Ocorreu um erro ao tentar cadastrar sua conta.');
                 });
   }
-  
-
 }

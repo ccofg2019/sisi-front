@@ -29,9 +29,9 @@ export class FormOccurenceComponent implements OnInit {
       story: ['', Validators.required],
       occurrence_date: ['', Validators.required],
       occurrence_time: ['', Validators.required],
-      coordinates: "41.40338, 2.17403",
+      coordinates: '41.40338, 2.17403',
       police_report: ['', Validators.required],
-      estimated_loss: [''],
+      estimated_loss: ['345'],
       occurrence_type_id: ['', Validators.required],
       zone_id: ['', Validators.required],
 
@@ -44,20 +44,20 @@ export class FormOccurenceComponent implements OnInit {
       }),
 
       occurrence_objects: this.formBuilder.group({
-        object_id: [Number, Validators.required] 
+        object_id: [Number]
       })
 
     });
   }
- 
-  get f() {return this.FormOccurence.controls;}
-  
-  onSubmit(){
+
+  get f() { return this.FormOccurence.controls; }
+
+  onSubmit() {
     this.submitted = true;
 
         // stop here if form is invalid
         if (this.FormOccurence.invalid) {
-          console.log("teste");
+          alert('Erro ao tentar registrar, confira se os campos foram preenchidos corretamente.');
             return;
         }
 
@@ -66,15 +66,17 @@ export class FormOccurenceComponent implements OnInit {
             .pipe(first())
             .subscribe(
                 data => {
-                  this.router.navigate(['/home']);
+                  alert('Ocorreu um erro ao tentar registrar sua ocorrência.');
+                  this.loading = false;
                   this.alertService.success('Registration successful', true);
                 },
                 error => {
                   this.alertService.error(error);
-                    this.loading = false;
+                    this.router.navigate(['home']);
+                    alert('Registro de ocorrência realizado com sucesso!');
                 });
   }
-  
 
- 
+
+
 }
