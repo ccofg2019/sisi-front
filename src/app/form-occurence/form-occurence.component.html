@@ -1,8 +1,6 @@
 
     <div>
       <div id="topnav">
-        <a routerLink="/home"><button class="btn btn-primary" >Perfil</button></a>
-        <a><button class="btn btn-primary" >Registrar Reclamação</button></a>
         <a routerLink="/home"><button class="btn btn-primary" >Mapa</button></a>
       </div>
 
@@ -26,7 +24,7 @@
                   <div formGroupName="occurrence_objects">
                      <label for="object_id">Objeto Envolvido</label>
                         <select class="form-control" formControlName="object_id">
-                          <option value="" disable selected>Escolha uma opção</option>
+                          <option [ngValue]="" disable selected>Escolha uma opção</option>
                           <option [ngValue]="1">Bicicleta</option>
                           <option [ngValue]="2">Celular</option>
                           <option [ngValue]="3">Documentos</option>
@@ -183,8 +181,8 @@
                   </div>
 
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">Confirm</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Confirmar</button>
                   </div>
                 </div>
               </div>

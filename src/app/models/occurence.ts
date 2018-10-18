@@ -17,6 +17,5 @@ export class Occurence {
             }];
     occurrence_objects: [{
             object_id: number;
-    }]
-    
+    }];
 }
