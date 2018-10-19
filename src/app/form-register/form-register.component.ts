@@ -25,15 +25,15 @@ export class FormRegisterComponent implements OnInit {
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
-      name: ['', Validators.required],
-      password: ['', Validators.required],
-      email: ['', Validators.required],
-      cpf: ['', Validators.required],
+      name: ['', Validators.required, Validators.minLength(4)],
+      password: ['', Validators.required, Validators.minLength(6), Validators.maxLength(16)],
+      email: ['', Validators.required, Validators.email],
+      cpf: ['', Validators.required, Validators.minLength(11), Validators.maxLength(11)],
       birthdate: ['', Validators.required],
       gender: ['', Validators.required],
       skin_color: ['', Validators.required],
-      cellphone: ['', Validators.required],
-      phone: ['', Validators.required],
+      cellphone: ['', Validators.required, Validators.minLength(11), Validators.maxLength(11)],
+      phone: ['', Validators.required, Validators.minLength(10), Validators.maxLength(10)],
       status: 'ATIVO'
     });
   }

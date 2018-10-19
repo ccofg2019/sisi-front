@@ -14,20 +14,20 @@ export class FormOccurenceComponent implements OnInit {
 
   FormOccurence: FormGroup;
   loading = false;
-  submitted;
+  submitted = false;
 
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
     private occurenceService: OccurenceService,
-    private alertService: AlertService
+    // private alertService: AlertService
   ) { }
 
   ngOnInit() {
     this.FormOccurence = this.formBuilder.group({
-      title: ['', Validators.required],
-      story: ['', Validators.required],
-      occurrence_date: ['', Validators.required],
+      title: ['', [ Validators.required, Validators.minLength(6), Validators.maxLength(52) ]],
+      story: ['', [Validators.required, Validators.minLength(12), Validators.maxLength(256)]],
+      occurrence_date: ['', [Validators.required, Validators.maxLength(8)]],
       occurrence_time: ['', Validators.required],
       coordinates: '41.40338, 2.17403',
       police_report: ['', Validators.required],
@@ -36,8 +36,8 @@ export class FormOccurenceComponent implements OnInit {
       zone_id: ['', Validators.required],
 
       involved_person: this.formBuilder.group({
-        name: [''],
-        cpf: [''],
+        name: ['', Validators.minLength(4)],
+        cpf: ['', [Validators.minLength(11), Validators.maxLength(11)]],
         gender: [''],
         skin_color: [''],
         type: ['']
@@ -58,7 +58,7 @@ export class FormOccurenceComponent implements OnInit {
         // stop here if form is invalid
         if (this.FormOccurence.invalid) {
           alert('Erro ao tentar registrar, confira se os campos foram preenchidos corretamente.');
-            return;
+          return;
         }
 
         this.loading = true;
@@ -66,14 +66,14 @@ export class FormOccurenceComponent implements OnInit {
             .pipe(first())
             .subscribe(
                 data => {
-                  alert('Ocorreu um erro ao tentar registrar sua ocorrência.');
-                  this.loading = false;
-                  this.alertService.success('Registration successful', true);
+                  alert('Registro de ocorrência realizado com sucesso!');
+                  this.router.navigate(['home']);
+                  // this.alertService.success('Registration successful', true);
                 },
                 error => {
-                  this.alertService.error(error);
-                    this.router.navigate(['home']);
-                    alert('Registro de ocorrência realizado com sucesso!');
+                  // this.alertService.error(error);
+                  this.loading = false;
+                  alert('Ocorreu um erro ao tentar registrar sua ocorrência.');
                 });
   }
 

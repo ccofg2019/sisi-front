@@ -14,7 +14,9 @@
                 <input type="text" class="form-control" placeholder="Título da ocorrência" formControlName="title" [ngClass]="{ 'is-invalid': submitted && f.title.errors }" />
 
                 <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
-                  <div *ngIf="f.title.errors.required"> Campo obrigatório*</div>
+                  <div *ngIf="f.title.errors.required">Campo obrigatório*</div>
+                  <div *ngIf="f.title.errors.minlength">Título deve ter mais de 6 dígitos*</div>
+                  <div *ngIf="f.title.errors.maxlength">Título deve ter no máximo 52 dígitos*</div>
                 </div>
 
               </div>
@@ -24,7 +26,7 @@
                   <div formGroupName="occurrence_objects">
                      <label for="object_id">Objeto Envolvido</label>
                         <select class="form-control" formControlName="object_id">
-                          <option [ngValue]="" disable selected>Escolha uma opção</option>
+                          <option value="" select disabled>Escolha uma opção</option>
                           <option [ngValue]="1">Bicicleta</option>
                           <option [ngValue]="2">Celular</option>
                           <option [ngValue]="3">Documentos</option>
@@ -43,7 +45,7 @@
                 <label for="police_report">B.O feito?</label>
                 <select class="form-control" formControlName="police_report"
                 [ngClass]="{ 'is-invalid': submitted && f.police_report.errors }">
-                 <option value="" disable selected>Escolha uma opção</option>
+                 <option value="" select disabled>Escolha uma opção</option>
                   <option value=1>Sim</option>
                   <option value=0>Não</option>
                 </select>
@@ -76,8 +78,8 @@
 
               <div class="form-group col-md-3">
                 <label for="title">Local da Ocorrência</label>
-                <select class="form-control" formControlName="zone_id" [ngClass]="{ 'is-invalid': submitted && f.zone_id.errors }">
-                    <option value="" disable selected>Escolha uma opção</option>
+                  <select class="form-control" formControlName="zone_id" [ngClass]="{ 'is-invalid': submitted && f.zone_id.errors }">
+                    <option value="" select disabled>Escolha uma opção</option>
                     <option value="1">Departamento de Tecnologia do Campus</option>
                   </select>
 
@@ -86,10 +88,10 @@
                   </div>
               </div>
 
-              <div class="form-group col-md-4">
+            <div class="form-group col-md-4">
                 <label for="title">Tipo de Ocorrência</label>
                 <select class="form-control" formControlName="occurrence_type_id" [ngClass]="{ 'is-invalid': submitted && f.occurrence_type_id.errors }">
-                  <option value="" disable selected>Escolha uma opção</option>
+                  <option value="" select disabled>Escolha uma opção</option>
                   <option value="1">Furto</option>
                   <option value="2">Roubo</option>
                   <option value="3">Assalto a grupo</option>
@@ -104,7 +106,6 @@
                   <div *ngIf="f.occurrence_type_id.errors.required"> Campo obrigatório*</div>
                 </div>
               </div>
-
             </div>
 
             <!--input type="text" value="41.40338, 2.17403" hidden formControlName="coordinates" /-->
@@ -112,13 +113,15 @@
 
             <div class="form-row">
               <div class="form-group col-md-12">
-                <label for="story">Descrição da Ocorrência</label>
-                <textarea class="form-control" rows="3" placeholder="Descrição da Ocorrência"
-                 formControlName="story" [ngClass]="{ 'is-invalid': submitted && f.story.errors }"></textarea>
-              </div>
+                  <label for="story">Descrição da Ocorrência</label>
+                  <textarea class="form-control" rows="3" placeholder="Descrição da Ocorrência"
+                    formControlName="story" [ngClass]="{ 'is-invalid': submitted && f.story.errors }"></textarea>
 
-              <div *ngIf="submitted && f.story.errors" class="invalid-feedback">
-                <div *ngIf="f.story.errors.required"> Campo obrigatório*</div>
+                <div *ngIf="submitted && f.story.errors" class="invalid-feedback">
+                  <div *ngIf="f.story.errors.required"> Campo obrigatório*</div>
+                  <div *ngIf="f.story.errors.minlength"> Descrição deve ter mais de 12 dígitos*</div>
+                  <div *ngIf="f.story.errors.maxlength"> Descrição deve ter no máximo 256 dígitos*</div>
+                </div>
               </div>
             </div>
 
@@ -140,13 +143,13 @@
 
                             <div class="form-group">
                               <label for="cpf">Cpf</label>
-                              <input type="text" class="form-control" formControlName="cpf" >
+                              <input type="number" class="form-control" formControlName="cpf" >
                             </div>
 
                             <div class="form-group">
                               <label for="gender">Gênero</label>
                               <select class="form-control" formControlName="gender">
-                                <option value="" disable selected>Escolha uma opção</option>
+                                <option value="" select disabled>Escolha uma opção</option>
                                 <option value="MASCULINO">Masculino</option>
                                 <option value="FEMININO">Feminino</option>
                                 <option value="TRANS_MASC">Trans-Masculino </option>
@@ -157,7 +160,7 @@
                             <div class="form-group">
                               <label for="type">Tipo</label>
                               <select class="form-control" formControlName="type" >
-                                <option value="" disable selected>Escolha uma opção</option>
+                                <option value="" select disabled>Escolha uma opção</option>
                                 <option value="VITIMA">Vítima</option>
                                 <option value="SUSPEITO">Suspeito</option>
                                 <option value="TESTEMUNHA">Testemunha</option>
@@ -168,7 +171,7 @@
                             <div class="form-group">
                               <label for="skin_color">Etnia</label>
                               <select id="skin_color" name="skin_color" formControlName="skin_color" class="form-control">
-                                <option value="" disable selected>Escolha uma opção</option>
+                                <option value="" select disabled>Escolha uma opção</option>
                                   <option value="BRANCO">Branca</option>
                                   <option value="NEGRO">Negro</option>
                                   <option value="PARDO">Pardo</option>

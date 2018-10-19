@@ -11,7 +11,7 @@
               <div class="form-group col-md-4">
                 <label for="name">Nome</label>
                 <input type="text" class="form-control"  placeholder="Nome"
-                formControlName="name"  
+                formControlName="name"
                 [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
 
                 <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
@@ -22,7 +22,7 @@
               <div class="form-group col-md-4">
                 <label for="email">Email</label>
                 <input type="email" class="form-control" id="email" name="email" formControlName="email" placeholder="exemplo@email.com"
-                [ngClass]="{ 'is-invalid': submitted && f.email.errors }" /> 
+                [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
                 <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
                     <div *ngIf="f.email.errors.required"> Campo obrigatório*</div>
                 </div>
@@ -39,7 +39,7 @@
               </div>
 
             </div>
-           
+
 
             <div class="form-row">
                 <div class="form-group col-md-3">
@@ -116,9 +116,9 @@
               </div>
               <button [disabled]="loading" class="btn btn-primary">Cadastrar</button>
             </div>
-            
+
           </form>
-        </div> 
+        </div>
     </div>
 
 
