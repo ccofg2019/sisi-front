@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import { OccurenceService } from '../services/occurence.service';
-import { AlertService } from '../services/alert.service';
+// import { AlertService } from '../services/alert.service';
 
 @Component({
   selector: 'app-form-occurence',
@@ -12,9 +12,14 @@ import { AlertService } from '../services/alert.service';
 })
 export class FormOccurenceComponent implements OnInit {
 
-  FormOccurence: FormGroup;
+  formOccurrence: FormGroup;
   loading = false;
   submitted = false;
+
+  // Validator patterns
+  titlePattern = '^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ0-9,. ]{6,32}$';
+  storyPattern = '^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ0-9,. ]{12,256}$';
+
 
   constructor(
     private formBuilder: FormBuilder,
@@ -24,10 +29,10 @@ export class FormOccurenceComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.FormOccurence = this.formBuilder.group({
-      title: ['', [ Validators.required, Validators.minLength(6), Validators.maxLength(52) ]],
-      story: ['', [Validators.required, Validators.minLength(12), Validators.maxLength(256)]],
-      occurrence_date: ['', [Validators.required, Validators.maxLength(8)]],
+    this.formOccurrence = this.formBuilder.group({
+      title: ['', [ Validators.required, Validators.pattern(this.titlePattern)]],
+      story: ['', [Validators.required, Validators.pattern(this.storyPattern)]],
+      occurrence_date: ['', [Validators.required]],
       occurrence_time: ['', Validators.required],
       coordinates: '41.40338, 2.17403',
       police_report: ['', Validators.required],
@@ -50,19 +55,19 @@ export class FormOccurenceComponent implements OnInit {
     });
   }
 
-  get f() { return this.FormOccurence.controls; }
+  get f() { return this.formOccurrence.controls; }
 
   onSubmit() {
     this.submitted = true;
 
         // stop here if form is invalid
-        if (this.FormOccurence.invalid) {
+        if (this.formOccurrence.invalid) {
           alert('Erro ao tentar registrar, confira se os campos foram preenchidos corretamente.');
           return;
         }
 
         this.loading = true;
-        this.occurenceService.registerOccurence(this.FormOccurence.value)
+        this.occurenceService.registerOccurence(this.formOccurrence.value)
             .pipe(first())
             .subscribe(
                 data => {

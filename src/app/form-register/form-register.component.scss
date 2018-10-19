@@ -20,6 +20,9 @@ button {
   }
 }
 
+h3{
+  font-weight: bolder;
+}
 
 .background-sub-menu-sisi{
   background-color: #831010;
@@ -49,4 +52,26 @@ padding-top: 5%;
 }
 button[_ngcontent-c2]:disabled{
   background-color: red;
+}
+
+input.ng-invalid.ng-touched {
+  border: 2px solid red;
+}
+
+select.ng-invalid.ng-touched {
+  border: 2px solid red;
+}
+
+input.ng-valid.ng-touched {
+  border: 2px solid green;
+}
+
+select.ng-valid.ng-touched {
+  border: 2px solid green;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
