@@ -16,7 +16,7 @@ import { FormRegisterComponent } from './form-register/form-register.component';
 import { HomeComponent } from './home/home.component';
 import { FormOccurenceComponent } from './form-occurence/form-occurence.component';
 import { ListUserComponent } from './list-user/list-user.component';
-import { ListOcorrenceComponent } from './list-ocorrence/list-ocorrence.component';
+import { ListOccurenceComponent } from './list-occurence/list-occurence.component';
 
 // Services
 import { TokenInterceptor } from './services/token/token.interceptor';
@@ -63,7 +63,7 @@ import {
     HomeComponent,
     FormOccurenceComponent,
     ListUserComponent,
-    ListOcorrenceComponent
+    ListOccurenceComponent
   ],
   imports: [
     BrowserModule,

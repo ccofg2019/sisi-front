@@ -1,7 +1,7 @@
 <div>
   <!-- MENU DE NAVEGAÇÃO -->
   <div id="topnav">
-    <!-->a routerLink=""><button class="btn btn-primary" >Perfil</button></a>
+    <!--a routerLink=""><button class="btn btn-primary" >Perfil</button></a>
     <a routerLink=""><button class="btn btn-primary" >Usuários</button></a>
     <a routerLink=""><button class="btn btn-primary" >Relátorios</button></a>
     <a routerLink=""><button class="btn btn-primary" >Mapa</button></a>-->
@@ -31,9 +31,9 @@
                     <option value="8">Tentativa de assalto</option>
                 </select>
           </div>
-        
+
       </div>
-   
+
       </div>
     </div>
 
@@ -45,36 +45,21 @@
                 <tr>
                   <th scope="col" class="padding-thead-sisi">Situação</th>
                   <th scope="col" class="padding-thead-sisi">Tipo</th>
+                  <th scope="col" class="padding-thead-sisi">Registrado por</th>
                   <th scope="col" class="padding-thead-sisi">Investigador</th>
                   <th scope="col" class="padding-thead-sisi">Local</th>
                   <th scope="col" class="padding-thead-sisi">Data</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <th scope="row">Em Análise</th>
-                  <td>Agressão</td>
-                  <td>Miguel FeliZ</td>
-                  <td>Campus</td>
-                  <td>12/09/2018</td>
+                <tr *ngFor="let occurence of occurences">
+                  <th scope="row">{{ occurence.status }}</th>
+                  <td>{{ occurence.occurrence_type.name }}</td>
+                  <td>{{ occurence.user.name }}</td>
+                  <td>{{ occurence.agent }}</td>
+                  <td>{{ occurence.zone.name }}</td>
+                  <td>{{ occurence.occurrence_date }}</td>
                 </tr>
-
-                <tr>
-                    <th scope="row">Em Análise</th>
-                    <td>Agressão</td>
-                    <td>Wagner</td>
-                    <td>Campus</td>
-                    <td>05/10/2018</td>
-                  </tr>
-
-                  <tr>
-                      <th scope="row">Em Análise</th>
-                      <td>Estupro</td>
-                      <td>David</td>
-                      <td>Campus</td>
-                      <td>16/10/2018</td>
-                    </tr>
-                
               </tbody>
             </table>
       </div>

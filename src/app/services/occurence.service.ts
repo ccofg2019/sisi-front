@@ -10,4 +10,7 @@ export class OccurenceService {
     registerOccurence(occurence: Occurence) {
         return this.http.post(`${environment.API_URL}/api/occurrence-reports`, occurence);
     }
+    getOccurences() {
+        return this.http.get(`${environment.API_URL}/api/occurrence-reports`);
+    }
 }

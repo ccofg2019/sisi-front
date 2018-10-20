@@ -20,7 +20,7 @@
               <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
                 <label class="form-check-label" for="exampleRadios1">Gráfico</label>
             </div>
-        
+
             <div class="form-check">
               <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2" checked>
               <label class="form-check-label" for="exampleRadios2"> Tebela </label>
@@ -30,9 +30,9 @@
         <div class="col-md-10">
             <button class="btn btn-primary" style="float:left; margin: 0px;"  onclick="window.print();" style="float:right;">Download</button>
         </div>
-        
+
       </div>
-   
+
       </div>
     </div>
 
@@ -49,11 +49,11 @@
                   <th scope="col" class="padding-thead-sisi">Genêro</th>
                   <th scope="col" class="padding-thead-sisi">Etnia</th>
                   <th scope="col" class="padding-thead-sisi">Autorização</th>
-                 
+
                 </tr>
               </thead>
               <tbody>
-                
+
                <tr *ngFor="let user of users">
                   <th scope="row">{{ user.id }}</th>
                   <td>{{ user.name }}</td>

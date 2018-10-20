@@ -5,7 +5,7 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { FormOccurenceComponent } from './form-occurence/form-occurence.component';
 import { ListUserComponent } from './list-user/list-user.component';
-import { ListOcorrenceComponent } from './list-ocorrence/list-ocorrence.component';
+import { ListOccurenceComponent } from './list-occurence/list-occurence.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'occurence', component: FormOccurenceComponent },
   { path: 'list-user', component: ListUserComponent },
-  { path: 'list-ocorrence', component: ListOcorrenceComponent}
+  { path: 'list-occurence', component: ListOccurenceComponent}
 ];
 
 @NgModule({
