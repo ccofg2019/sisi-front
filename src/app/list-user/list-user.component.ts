@@ -11,22 +11,11 @@ import { Component, OnInit } from '@angular/core';
 
 export class ListUserComponent implements OnInit {
 
-  public data: User[];
+  public users: User[];
 
   constructor(private userService: UserService) { }
 
   ngOnInit() {
-    /*
-    this.userService.getAll()
-        .then(( data: User[] ) => {
-            this.data = data;
-            console.log(data);
-          })
-        .catch(( param: any ) => {
-        });
-    }
-    */
-
-    this.userService.getUsers().subscribe(response => console.log(response));
+    this.userService.getUsers().subscribe(response => this.users = response.data);
   }
 }
