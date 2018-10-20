@@ -50,6 +50,7 @@ import {NotifierModule} from 'angular-notifier';
 import { HttpModule } from '@angular/http';
 import { ListUserComponent } from './list-user/list-user.component';
 import { ListOcorrenceComponent } from './list-ocorrence/list-ocorrence.component';
+import { FormComplaintComponent } from './form-complaint/form-complaint.component';
 
 
 @NgModule({
@@ -61,7 +62,8 @@ import { ListOcorrenceComponent } from './list-ocorrence/list-ocorrence.componen
     HomeComponent,
     FormOccurenceComponent,
     ListUserComponent,
-    ListOcorrenceComponent
+    ListOcorrenceComponent,
+    FormComplaintComponent
   ],
   imports: [
     BrowserModule,
