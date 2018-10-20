@@ -1,10 +1,8 @@
 <div>
   <!-- MENU DE NAVEGAÇÃO -->
   <div id="topnav">
-    <a routerLink=""><button class="btn btn-primary" >Perfil</button></a>
-    <a routerLink=""><button class="btn btn-primary" >Ocorrências</button></a>
-    <a routerLink=""><button class="btn btn-primary" >Relátorios</button></a>
-    <a routerLink=""><button class="btn btn-primary" >Mapa</button></a>
+    <a routerLink="/occurence"><button class="btn btn-primary" >Ocorrências</button></a>
+    <a routerLink="/home"><button class="btn btn-primary" >Home</button></a>
   </div>
 
   <!-- HEADER LIST-->
@@ -45,6 +43,9 @@
                 <tr>
                   <th scope="col" class="padding-thead-sisi">#</th>
                   <th scope="col" class="padding-thead-sisi">Nome</th>
+                  <th scope="col" class="padding-thead-sisi">Cpf</th>
+                  <th scope="col" class="padding-thead-sisi">Email</th>
+
                   <th scope="col">
                       <select class="custom-select" id="inputGroupSelect01">
                           <option selected>Genêro</option>
@@ -61,56 +62,26 @@
                   </th>
                   <th scope="col">
                       <select class="custom-select" id="inputGroupSelect01">
-                          <option selected>Trote</option>
-                          <option value="1">Sim</option>
-                          <option value="2">Não</option>
-                      </select>
-                  </th>
-                  <th scope="col">
-                      <select class="custom-select" id="inputGroupSelect01">
                           <option selected>Autorização</option>
                           <option value="1">Investigador</option>
                           <option value="2">Administrador</option>
                       </select>
                   </th>
-                  <th scope="col" class="padding-thead-sisi">Email</th>
-                  <th scope="col" class="padding-thead-sisi">Cpf</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                  <td>@mdo</td>
+               <tr>
+                 <th>fdfd</th>
+               </tr>
+               <tr *ngFor="let user of data">
+                  <th scope="row">{{ user.id }}</th>
+                  <td>{{ user.name }}</td>
+                  <td>{{ user.cpf }}</td>
+                  <td>{{ user.email }}</td>
+                  <td>{{ user.gender }}</td>
+                  <td>{{ user.skin_color }}</td>
+                  <td>{{ user.cellphone }}</td>
                 </tr>
-
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>@mdo</td>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                  </tr>
-
-                  <tr>
-                      <th scope="row">1</th>
-                      <td>Mark</td>
-                      <td>Otto</td>
-                      <td>@mdo</td>
-                      <td>@mdo</td>
-                      <td>Mark</td>
-                      <td>Otto</td>
-                      <td>@mdo</td>
-                    </tr>
-                
               </tbody>
             </table>
       </div>
@@ -118,3 +89,4 @@
 
   </div>
 </div>
+
