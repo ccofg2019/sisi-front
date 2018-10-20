@@ -15,7 +15,7 @@ export class ListOccurenceComponent implements OnInit {
   constructor(private occurenceService: OccurenceService) { }
 
   ngOnInit() {
-    this.occurenceService.getOccurences().subscribe(response => this.occurences = response.data);
+    this.occurenceService.getOccurences().subscribe((response: any) => this.occurences = response.data);
   }
 
 }
