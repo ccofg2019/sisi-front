@@ -4,6 +4,11 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+<<<<<<< HEAD
+=======
+import { NotifierModule } from 'angular-notifier';
+import { HttpModule } from '@angular/http';
+>>>>>>> e46b41523e94e324f5e92cea3420bdf672c62c97
 
 // Components
 import { AppRoutingModule } from './app-routing.module';
@@ -13,6 +18,8 @@ import { HeaderComponent } from './header/header.component';
 import { FormRegisterComponent } from './form-register/form-register.component';
 import { HomeComponent } from './home/home.component';
 import { FormOccurenceComponent } from './form-occurence/form-occurence.component';
+import { ListUserComponent } from './list-user/list-user.component';
+import { ListOccurenceComponent } from './list-occurence/list-occurence.component';
 
 // Services
 import { TokenInterceptor } from './services/token/token.interceptor';
@@ -46,11 +53,14 @@ import {
   MatPaginatorModule,
   MatProgressSpinnerModule
 } from '@angular/material';
+<<<<<<< HEAD
 import {NotifierModule} from 'angular-notifier';
 import { HttpModule } from '@angular/http';
 import { ListUserComponent } from './list-user/list-user.component';
 import { ListOcorrenceComponent } from './list-ocorrence/list-ocorrence.component';
 import { FormComplaintComponent } from './form-complaint/form-complaint.component';
+=======
+>>>>>>> e46b41523e94e324f5e92cea3420bdf672c62c97
 
 
 
@@ -64,8 +74,12 @@ import { FormComplaintComponent } from './form-complaint/form-complaint.componen
     HomeComponent,
     FormOccurenceComponent,
     ListUserComponent,
+<<<<<<< HEAD
     ListOcorrenceComponent,
     FormComplaintComponent
+=======
+    ListOccurenceComponent
+>>>>>>> e46b41523e94e324f5e92cea3420bdf672c62c97
   ],
   imports: [
     BrowserModule,
