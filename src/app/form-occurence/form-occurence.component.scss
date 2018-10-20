@@ -20,6 +20,9 @@ button {
   }
 }
 
+h3{
+  font-weight: bolder;
+}
 
 .background-sub-menu-sisi{
   background-color: #831010;
@@ -55,3 +58,28 @@ padding-top: 5%;
   height: 400px;
   border: 1px solid #7f0101;
 }
+
+input.ng-invalid.ng-touched {
+  border: 2px solid red;
+}
+
+select.ng-invalid.ng-touched {
+  border: 2px solid red;
+}
+
+textarea.ng-invalid.ng-touched {
+  border: 2px solid red;
+}
+
+input.ng-valid.ng-touched {
+  border: 2px solid green;
+}
+
+select.ng-valid.ng-touched {
+  border: 2px solid green;
+}
+
+textarea.ng-valid.ng-touched {
+  border: 2px solid green;
+}
+
