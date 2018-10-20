@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ListOcorrenceComponent } from './list-ocorrence.component';
+import { ListOccurenceComponent } from './list-occurence.component';
 
 describe('ListOcorrenceComponent', () => {
-  let component: ListOcorrenceComponent;
-  let fixture: ComponentFixture<ListOcorrenceComponent>;
+  let component: ListOccurenceComponent;
+  let fixture: ComponentFixture<ListOccurenceComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ListOcorrenceComponent ]
+      declarations: [ ListOccurenceComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ListOcorrenceComponent);
+    fixture = TestBed.createComponent(ListOccurenceComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -13,19 +13,7 @@ export class UserService {
     register(user: User) {
         return this.http.post(`${environment.API_URL}/api/mobile/users`, user);
     }
-
-/*
-    public getAll(): Promise<User[]> {
-
-        return this.http.get(`${environment.API_URL}/api/users`)
-            .toPromise()
-            .then((response: Response) => response.json());
-    }
-    */
-
-   public getUsers(){
+   public getUsers() {
         return this.http.get(`${environment.API_URL}/api/users`);
     }
-
-  
 }

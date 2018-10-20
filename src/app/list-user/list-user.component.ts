@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-list-user',
   templateUrl: './list-user.component.html',
   styleUrls: ['./list-user.component.scss'],
-  providers:[UserService]
+  providers: [ UserService ]
 })
 
 export class ListUserComponent implements OnInit {
