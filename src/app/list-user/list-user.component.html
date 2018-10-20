@@ -1,10 +1,8 @@
 <div>
   <!-- MENU DE NAVEGAÇÃO -->
   <div id="topnav">
-    <a routerLink=""><button class="btn btn-primary" >Perfil</button></a>
-    <a routerLink=""><button class="btn btn-primary" >Ocorrências</button></a>
-    <a routerLink=""><button class="btn btn-primary" >Relátorios</button></a>
-    <a routerLink=""><button class="btn btn-primary" >Mapa</button></a>
+    <a routerLink="/occurence"><button class="btn btn-primary" >Ocorrências</button></a>
+    <a routerLink="/home"><button class="btn btn-primary" >Home</button></a>
   </div>
 
   <!-- HEADER LIST-->
@@ -17,23 +15,24 @@
         <div class="row">
 
           <div class="col-md-2">
-            <div class="form-check">
+            <!--
+            <div class="form-check" style="display:none;">
               <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
                 <label class="form-check-label" for="exampleRadios1">Gráfico</label>
             </div>
-        
+
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+              <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2" checked>
               <label class="form-check-label" for="exampleRadios2"> Tebela </label>
-            </div>
+            </div> -->
           </div>
 
         <div class="col-md-10">
-            <button class="btn btn-primary" style="float:left; margin: 0px;"  onclick="window.print();">Download</button>
+            <button class="btn btn-primary" style="float:left; margin: 0px;"  onclick="window.print();" style="float:right;">Download</button>
         </div>
-        
+
       </div>
-   
+
       </div>
     </div>
 
@@ -45,72 +44,25 @@
                 <tr>
                   <th scope="col" class="padding-thead-sisi">#</th>
                   <th scope="col" class="padding-thead-sisi">Nome</th>
-                  <th scope="col">
-                      <select class="custom-select" id="inputGroupSelect01">
-                          <option selected>Genêro</option>
-                          <option value="1">Maisculino</option>
-                          <option value="2">Feminino</option>
-                      </select>
-                  </th>
-                  <th scope="col">
-                      <select class="custom-select" id="inputGroupSelect01">
-                          <option selected>Etnia</option>
-                          <option value="1">Branco</option>
-                          <option value="2">Negro</option>
-                      </select>
-                  </th>
-                  <th scope="col">
-                      <select class="custom-select" id="inputGroupSelect01">
-                          <option selected>Trote</option>
-                          <option value="1">Sim</option>
-                          <option value="2">Não</option>
-                      </select>
-                  </th>
-                  <th scope="col">
-                      <select class="custom-select" id="inputGroupSelect01">
-                          <option selected>Autorização</option>
-                          <option value="1">Investigador</option>
-                          <option value="2">Administrador</option>
-                      </select>
-                  </th>
-                  <th scope="col" class="padding-thead-sisi">Email</th>
                   <th scope="col" class="padding-thead-sisi">Cpf</th>
+                  <th scope="col" class="padding-thead-sisi">Email</th>
+                  <th scope="col" class="padding-thead-sisi">Genêro</th>
+                  <th scope="col" class="padding-thead-sisi">Etnia</th>
+                  <th scope="col" class="padding-thead-sisi">Autorização</th>
+
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                  <td>@mdo</td>
+
+               <tr *ngFor="let user of users">
+                  <th scope="row">{{ user.id }}</th>
+                  <td>{{ user.name }}</td>
+                  <td>{{ user.cpf }}</td>
+                  <td>{{ user.email }}</td>
+                  <td>{{ user.gender }}</td>
+                  <td>{{ user.skin_color }}</td>
+                  <td>{{ user.role.name }}</td>
                 </tr>
-
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>@mdo</td>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                  </tr>
-
-                  <tr>
-                      <th scope="row">1</th>
-                      <td>Mark</td>
-                      <td>Otto</td>
-                      <td>@mdo</td>
-                      <td>@mdo</td>
-                      <td>Mark</td>
-                      <td>Otto</td>
-                      <td>@mdo</td>
-                    </tr>
-                
               </tbody>
             </table>
       </div>
@@ -118,3 +70,4 @@
 
   </div>
 </div>
+
