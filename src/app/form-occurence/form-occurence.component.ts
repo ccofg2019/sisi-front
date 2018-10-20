@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import { OccurenceService } from '../services/occurence.service';
-import { AlertService } from '../services/alert.service';
+// import { AlertService } from '../services/alert.service';
 
 @Component({
   selector: 'app-form-occurence',
@@ -12,22 +12,27 @@ import { AlertService } from '../services/alert.service';
 })
 export class FormOccurenceComponent implements OnInit {
 
-  FormOccurence: FormGroup;
+  formOccurrence: FormGroup;
   loading = false;
-  submitted;
+  submitted = false;
+
+  // Validator patterns
+  titlePattern = '^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ0-9,. ]{6,32}$';
+  storyPattern = '^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ0-9,. ]{12,256}$';
+
 
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
     private occurenceService: OccurenceService,
-    private alertService: AlertService
+    // private alertService: AlertService
   ) { }
 
   ngOnInit() {
-    this.FormOccurence = this.formBuilder.group({
-      title: ['', Validators.required],
-      story: ['', Validators.required],
-      occurrence_date: ['', Validators.required],
+    this.formOccurrence = this.formBuilder.group({
+      title: ['', [ Validators.required, Validators.pattern(this.titlePattern)]],
+      story: ['', [Validators.required, Validators.pattern(this.storyPattern)]],
+      occurrence_date: ['', [Validators.required]],
       occurrence_time: ['', Validators.required],
       coordinates: '41.40338, 2.17403',
       police_report: ['', Validators.required],
@@ -36,8 +41,8 @@ export class FormOccurenceComponent implements OnInit {
       zone_id: ['', Validators.required],
 
       involved_person: this.formBuilder.group({
-        name: [''],
-        cpf: [''],
+        name: ['', Validators.minLength(4)],
+        cpf: ['', [Validators.minLength(11), Validators.maxLength(11)]],
         gender: [''],
         skin_color: [''],
         type: ['']
@@ -50,30 +55,30 @@ export class FormOccurenceComponent implements OnInit {
     });
   }
 
-  get f() { return this.FormOccurence.controls; }
+  get f() { return this.formOccurrence.controls; }
 
   onSubmit() {
     this.submitted = true;
 
         // stop here if form is invalid
-        if (this.FormOccurence.invalid) {
+        if (this.formOccurrence.invalid) {
           alert('Erro ao tentar registrar, confira se os campos foram preenchidos corretamente.');
-            return;
+          return;
         }
 
         this.loading = true;
-        this.occurenceService.registerOccurence(this.FormOccurence.value)
+        this.occurenceService.registerOccurence(this.formOccurrence.value)
             .pipe(first())
             .subscribe(
                 data => {
-                  alert('Ocorreu um erro ao tentar registrar sua ocorrência.');
-                  this.loading = false;
-                  this.alertService.success('Registration successful', true);
+                  alert('Registro de ocorrência realizado com sucesso!');
+                  this.router.navigate(['home']);
+                  // this.alertService.success('Registration successful', true);
                 },
                 error => {
-                  this.alertService.error(error);
-                    this.router.navigate(['home']);
-                    alert('Registro de ocorrência realizado com sucesso!');
+                  // this.alertService.error(error);
+                  this.loading = false;
+                  alert('Ocorreu um erro ao tentar registrar sua ocorrência.');
                 });
   }
 
