@@ -14,15 +14,15 @@ import { LoginComponent } from './login/login.component';
 import { HeaderComponent } from './header/header.component';
 import { FormRegisterComponent } from './form-register/form-register.component';
 import { HomeComponent } from './home/home.component';
-import { FormOccurenceComponent } from './form-occurence/form-occurence.component';
+import { FormOccurrenceComponent } from './form-occurrence/form-occurrence.component';
 import { ListUserComponent } from './list-user/list-user.component';
-import { ListOccurenceComponent } from './list-occurence/list-occurence.component';
+import { ListOccurrenceComponent } from './list-occurrence/list-occurrence.component';
 
 // Services
 import { TokenInterceptor } from './services/token/token.interceptor';
 import { AuthGuardService } from './services/auth/auth-guard.service';
 import { UserService } from './services/user.service';
-import { OccurenceService } from './services/occurence.service';
+import { OccurrenceService } from './services/occurrence.service';
 import { AlertService } from './services/alert.service';
 
 // Libraries
@@ -61,9 +61,9 @@ import {
     FormRegisterComponent,
     LoginComponent,
     HomeComponent,
-    FormOccurenceComponent,
+    FormOccurrenceComponent,
     ListUserComponent,
-    ListOccurenceComponent
+    ListOccurrenceComponent
   ],
   imports: [
     BrowserModule,
@@ -101,7 +101,7 @@ import {
   providers: [
     AuthGuardService,
     UserService,
-    OccurenceService,
+    OccurrenceService,
     AlertService,
     {
       provide: HTTP_INTERCEPTORS,
