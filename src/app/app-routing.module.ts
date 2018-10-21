@@ -5,6 +5,7 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { FormOccurrenceComponent } from './form-occurrence/form-occurrence.component';
 import { ListUserComponent } from './list-user/list-user.component';
+import { FormComplaintComponent } from './form-complaint/form-complaint.component';
 import { ListOccurrenceComponent } from './list-occurrence/list-occurrence.component';
 
 const routes: Routes = [
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'occurrence', component: FormOccurrenceComponent },
   { path: 'list-user', component: ListUserComponent },
+  { path: 'form-complaint', component: FormComplaintComponent},
   { path: 'list-occurrence', component: ListOccurrenceComponent}
 ];
 
