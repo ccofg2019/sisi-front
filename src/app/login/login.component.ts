@@ -66,11 +66,12 @@ export class LoginComponent implements OnInit {
         (res) => {
           this.router.navigate(['home']);
           this.loginSubmit.emit(true);
+          alert('Login realizado com sucesso, Bem vindo!');
 
         },
         (err) => {
+          alert('Ocorreu um erro ao tentar realizar login.');
           this.controlStateLogin('error');
-
         });
 
     }

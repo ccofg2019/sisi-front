@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 
+
 declare let L;
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  selector: 'app-form-complaint',
+  templateUrl: './form-complaint.component.html',
+  styleUrls: ['./form-complaint.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class FormComplaintComponent implements OnInit {
 
   constructor() { }
 
@@ -21,4 +22,6 @@ export class HomeComponent implements OnInit {
   exit() {
     confirm('Tem certeza que deseja sair?');
 }
+
 }
+

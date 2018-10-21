@@ -1,9 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
-import { FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NoopAnimationsModule} from '@angular/platform-browser/animations';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { NotifierModule } from 'angular-notifier';
+import { HttpModule } from '@angular/http';
 
 // Components
 import { AppRoutingModule } from './app-routing.module';
@@ -13,9 +15,15 @@ import { HeaderComponent } from './header/header.component';
 import { FormRegisterComponent } from './form-register/form-register.component';
 import { HomeComponent } from './home/home.component';
 import { FormOccurenceComponent } from './form-occurence/form-occurence.component';
+import { ListUserComponent } from './list-user/list-user.component';
+import { ListOccurenceComponent } from './list-occurence/list-occurence.component';
+
 // Services
-import {TokenInterceptor} from './services/token/token.interceptor';
-import {AuthGuardService} from './services/auth/auth-guard.service';
+import { TokenInterceptor } from './services/token/token.interceptor';
+import { AuthGuardService } from './services/auth/auth-guard.service';
+import { UserService } from './services/user.service';
+import { OccurenceService } from './services/occurence.service';
+import { AlertService } from './services/alert.service';
 
 // Libraries
 import {
@@ -42,8 +50,8 @@ import {
   MatPaginatorModule,
   MatProgressSpinnerModule
 } from '@angular/material';
-import {NotifierModule} from 'angular-notifier';
-import { HttpModule } from '@angular/http';
+
+
 
 
 @NgModule({
@@ -53,7 +61,9 @@ import { HttpModule } from '@angular/http';
     FormRegisterComponent,
     LoginComponent,
     HomeComponent,
-    FormOccurenceComponent
+    FormOccurenceComponent,
+    ListUserComponent,
+    ListOccurenceComponent
   ],
   imports: [
     BrowserModule,
@@ -90,6 +100,9 @@ import { HttpModule } from '@angular/http';
   ],
   providers: [
     AuthGuardService,
+    UserService,
+    OccurenceService,
+    AlertService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
