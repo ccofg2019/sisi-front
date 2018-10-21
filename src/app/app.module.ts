@@ -14,13 +14,13 @@ import { LoginComponent } from './login/login.component';
 import { HeaderComponent } from './header/header.component';
 import { FormRegisterComponent } from './form-register/form-register.component';
 import { HomeComponent } from './home/home.component';
-import { FormOccurenceComponent } from './form-occurence/form-occurence.component';
+import { FormOccurrenceComponent } from './form-occurrence/form-occurrence.component';
 
 // Services
 import {TokenInterceptor} from './services/token/token.interceptor';
 import {AuthGuardService} from './services/auth/auth-guard.service';
 import { UserService } from './services/user.service';
-import { OccurenceService } from './services/occurence.service';
+import { OccurrenceService } from './services/occurrence.service';
 import { AlertService } from './services/alert.service';
 
 // Libraries
@@ -60,7 +60,7 @@ import { from } from 'rxjs';
     FormRegisterComponent,
     LoginComponent,
     HomeComponent,
-    FormOccurenceComponent
+    FormOccurrenceComponent
   ],
   imports: [
     BrowserModule,
@@ -102,7 +102,7 @@ import { from } from 'rxjs';
   providers: [
     AuthGuardService,
     UserService,
-    OccurenceService,
+    OccurrenceService,
     AlertService,
     {
       provide: HTTP_INTERCEPTORS,

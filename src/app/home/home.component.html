@@ -2,8 +2,8 @@
   <header>
     <div id="topnav">
         <a routerLink=""><button class="btn btn-primary">Sair</button></a>
-        <a routerLink="/occurence"><button class="btn btn-primary">Reg. Ocorrência</button></a>
-        <a routerLink=""><button class="btn btn-primary">Reg. Reclamação</button></a>
+        <a routerLink="/occurrence"><button class="btn btn-primary">Registrar Ocorrência</button></a>
+        <a routerLink="/list-user"><button class="btn btn-primary">Listar Usuários</button></a>
     </div>
   </header>
   <agm-map [zoom]="17" [latitude]="lat" [longitude]="lng" (mapClick)="onChoseLocation($event)">

@@ -21,4 +21,7 @@ export class HomeComponent implements OnInit {
   constructor() { }
 
   ngOnInit() { }
+  exit() {
+    confirm('Tem certeza que deseja sair?');
+  }
 }

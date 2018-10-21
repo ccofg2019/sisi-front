@@ -5,9 +5,13 @@
   export const environment = {
     production: false,
     NODE_ENV: 'dev',
-    API_URL: 'http://sisiuni.eastus.cloudapp.azure.com',
+    // API_URL: 'http://sisiuni.eastus.cloudapp.azure.com:8083/',
+    // Url de teste
+    API_URL: 'http://104.131.99.239:5050/',
     GRANT_TYPE: 'password',
-    CLIENT_SECRET: 'n7F2I1hAZzNdEu0iif4Dm9re5WdsxcQtFzzADRot',
+    // CLIENT_SECRET: 'n7F2I1hAZzNdEu0iif4Dm9re5WdsxcQtFzzADRot',
+    // Chave de teste
+    CLIENT_SECRET: 'g422Ugg1VaW9UcXaqrUKe6hJNb7tETtViB9AtY4X',
     CLIENT_ID:  2,
     scope: '*',
   };

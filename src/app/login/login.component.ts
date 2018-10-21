@@ -64,14 +64,14 @@ export class LoginComponent implements OnInit {
 
       this.authService.loginUser(this.form.value.email, this.form.value.password).subscribe(
         (res) => {
-          console.log('test');
           this.router.navigate(['home']);
           this.loginSubmit.emit(true);
+          alert('Login realizado com sucesso, Bem vindo!');
 
         },
         (err) => {
+          alert('Ocorreu um erro ao tentar realizar login.');
           this.controlStateLogin('error');
-
         });
 
     }

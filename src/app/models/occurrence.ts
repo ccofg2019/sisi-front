@@ -1,4 +1,4 @@
-export class Occurence {
+export class Occurrence {
     title: string;
     story: string;
     occurrence_date: string;
@@ -17,6 +17,5 @@ export class Occurence {
             }];
     occurrence_objects: [{
             object_id: number;
-    }]
-    
+    }];
 }
