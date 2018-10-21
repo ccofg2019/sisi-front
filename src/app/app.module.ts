@@ -4,6 +4,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NoopAnimationsModule} from '@angular/platform-browser/animations';
+import { CommonModule } from '@angular/common';
+import { AgmCoreModule } from '@agm/core';
 
 // Components
 import { AppRoutingModule } from './app-routing.module';
@@ -48,6 +50,7 @@ import {
 } from '@angular/material';
 import {NotifierModule} from 'angular-notifier';
 import { HttpModule } from '@angular/http';
+import { from } from 'rxjs';
 
 
 @NgModule({
@@ -90,7 +93,11 @@ import { HttpModule } from '@angular/http';
     MatProgressSpinnerModule,
     NotifierModule,
     BrowserAnimationsModule,
-    NoopAnimationsModule
+    NoopAnimationsModule,
+    CommonModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBeNmjjr1hYj-sHr7QdLbWSXvvuWjjZkiY'
+    })
   ],
   providers: [
     AuthGuardService,
