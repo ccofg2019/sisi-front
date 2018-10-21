@@ -1,3 +1,6 @@
+import { AclService } from 'ng2-acl/dist';
+import { AuthGuardService } from './services/auth/auth-guard.service';
+import { AclResolver } from './app.resolve';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { FormRegisterComponent } from './form-register/form-register.component';
@@ -20,6 +23,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [ AclService, AclResolver ]
 })
 export class AppRoutingModule { }

@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
-import { FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NoopAnimationsModule} from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
@@ -15,10 +15,13 @@ import { HeaderComponent } from './header/header.component';
 import { FormRegisterComponent } from './form-register/form-register.component';
 import { HomeComponent } from './home/home.component';
 import { FormOccurrenceComponent } from './form-occurrence/form-occurrence.component';
+import { ListUserComponent } from './list-user/list-user.component';
+import { FormComplaintComponent } from './form-complaint/form-complaint.component';
+import { ListOccurrenceComponent } from './list-occurrence/list-occurrence.component';
 
 // Services
-import {TokenInterceptor} from './services/token/token.interceptor';
-import {AuthGuardService} from './services/auth/auth-guard.service';
+import { TokenInterceptor } from './services/token/token.interceptor';
+import { AuthGuardService } from './services/auth/auth-guard.service';
 import { UserService } from './services/user.service';
 import { OccurrenceService } from './services/occurrence.service';
 import { AlertService } from './services/alert.service';
@@ -52,7 +55,6 @@ import {NotifierModule} from 'angular-notifier';
 import { HttpModule } from '@angular/http';
 import { from } from 'rxjs';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -60,7 +62,11 @@ import { from } from 'rxjs';
     FormRegisterComponent,
     LoginComponent,
     HomeComponent,
-    FormOccurrenceComponent
+    FormOccurrenceComponent,
+    ListUserComponent,
+    FormComplaintComponent,
+    ListOccurrenceComponent,
+    FormComplaintComponent
   ],
   imports: [
     BrowserModule,
