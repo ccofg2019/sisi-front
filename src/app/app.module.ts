@@ -16,6 +16,7 @@ import { FormRegisterComponent } from './form-register/form-register.component';
 import { HomeComponent } from './home/home.component';
 import { FormOccurrenceComponent } from './form-occurrence/form-occurrence.component';
 import { ListUserComponent } from './list-user/list-user.component';
+import { FormComplaintComponent } from './form-complaint/form-complaint.component';
 import { ListOccurrenceComponent } from './list-occurrence/list-occurrence.component';
 
 // Services
@@ -63,7 +64,9 @@ import {
     HomeComponent,
     FormOccurrenceComponent,
     ListUserComponent,
-    ListOccurrenceComponent
+    FormComplaintComponent,
+    ListOccurrenceComponent,
+    FormComplaintComponent
   ],
   imports: [
     BrowserModule,

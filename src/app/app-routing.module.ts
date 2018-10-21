@@ -1,3 +1,6 @@
+import { AclService } from 'ng2-acl/dist';
+import { AuthGuardService } from './services/auth/auth-guard.service';
+import { AclResolver } from './app.resolve';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { FormRegisterComponent } from './form-register/form-register.component';
@@ -9,17 +12,44 @@ import { FormComplaintComponent } from './form-complaint/form-complaint.componen
 import { ListOccurrenceComponent } from './list-occurrence/list-occurrence.component';
 
 const routes: Routes = [
-  { path: '', component: LoginComponent },
-  { path: 'register', component: FormRegisterComponent },
-  { path: 'home', component: HomeComponent },
-  { path: 'occurrence', component: FormOccurrenceComponent },
-  { path: 'list-user', component: ListUserComponent },
-  { path: 'form-complaint', component: FormComplaintComponent},
-  { path: 'list-occurrence', component: ListOccurrenceComponent}
+
+  {
+    path: '',
+    component: LoginComponent
+  },
+  {
+    path: 'register',
+    component: FormRegisterComponent
+  },
+  {
+    path: 'home',
+  //  canActivate: [AuthGuardService],
+    component: HomeComponent,
+  // resolve: { route: AclResolver, state: AclResolver}
+  },
+  {
+    path: 'occurrence',
+  //  canActivate: [AuthGuardService],
+    component: FormOccurrenceComponent,
+  // resolve: { route: AclResolver, state: AclResolver}
+  },
+  {
+    path: 'list-user',
+    component: ListUserComponent
+  },
+  {
+    path: 'form-complaint',
+    component: FormComplaintComponent
+  },
+  {
+    path: 'list-occurrence',
+    component: ListOccurrenceComponent
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [ AclService, AclResolver ]
 })
 export class AppRoutingModule { }
