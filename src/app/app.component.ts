@@ -19,6 +19,7 @@ export class AppComponent implements OnInit {
           admin: ['user_content', 'manage_content']
       };
       this.aclService.setAbilities(this.aclData);
+      this.aclService.attachRole('guest');
   }
 
 }

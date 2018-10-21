@@ -22,15 +22,16 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    canActivate: [AuthGuardService],
+  //  canActivate: [AuthGuardService],
     component: HomeComponent,
-    resolve: { route: AclResolver, state: AclResolver}
+  // resolve: { route: AclResolver, state: AclResolver}
   },
   {
     path: 'occurence',
-    canActivate: [AuthGuardService],
+  //  canActivate: [AuthGuardService],
     component: FormOccurenceComponent,
-    resolve: { route: AclResolver, state: AclResolver} },
+  // resolve: { route: AclResolver, state: AclResolver}
+  },
   {
     path: 'list-user',
     component: ListUserComponent
