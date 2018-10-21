@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ListOccurenceComponent } from './list-occurence.component';
+import { FormOccurrenceComponent } from './form-occurrence.component';
 
-describe('ListOcorrenceComponent', () => {
-  let component: ListOccurenceComponent;
-  let fixture: ComponentFixture<ListOccurenceComponent>;
+describe('FormOccurrenceComponent', () => {
+  let component: FormOccurrenceComponent;
+  let fixture: ComponentFixture<FormOccurrenceComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ListOccurenceComponent ]
+      declarations: [ FormOccurrenceComponent ]
     })
     .compileComponents();
   }));
-
+ 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ListOccurenceComponent);
+    fixture = TestBed.createComponent(FormOccurrenceComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

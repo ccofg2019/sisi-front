@@ -52,13 +52,13 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let occurence of occurences">
-                  <th scope="row">{{ occurence.status }}</th>
-                  <td>{{ occurence.occurrence_type.name }}</td>
-                  <td>{{ occurence.user.name }}</td>
-                  <td>{{ occurence.agent }}</td>
-                  <td>{{ occurence.zone.name }}</td>
-                  <td>{{ occurence.occurrence_date }}</td>
+                <tr *ngFor="let occurrence of occurrences">
+                  <th scope="row">{{ occurrence.status }}</th>
+                  <td>{{ occurrence.occurrence_type.name }}</td>
+                  <td>{{ occurrence.user.name }}</td>
+                  <td>{{ occurrence.agent }}</td>
+                  <td>{{ occurrence.zone.name }}</td>
+                  <td>{{ occurrence.occurrence_date }}</td>
                 </tr>
               </tbody>
             </table>

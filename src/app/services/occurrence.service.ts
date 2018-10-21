@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
-import { Occurence } from '../models/occurence';
+import { Occurrence } from '../models/occurrence';
 
 @Injectable()
-export class OccurenceService {
+export class OccurrenceService {
     constructor(private http: HttpClient) { }
 
-    registerOccurence(occurence: Occurence) {
-        return this.http.post(`${environment.API_URL}/api/occurrence-reports`, occurence);
+    registerOccurrence(occurrence: Occurrence) {
+        return this.http.post(`${environment.API_URL}/api/occurrence-reports`, occurrence);
     }
-    getOccurences() {
+    getOccurrences() {
         return this.http.get(`${environment.API_URL}/api/occurrence-reports`);
     }
 }
