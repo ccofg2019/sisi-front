@@ -32,13 +32,14 @@
               <!-- FORM GROUP -->
                 <div class="form-group col-md-4">
                   <div formGroupName="occurrence_objects">
-                     <label for="object_id">Objeto Envolvido</label>
+                     <label for="object_id">Objeto/Arma Envolvido(a)</label>
                         <select
                           data-toggle="tooltip"
                           title='Selecione o objeto envolvido com a ocorrência, caso exista um'
                           class="form-control"
                           formControlName="object_id">
                           <option value="" select disabled>Escolha uma opção</option>
+                          <option disabled style="font-weight: 900;">Objetos</option>
                           <option [ngValue]="1">Bicicleta</option>
                           <option [ngValue]="2">Celular</option>
                           <option [ngValue]="3">Documentos</option>
@@ -46,6 +47,9 @@
                           <option [ngValue]="5">Veículos</option>
                           <option [ngValue]="6">Objetos Pessoais</option>
                           <option [ngValue]="7">Outros</option>
+                          <option disabled style="font-weight: 900;">Armas</option>
+                          <option [ngValue]="8">Arma branca</option>
+                          <option [ngValue]="9">Arma de fogo</option>
                         </select>
                   </div>
                 </div>
@@ -137,6 +141,8 @@
                   <option value="6">Roubo de veículo</option>
                   <option value="7">Arrastão</option>
                   <option value="8">Tentativa de assalto</option>
+                  <option value="11">Violência contra mulher</option>
+                  <option value="12">Violência contra LGBT</option>
                 </select>
 
                 <div *ngIf="submitted && f.occurrence_type_id.errors" class="invalid-feedback">
