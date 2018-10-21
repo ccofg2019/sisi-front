@@ -2,15 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
-import { OccurenceService } from '../services/occurence.service';
+import { OccurrenceService } from '../services/occurrence.service';
 // import { AlertService } from '../services/alert.service';
 
 @Component({
-  selector: 'app-form-occurence',
-  templateUrl: './form-occurence.component.html',
-  styleUrls: ['./form-occurence.component.scss']
+  selector: 'app-form-occurrence',
+  templateUrl: './form-occurrence.component.html',
+  styleUrls: ['./form-occurrence.component.scss']
 })
-export class FormOccurenceComponent implements OnInit {
+export class FormOccurrenceComponent implements OnInit {
 
   formOccurrence: FormGroup;
   loading = false;
@@ -24,7 +24,7 @@ export class FormOccurenceComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private occurenceService: OccurenceService,
+    private occurrenceService: OccurrenceService,
     // private alertService: AlertService
   ) { }
 
@@ -67,7 +67,7 @@ export class FormOccurenceComponent implements OnInit {
         }
 
         this.loading = true;
-        this.occurenceService.registerOccurence(this.formOccurrence.value)
+        this.occurrenceService.registerOccurrence(this.formOccurrence.value)
             .pipe(first())
             .subscribe(
                 data => {

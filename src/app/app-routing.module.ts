@@ -5,10 +5,10 @@ import { Routes, RouterModule } from '@angular/router';
 import { FormRegisterComponent } from './form-register/form-register.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
-import { FormOccurenceComponent } from './form-occurence/form-occurence.component';
+import { FormOccurrenceComponent } from './form-occurrence/form-occurrence.component';
 import { ListUserComponent } from './list-user/list-user.component';
 import { FormComplaintComponent } from './form-complaint/form-complaint.component';
-import { ListOccurenceComponent } from './list-occurence/list-occurence.component';
+import { ListOccurrenceComponent } from './list-occurrence/list-occurrence.component';
 
 const routes: Routes = [
 
@@ -27,9 +27,9 @@ const routes: Routes = [
   // resolve: { route: AclResolver, state: AclResolver}
   },
   {
-    path: 'occurence',
+    path: 'occurrence',
   //  canActivate: [AuthGuardService],
-    component: FormOccurenceComponent,
+    component: FormOccurrenceComponent,
   // resolve: { route: AclResolver, state: AclResolver}
   },
   {
@@ -41,8 +41,8 @@ const routes: Routes = [
     component: FormComplaintComponent
   },
   {
-    path: 'list-occurence',
-    component: ListOccurenceComponent
+    path: 'list-occurrence',
+    component: ListOccurrenceComponent
   }
 ];
 
