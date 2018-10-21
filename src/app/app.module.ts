@@ -65,7 +65,8 @@ import {
     FormOccurrenceComponent,
     ListUserComponent,
     FormComplaintComponent,
-    ListOccurrenceComponent
+    ListOccurrenceComponent,
+    FormComplaintComponent
   ],
   imports: [
     BrowserModule,
