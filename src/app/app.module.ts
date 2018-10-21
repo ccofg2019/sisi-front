@@ -52,9 +52,6 @@ import {
   MatProgressSpinnerModule
 } from '@angular/material';
 
-
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -64,10 +61,8 @@ import {
     HomeComponent,
     FormOccurrenceComponent,
     ListUserComponent,
-    FormComplaintComponent,
     ListOccurrenceComponent,
-    FormComplaintComponent
-  ],
+    FormComplaintComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
