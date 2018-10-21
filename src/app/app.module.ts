@@ -4,11 +4,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-<<<<<<< HEAD
-=======
 import { NotifierModule } from 'angular-notifier';
 import { HttpModule } from '@angular/http';
->>>>>>> e46b41523e94e324f5e92cea3420bdf672c62c97
 
 // Components
 import { AppRoutingModule } from './app-routing.module';
@@ -17,15 +14,16 @@ import { LoginComponent } from './login/login.component';
 import { HeaderComponent } from './header/header.component';
 import { FormRegisterComponent } from './form-register/form-register.component';
 import { HomeComponent } from './home/home.component';
-import { FormOccurenceComponent } from './form-occurence/form-occurence.component';
+import { FormOccurrenceComponent } from './form-occurrence/form-occurrence.component';
 import { ListUserComponent } from './list-user/list-user.component';
-import { ListOccurenceComponent } from './list-occurence/list-occurence.component';
+import { FormComplaintComponent } from './form-complaint/form-complaint.component';
+import { ListOccurrenceComponent } from './list-occurrence/list-occurrence.component';
 
 // Services
 import { TokenInterceptor } from './services/token/token.interceptor';
 import { AuthGuardService } from './services/auth/auth-guard.service';
 import { UserService } from './services/user.service';
-import { OccurenceService } from './services/occurence.service';
+import { OccurrenceService } from './services/occurrence.service';
 import { AlertService } from './services/alert.service';
 
 // Libraries
@@ -53,17 +51,6 @@ import {
   MatPaginatorModule,
   MatProgressSpinnerModule
 } from '@angular/material';
-<<<<<<< HEAD
-import {NotifierModule} from 'angular-notifier';
-import { HttpModule } from '@angular/http';
-import { ListUserComponent } from './list-user/list-user.component';
-import { ListOcorrenceComponent } from './list-ocorrence/list-ocorrence.component';
-import { FormComplaintComponent } from './form-complaint/form-complaint.component';
-=======
->>>>>>> e46b41523e94e324f5e92cea3420bdf672c62c97
-
-
-
 
 @NgModule({
   declarations: [
@@ -72,15 +59,10 @@ import { FormComplaintComponent } from './form-complaint/form-complaint.componen
     FormRegisterComponent,
     LoginComponent,
     HomeComponent,
-    FormOccurenceComponent,
+    FormOccurrenceComponent,
     ListUserComponent,
-<<<<<<< HEAD
-    ListOcorrenceComponent,
-    FormComplaintComponent
-=======
-    ListOccurenceComponent
->>>>>>> e46b41523e94e324f5e92cea3420bdf672c62c97
-  ],
+    ListOccurrenceComponent,
+    FormComplaintComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -117,7 +99,7 @@ import { FormComplaintComponent } from './form-complaint/form-complaint.componen
   providers: [
     AuthGuardService,
     UserService,
-    OccurenceService,
+    OccurrenceService,
     AlertService,
     {
       provide: HTTP_INTERCEPTORS,

@@ -1,4 +1,4 @@
-export class Occurence {
+export class Occurrence {
     title: string;
     story: string;
     occurrence_date: string;
