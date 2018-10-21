@@ -95,7 +95,7 @@ import { from } from 'rxjs';
     BrowserAnimationsModule,
     NoopAnimationsModule,
     CommonModule,
-    AgmCoreModule.forRoot({
+    AgmCoreModule.forRoot({ //Key
       apiKey: 'AIzaSyBeNmjjr1hYj-sHr7QdLbWSXvvuWjjZkiY'
     })
   ],
