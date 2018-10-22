@@ -13,7 +13,12 @@ export class UserService {
     register(user: User) {
         return this.http.post(`${environment.API_URL}/api/mobile/users`, user);
     }
-   public getUsers() {
+
+    public getUsers() {
         return this.http.get(`${environment.API_URL}/api/users`);
+    }
+
+    public getUsersPage(page) {
+        return this.http.get(`${environment.API_URL}/api/users?page=${page}`);
     }
 }
