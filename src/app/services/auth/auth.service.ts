@@ -43,7 +43,7 @@ export class AuthService {
    */
   private createUserData(user: string): void {
 
-     eraseCookie('auth_user_data');
+     eraseCookie('user_data');
      document.cookie = `user_data=${user};Max-Age=21600`;
      const user_request = JSON.parse(user);
      const userRole = (user_request.role === 0 || user_request.role === 1 ) ? 'admin' : 'user';
@@ -96,7 +96,7 @@ export class AuthService {
    */
   public getDataUser(): any {
 
-    const jsonData: any = getObjectCookie('auth_user_data');
+    const jsonData: any = getObjectCookie('user_data');
 
     if (_.isEmpty(jsonData) && !_.isObject(jsonData)) {
       this.logout();
@@ -116,7 +116,7 @@ export class AuthService {
     // moment.locale('pt-br');
 
     const tokenString: string = getCookie('auth_token') || '{}';
-    const userString: string = getCookie('auth_user_data') || '{}';
+    const userString: string = getCookie('user_data') || '{}';
 
     const token: any = JSON.parse(tokenString);
     const user: any = JSON.parse(userString);
@@ -145,7 +145,7 @@ export class AuthService {
   public logout(): void {
 
     eraseCookie('auth_token');
-    eraseCookie('auth_user_data');
+    eraseCookie('user_data');
     this.router.navigate(['']);
     window.stop();
     this.aclService.flushRoles();
@@ -156,7 +156,7 @@ export class AuthService {
    * @returns {Observable<any>}
    */
   public getUserAuthenticated(): Observable<any> {
-    return this.http.get(`${environment.API_URL}/api/users`, {});
+    return this.http.get(`${environment.API_URL}/api/user/authenticated`, {});
 
   }
   public registerNewUser(): Observable<any> {
