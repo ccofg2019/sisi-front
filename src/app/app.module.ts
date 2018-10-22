@@ -51,6 +51,7 @@ import {
   MatPaginatorModule,
   MatProgressSpinnerModule
 } from '@angular/material';
+import { ViewOccurrenceComponent } from './view-occurrence/view-occurrence.component';
 
 
 
@@ -66,7 +67,8 @@ import {
     ListUserComponent,
     FormComplaintComponent,
     ListOccurrenceComponent,
-    FormComplaintComponent
+    FormComplaintComponent,
+    ViewOccurrenceComponent
   ],
   imports: [
     BrowserModule,

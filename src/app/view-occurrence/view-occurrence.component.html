@@ -1,0 +1,200 @@
+
+    <div>
+        <div id="topnav">
+          <a routerLink="/list-user"><button class="btn btn-primary" >Usuários</button></a>
+          <a routerLink="/list-occurrence"><button class="btn btn-primary">Ocorrências</button></a>
+          <a routerLink="/home"><button class="btn btn-primary" >Mapa</button></a>
+        </div>
+  
+        <div class="form-default-sisi row">
+          <form class="col-md-8" [formGroup]="formOccurrence" (ngSubmit)="onSubmit()">
+              <h3>Acompanhar Ocorrência</h3>
+  
+              <div class="form-row">
+                <div class="form-group col-md-5">
+                  <label for="title">Titulo da ocorrência</label>
+                  <input disabled
+                    data-toggle="tooltip"
+                    title='Insira um resumo da descrição da ocorrência'
+                    type="text"
+                    value="Titulo da noticia"
+                    class="form-control"
+                    placeholder="Título da ocorrência"
+                    formControlName="title"
+                    [ngClass]="{ 'is-invalid': submitted && f.title.errors }"/>
+  
+                  <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
+                    <div *ngIf="f.title.errors.required">Campo obrigatório*</div>
+                    <div *ngIf="f.title.errors.pattern">Título deve ter de 6 a 32 caracteres*</div>
+                  </div>
+  
+                </div>
+  
+                <!-- FORM GROUP -->
+                  <div class="form-group col-md-4">
+                    <div formGroupName="occurrence_objects">
+                       <label for="object_id">Objeto Envolvido</label>
+                       <input disabled
+                       data-toggle="tooltip"
+                       title='Insira um resumo da descrição da ocorrência'
+                       type="text"
+                       value="nome do objeto envolvido"
+                       class="form-control"
+                       placeholder="Título da ocorrência"
+                       formControlName="title"
+                       [ngClass]="{ 'is-invalid': submitted && f.title.errors }"/>
+                    </div>
+                  </div>
+                <!-- FORM GROUP END -->
+  
+  
+  
+                <div class="form-group col-md-3">
+                  <label for="police_report">B.O feito?</label>
+                  <input disabled
+                    data-toggle="tooltip"
+                    title='Insira um resumo da descrição da ocorrência'
+                    type="text"
+                    value="Sim - Não"
+                    class="form-control"
+                    placeholder="Título da ocorrência"
+                    formControlName="title"
+                    [ngClass]="{ 'is-invalid': submitted && f.title.errors }"/>
+
+                  <div *ngIf="submitted && f.police_report.errors" class="invalid-feedback">
+                    <div *ngIf="f.police_report.errors.required"> Campo obrigatório*</div>
+                  </div>
+                </div>
+  
+              </div>
+  
+              <div class="form-row">
+                <div class="form-group col-md-3">
+                  <label for="occurrence_date">Data da ocorrência</label>
+                  <input disabled
+                    data-toggle="tooltip"
+                    title='Escolha a data através das setas ao lado'
+                    type="date"
+                    value="2018-09-09"
+                    class="form-control"
+                    formControlName="occurrence_date"
+                    [ngClass]="{ 'is-invalid': submitted && f.occurrence_date.errors }" >
+  
+                  <div *ngIf="submitted && f.occurrence_date.errors" class="invalid-feedback">
+                    <div *ngIf="f.occurrence_date.errors.required"> Campo obrigatório*</div>
+                  </div>
+                </div>
+  
+                <div class="form-group col-md-2">
+                  <label for="occurrence_time">Hora da ocorrência</label>
+                  <input disabled
+                    data-toggle="tooltip"
+                    title='Escolha a hora da ocorrência, de preferência utilize as setas'
+                    type="time"
+                    value="08:08"
+                    class="form-control"
+                    formControlName="occurrence_time"
+                    [ngClass]="{ 'is-invalid': submitted && f.occurrence_time.errors }" >
+  
+                  <div *ngIf="submitted && f.occurrence_time.errors" class="invalid-feedback">
+                    <div *ngIf="f.occurrence_time.errors.required"> Campo obrigatório*</div>
+                  </div>
+                </div>
+  
+                <div class="form-group col-md-3">
+                  <label for="title">Local da Ocorrência</label>
+                  <input disabled
+                  data-toggle="tooltip"
+                  title='Escolha a data através das setas ao lado'
+                  type="text"
+                  value="Av. Federal 123, N666"
+                  class="form-control"
+                  formControlName="occurrence_date"
+                  [ngClass]="{ 'is-invalid': submitted && f.occurrence_date.errors }" >
+  
+                    <div *ngIf="submitted && f.zone_id.errors" class="invalid-feedback">
+                      <div *ngIf="f.zone_id.errors.required"> Campo obrigatório*</div>
+                    </div>
+                </div>
+  
+              <div class="form-group col-md-4">
+                  <label for="title">Tipo de Ocorrência</label>
+                  <select disabled
+                    data-toggle="tooltip"
+                    title='Selecione o tipo da ocorrência'
+                    class="form-control"
+                    formControlName="occurrence_type_id"
+                    [ngClass]="{ 'is-invalid': submitted && f.occurrence_type_id.errors }">
+                    <option value="1">Furto</option>
+                    <option value="2" select>Roubo</option>
+                    <option value="3">Assalto a grupo</option>
+                    <option value="4">Sequestro relâmpago</option>
+                    <option value="5">Arrombamento de veículo</option>
+                    <option value="6">Roubo de veículo</option>
+                    <option value="7">Arrastão</option>
+                    <option value="8">Tentativa de assalto</option>
+                  </select>
+  
+                  <div *ngIf="submitted && f.occurrence_type_id.errors" class="invalid-feedback">
+                    <div *ngIf="f.occurrence_type_id.errors.required"> Campo obrigatório*</div>
+                  </div>
+              </div>
+            </div>
+  
+              <!--input type="text" value="41.40338, 2.17403" hidden formControlName="coordinates" /-->
+              <!--input type="text" value="false" hidden formControlName="police_report" /-->
+  
+              <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label for="story">Descrição da Ocorrência</label>
+                    <textarea disabled
+                      data-toggle="tooltip"
+                      title='Faça uma descrição detalhada da ocorrência'
+                      class="form-control"
+                      rows="5"
+                      placeholder="Descrição da Ocorrência"
+                      formControlName="story"
+                      [ngClass]="{ 'is-invalid': submitted && f.story.errors }"> 
+Todos as descrições das pessoas são sobre a humanidade do atendimento, 
+a pessoa pega no pulso, examina, olha com carinho. Então eu acho que vai ter outra coisa,
+que os médicos cubanos trouxeram pro brasil, um alto grau de humanidade.
+Ai você fala o seguinte: "- Mas vocês acabaram isso?" Vou te falar: -"Não, 
+está em andamento!" Tem obras que "vai" durar pra depois de 2010. 
+Agora, por isso, nós já não desenhamos, não começamos a fazer projeto do que nós "podêmo fazê"?
+11, 12, 13, 14... Por que é que não?
+                    </textarea>
+  
+                  <div *ngIf="submitted && f.story.errors" class="invalid-feedback">
+                    <div *ngIf="f.story.errors.required"> Campo obrigatório*</div>
+                    <div *ngIf="f.story.errors.minlength"> Descrição deve ter mais de 12 dígitos*</div>
+                    <div *ngIf="f.story.errors.maxlength"> Descrição deve ter no máximo 256 dígitos*</div>
+                  </div>
+                </div>
+              </div>
+  
+              <!-- BUTTON SUBMIT -->
+              <button [disabled]="loading" class="btn btn-primary">Desativar</button>
+              <button [disabled]="loading" class="btn btn-primary">Validar</button>
+              <button type="button" class="btn btn-primary" id="myBtn">Editar</button>
+  
+            </form>
+  
+            <div class="col-md-4">
+              <div class="map">
+  
+              </div>
+            </div>
+          </div> <!-- div background  -->
+  
+      </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  

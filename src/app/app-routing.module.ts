@@ -1,3 +1,4 @@
+import { ViewOccurrenceComponent } from './view-occurrence/view-occurrence.component';
 import { AclService } from 'ng2-acl/dist';
 import { AuthGuardService } from './services/auth/auth-guard.service';
 import { AclResolver } from './app.resolve';
@@ -32,6 +33,10 @@ const routes: Routes = [
   //  canActivate: [AuthGuardService],
     component: FormOccurrenceComponent,
   // resolve: { route: AclResolver, state: AclResolver}
+  },
+  {
+    path: 'view-occurrence',
+    component: ViewOccurrenceComponent,
   },
   {
     path: 'list-user',
