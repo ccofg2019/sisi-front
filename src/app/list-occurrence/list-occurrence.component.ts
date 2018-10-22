@@ -3,6 +3,7 @@ import { Occurrence } from './../models/occurrence';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from './../services/auth/auth.service';
 import { Router } from '@angular/router';
+import { AclService } from 'ng2-acl';
 
 @Component({
   selector: 'app-list-occurrence',
@@ -17,7 +18,8 @@ export class ListOccurrenceComponent implements OnInit {
   constructor(
     private occurrenceService: OccurrenceService,
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    public aclService: AclService
     ) { }
 
   ngOnInit() {

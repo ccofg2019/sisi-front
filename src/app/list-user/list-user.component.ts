@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { User } from './../models/user.model';
 import { UserService } from './../services/user.service';
 import { Component, OnInit } from '@angular/core';
+import { AclService } from 'ng2-acl';
 
 @Component({
   selector: 'app-list-user',
@@ -18,7 +19,8 @@ export class ListUserComponent implements OnInit {
   constructor(
     private userService: UserService,
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    public aclService: AclService
     ) { }
 
     ngOnInit() {

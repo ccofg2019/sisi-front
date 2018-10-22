@@ -1,3 +1,5 @@
+import { AclRedirection } from './app.resolve';
+import { AclService } from 'ng2-acl';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -99,6 +101,8 @@ import {
   providers: [
     AuthGuardService,
     UserService,
+    AclService,
+    AclRedirection,
     OccurrenceService,
     AlertService,
     {

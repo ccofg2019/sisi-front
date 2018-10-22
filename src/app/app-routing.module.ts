@@ -23,19 +23,20 @@ const routes: Routes = [
   },
   {
     path: 'home',
-  //  canActivate: [AuthGuardService],
+    canActivate: [AuthGuardService],
     component: HomeComponent,
-  // resolve: { route: AclResolver, state: AclResolver}
+    resolve: { route: AclResolver, state: AclResolver}
   },
   {
     path: 'occurrence',
-  //  canActivate: [AuthGuardService],
+    canActivate: [AuthGuardService],
     component: FormOccurrenceComponent,
-  // resolve: { route: AclResolver, state: AclResolver}
+    resolve: { route: AclResolver, state: AclResolver}
   },
   {
     path: 'list-user',
-    component: ListUserComponent
+    component: ListUserComponent,
+    resolve: { route: AclResolver, state: AclResolver}
   },
   {
     path: 'form-complaint',
@@ -43,7 +44,8 @@ const routes: Routes = [
   },
   {
     path: 'list-occurrence',
-    component: ListOccurrenceComponent
+    component: ListOccurrenceComponent,
+    resolve: { route: AclResolver, state: AclResolver}
   }
 ];
 

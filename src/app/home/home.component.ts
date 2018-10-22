@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import { AuthService } from './../services/auth/auth.service';
+import { AclService } from 'ng2-acl';
 
 declare let L;
 
@@ -13,7 +14,8 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    public aclService: AclService
     ) { }
 
   ngOnInit() {

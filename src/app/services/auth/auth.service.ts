@@ -8,6 +8,7 @@ import * as moment from 'moment';
 import * as _ from 'lodash';
 import { NotifyService } from '../notify/notify.service';
 import { AclService } from 'ng2-acl';
+import { ROLES } from '../../acl-const';
 
 @Injectable({
   providedIn: 'root'
@@ -46,7 +47,7 @@ export class AuthService {
      eraseCookie('user_data');
      document.cookie = `user_data=${user};Max-Age=21600`;
      const user_request = JSON.parse(user);
-     const userRole = (user_request.role === 0 || user_request.role === 1 ) ? 'admin' : 'user';
+     const userRole = ROLES[user_request.role_id];
      this.aclService.attachRole(userRole);
 
   }

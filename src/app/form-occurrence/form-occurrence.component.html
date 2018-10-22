@@ -1,9 +1,9 @@
 
     <div>
       <div id="topnav">
-        <a routerLink="/list-user"><button class="btn btn-primary" >Usuários</button></a>
-        <a routerLink="/list-occurrence"><button class="btn btn-primary">Ocorrências</button></a>
-        <a routerLink="/home"><button class="btn btn-primary" >Mapa</button></a>
+        <a *ngIf="aclService.can('list_user')" routerLink="/list-user"><button class="btn btn-primary" >Usuários</button></a>
+        <a *ngIf="aclService.can('list_occurrence')" routerLink="/list-occurrence"><button class="btn btn-primary">Ocorrências</button></a>
+        <a *ngIf="aclService.can('user_content')" routerLink="/home"><button class="btn btn-primary" >Mapa</button></a>
       </div>
 
       <div class="form-default-sisi row">
