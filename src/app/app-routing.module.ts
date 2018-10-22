@@ -23,13 +23,11 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    canActivate: [AuthGuardService],
     component: HomeComponent,
     resolve: { route: AclResolver, state: AclResolver}
   },
   {
     path: 'occurrence',
-    canActivate: [AuthGuardService],
     component: FormOccurrenceComponent,
     resolve: { route: AclResolver, state: AclResolver}
   },

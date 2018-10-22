@@ -60,7 +60,8 @@ export class AppComponent implements OnInit {
             ABILITIES.USER_CONTENT,
             ABILITIES.ADD_OCCURRENCE,
             ABILITIES.LIST_USER,
-            ABILITIES.LIST_OCCURRENCE ],
+            ABILITIES.LIST_OCCURRENCE
+          ],
           superintendent: [
             ABILITIES.DEFAULT,
             ABILITIES.USER_CONTENT,
