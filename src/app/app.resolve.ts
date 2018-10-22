@@ -82,7 +82,7 @@ export class AclResolver implements Resolve<any> {
 
         } else if (this.match(state, '/list-occurrence')) {
 
-          if (this.aclService.can('list-occurrence')) {
+          if (this.aclService.can('list_occurrence')) {
 
              test = of(true);
             }
