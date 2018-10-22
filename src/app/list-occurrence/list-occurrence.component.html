@@ -2,9 +2,9 @@
   <!-- MENU DE NAVEGAÇÃO -->
   <div id="topnav">
     <!--a routerLink=""><button class="btn btn-primary" >Perfil</button></a>-->
-    <a routerLink="/list-user"><button class="btn btn-primary" >Usuários</button></a>
-    <a routerLink="/occurrence"><button class="btn btn-primary" >Registrar Ocorrência</button></a>
-    <a routerLink="/home"><button class="btn btn-primary" >Mapa</button></a>
+    <a *ngIf="aclService.can('list_user')" routerLink="/list-user"><button class="btn btn-primary" >Usuários</button></a>
+    <a *ngIf="aclService.can('add_occurrence')" routerLink="/occurrence"><button class="btn btn-primary" >Registrar Ocorrência</button></a>
+    <a *ngIf="aclService.can('user_content')" routerLink="/home"><button class="btn btn-primary" >Mapa</button></a>
   </div>
 
   <!-- HEADER LIST-->

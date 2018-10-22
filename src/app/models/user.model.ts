@@ -18,9 +18,9 @@ export class Page {
     current_page: number;
     total_pages: number;
     links: Links;
-};
+}
 
 export class Links {
     previous: string;
     next: string;
-};
+}

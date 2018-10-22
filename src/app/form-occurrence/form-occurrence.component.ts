@@ -4,6 +4,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import { OccurrenceService } from '../services/occurrence.service';
 // import { AlertService } from '../services/alert.service';
+import { AuthService } from './../services/auth/auth.service';
+import { AclService } from 'ng2-acl';
 
 @Component({
   selector: 'app-form-occurrence',
@@ -25,10 +27,18 @@ export class FormOccurrenceComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private occurrenceService: OccurrenceService,
+    private authService: AuthService,
+    public aclService: AclService
     // private alertService: AlertService
+
   ) { }
 
   ngOnInit() {
+    if (this.authService.isLoggedIn() !== true ) {
+      this.router.navigate(['']);
+      return;
+    }
+
     this.formOccurrence = this.formBuilder.group({
       title: ['', [ Validators.required, Validators.pattern(this.titlePattern)]],
       story: ['', [Validators.required, Validators.pattern(this.storyPattern)]],

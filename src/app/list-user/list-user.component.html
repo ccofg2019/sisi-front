@@ -1,9 +1,9 @@
 <div>
   <!-- MENU DE NAVEGAÇÃO -->
   <div id="topnav">
-    <a routerLink="/list-occurrence"><button class="btn btn-primary">Ocorrências</button></a>
-    <a routerLink="/occurrence"><button class="btn btn-primary">Registrar Ocorrência</button></a>
-    <a routerLink="/home"><button class="btn btn-primary" >Mapa</button></a>
+    <a *ngIf="aclService.can('list_occurrence')" routerLink="/list-occurrence"><button class="btn btn-primary">Ocorrências</button></a>
+    <a *ngIf="aclService.can('add_occurrence')" routerLink="/occurrence"><button class="btn btn-primary">Registrar Ocorrência</button></a>
+    <a *ngIf="aclService.can('user_content')" routerLink="/home"><button class="btn btn-primary" >Mapa</button></a>
   </div>
 
   <!-- HEADER LIST-->
@@ -67,8 +67,8 @@
               </tbody>
             </table>
 
-            <button (click)="nextPage()">Next</button>
-            <button (click)="previousPage()">Previous</button>
+            <button (click)=nextPage()>Next</button>
+            <button (click)=previousPage()>Previous</button>
 
       </div>
     </div>
