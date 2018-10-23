@@ -24,16 +24,19 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent,
+    canActivate: [AuthGuardService],
     resolve: { route: AclResolver, state: AclResolver}
   },
   {
     path: 'occurrence',
     component: FormOccurrenceComponent,
+    canActivate: [AuthGuardService],
     resolve: { route: AclResolver, state: AclResolver}
   },
   {
     path: 'list-user',
     component: ListUserComponent,
+    canActivate: [AuthGuardService],
     resolve: { route: AclResolver, state: AclResolver}
   },
   {
@@ -43,6 +46,7 @@ const routes: Routes = [
   {
     path: 'list-occurrence',
     component: ListOccurrenceComponent,
+    canActivate: [AuthGuardService],
     resolve: { route: AclResolver, state: AclResolver}
   }
 ];
