@@ -49,12 +49,12 @@ export class AclResolver implements Resolve<any> {
 
     if (this.match(state, '')) {
 
-      if (this.aclService.can('login')) {
+      if (this.aclService.can('default-content')) {
         test = of(true);
       }
     } else if (this.match(state, '/register')) {
 
-      if (this.aclService.can('register')) {
+      if (this.aclService.can('default-content')) {
 
         test = of(true);
       }
@@ -66,14 +66,29 @@ export class AclResolver implements Resolve<any> {
          test = of(true);
         }
 
-      } else if (this.match(state, '/occurence')) {
+      } else if (this.match(state, '/occurrence')) {
 
-      if (this.aclService.can('user_content')) {
+      if (this.aclService.can('add_occurrence')) {
 
          test = of(true);
         }
 
-      }
+      } else if (this.match(state, '/list-user')) {
+
+        if (this.aclService.can('list_user')) {
+
+           test = of(true);
+          }
+
+        } else if (this.match(state, '/list-occurrence')) {
+
+          if (this.aclService.can('list_occurrence')) {
+
+             test = of(true);
+            }
+
+          }
+
     return test;
   }
 

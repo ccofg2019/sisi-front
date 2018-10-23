@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
+import { AuthService } from './../services/auth/auth.service';
+import { AclService } from 'ng2-acl';
 
 @Component({
   selector: 'app-home',
@@ -18,11 +21,20 @@ export class HomeComponent implements OnInit {
     this.locationChosen = true;
   }
 
-  constructor() { }
 
-  ngOnInit() { }
+  constructor(
+    private router: Router,
+    private authService: AuthService,
+    public aclService: AclService
+    ) { }
 
+  ngOnInit() {
+    if (this.authService.isLoggedIn() !== true ) {
+      this.router.navigate(['']);
+      return;
+    }
+ }
   exit() {
-    confirm('Tem certeza que deseja sair?');
+      this.authService.logout();
   }
 }

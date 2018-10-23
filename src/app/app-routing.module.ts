@@ -12,13 +12,43 @@ import { FormComplaintComponent } from './form-complaint/form-complaint.componen
 import { ListOccurrenceComponent } from './list-occurrence/list-occurrence.component';
 
 const routes: Routes = [
-  { path: '', component: LoginComponent },
-  { path: 'register', component: FormRegisterComponent },
-  { path: 'home', component: HomeComponent },
-  { path: 'occurrence', component: FormOccurrenceComponent },
-  { path: 'list-user', component: ListUserComponent },
-  { path: 'form-complaint', component: FormComplaintComponent},
-  { path: 'list-occurrence', component: ListOccurrenceComponent}
+
+  {
+    path: '',
+    component: LoginComponent
+  },
+  {
+    path: 'register',
+    component: FormRegisterComponent
+  },
+  {
+    path: 'home',
+    component: HomeComponent,
+    canActivate: [AuthGuardService],
+    resolve: { route: AclResolver, state: AclResolver}
+  },
+  {
+    path: 'occurrence',
+    component: FormOccurrenceComponent,
+    canActivate: [AuthGuardService],
+    resolve: { route: AclResolver, state: AclResolver}
+  },
+  {
+    path: 'list-user',
+    component: ListUserComponent,
+    canActivate: [AuthGuardService],
+    resolve: { route: AclResolver, state: AclResolver}
+  },
+  {
+    path: 'form-complaint',
+    component: FormComplaintComponent
+  },
+  {
+    path: 'list-occurrence',
+    component: ListOccurrenceComponent,
+    canActivate: [AuthGuardService],
+    resolve: { route: AclResolver, state: AclResolver}
+  }
 ];
 
 @NgModule({

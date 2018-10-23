@@ -1,17 +1,9 @@
 <div>
   <!-- MENU DE NAVEGAÇÃO -->
   <div id="topnav">
-<<<<<<< HEAD
-    <!--a routerLink=""><button class="btn btn-primary" >Perfil</button></a>
-    <a routerLink=""><button class="btn btn-primary" >Usuários</button></a>
-    <a routerLink=""><button class="btn btn-primary" >Relátorios</button></a>
-    <a routerLink=""><button class="btn btn-primary" >Mapa</button></a>-->
-=======
-    <!--a routerLink=""><button class="btn btn-primary" >Perfil</button></a>-->
-    <a routerLink="/list-user"><button class="btn btn-primary" >Usuários</button></a>
-    <a routerLink="/occurrence"><button class="btn btn-primary" >Registrar Ocorrência</button></a>
-    <a routerLink="/home"><button class="btn btn-primary" >Mapa</button></a>
->>>>>>> f814bd517499208a5c296129efd79d08a4e81ac1
+    <a *ngIf="aclService.can('list_user')" routerLink="/list-user"><button class="btn btn-primary" >Usuários</button></a>
+    <a *ngIf="aclService.can('add_occurrence')" routerLink="/occurrence"><button class="btn btn-primary" >Registrar Ocorrência</button></a>
+    <a *ngIf="aclService.can('user_content')" routerLink="/home"><button class="btn btn-primary" >Mapa</button></a>
   </div>
 
   <!-- HEADER LIST-->
@@ -50,6 +42,7 @@
           <table class="table table-hover">
               <thead class="thead-sisi">
                 <tr>
+                  <th scope="col" class="padding-thead-sisi">ID</th>
                   <th scope="col" class="padding-thead-sisi">Situação</th>
                   <th scope="col" class="padding-thead-sisi">Tipo</th>
                   <th scope="col" class="padding-thead-sisi">Registrado por</th>
@@ -60,7 +53,8 @@
               </thead>
               <tbody>
                 <tr *ngFor="let occurrence of occurrences">
-                  <th scope="row">{{ occurrence.status }}</th>
+                  <th scope="row">{{ occurrence.id }}</th>
+                  <td>{{ occurrence.status }}</td>
                   <td>{{ occurrence.occurrence_type.name }}</td>
                   <td>{{ occurrence.user.name }}</td>
                   <td>{{ occurrence.agent }}</td>
@@ -69,6 +63,9 @@
                 </tr>
               </tbody>
             </table>
+
+            <button (click)=nextPage()>Próximo</button>
+            <button (click)=previousPage()>Anterior</button>
       </div>
     </div>
 

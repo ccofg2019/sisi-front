@@ -1,3 +1,5 @@
+import { AclRedirection } from './app.resolve';
+import { AclService } from 'ng2-acl';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -6,6 +8,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NoopAnimationsModule} from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import { AgmCoreModule } from '@agm/core';
+import {NotifierModule} from 'angular-notifier';
+import { HttpModule } from '@angular/http';
+import { from } from 'rxjs';
+
 
 // Components
 import { AppRoutingModule } from './app-routing.module';
@@ -51,9 +57,6 @@ import {
   MatPaginatorModule,
   MatProgressSpinnerModule
 } from '@angular/material';
-import {NotifierModule} from 'angular-notifier';
-import { HttpModule } from '@angular/http';
-import { from } from 'rxjs';
 
 @NgModule({
   declarations: [
@@ -64,10 +67,8 @@ import { from } from 'rxjs';
     HomeComponent,
     FormOccurrenceComponent,
     ListUserComponent,
-    FormComplaintComponent,
     ListOccurrenceComponent,
-    FormComplaintComponent
-  ],
+    FormComplaintComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -101,13 +102,15 @@ import { from } from 'rxjs';
     BrowserAnimationsModule,
     NoopAnimationsModule,
     CommonModule,
-    AgmCoreModule.forRoot({ //Key
+    AgmCoreModule.forRoot({ // Key
       apiKey: 'AIzaSyBeNmjjr1hYj-sHr7QdLbWSXvvuWjjZkiY'
     })
   ],
   providers: [
     AuthGuardService,
     UserService,
+    AclService,
+    AclRedirection,
     OccurrenceService,
     AlertService,
     {

@@ -4,6 +4,8 @@ import {Router} from '@angular/router';
 import {AuthService} from '../services/auth/auth.service';
 // import {FormBuilderValidators} from '../../../../validators/index';
 import { NotifyService } from '../services/notify/notify.service';
+import { AclService } from 'ng2-acl';
+
 
 @Component({
   selector: 'app-login',
@@ -24,7 +26,8 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private router: Router,
    // private customValidators: FormBuilderValidators,
-    private notify: NotifyService
+    private notify: NotifyService,
+    public aclService: AclService
   ) {
   }
 
