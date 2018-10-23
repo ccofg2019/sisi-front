@@ -5,9 +5,13 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { NotifierModule } from 'angular-notifier';
+import { NoopAnimationsModule} from '@angular/platform-browser/animations';
+import { CommonModule } from '@angular/common';
+import { AgmCoreModule } from '@agm/core';
+import {NotifierModule} from 'angular-notifier';
 import { HttpModule } from '@angular/http';
+import { from } from 'rxjs';
+
 
 // Components
 import { AppRoutingModule } from './app-routing.module';
@@ -96,7 +100,11 @@ import {
     MatProgressSpinnerModule,
     NotifierModule,
     BrowserAnimationsModule,
-    NoopAnimationsModule
+    NoopAnimationsModule,
+    CommonModule,
+    AgmCoreModule.forRoot({ // Key
+      apiKey: 'AIzaSyBeNmjjr1hYj-sHr7QdLbWSXvvuWjjZkiY'
+    })
   ],
   providers: [
     AuthGuardService,

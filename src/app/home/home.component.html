@@ -8,6 +8,7 @@
         <a *ngIf="aclService.can('list_occurrence')" routerLink="/list-occurrence"><button class="btn btn-primary">Ocorrências</button></a>
     </div>
   </header>
-  <div id="map" class="mapstyle">
-  </div>
+  <agm-map [zoom]="17" [latitude]="lat" [longitude]="lng" (mapClick)="onChoseLocation($event)">
+    <agm-marker [latitude]="lat" [longitude]="lng" *ngIf="locationChosen"></agm-marker>
+  </agm-map>
 </div>
