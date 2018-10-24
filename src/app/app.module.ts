@@ -24,6 +24,7 @@ import { FormOccurrenceComponent } from './form-occurrence/form-occurrence.compo
 import { ListUserComponent } from './list-user/list-user.component';
 import { FormComplaintComponent } from './form-complaint/form-complaint.component';
 import { ListOccurrenceComponent } from './list-occurrence/list-occurrence.component';
+import { JwPaginationComponent } from 'jw-angular-pagination';
 
 // Services
 import { TokenInterceptor } from './services/token/token.interceptor';
@@ -68,7 +69,8 @@ import {
     FormOccurrenceComponent,
     ListUserComponent,
     ListOccurrenceComponent,
-    FormComplaintComponent],
+    FormComplaintComponent,
+    JwPaginationComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
