@@ -171,6 +171,27 @@
                     <div *ngIf="f.cellphone.errors.pattern"> Número de celular inválido, deve ter 11 dígitos</div>
                 </div>
               </div>
+
+              <div class="form-group col-md-12">
+                <div class="form-check">
+                  <input 
+                    data-toggle="tooltip"
+                    title="Você precisa aceitar os termos de uso da aplicação"
+                    type="checkbox"
+                    class="form-check-input"
+                    formControlName="terms"
+                    [ngClass]="{ 'is-invalid': submitted && f.terms.errors }"
+                  >
+                  <label class="form-check-label" for="gridCheck">
+                    <a href="" id="myBtn"  data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo"> Termos de uso</a>
+                  </label>
+
+                    <div *ngIf="submitted && f.terms.errors" class="invalid-feedback">
+                      <div *ngIf="f.cellphone.errors.required">É necessário aceita todos os termos do sistema*</div>
+                    </div>
+                </div>
+              </div><br>
+
               <button [disabled]="loading" class="btn btn-primary">Cadastrar</button>
             </div>
 
@@ -178,5 +199,47 @@
         </div>
     </div>
 
+
+ <!-- MODAL DE ENVOLVIDO -->
+ <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Adicionar Envolvidos</h5>
+      </div>
+      <div class="modal-body">
+          <div formGroupName="involved_person">
+            <p>
+
+              Todos as descrições das pessoas são sobre a humanidade do atendimento, a pessoa pega no pulso, examina, olha com carinho. Então eu acho que vai ter outra coisa, que os médicos cubanos trouxeram pro brasil, um alto grau de humanidade.
+
+              Se hoje é o dia das crianças... Ontem eu disse: o dia da criança é o dia da mãe, dos pais, das professoras, mas também é o dia dos animais, sempre que você olha uma criança, há sempre uma figura oculta, que é um cachorro atrás. O que é algo muito importante!
+              
+              A única área que eu acho, que vai exigir muita atenção nossa, e aí eu já aventei a hipótese de até criar um ministério. É na área de... Na área... Eu diria assim, como uma espécie de analogia com o que acontece na área agrícola.
+              
+              Primeiro eu queria cumprimentar os internautas. -Oi Internautas! Depois dizer que o meio ambiente é sem dúvida nenhuma uma ameaça ao desenvolvimento sustentável. E isso significa que é uma ameaça pro futuro do nosso planeta e dos nossos países. O desemprego beira 20%, ou seja, 1 em cada 4 portugueses.
+              
+              Ai você fala o seguinte: "- Mas vocês acabaram isso?" Vou te falar: -"Não, está em andamento!" Tem obras que "vai" durar pra depois de 2010. Agora, por isso, nós já não desenhamos, não começamos a fazer projeto do que nós "podêmo fazê"? 11, 12, 13, 14... Por que é que não?
+              
+              No meu xinélo da humildade eu gostaria muito de ver o Neymar e o Ganso. Por que eu acho que.... 11 entre 10 brasileiros gostariam. Você veja, eu já vi, parei de ver. Voltei a ver, e acho que o Neymar e o Ganso têm essa capacidade de fazer a gente olhar.
+              
+              A população ela precisa da Zona Franca de Manaus, porque na Zona franca de Manaus, não é uma zona de exportação, é uma zona para o Brasil. Portanto ela tem um objetivo, ela evita o desmatamento, que é altamente lucravito. Derrubar arvores da natureza é muito lucrativo!
+              
+              Eu dou dinheiro pra minha filha. Eu dou dinheiro pra ela viajar, então é... é... Já vivi muito sem dinheiro, já vivi muito com dinheiro. -Jornalista: Coloca esse dinheiro na poupança que a senhora ganha R$10 mil por mês. -Dilma: O que que é R$10 mil?
+              
+              
+
+            </p>
+          </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Aceitar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- FIM MODAL ENVOLVIDO -->    
 
 
