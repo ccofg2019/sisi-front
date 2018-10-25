@@ -6,8 +6,14 @@
     <a routerLink=""><button class="btn btn-primary" >Mapa</button></a>
   </div>
 
+  <div> <!-- ALTERAR ALTURA DO MAPA PARA 100% APÓS EDITAR A DIV -->
+    <agm-map [zoom]="17" [latitude]="lat" [longitude]="lng" (mapClick)="onChoseLocation($event)">
+      <agm-marker [latitude]="lat" [longitude]="lng" *ngIf="locationChosen"></agm-marker>
+    </agm-map>
+  </div>
+
   <!-- HEADER LIST-->
-  
+
   <div class="container margin-top-sisi">
     <form class="col-md-12" [formGroup]="formComplaint" (ngSubmit)="onSubmit()">
       <div class="row"align="center">
@@ -82,7 +88,7 @@
           formControlName="Complaint"
           [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
       </div>
-      
+
     </div>
     <br><!--Pulando linha para a sessão de anexo de itens de reclamação-->
     <div class="row">
@@ -126,8 +132,8 @@
       </div>
     </div>
 
-    
-    
+
+
         </div>
 
         <!--Divisória da metade da tela para mapa e botão de salvar ocorrência-->
@@ -137,14 +143,14 @@
                     <div id="map" class="mapstyle" style="width: 100%;position:relative;">
                     </div>
                 </div>
-                <br> 
+                <br>
                 <div class="Button2">
                   <button [disabled]="loading" class="btn btn-primary">Salvar Ocorrência</button>
                 </div>
             </div>
-            
+
         </div>
-        
+
 
       </div><!--final da div da row que engloba tanto o formulario de um lado e o mapa do outro-->
     </form>
