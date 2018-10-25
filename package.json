@@ -26,6 +26,7 @@
     "angular-material": "^1.1.10",
     "angular-notifier": "^4.1.1",
     "core-js": "^2.5.4",
+    "jw-angular-pagination": "^1.0.5",
     "moment": "^2.22.2",
     "ng2-acl": "^1.1.3",
     "rxjs": "~6.2.0",

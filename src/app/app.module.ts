@@ -1,29 +1,30 @@
 import { AclRedirection } from './app.resolve';
 import { AclService } from 'ng2-acl';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NoopAnimationsModule} from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import { AgmCoreModule } from '@agm/core';
-import {NotifierModule} from 'angular-notifier';
+import { NotifierModule } from 'angular-notifier';
 import { HttpModule } from '@angular/http';
+import { ErrorsHandler } from './helpers/handler-error/handle-error.helper';
 import { from } from 'rxjs';
 
 
 // Components
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
-import { HeaderComponent } from './header/header.component';
-import { FormRegisterComponent } from './form-register/form-register.component';
-import { HomeComponent } from './home/home.component';
-import { FormOccurrenceComponent } from './form-occurrence/form-occurrence.component';
-import { ListUserComponent } from './list-user/list-user.component';
-import { FormComplaintComponent } from './form-complaint/form-complaint.component';
-import { ListOccurrenceComponent } from './list-occurrence/list-occurrence.component';
+import { LoginComponent } from './components/login/login.component';
+import { HeaderComponent } from './components/header/header.component';
+import { FormRegisterComponent } from './components/form-register/form-register.component';
+import { HomeComponent } from './components/home/home.component';
+import { FormOccurrenceComponent } from './components/form-occurrence/form-occurrence.component';
+import { ListUserComponent } from './components/list-user/list-user.component';
+import { FormComplaintComponent } from './components/form-complaint/form-complaint.component';
+import { ListOccurrenceComponent } from './components/list-occurrence/list-occurrence.component';
 
 // Services
 import { TokenInterceptor } from './services/token/token.interceptor';

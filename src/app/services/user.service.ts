@@ -1,8 +1,10 @@
+import { Paginator } from './../models/paginator.model';
 
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { User } from '../models/user.model';
+
 
 import 'rxjs/add/operator/toPromise';
 
@@ -18,7 +20,7 @@ export class UserService {
         return this.http.get(`${environment.API_URL}/api/users`);
     }
 
-    public getUsersPage(page) {
-        return this.http.get(`${environment.API_URL}/api/users?page=${page}`);
+    public getUsersPage(paginator: Paginator) {
+        return this.http.get(`${environment.API_URL}/api/users?page=${paginator.current_page}`);
     }
 }
