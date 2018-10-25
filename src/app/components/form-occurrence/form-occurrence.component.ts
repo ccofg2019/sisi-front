@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
-import { OccurrenceService } from '../services/occurrence.service';
+import { OccurrenceService } from '../../services/occurrence.service';
 // import { AlertService } from '../services/alert.service';
-import { AuthService } from './../services/auth/auth.service';
+import { AuthService } from '../../services/auth/auth.service';
 import { AclService } from 'ng2-acl';
 
 @Component({

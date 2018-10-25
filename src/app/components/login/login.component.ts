@@ -1,9 +1,9 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
-import {AuthService} from '../services/auth/auth.service';
+import {AuthService} from '../../services/auth/auth.service';
 // import {FormBuilderValidators} from '../../../../validators/index';
-import { NotifyService } from '../services/notify/notify.service';
+import { NotifyService } from '../../services/notify/notify.service';
 import { AclService } from 'ng2-acl';
 
 

@@ -3,13 +3,13 @@ import { AuthGuardService } from './services/auth/auth-guard.service';
 import { AclResolver } from './app.resolve';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { FormRegisterComponent } from './form-register/form-register.component';
-import { LoginComponent } from './login/login.component';
-import { HomeComponent } from './home/home.component';
-import { FormOccurrenceComponent } from './form-occurrence/form-occurrence.component';
-import { ListUserComponent } from './list-user/list-user.component';
-import { FormComplaintComponent } from './form-complaint/form-complaint.component';
-import { ListOccurrenceComponent } from './list-occurrence/list-occurrence.component';
+import { FormRegisterComponent } from './components/form-register/form-register.component';
+import { LoginComponent } from './components/login/login.component';
+import { HomeComponent } from './components/home/home.component';
+import { FormOccurrenceComponent } from './components/form-occurrence/form-occurrence.component';
+import { ListUserComponent } from './components/list-user/list-user.component';
+import { FormComplaintComponent } from './components/form-complaint/form-complaint.component';
+import { ListOccurrenceComponent } from './components/list-occurrence/list-occurrence.component';
 
 const routes: Routes = [
 
