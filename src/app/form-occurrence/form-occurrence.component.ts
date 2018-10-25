@@ -22,6 +22,15 @@ export class FormOccurrenceComponent implements OnInit {
   titlePattern = '^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ0-9,. ]{6,32}$';
   storyPattern = '^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ0-9,. ]{12,256}$';
 
+  lat  = -8.05225025;
+  lng  = -34.9450490084884;
+  locationChosen = false;
+
+  onChoseLocation(event) {
+    this.lat = event.coords.lat;
+    this.lng = event.coords.lng;
+    this.locationChosen = true;
+  }
 
   constructor(
     private formBuilder: FormBuilder,

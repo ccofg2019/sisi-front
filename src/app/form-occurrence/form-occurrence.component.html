@@ -276,9 +276,9 @@
           </form>
 
           <div class="col-md-4">
-            <div class="map">
-
-            </div>
+            <agm-map [zoom]="17" [latitude]="lat" [longitude]="lng" (mapClick)="onChoseLocation($event)">
+              <agm-marker [latitude]="lat" [longitude]="lng" *ngIf="locationChosen"></agm-marker>
+            </agm-map>
           </div>
         </div> <!-- div background  -->
 
