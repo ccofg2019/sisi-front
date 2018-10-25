@@ -18,7 +18,7 @@ export class FormRegisterComponent implements OnInit {
 
   // Validator patterns
 
-  namePattern = '^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]{4,52}$';
+  namePattern = '^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]{10,52}$';
   cellpPattern = '^((\\+91-?)|0)?[0-9]{11}$';
   passPattern = '^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$';
   phonePattern = '^((\\+91-?)|0)?[0-9]{10}$';
