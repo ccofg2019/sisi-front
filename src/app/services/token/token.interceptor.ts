@@ -1,4 +1,3 @@
-import { HandlerErrorHelpers } from './../../helpers/handle-error/handler-error.helpers';
 import {Injectable} from '@angular/core';
 import {
   HttpRequest,
@@ -19,7 +18,7 @@ import { ErrorsHandlerHelper } from '../../helpers/handler-error/handle-error.he
 export class TokenInterceptor implements HttpInterceptor {
   protected errorHandler;
 
-  constructor(public auth: AuthService, private handler: HandlerErrorHelpers) {
+  constructor(public auth: AuthService, private handler: ErrorsHandlerHelper) {
     this.errorHandler = handler;
   }
 
