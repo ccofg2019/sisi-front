@@ -14,13 +14,16 @@ import { AclService } from 'ng2-acl';
 })
 export class FormOccurrenceComponent implements OnInit {
 
+  involved_person: FormGroup;
   formOccurrence: FormGroup;
   loading = false;
   submitted = false;
 
   // Validator patterns
-  titlePattern = '^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ0-9,. ]{6,32}$';
-  storyPattern = '^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ0-9,. ]{12,256}$';
+  titlePattern = '^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ0-9,.!?*"#%(); -]{6,32}$';
+  storyPattern = '^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ0-9,.!?*"#%(); -]{12,256}$';
+  cpfPattern = '^[0-9]{11}$';
+  namePattern = '^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]{4,52}$';
 
   lat  = -8.05225025;
   lng  = -34.9450490084884;
@@ -43,10 +46,6 @@ export class FormOccurrenceComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    if (this.authService.isLoggedIn() !== true ) {
-      this.router.navigate(['']);
-      return;
-    }
 
     this.formOccurrence = this.formBuilder.group({
       title: ['', [ Validators.required, Validators.pattern(this.titlePattern)]],
@@ -60,8 +59,8 @@ export class FormOccurrenceComponent implements OnInit {
       zone_id: ['', Validators.required],
 
       involved_person: this.formBuilder.group({
-        name: ['', Validators.minLength(4)],
-        cpf: ['', [Validators.minLength(11), Validators.maxLength(11)]],
+        name: ['', Validators.pattern(this.namePattern)],
+        cpf: ['', [Validators.pattern(this.cpfPattern)]],
         gender: [''],
         skin_color: [''],
         type: ['']
@@ -101,6 +100,9 @@ export class FormOccurrenceComponent implements OnInit {
                 });
   }
 
+  confirmInvolved() {
+      alert('Envolvido Adicionado');
+  }
 
 
 }
