@@ -1,3 +1,4 @@
+import { HandlerErrorHelpers } from './../../helpers/handle-error/handler-error.helpers';
 import {Injectable} from '@angular/core';
 import {
   HttpRequest,
@@ -10,13 +11,16 @@ import {
 import { AuthService } from '../auth/auth.service';
 import { Observable } from 'rxjs';
 import { tap, retry } from 'rxjs/operators';
+import { ErrorsHandlerHelper } from '../../helpers/handler-error/handle-error.helper';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TokenInterceptor implements HttpInterceptor {
+  protected errorHandler;
 
-  constructor(public auth: AuthService) {
+  constructor(public auth: AuthService, private handler: HandlerErrorHelpers) {
+    this.errorHandler = handler;
   }
 
 
@@ -34,7 +38,16 @@ export class TokenInterceptor implements HttpInterceptor {
       });
     }
 
-    return next.handle(request).pipe(retry(1), tap());
+    return next.handle(request).pipe(retry(1), tap(
+      (event: HttpEvent<any>) => {
+        if (event instanceof HttpResponse) {
+
+          if (event.body.error) {
+            this.errorHandler(event);
+          }
+        }
+      }
+    ));
 
   }
 }

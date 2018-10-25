@@ -1,15 +1,16 @@
 import { AclRedirection } from './app.resolve';
 import { AclService } from 'ng2-acl';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NoopAnimationsModule} from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import { AgmCoreModule } from '@agm/core';
-import {NotifierModule} from 'angular-notifier';
+import { NotifierModule } from 'angular-notifier';
 import { HttpModule } from '@angular/http';
+import { ErrorsHandler } from './helpers/handler-error/handle-error.helper';
 import { from } from 'rxjs';
 
 
