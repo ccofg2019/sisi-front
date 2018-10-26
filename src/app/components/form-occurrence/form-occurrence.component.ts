@@ -3,9 +3,8 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import { OccurrenceService } from '../../services/occurrence.service';
-// import { AlertService } from '../services/alert.service';
-import { AuthService } from '../../services/auth/auth.service';
 import { AclService } from 'ng2-acl';
+import { NotifyService } from './../../services/notify/notify.service';
 
 @Component({
   selector: 'app-form-occurrence',
@@ -39,9 +38,8 @@ export class FormOccurrenceComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private occurrenceService: OccurrenceService,
-    private authService: AuthService,
-    public aclService: AclService
-    // private alertService: AlertService
+    public aclService: AclService,
+    private notifier: NotifyService
 
   ) { }
 
@@ -80,7 +78,7 @@ export class FormOccurrenceComponent implements OnInit {
 
         // stop here if form is invalid
         if (this.formOccurrence.invalid) {
-          alert('Erro ao tentar registrar, confira se os campos foram preenchidos corretamente.');
+          this.notifier.show('warning', 'Erro ao tentar registrar, confira se os campos foram preenchidos corretamente.');
           return;
         }
 
@@ -91,10 +89,8 @@ export class FormOccurrenceComponent implements OnInit {
                 data => {
                   alert('Registro de ocorrência realizado com sucesso!');
                   this.router.navigate(['home']);
-                  // this.alertService.success('Registration successful', true);
                 },
                 error => {
-                  // this.alertService.error(error);
                   this.loading = false;
                   alert('Ocorreu um erro ao tentar registrar sua ocorrência.');
                 });

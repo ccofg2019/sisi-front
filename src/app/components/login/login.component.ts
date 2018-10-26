@@ -2,7 +2,6 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {AuthService} from '../../services/auth/auth.service';
-// import {FormBuilderValidators} from '../../../../validators/index';
 import { NotifyService } from '../../services/notify/notify.service';
 import { AclService } from 'ng2-acl';
 
@@ -25,7 +24,6 @@ export class LoginComponent implements OnInit {
     private authService: AuthService,
     private fb: FormBuilder,
     private router: Router,
-   // private customValidators: FormBuilderValidators,
     private notify: NotifyService,
     public aclService: AclService
   ) {
@@ -69,11 +67,9 @@ export class LoginComponent implements OnInit {
         (res) => {
           this.router.navigate(['home']);
           this.loginSubmit.emit(true);
-          alert('Login realizado com sucesso, Bem vindo!');
 
         },
         (err) => {
-          alert('Ocorreu um erro ao tentar realizar login.');
           this.controlStateLogin('error');
         });
 
@@ -91,7 +87,7 @@ export class LoginComponent implements OnInit {
     this.btn_title = 'Entrar';
 
     this.form = this.fb.group({
-      email: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
 
     });

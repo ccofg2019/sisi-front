@@ -6,9 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./form-complaint.component.scss']
 })
 export class FormComplaintComponent implements OnInit {
-
-  lat  = -8.05225025;
-  lng  = -34.9450490084884;
+  lat = -8.05225025;
+  lng = -34.9450490084884;
   locationChosen = false;
 
   onChoseLocation(event) {
@@ -17,13 +16,7 @@ export class FormComplaintComponent implements OnInit {
     this.locationChosen = true;
   }
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() { }
-
-  exit() {
-    confirm('Tem certeza que deseja sair?');
+  ngOnInit() {}
 }
-
-}
-

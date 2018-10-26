@@ -20,9 +20,9 @@
                   class="form-control"
                   placeholder="Título da ocorrência"
                   formControlName="title"
-                  [ngClass]="{ 'is-invalid': submitted && f.title.errors }"/>
+                  [ngClass]="{ 'is-invalid': f.title.dirty && f.title.errors }"/>
 
-                <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
+                <div *ngIf="f.title.dirty && f.title.errors" class="invalid-feedback">
                   <div *ngIf="f.title.errors.required">Campo obrigatório*</div>
                   <div *ngIf="f.title.errors.pattern">Título deve ter de 6 a 32 caracteres*</div>
                 </div>
@@ -64,12 +64,12 @@
                   title='Informe se um boletim de ocorrência foi ou não feito antes desse registro'
                   class="form-control"
                   formControlName="police_report"
-                  [ngClass]="{ 'is-invalid': submitted && formOccurrence.get('police_report').errors }">
+                  [ngClass]="{ 'is-invalid': f.police_report.dirty && formOccurrence.get('police_report').errors }">
                   <option value="" select disabled>Escolha uma opção</option>
                   <option value=1>Sim</option>
                   <option value=0>Não</option>
                 </select>
-                <div *ngIf="submitted && f.police_report.errors" class="invalid-feedback">
+                <div *ngIf="f.police_report.dirty && f.police_report.errors" class="invalid-feedback">
                   <div *ngIf="f.police_report.errors.required"> Campo obrigatório*</div>
                 </div>
               </div>
@@ -80,14 +80,15 @@
               <div class="form-group col-md-3">
                 <label for="occurrence_date">Data da ocorrência</label>
                 <input
+                  onkeydown="return false"
                   data-toggle="tooltip"
                   title='Escolha a data através das setas ao lado'
                   type="date"
                   class="form-control"
                   formControlName="occurrence_date"
-                  [ngClass]="{ 'is-invalid': submitted && f.occurrence_date.errors }" >
+                  [ngClass]="{ 'is-invalid': f.occurrence_date.dirty && f.occurrence_date.errors }" >
 
-                <div *ngIf="submitted && f.occurrence_date.errors" class="invalid-feedback">
+                <div *ngIf="f.occurrence_date.dirty && f.occurrence_date.errors" class="invalid-feedback">
                   <div *ngIf="f.occurrence_date.errors.required"> Campo obrigatório*</div>
                 </div>
               </div>
@@ -100,9 +101,9 @@
                   type="time"
                   class="form-control"
                   formControlName="occurrence_time"
-                  [ngClass]="{ 'is-invalid': submitted && f.occurrence_time.errors }" >
+                  [ngClass]="{ 'is-invalid': f.occurrence_time.dirty && f.occurrence_time.errors }" >
 
-                <div *ngIf="submitted && f.occurrence_time.errors" class="invalid-feedback">
+                <div *ngIf="f.occurrence_time.dirty && f.occurrence_time.errors" class="invalid-feedback">
                   <div *ngIf="f.occurrence_time.errors.required"> Campo obrigatório*</div>
                 </div>
               </div>
@@ -131,7 +132,7 @@
                   title='Selecione o tipo da ocorrência'
                   class="form-control"
                   formControlName="occurrence_type_id"
-                  [ngClass]="{ 'is-invalid': submitted && f.occurrence_type_id.errors }">
+                  [ngClass]="{ 'is-invalid': f.occurrence_type_id.dirty && f.occurrence_type_id.errors }">
                   <option value="" select disabled>Escolha uma opção</option>
                   <option value="1">Furto</option>
                   <option value="2">Roubo</option>
@@ -145,7 +146,7 @@
                   <option value="10">Violência contra LGBT</option>
                 </select>
 
-                <div *ngIf="submitted && f.occurrence_type_id.errors" class="invalid-feedback">
+                <div *ngIf="f.occurrence_type_id.dirty && f.occurrence_type_id.errors" class="invalid-feedback">
                   <div *ngIf="f.occurrence_type_id.errors.required"> Campo obrigatório*</div>
                 </div>
             </div>
@@ -164,9 +165,9 @@
                     rows="3"
                     placeholder="Descrição da Ocorrência"
                     formControlName="story"
-                    [ngClass]="{ 'is-invalid': submitted && f.story.errors }"></textarea>
+                    [ngClass]="{ 'is-invalid': f.story.dirty && f.story.errors }"></textarea>
 
-                <div *ngIf="submitted && f.story.errors" class="invalid-feedback">
+                <div *ngIf="f.story.dirty && f.story.errors" class="invalid-feedback">
                   <div *ngIf="f.story.errors.required"> Campo obrigatório*</div>
                   <div *ngIf="f.story.errors.minlength"> Descrição deve ter mais de 12 dígitos*</div>
                   <div *ngIf="f.story.errors.maxlength"> Descrição deve ter no máximo 256 dígitos*</div>
