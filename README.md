@@ -29,4 +29,3 @@
 1. Abra o cmd e aponte o caminho para a pasta do projeto
 2. digite ' ng serve '
 3. Abra o navegador e digite 'http://localhost:4200'
-

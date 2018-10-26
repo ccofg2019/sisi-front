@@ -1,7 +1,7 @@
 import { OccurrenceService } from '../../services/occurrence.service';
 import { Component, OnInit } from '@angular/core';
 import { AclService } from 'ng2-acl';
-import { ListComponent } from '../../list.component';
+import { ListComponent } from '../../interfaces/list.component';
 import { ListPagination } from '../../helpers/list/list-pagination.helper';
 
 @Component({

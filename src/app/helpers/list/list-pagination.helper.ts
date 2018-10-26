@@ -4,7 +4,7 @@ export class ListPagination {
 
   protected service: any;
   protected methodLoad: string;
-  protected data: Object[];
+  public data: Object[];
   protected paginator: Paginator;
 
 
