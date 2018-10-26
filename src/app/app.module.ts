@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
 import { AgmCoreModule } from '@agm/core';
 import { NotifierModule } from 'angular-notifier';
 import { HttpModule } from '@angular/http';
-import { ErrorsHandler } from './helpers/handler-error/handle-error.helper';
+import { ErrorsHandlerHelper } from './helpers/handler-error/handle-error.helper';
 import { from } from 'rxjs';
 
 
