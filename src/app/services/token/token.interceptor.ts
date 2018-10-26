@@ -42,10 +42,16 @@ export class TokenInterceptor implements HttpInterceptor {
         if (event instanceof HttpResponse) {
 
           if (event.body.error) {
-            this.errorHandler(event);
+            this.errorHandler.handleError(event);
+            throw(event);
           }
         }
+      },
+    (error: any) => {
+      if (error instanceof HttpErrorResponse) {
+        this.errorHandler.handleError(error);
       }
+    }
     ));
 
   }

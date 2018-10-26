@@ -1,17 +1,14 @@
 import { AclRedirection } from './app.resolve';
 import { AclService } from 'ng2-acl';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, ErrorHandler } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NoopAnimationsModule} from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import { AgmCoreModule } from '@agm/core';
 import { NotifierModule } from 'angular-notifier';
 import { HttpModule } from '@angular/http';
-import { ErrorsHandlerHelper } from './helpers/handler-error/handle-error.helper';
-import { from } from 'rxjs';
 
 
 // Components
@@ -36,27 +33,8 @@ import { AlertService } from './services/alert.service';
 // Libraries
 import {
   MatButtonModule,
-  MatCardModule,
-  MatRadioModule,
   MatInputModule,
-  MatIconModule,
-  MatTableModule,
-  MatOptionModule,
-  MatAutocompleteModule,
-  MatDatepickerModule,
-  MatNativeDateModule,
-  MAT_DATE_LOCALE,
-  MatCheckboxModule,
-  MatSelectModule,
-  MatTabsModule,
-  MatProgressBarModule,
-  MatToolbarModule,
-  MatExpansionModule,
-  MatSidenavModule,
-  MatListModule,
-  MatTooltipModule,
-  MatPaginatorModule,
-  MatProgressSpinnerModule
+  MatAutocompleteModule
 } from '@angular/material';
 
 @NgModule({
@@ -78,30 +56,10 @@ import {
     HttpClientModule,
     HttpModule,
     MatButtonModule,
-    MatCardModule,
-    MatRadioModule,
     MatInputModule,
-    MatIconModule,
-    MatOptionModule,
     MatAutocompleteModule,
-    MatIconModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatCheckboxModule,
-    MatSelectModule,
-    MatTabsModule,
-    MatProgressBarModule,
-    MatToolbarModule,
-    MatTooltipModule,
-    MatExpansionModule,
-    MatSidenavModule,
-    MatListModule,
-    MatPaginatorModule,
-    MatTableModule,
-    MatProgressSpinnerModule,
     NotifierModule,
     BrowserAnimationsModule,
-    NoopAnimationsModule,
     CommonModule,
     AgmCoreModule.forRoot({ // Key
       apiKey: 'AIzaSyBeNmjjr1hYj-sHr7QdLbWSXvvuWjjZkiY'
@@ -119,7 +77,6 @@ import {
       useClass: TokenInterceptor,
       multi: true
     },
-    { provide: MAT_DATE_LOCALE, useValue: 'pt-br' }
   ],
   bootstrap: [AppComponent]
 })

@@ -1,8 +1,9 @@
 <div>
   <div id="topnav">
-    
+
   </div>
   <form (keyup.enter)="login()" [formGroup]="form" (submit)="login()">
+
     <div class="container">
       <div id="logo">
         <img src="../assets/sisi-logo.png" alt="SISI" height="120" width="250" />
@@ -28,12 +29,10 @@
         <button [disabled]="status.loading" mat-raised-button class="login-btn">{{btn_title}}</button>
         <a routerLink="register"><button class="btn btn-primary" >Cadastro</button></a>
       </div>
-      
-     
+
+
     </div>
-   
-    
-   
+
   </form>
-  
+
 </div>
