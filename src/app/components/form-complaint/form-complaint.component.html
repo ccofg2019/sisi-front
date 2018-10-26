@@ -15,7 +15,7 @@
   <!-- HEADER LIST-->
 
   <div class="container margin-top-sisi">
-    <form class="col-md-12" [formGroup]="formComplaint" (ngSubmit)="onSubmit()">
+    <form class="col-md-12">
       <div class="row"align="center">
         <div class="col-md-12">
           <h1><b> Registro de Reclamação </b></h1>
@@ -64,7 +64,7 @@
             type="date"
             class="form-control"
             formControlName="occurrence_date"
-            [ngClass]="{ 'is-invalid': submitted && f.occurrence_date.errors }" >
+             >
         </div>
         <div class="col-md-6">
             <input
@@ -73,7 +73,7 @@
             type="time"
             class="form-control"
             formControlName="occurrence_time"
-            [ngClass]="{ 'is-invalid': submitted && f.occurrence_time.errors }" >
+           >
         </div>
   </div>
   <br>
@@ -86,7 +86,7 @@
           class="form-control"
           placeholder="Descrição da Reclamação"
           formControlName="Complaint"
-          [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
+          />
       </div>
 
     </div>
@@ -106,7 +106,7 @@
           class="form-control"
           placeholder="Endereço"
           formControlName="Address"
-          [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
+          />
       </div>
     </div>
     <div class="form-row">
@@ -118,7 +118,7 @@
           class="form-control"
           placeholder="Nº"
           formControlName="Number"
-          [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
+           />
       </div>
       <div class="form-group col-md-9">
         <input
@@ -128,7 +128,7 @@
           class="form-control"
           placeholder="Bairro"
           formControlName="Bairro"
-          [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
+           />
       </div>
     </div>
 
@@ -145,7 +145,7 @@
                 </div>
                 <br>
                 <div class="Button2">
-                  <button [disabled]="loading" class="btn btn-primary">Salvar Ocorrência</button>
+                  <button class="btn btn-primary">Salvar Ocorrência</button>
                 </div>
             </div>
 
