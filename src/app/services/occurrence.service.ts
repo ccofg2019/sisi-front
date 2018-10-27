@@ -26,4 +26,14 @@ export class OccurrenceService {
       return this.http.get(`${environment.API_URL}/api/occurrence-reports?page=${paginator.current_page}`);
     }
 
+    // alterando todos os campos de um form
+    // public putOccurrences(id: number, occurrence: Occurrence) {
+    //     return this.http.put(`${environment.API_URL}/api/occurrence-reports/${id}`, occurrence);
+    // }
+
+
+     public statusOccurrences(id: number, status: string) {
+       return this.http.put(`${environment.API_URL}/api/occurrence-reports/${id}?status=${status}`, status);
+    }
+
 }

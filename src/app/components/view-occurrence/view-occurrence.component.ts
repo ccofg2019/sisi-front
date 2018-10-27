@@ -3,6 +3,8 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { AclService } from 'ng2-acl';
 import { OccurrenceService } from '../../services/occurrence.service';
 import { Occurrence } from '../../models/occurrence.model';
+import { first } from 'rxjs/operators';
+import { NotifyService } from '../../services/notify/notify.service';
 
 @Component({
   selector: 'app-view-occurrence',
@@ -13,17 +15,43 @@ import { Occurrence } from '../../models/occurrence.model';
 export class ViewOccurrenceComponent implements OnInit {
 
   public occurrence: Occurrence;
-  id: number;
   public status = { 'loading': true};
+  public idOccurrence: number;
 
   constructor(
     private route: ActivatedRoute,
     private occurrenceService: OccurrenceService,
-    public aclService: AclService
+    public aclService: AclService,
+    private notifier: NotifyService
+
     ) {}
 
     noDisable2() {
      this.status = { 'loading': false};
+    }
+
+    arquivarInvestigator() {
+      this.occurrenceService.statusOccurrences(this.idOccurrence, 'ARQUIVADA')
+      .pipe(first())
+      .subscribe(
+          data => {
+            this.notifier.show('success', 'Registro de ocorrência foi ARQUIVADO');
+          },
+          error => {
+            this.notifier.show('error', 'Ocorreu um erro ao tentar alterar o status da ocorrência');
+          });
+    }
+
+    validaInvestigator() {
+      this.occurrenceService.statusOccurrences(this.idOccurrence, 'EM INVESTIGACAO')
+      .pipe(first())
+      .subscribe(
+        data => {
+          this.notifier.show('success', 'Registro de ocorrência está em INVESTIGACAO');
+        },
+        error => {
+          this.notifier.show('error', 'Ocorreu um erro ao tentar alterar o status da ocorrência');
+        });
     }
 
   ngOnInit() {
@@ -32,8 +60,11 @@ export class ViewOccurrenceComponent implements OnInit {
         this.occurrenceService.getOccurrencesID(params.id)
         .subscribe( (occurrence: any) => {
           this.occurrence = occurrence.data;
+          this.idOccurrence = occurrence.data.id;
+          console.log(this.idOccurrence);
         });
       }
     );
   }
 }
+
