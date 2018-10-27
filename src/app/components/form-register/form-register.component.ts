@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
-import { UserService } from '../services/user.service';
- // import { AlertService } from '../services/alert.service';
+import { UserService } from '../../services/user.service';
+import { NotifyService } from '../../services/notify/notify.service';
 
 @Component({
   selector: 'app-form-register',
@@ -18,7 +18,7 @@ export class FormRegisterComponent implements OnInit {
 
   // Validator patterns
 
-  namePattern = '^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]{4,52}$';
+  namePattern = '^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]{10,52}$';
   cellpPattern = '^((\\+91-?)|0)?[0-9]{11}$';
   passPattern = '^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$';
   phonePattern = '^((\\+91-?)|0)?[0-9]{10}$';
@@ -27,7 +27,7 @@ export class FormRegisterComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private userService: UserService,
-    // private alertService: AlertService
+    private notifier: NotifyService
     ) { }
 
   ngOnInit() {
@@ -53,7 +53,7 @@ export class FormRegisterComponent implements OnInit {
 
         // stop here if form is invalid
         if (this.registerForm.invalid) {
-          alert('Erro ao tentar cadastrar, confira se os campos foram preenchidos corretamente.');
+          this.notifier.show('warning', 'Confira se os campos foram preenchidos corretamente.');
           return;
         }
 
@@ -62,14 +62,11 @@ export class FormRegisterComponent implements OnInit {
             .pipe(first())
             .subscribe(
                 data => {
-                  alert('Cadastro realizado com sucesso!');
+
                   this.router.navigate(['']);
-                  // this.alertService.success('Registration successful', true);
                 },
                 error => {
-                  // this.alertService.error(error);
                   this.loading = false;
-                  alert('Ocorreu um erro ao tentar cadastrar sua conta.');
                 });
   }
 }

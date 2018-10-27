@@ -17,11 +17,11 @@
                   class="form-control"
                   placeholder="Nome"
                   formControlName="name"
-                  [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
+                  [ngClass]="{ 'is-invalid': f.name.dirty && f.name.errors }" />
 
-                <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                <div *ngIf="f.name.dirty && f.name.errors" class="invalid-feedback">
                   <div *ngIf="f.name.errors.required"> Campo obrigatório*</div>
-                  <div *ngIf="f.name.errors.minlength"> Nome deve possuir mais de 4 dígitos</div>
+                  <div *ngIf="f.name.errors.pattern"> Nome deve possuir mais de 10 caracteres</div>
                 </div>
               </div>
 
@@ -34,8 +34,8 @@
                   class="form-control"
                   formControlName="email"
                   placeholder="exemplo@email.com"
-                  [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
-                <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                  [ngClass]="{ 'is-invalid': f.email.dirty && f.email.errors }" />
+                <div *ngIf="f.email.dirty && f.email.errors" class="invalid-feedback">
                     <div *ngIf="f.email.errors.required"> Campo obrigatório*</div>
                     <div *ngIf="f.email.errors.email" > Insira um email válido</div>
                 </div>
@@ -50,9 +50,9 @@
                   class="form-control"
                   formControlName="password"
                   placeholder="Senha"
-                  [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                  [ngClass]="{ 'is-invalid': f.password.dirty && f.password.errors }" />
 
-                <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                <div *ngIf="f.password.dirty && f.password.errors" class="invalid-feedback">
                   <div *ngIf="f.password.errors.required">Campo obrigatório*</div>
                   <div *ngIf="f.password.errors.pattern"> Senha inválida, deve possuir pelo menos:8 caracteres, 1 letra maiúscula, 1 letra minúscula e 1 número</div>
                 </div>
@@ -71,10 +71,10 @@
                       class="form-control"
                       formControlName="cpf"
                       placeholder="000.000.000-00"
-                    [ngClass]="{ 'is-invalid': submitted && f.cpf.errors }"
+                    [ngClass]="{ 'is-invalid': f.cpf.dirty && f.cpf.errors }"
                     />
 
-                    <div *ngIf="submitted && f.cpf.errors" class="invalid-feedback">
+                    <div *ngIf="f.cpf.dirty && f.cpf.errors" class="invalid-feedback">
                         <div *ngIf="f.cpf.errors.required"> Campo obrigatório*</div>
                         <div *ngIf="f.cpf.errors.pattern"> Apenas números, e exatamente 11 dígitos</div>
                     </div>
@@ -83,14 +83,15 @@
                 <div class="form-group col-md-3">
                     <label for="birthdate">Data Nascimento</label>
                     <input
+                      onkeydown="return false"
                       data-toggle="tooltip"
                       title="Escolha a data através das setas ao lado"
                       type="date"
                       class="form-control"
                       formControlName="birthdate"
-                    [ngClass]="{ 'is-invalid': submitted && f.birthdate.errors }" />
+                    [ngClass]="{ 'is-invalid': f.birthdate.dirty && f.birthdate.errors }" />
 
-                    <div *ngIf="submitted && f.birthdate.errors" class="invalid-feedback">
+                    <div *ngIf="f.birthdate.dirty && f.birthdate.errors" class="invalid-feedback">
                         <div *ngIf="f.birthdate.errors.required">Campo obrigatório*</div>
                     </div>
                 </div>
@@ -102,7 +103,7 @@
                       title="Escolha o seu respectivo gênero"
                       formControlName="gender"
                       class="form-control"
-                      [ngClass]="{ 'is-invalid': submitted && f.gender.errors }">
+                      [ngClass]="{ 'is-invalid': f.gender.dirty && f.gender.errors }">
 
                         <option value="" select disabled>Escolha uma opção</option>
                         <option value="MASCULINO">Masculino</option>
@@ -110,7 +111,7 @@
                         <option value="TRANS_MASC">Trans-Masculino</option>
                         <option value="TRANS_FEM">Trans-Feminino</option>
                       </select>
-                      <div *ngIf="submitted && f.gender.errors" class="invalid-feedback">
+                      <div *ngIf="f.gender.dirty && f.gender.errors" class="invalid-feedback">
                           <div *ngIf="f.gender.errors.required">Campo obrigatório*</div>
                       </div>
                 </div>
@@ -122,7 +123,7 @@
                       title="Escolha sua respectiva etnia"
                       formControlName="skin_color"
                       class="form-control"
-                      [ngClass]="{ 'is-invalid': submitted && f.skin_color.errors }">
+                      [ngClass]="{ 'is-invalid': f.skin_color.dirty && f.skin_color.errors }">
                         <option value="" select disabled>Escolha uma opção</option>
                         <option value="BRANCO">Branca</option>
                         <option value="NEGRO">Negro</option>
@@ -130,7 +131,7 @@
                         <option value="INDIGENA">Indígena</option>
                         <option value="AMARELO">Amarelo</option>
                     </select>
-                    <div *ngIf="submitted && f.skin_color.errors" class="invalid-feedback">
+                    <div *ngIf="f.skin_color.dirty && f.skin_color.errors" class="invalid-feedback">
                         <div *ngIf="f.skin_color.errors.required">Campo obrigatório*</div>
                     </div>
                 </div>

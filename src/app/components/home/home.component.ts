@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
-import { AuthService } from './../services/auth/auth.service';
+import { AuthService } from '../../services/auth/auth.service';
 import { AclService } from 'ng2-acl';
 
 @Component({
@@ -29,10 +29,6 @@ export class HomeComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-    if (this.authService.isLoggedIn() !== true ) {
-      this.router.navigate(['']);
-      return;
-    }
  }
   exit() {
       this.authService.logout();

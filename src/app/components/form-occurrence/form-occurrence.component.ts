@@ -2,10 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
-import { OccurrenceService } from '../services/occurrence.service';
-// import { AlertService } from '../services/alert.service';
-import { AuthService } from './../services/auth/auth.service';
+import { OccurrenceService } from '../../services/occurrence.service';
 import { AclService } from 'ng2-acl';
+import { NotifyService } from './../../services/notify/notify.service';
 
 @Component({
   selector: 'app-form-occurrence',
@@ -14,30 +13,37 @@ import { AclService } from 'ng2-acl';
 })
 export class FormOccurrenceComponent implements OnInit {
 
+  involved_person: FormGroup;
   formOccurrence: FormGroup;
   loading = false;
   submitted = false;
 
   // Validator patterns
-  titlePattern = '^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ0-9,. ]{6,32}$';
-  storyPattern = '^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ0-9,. ]{12,256}$';
+  titlePattern = '^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ0-9,.!?*"#%(); -]{6,32}$';
+  storyPattern = '^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ0-9,.!?*"#%(); -]{12,256}$';
+  cpfPattern = '^[0-9]{11}$';
+  namePattern = '^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]{4,52}$';
 
+  lat  = -8.05225025;
+  lng  = -34.9450490084884;
+  locationChosen = false;
+
+  onChoseLocation(event) {
+    this.lat = event.coords.lat;
+    this.lng = event.coords.lng;
+    this.locationChosen = true;
+  }
 
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
     private occurrenceService: OccurrenceService,
-    private authService: AuthService,
-    public aclService: AclService
-    // private alertService: AlertService
+    public aclService: AclService,
+    private notifier: NotifyService
 
   ) { }
 
   ngOnInit() {
-    if (this.authService.isLoggedIn() !== true ) {
-      this.router.navigate(['']);
-      return;
-    }
 
     this.formOccurrence = this.formBuilder.group({
       title: ['', [ Validators.required, Validators.pattern(this.titlePattern)]],
@@ -51,8 +57,8 @@ export class FormOccurrenceComponent implements OnInit {
       zone_id: ['', Validators.required],
 
       involved_person: this.formBuilder.group({
-        name: ['', Validators.minLength(4)],
-        cpf: ['', [Validators.minLength(11), Validators.maxLength(11)]],
+        name: ['', Validators.pattern(this.namePattern)],
+        cpf: ['', [Validators.pattern(this.cpfPattern)]],
         gender: [''],
         skin_color: [''],
         type: ['']
@@ -72,7 +78,7 @@ export class FormOccurrenceComponent implements OnInit {
 
         // stop here if form is invalid
         if (this.formOccurrence.invalid) {
-          alert('Erro ao tentar registrar, confira se os campos foram preenchidos corretamente.');
+          this.notifier.show('warning', 'Erro ao tentar registrar, confira se os campos foram preenchidos corretamente.');
           return;
         }
 
@@ -83,15 +89,16 @@ export class FormOccurrenceComponent implements OnInit {
                 data => {
                   alert('Registro de ocorrência realizado com sucesso!');
                   this.router.navigate(['home']);
-                  // this.alertService.success('Registration successful', true);
                 },
                 error => {
-                  // this.alertService.error(error);
                   this.loading = false;
                   alert('Ocorreu um erro ao tentar registrar sua ocorrência.');
                 });
   }
 
+  confirmInvolved() {
+      alert('Envolvido Adicionado');
+  }
 
 
 }
