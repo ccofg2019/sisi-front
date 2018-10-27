@@ -22,6 +22,7 @@ import { FormOccurrenceComponent } from './components/form-occurrence/form-occur
 import { ListUserComponent } from './components/list-user/list-user.component';
 import { FormComplaintComponent } from './components/form-complaint/form-complaint.component';
 import { ListOccurrenceComponent } from './components/list-occurrence/list-occurrence.component';
+import { ListIrregularitiesComponent } from './components/list-irregularities/list-irregularities.component';
 
 // Services
 import { TokenInterceptor } from './services/token/token.interceptor';
@@ -37,6 +38,7 @@ import {
   MatAutocompleteModule
 } from '@angular/material';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,7 +49,8 @@ import {
     FormOccurrenceComponent,
     ListUserComponent,
     ListOccurrenceComponent,
-    FormComplaintComponent],
+    FormComplaintComponent,
+    ListIrregularitiesComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
