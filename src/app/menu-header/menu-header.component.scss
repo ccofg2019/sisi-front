@@ -1,0 +1,14 @@
+.menu-box{
+    background: #ffffff;
+    box-shadow: 0px 2px 5px 1px rgba(0, 0, 0, 0.1);
+    border-right: 1px solid #e5e5e5;
+    margin-top: -20px;
+    padding-top: 40px;
+    border-radius: 10px;
+    height: 840px;
+    
+    a:hover{
+        color: red;
+        transition: 1s;
+    }
+}
