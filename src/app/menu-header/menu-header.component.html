@@ -2,9 +2,9 @@
   <div class="col-md-12 menu-box">
     <a *ngIf="aclService.can('user_content')" routerLink="/home" ><i class=" large material-icons">home</i><p class="btn">Home</p></a><br>
     <a *ngIf="aclService.can('add_occurrence')" routerLink="/occurrence" ><i class=" large material-icons">event_note</i><p class="btn">Reg. Ocorrência</p></a><br>
+    <a routerLink="/register" ><i class=" large material-icons">event_note</i><p class="btn">Reg.Usuários</p></a><br>
     <a *ngIf="aclService.can('list_occurrence')" routerLink="/list-occurrence" ><i class=" large material-icons">format_list_numbered</i><p class="btn">Ocorrências</p></a><br>
     <a *ngIf="aclService.can('list_user')" routerLink="/list-user" ><i class=" large material-icons">format_list_numbered</i><p class="btn">Usuários</p></a><br>
     <a *ngIf="aclService.can('user_content')" routerLink="/home" ><i class=" large material-icons">map</i><p class="btn">Mapa</p></a><br>
-
   </div>
 </div>
