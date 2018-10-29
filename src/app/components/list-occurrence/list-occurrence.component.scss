@@ -7,6 +7,7 @@ button {
     background: $color;
     color: #fff;
     cursor: pointer;
+    border-radius: 45px;
     font-size: 18px;
     font-weight: bold;
     font-family: Trebuchet MS, Helvetica, sans-serif;
@@ -25,24 +26,47 @@ button {
   }
 
   .margin-top-sisi{
-    margin-top: 2%;
+    margin-top: 0%;
 
     h2{
       font-weight: bold;
       padding-left: 10px;
     }
-    label{
-      padding-top: 5px;
-      float: right;
-      font-weight: bolder;
-    }
+  }
+
+  .row-table{
+    margin-top: -33px;
   }
 
   .thead-sisi{
-    background: #000000;
+    background: #990000;
     color: #fff;
   }
-  
+
   .padding-thead-sisi{
     padding: 19px;
   }
+
+  table {
+    border-radius:1em;
+    overflow: hidden;
+  }
+
+  th{
+    font-size: 18px;
+    padding: 10px;
+  }
+
+  .list{
+    background: white;
+    border-radius:1em;
+  }
+
+  td{
+      font-size: 18px;
+  }
+
+  .material-icons{
+    padding-right: 5px;
+  }
+
