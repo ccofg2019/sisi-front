@@ -37,6 +37,7 @@ import {
   MatInputModule,
   MatAutocompleteModule
 } from '@angular/material';
+import { MenuHeaderComponent } from './menu-header/menu-header.component';
 
 
 @NgModule({
@@ -50,7 +51,8 @@ import {
     ListUserComponent,
     ListOccurrenceComponent,
     FormComplaintComponent,
-    ListIrregularitiesComponent],
+    ListIrregularitiesComponent,
+    MenuHeaderComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
