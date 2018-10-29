@@ -1,4 +1,4 @@
-<div>
+<!--<div>
   <div id="topnav">
 
   </div>
@@ -35,4 +35,58 @@
 
   </form>
 
-</div>
+</div>-->
+
+<div>
+  <div class="login-container">
+    <form style="margin-top: -90px" (keyup.enter)="login()" [formGroup]="form" (submit)="login()" class="text-center border border-light p-5">
+      <p class="h4 mb-4">Entrar</p>
+
+        <!-- Email -->
+        <!--<input type="email" matInput name="email" formControlName="email"/>-->
+        <input type="email" style="width: 400px" matInput name="email" formControlName="email" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="E-mail">
+
+        <!-- Password -->
+        <!--<input type="password" autocomplete="off" matInput name="password" formControlName="password"/>-->
+        <input type="password" style="width: 400px" autocomplete="off" matInput name="password" formControlName="password" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Senha">
+
+      <div class="d-flex justify-content-around">
+        <div>
+          <!-- Remember me -->
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="defaultLoginFormRemember">
+            <label class="custom-control-label" for="defaultLoginFormRemember">Lembrar dados &nbsp;</label>
+          </div>
+        </div>
+        <div>
+          <!-- Forgot password -->
+          <a href="">&nbsp; Esqueceu a senha?</a>
+        </div>
+      </div>
+
+      <!-- Sign in button -->
+      <!--<button class="btn btn-info btn-block my-4" type="submit">Entrar</button>-->
+      <button type="submit" [disabled]="status.loading" mat-raised-button class="btn btn-info btn-block my-4 login-btn">{{btn_title}}</button>
+
+      <!-- Register -->
+      <p>Não tem conta? <a routerLink="register"> Registrar</a> </p>
+      <!--<a routerLink="register"><button class="btn btn-primary" >Cadastro</button></a>-->
+
+      <!-- Social login -->
+      <p>ou entre com:</p>
+      <a type="button" class="light-blue-text mx-2">
+        <i class="fa fa-facebook"></i>
+      </a>
+      <a type="button" class="light-blue-text mx-2">
+        <i class="fa fa-twitter"></i>
+      </a>
+      <a type="button" class="light-blue-text mx-2">
+        <i class="fa fa-linkedin"></i>
+      </a>
+      <a type="button" class="light-blue-text mx-2">
+        <i class="fa fa-github"></i>
+      </a>
+    </form>
+    </div>
+  </div>
+

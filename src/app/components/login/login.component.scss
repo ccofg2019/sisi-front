@@ -8,6 +8,10 @@ form {
   height: 100%;
 }
 
+.login-container {
+  margin: 0 auto;
+}
+
 .container {
   padding: 20px;
   background: #eee;
@@ -28,25 +32,28 @@ div#logo {
   justify-content: center;
   align-items: center;
   margin-top: 10px;
+  width: 400px !important;
 }
 
 .input-sisi {
   font-size: 10px;
   padding: 5px 10px;
   min-width: 350px;
+  width: 400px !important;
   border: none;
   border-radius: 6px;
 }
 $color: #990000;
 button {
   background: $color;
+  border-radius: 45px;
   color: #fff;
   cursor: pointer;
   font-size: 20px;
   font-weight: bold;
   font-family: Trebuchet MS, Helvetica, sans-serif;
-  height: 50px;
-  width: 140px;
+  height: 40px;
+  width: 120px;
   margin: 10px;
   float: right;
   border: none;
