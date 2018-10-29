@@ -30,9 +30,9 @@
     </div>
 
     <br>
-    <div class="row">
-      <div class="col-md-12">
-          <table class="table table-hover">
+    <div class="row row-table">
+        <div class="table-responsive table--no-card m-b-30">
+            <table class="table table-borderless table-striped table-earning">
               <thead class="thead-sisi">
                 <tr>
                   <th scope="col" class="padding-thead-sisi">ID</th>
@@ -45,14 +45,14 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let occurrence of data">
+                <tr class="list" *ngFor="let occurrence of data">
                   <th scope="row">{{ occurrence.id }}</th>
                   <td>{{ occurrence.status }}</td>
-                  <td>{{ occurrence.occurrence_type.name }}</td>
-                  <td>{{ occurrence.user.name }}</td>
-                  <td>{{ occurrence.agent }}</td>
-                  <td>{{ occurrence.zone.name }}</td>
-                  <td>{{ occurrence.occurrence_date }}</td>
+                  <td><i class=" large material-icons">info</i>{{ occurrence.occurrence_type.name }}</td>
+                  <td><i class=" large material-icons">account_circle</i>{{ occurrence.user.name }}</td>
+                  <td><i class=" large material-icons">supervised_user_circle</i>{{ occurrence.agent }}</td>
+                  <td><i class=" large material-icons">room</i>{{ occurrence.zone.name }}</td>
+                  <td> <i class=" large material-icons">calendar_today</i>{{ occurrence.occurrence_date }}</td>
                 </tr>
               </tbody>
             </table>
