@@ -5,10 +5,16 @@
     margin-top: -20px;
     padding-top: 40px;
     border-radius: 10px;
-    height: 840px;
-    
+    position: relative;
+    height: -webkit-calc(100vh - 75px);
+    height: -moz-calc(100vh - 75px);
+    height: calc(100vh - 75px);
+    a{
+      color: black;
+    }
+
     a:hover{
-        color: red;
-        transition: 1s;
+        color: #990000;
+        transition: 0s;
     }
 }

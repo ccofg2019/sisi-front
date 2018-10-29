@@ -2,27 +2,6 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import "~angular-notifier/styles";
 
-.background-sisi{
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: 100% 100%;
-  //background-image: url("assets/background.png");
-}
-#topnav {
-  background: #000000;
-  height: 70px;
-  width: 100%;
-}
-#topnav-home {
-  background: #000000;
-  height: 70px;
-  width: 100%;
-  position: absolute;
-  top: 0;
-  margin-top: 100px;
-}
-
-
 // HEADER
 .box-md-2-sisi{
 background: #ffffff;
@@ -69,23 +48,28 @@ z-index: 3;
       }
     }
     .container-user{
-      padding: 25px;
+      padding-right: 10px;
+      padding-top: 20px;
 
       .btn-sair{
         margin-left: 45px;
         border: 1px solid #13131340;
         width: 100px;
-        height: 30px;
-        font-size: 15px;
+        height: 35px;
+        font-size: 18px;
         padding: 3px;
         border-radius: 70px;
-        
+        color: white;
       }
 
       a:hover{
         border: 1px solid #ff000040;
-        transition: 0.5s;
+        transition: 0s;
       }
     }
+}
+
+.background-sisi {
+  background: rgb(230, 228, 228);
 }
 

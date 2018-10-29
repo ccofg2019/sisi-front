@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AclService } from 'ng2-acl';
 
 @Component({
   selector: 'app-menu-header',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuHeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public aclService: AclService
+  ) { }
 
   ngOnInit() {
   }

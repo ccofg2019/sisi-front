@@ -1,4 +1,6 @@
+import { AuthService } from './../../services/auth/auth.service';
 import { Component, OnInit } from '@angular/core';
+import { AclService } from 'ng2-acl';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public aclService: AclService,
+    private authService: AuthService
+  ) { }
 
   ngOnInit() {
   }
-
+  exit() {
+    this.authService.logout();
+  }
 }

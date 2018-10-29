@@ -1,27 +1,20 @@
-  <div class="container-fluid">
+  <div *ngIf="aclService.can('user_content')" class="container-fluid">
     <div class="row" style="margin-bottom: 15px;">
       <div class="col-md-2 box-md-2-sisi">
-            <img class="img-fluid" src="assets/ufpe-logo-white-full.png">
+            <img class="img-fluid" src="assets/small-sisi-logo-title.png">
       </div>
 
         <div class="col-md-10 box-md-10-sisi">
           <div class="row">
-            <div class="col-md-8"></div>
-            <div class="col-md-4">
+            <div class="col-md-8" ></div>
+            <div class="col-md-4" >
                 <span><i class=" large material-icons">portrait</i></span>
               <div class="container-user">
-                  <span>Name User, Inspetor</span><a class="btn btn-sair" >Sair</a>
+                  <span>User, Role</span><a class="btn btn-sair" (click)=exit() >Sair</a>
               </div>
             </div>
           </div>
         </div>
-
-    </div>
-
-
-    </div>
-
-    <body class="background-sisi">
-
-    </body>
+      </div>
+</div>
 

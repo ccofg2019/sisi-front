@@ -1,15 +1,19 @@
 form {
   display: flex;
   position: absolute;
+  margin-top: 50px;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 100%;
-  height: 100%;
+  background: white;
+  border-radius: 10px;
 }
 
 .login-container {
   margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  margin-right: 220px;
 }
 
 .container {
@@ -26,22 +30,11 @@ div#logo {
   margin-bottom: 20px;
 }
 
-#inputs {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: 10px;
-  width: 400px !important;
-}
-
-.input-sisi {
-  font-size: 10px;
+.form-control {
   padding: 5px 10px;
-  min-width: 350px;
-  width: 400px !important;
-  border: none;
-  border-radius: 6px;
+  min-width: 200px;
+  width: 300px !important;
+  border-radius: 10px;
 }
 $color: #990000;
 button {
@@ -69,3 +62,4 @@ button {
   font-size: 15px;
   margin-right: 210px;
 }
+

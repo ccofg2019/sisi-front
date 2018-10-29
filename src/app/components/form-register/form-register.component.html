@@ -1,17 +1,15 @@
 
     <div>
-      <!--<div id="topnav">
-        <a routerLink=""><button class="btn btn-primary" >Login</button></a>
-      </div>-->
-      <div style="width: 70%; margin: 0 auto">
-        <div class="container-fluid" style="padding:0px;">
-          <form class="form-default-sisi" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-              <h3>Formulário de Cadastro</h3>
+      <div class="form-style">
+        <div class="card" style="padding:0px;">
+          <div class="card-header">
+            <h3>Formulário de Cadastro</h3>
+          </div>
+          <form class="card-body form-default-sisi" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
               <div class="form-row">
-                <div class="form-group col-md-4">
+                <div class="form-group col-md-12">
                   <label for="name">Nome Completo</label>
                   <input data-toggle="tooltip" title="Insira seu nome completo" type="text" class="form-control mb-4" placeholder="Nome" formControlName="name" [ngClass]="{ 'is-invalid': f.name.dirty && f.name.errors }" />
-
                   <div *ngIf="f.name.dirty && f.name.errors" class="invalid-feedback">
                     <div *ngIf="f.name.errors.required"> Campo obrigatório*</div>
                     <div *ngIf="f.name.errors.pattern"> Nome deve possuir mais de 10 caracteres</div>
@@ -20,7 +18,7 @@
               </div>
 
               <div class="form-row">
-                <div class="form-group col-md-4">
+                <div class="form-group col-md-6">
                   <label for="email">Email</label>
                   <input data-toggle="tooltip" title="Insira um email válido" type="email" class="form-control mb-4" formControlName="email" placeholder="exemplo@email.com" [ngClass]="{ 'is-invalid': f.email.dirty && f.email.errors }" />
                   <div *ngIf="f.email.dirty && f.email.errors" class="invalid-feedback">
@@ -29,7 +27,7 @@
                   </div>
                 </div>
 
-                <div class="form-group col-md-4">
+                <div class="form-group col-md-6">
                   <label for="password">Senha</label>
                   <input data-toggle="tooltip" title="Pelo menos 8 caracteres, 1 número, 1 letra maiúscula e 1 letra minúscula" type="password" class="form-control mb-4" formControlName="password" placeholder="Senha" [ngClass]="{ 'is-invalid': f.password.dirty && f.password.errors }" />
 
@@ -43,7 +41,7 @@
 
 
               <div class="form-row">
-                  <div class="form-group col-md-3">
+                  <div class="form-group col-md-4">
                       <label for="cpf">CPF</label>
                       <input data-toggle="tooltip" title='Apenas números' type="number" class="form-control mb-4" formControlName="cpf" placeholder="000.000.000-00" [ngClass]="{ 'is-invalid': f.cpf.dirty && f.cpf.errors }" />
 
@@ -53,7 +51,7 @@
                       </div>
                   </div>
 
-                  <div class="form-group col-md-3">
+                  <div class="form-group col-md-4">
                       <label for="birthdate">Data Nascimento</label>
                       <input onkeydown="return false" data-toggle="tooltip" title="Escolha a data através das setas ao lado" type="date" class="form-control mb-4" formControlName="birthdate" [ngClass]="{ 'is-invalid': f.birthdate.dirty && f.birthdate.errors }" />
 
@@ -62,25 +60,26 @@
                       </div>
                   </div>
 
+                  <div class="form-group col-md-4">
+                    <label for="gender">Gênero</label>
+                    <select data-toggle="tooltip" title="Escolha o seu respectivo gênero" formControlName="gender" class="form-control mb-4" [ngClass]="{ 'is-invalid': f.gender.dirty && f.gender.errors }">
+
+                        <option value="" select disabled>Escolha uma opção</option>
+                        <option value="MASCULINO">Masculino</option>
+                        <option value="FEMININO">Feminino</option>
+                        <option value="TRANS_MASC">Trans-Masculino</option>
+                        <option value="TRANS_FEM">Trans-Feminino</option>
+                      </select>
+                      <div *ngIf="f.gender.dirty && f.gender.errors" class="invalid-feedback">
+                          <div *ngIf="f.gender.errors.required">Campo obrigatório*</div>
+                      </div>
+                  </div>
+
               </div>
 
               <div class="form-row">
-                <div class="form-group col-md-3">
-                  <label for="gender">Gênero</label>
-                  <select data-toggle="tooltip" title="Escolha o seu respectivo gênero" formControlName="gender" class="form-control mb-4" [ngClass]="{ 'is-invalid': f.gender.dirty && f.gender.errors }">
 
-                      <option value="" select disabled>Escolha uma opção</option>
-                      <option value="MASCULINO">Masculino</option>
-                      <option value="FEMININO">Feminino</option>
-                      <option value="TRANS_MASC">Trans-Masculino</option>
-                      <option value="TRANS_FEM">Trans-Feminino</option>
-                    </select>
-                    <div *ngIf="f.gender.dirty && f.gender.errors" class="invalid-feedback">
-                        <div *ngIf="f.gender.errors.required">Campo obrigatório*</div>
-                    </div>
-              </div>
-
-              <div class="form-group col-md-3">
+              <div class="form-group col-md-4">
                   <label for="skin_color">Etnia</label>
                   <select data-toggle="tooltip" title="Escolha sua respectiva etnia" formControlName="skin_color" class="form-control" [ngClass]="{ 'is-invalid': f.skin_color.dirty && f.skin_color.errors }">
                       <option value="" select disabled>Escolha uma opção</option>
@@ -95,28 +94,28 @@
                   </div>
               </div>
 
+              <div class="form-group col-md-4">
+                <label for="phone">Telefone Residencial</label>
+                <input data-toggle="tooltip" title="Apenas números incluindo DDD, exatamente 10 dígitos" type="text" class="form-control mb-4" formControlName="phone" placeholder="(00) 0000-0000" [ngClass]="{ 'is-invalid': submitted && f.phone.errors }" />
+                  <div *ngIf="submitted && !f.phone.errors" class="valid-feedback"></div>
+                  <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+                    <div *ngIf="f.phone.errors.required">Campo obrigatório*</div>
+                    <div *ngIf="f.phone.errors.pattern"> Número de telefone inválido, deve ter 10 dígitos</div>
+                </div>
+              </div>
+              <div class="form-group col-md-4">
+                  <label for="cellphone">Telefone Celular</label>
+                  <input data-toggle="tooltip" title="Apenas números incluindo DDD, exatamente 11 dígitos" type="text" class="form-control" formControlName="cellphone" placeholder="(00) 0000-0000" [ngClass]="{ 'is-invalid': submitted && f.cellphone.errors }" />
+
+                <div *ngIf="submitted && f.cellphone.errors" class="invalid-feedback">
+                    <div *ngIf="f.cellphone.errors.required">Campo obrigatório*</div>
+                    <div *ngIf="f.cellphone.errors.pattern"> Número de celular inválido, deve ter 11 dígitos</div>
+                </div>
+              </div>
 
               </div>
 
               <div class="form-row">
-                <div class="form-group col-md-6">
-                  <label for="phone">Telefone Residencial</label>
-                  <input data-toggle="tooltip" title="Apenas números incluindo DDD, exatamente 10 dígitos" type="text" class="form-control mb-4" formControlName="phone" placeholder="(00) 0000-0000" [ngClass]="{ 'is-invalid': submitted && f.phone.errors }" />
-                    <div *ngIf="submitted && !f.phone.errors" class="valid-feedback"></div>
-                    <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
-                      <div *ngIf="f.phone.errors.required">Campo obrigatório*</div>
-                      <div *ngIf="f.phone.errors.pattern"> Número de telefone inválido, deve ter 10 dígitos</div>
-                  </div>
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="cellphone">Telefone Celular</label>
-                    <input data-toggle="tooltip" title="Apenas números incluindo DDD, exatamente 11 dígitos" type="text" class="form-control" formControlName="cellphone" placeholder="(00) 0000-0000" [ngClass]="{ 'is-invalid': submitted && f.cellphone.errors }" />
-
-                  <div *ngIf="submitted && f.cellphone.errors" class="invalid-feedback">
-                      <div *ngIf="f.cellphone.errors.required">Campo obrigatório*</div>
-                      <div *ngIf="f.cellphone.errors.pattern"> Número de celular inválido, deve ter 11 dígitos</div>
-                  </div>
-                </div>
 
                 <div class="form-group col-md-12">
                   <div class="form-check">
@@ -132,7 +131,7 @@
                 </div><br>
 
                 <button [disabled]="loading" class="btn btn-primary">Cadastrar</button>
-                <a  style="margin-top: 20px;" routerLink="login">Já possui conta?</a>
+                <a  style="margin-top: 20px;" routerLink="">Já possui conta?</a>
               </div>
 
             </form>

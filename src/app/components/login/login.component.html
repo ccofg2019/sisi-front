@@ -1,7 +1,4 @@
 <!--<div>
-  <div id="topnav">
-
-  </div>
   <form (keyup.enter)="login()" [formGroup]="form" (submit)="login()" style="height: 0px;margin-top: 20%;">
 
     <div class="container">
@@ -39,16 +36,18 @@
 
 <div>
   <div class="login-container">
-    <form style="margin-top: -90px" (keyup.enter)="login()" [formGroup]="form" (submit)="login()" class="text-center border border-light p-5">
-      <p class="h4 mb-4">Entrar</p>
+    <form (keyup.enter)="login()" [formGroup]="form" (submit)="login()" class="text-center border border-light p-5">
+      <div id="logo">
+        <img src="../assets/large-sisi-logo-title.png" alt="SISI" height="120" width="250" />
+      </div>
 
         <!-- Email -->
         <!--<input type="email" matInput name="email" formControlName="email"/>-->
-        <input type="email" style="width: 400px" matInput name="email" formControlName="email" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="E-mail">
+        <input type="email" style="width: 300px" matInput name="email" formControlName="email" class="form-control mb-4" placeholder="E-mail">
 
         <!-- Password -->
         <!--<input type="password" autocomplete="off" matInput name="password" formControlName="password"/>-->
-        <input type="password" style="width: 400px" autocomplete="off" matInput name="password" formControlName="password" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Senha">
+        <input type="password" style="width: 300px" autocomplete="off" matInput name="password" formControlName="password"  class="form-control mb-4" placeholder="Senha">
 
       <div class="d-flex justify-content-around">
         <div>
@@ -69,11 +68,11 @@
       <button type="submit" [disabled]="status.loading" mat-raised-button class="btn btn-info btn-block my-4 login-btn">{{btn_title}}</button>
 
       <!-- Register -->
-      <p>Não tem conta? <a routerLink="register"> Registrar</a> </p>
+      <p>Não tem conta? <a routerLink="register"> Registre-se</a> </p>
       <!--<a routerLink="register"><button class="btn btn-primary" >Cadastro</button></a>-->
 
       <!-- Social login -->
-      <p>ou entre com:</p>
+      <!-- <p>ou entre com:</p>
       <a type="button" class="light-blue-text mx-2">
         <i class="fa fa-facebook"></i>
       </a>
@@ -85,7 +84,7 @@
       </a>
       <a type="button" class="light-blue-text mx-2">
         <i class="fa fa-github"></i>
-      </a>
+      </a> -->
     </form>
     </div>
   </div>

@@ -1,17 +1,29 @@
-
-.header-geral-sisi{
-  background-color: #990000;
-  width: 100%;
-  height: 100px;
-
-
-
-
   // LOGO - DESKTOP
   @media (min-width: 260px) {
       img{
           width: 260px;
+          min-height: 65px;
       }
+  }
+  $color: #990000;
+a {
+  background: $color;
+  border-radius: 45px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: bold;
+  font-family: Trebuchet MS, Helvetica, sans-serif;
+  height: 40px;
+  width: 120px;
+  float: right;
+  border: none;
+  transition: background 0.2s ease-in-out;
+  &:hover {
+    background: darken($color, 5);
+  }
+  &:disabled {
+    opacity: 0.5;
   }
 }
 

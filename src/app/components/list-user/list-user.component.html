@@ -1,11 +1,4 @@
 <div>
-  <!-- MENU DE NAVEGAÇÃO -->
-  <div id="topnav">
-    <a *ngIf="aclService.can('list_occurrence')" routerLink="/list-occurrence"><button class="btn btn-primary">Ocorrências</button></a>
-    <a *ngIf="aclService.can('add_occurrence')" routerLink="/occurrence"><button class="btn btn-primary">Registrar Ocorrência</button></a>
-    <a *ngIf="aclService.can('user_content')" routerLink="/home"><button class="btn btn-primary" >Mapa</button></a>
-  </div>
-
   <!-- HEADER LIST-->
   <div class="container-fluid margin-top-sisi">
     <div class="row">
