@@ -73,7 +73,14 @@ export class AclResolver implements Resolve<any> {
          test = of(true);
         }
 
-      } else if (this.match(state, '/list-user')) {
+      } else if (this.match(state, '/irregularity')) {
+
+        if (this.aclService.can('add_irregularity')) {
+
+           test = of(true);
+          }
+
+        } else if (this.match(state, '/list-user')) {
 
         if (this.aclService.can('list_user')) {
 

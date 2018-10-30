@@ -9,6 +9,9 @@
           <a *ngIf="aclService.can('add_occurrence')" routerLink="/occurrence" ><i class=" large material-icons">event_note</i><p class="btn">Reg. Ocorrência</p></a><br>
         </li>
         <li>
+          <a *ngIf="aclService.can('add_irregularity')" routerLink="/irregularity" ><i class=" large material-icons">event_note</i><p class="btn">Reg. Irregularidade</p></a><br>
+        </li>
+        <li>
           <a *ngIf="aclService.can('list_occurrence')" routerLink="/list-occurrence" ><i class=" large material-icons">format_list_numbered</i><p class="btn">Ocorrências</p></a><br>
         </li>
         <li>

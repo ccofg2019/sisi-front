@@ -2,6 +2,7 @@ export  const ABILITIES = {
     DEFAULT: 'default_content',
     USER_CONTENT: 'user_content',
     ADD_OCCURRENCE: 'add_occurrence',
+    ADD_IRREGULARITY: 'add_irregularity',
     LIST_USER: 'list_user',
     LIST_OCCURRENCE: 'list_occurrence'
   };

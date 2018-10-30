@@ -19,12 +19,14 @@ export class AppComponent implements OnInit {
           user: [
             ABILITIES.DEFAULT,
             ABILITIES.USER_CONTENT,
-            ABILITIES.ADD_OCCURRENCE
+            ABILITIES.ADD_OCCURRENCE,
+            ABILITIES.ADD_IRREGULARITY
           ],
           inspector: [
             ABILITIES.DEFAULT,
             ABILITIES.USER_CONTENT,
             ABILITIES.ADD_OCCURRENCE,
+            ABILITIES.ADD_IRREGULARITY,
             ABILITIES.LIST_USER,
             ABILITIES.LIST_OCCURRENCE
           ],
@@ -32,6 +34,7 @@ export class AppComponent implements OnInit {
             ABILITIES.DEFAULT,
             ABILITIES.USER_CONTENT,
             ABILITIES.ADD_OCCURRENCE,
+            ABILITIES.ADD_IRREGULARITY,
             ABILITIES.LIST_USER,
             ABILITIES.LIST_OCCURRENCE
           ],
@@ -39,6 +42,7 @@ export class AppComponent implements OnInit {
             ABILITIES.DEFAULT,
             ABILITIES.USER_CONTENT,
             ABILITIES.ADD_OCCURRENCE,
+            ABILITIES.ADD_IRREGULARITY,
             ABILITIES.LIST_USER,
             ABILITIES.LIST_OCCURRENCE
           ],
@@ -46,6 +50,7 @@ export class AppComponent implements OnInit {
             ABILITIES.DEFAULT,
             ABILITIES.USER_CONTENT,
             ABILITIES.ADD_OCCURRENCE,
+            ABILITIES.ADD_IRREGULARITY,
             ABILITIES.LIST_USER,
             ABILITIES.LIST_OCCURRENCE
           ],
@@ -53,12 +58,14 @@ export class AppComponent implements OnInit {
             ABILITIES.DEFAULT,
             ABILITIES.USER_CONTENT,
             ABILITIES.ADD_OCCURRENCE,
+            ABILITIES.ADD_IRREGULARITY,
             ABILITIES.LIST_USER,
             ABILITIES.LIST_OCCURRENCE],
           op_director: [
             ABILITIES.DEFAULT,
             ABILITIES.USER_CONTENT,
             ABILITIES.ADD_OCCURRENCE,
+            ABILITIES.ADD_IRREGULARITY,
             ABILITIES.LIST_USER,
             ABILITIES.LIST_OCCURRENCE
           ],
@@ -66,6 +73,7 @@ export class AppComponent implements OnInit {
             ABILITIES.DEFAULT,
             ABILITIES.USER_CONTENT,
             ABILITIES.ADD_OCCURRENCE,
+            ABILITIES.ADD_IRREGULARITY,
             ABILITIES.LIST_USER,
             ABILITIES.LIST_OCCURRENCE
           ],
@@ -73,6 +81,7 @@ export class AppComponent implements OnInit {
             ABILITIES.DEFAULT,
             ABILITIES.USER_CONTENT,
             ABILITIES.ADD_OCCURRENCE,
+            ABILITIES.ADD_IRREGULARITY,
             ABILITIES.LIST_USER,
             ABILITIES.LIST_OCCURRENCE
           ],
@@ -80,6 +89,7 @@ export class AppComponent implements OnInit {
             ABILITIES.DEFAULT,
             ABILITIES.USER_CONTENT,
             ABILITIES.ADD_OCCURRENCE,
+            ABILITIES.ADD_IRREGULARITY,
             ABILITIES.LIST_USER,
             ABILITIES.LIST_OCCURRENCE
           ],
@@ -87,6 +97,7 @@ export class AppComponent implements OnInit {
             ABILITIES.DEFAULT,
             ABILITIES.USER_CONTENT,
             ABILITIES.ADD_OCCURRENCE,
+            ABILITIES.ADD_IRREGULARITY,
             ABILITIES.LIST_USER,
             ABILITIES.LIST_OCCURRENCE
           ],
