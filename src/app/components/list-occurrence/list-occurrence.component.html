@@ -53,13 +53,13 @@
               </thead>
               <tbody>
                 <tr *ngFor="let occurrence of data">
-                  <th scope="row">{{ occurrence.id }}</th>
-                  <td>{{ occurrence.status }}</td>
-                  <td>{{ occurrence.occurrence_type.name }}</td>
-                  <td>{{ occurrence.user.name }}</td>
-                  <td>{{ occurrence.agent }}</td>
-                  <td>{{ occurrence.zone.name }}</td>
-                  <td>{{ occurrence.occurrence_date }}</td>
+                    <th scope="row" [routerLink]="['/view-occurrence', occurrence.id]">{{ occurrence.id }}</th>
+                    <td [routerLink]="['/view-occurrence', occurrence.id]">{{ occurrence.status }}</td>
+                    <td [routerLink]="['/view-occurrence', occurrence.id]">{{ occurrence.occurrence_type.name }}</td>
+                    <td [routerLink]="['/view-occurrence', occurrence.id]">{{ occurrence.user.name }}</td>
+                    <td [routerLink]="['/view-occurrence', occurrence.id]">{{ occurrence.agent }}</td>
+                    <td [routerLink]="['/view-occurrence', occurrence.id]">{{ occurrence.zone.name }}</td>
+                    <td [routerLink]="['/view-occurrence', occurrence.id]">{{ occurrence.occurrence_date }}</td>
                 </tr>
               </tbody>
             </table>

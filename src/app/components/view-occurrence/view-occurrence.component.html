@@ -1,0 +1,133 @@
+
+    <div>
+        <div id="topnav">
+          <a routerLink="/list-user"><button class="btn btn-primary" >Usuários</button></a>
+          <a routerLink="/list-occurrence"><button class="btn btn-primary">Ocorrências</button></a>
+          <a routerLink="/home"><button class="btn btn-primary" >Mapa</button></a>
+        </div>
+        
+        <div class="form-default-sisi row">
+          <form class="col-md-8">
+            <h3>Acompanhar Ocorrência</h3><br/>
+
+              <div class="form-row">
+                  <div class="form-group col-md-5">
+                    <label for="title">Titulo da ocorrência</label>
+                    <input [disabled]="status.loading"
+                      data-toggle="tooltip"
+                      title='Insira um resumo da descrição da ocorrência'
+                      type="text"
+                      value="{{ occurrence.title }}"
+                      class="form-control"/>
+                  </div>
+                  
+                  <div class="form-group col-md-4">
+                    <div>
+                       <label for="object_id">Objeto Envolvido</label>
+                       <input [disabled]="status.loading"
+                       data-toggle="tooltip"
+                       title='Insira um resumo da descrição da ocorrência'
+                       type="text"
+                       value="{{ occurrence.occurrence_objects }}"
+                       class="form-control"/>
+                    </div>
+                  </div>
+  
+                  <div class="form-group col-md-3">
+                    <label for="police_report">B.O feito?</label>
+                    <select disabled
+                      data-toggle="tooltip"
+                      title='Selecione o tipo da ocorrência'
+                      class="form-control">
+                      <option *ngIf="occurrence.police_report == 1" select>Sim</option>
+                      <option *ngIf="occurrence.police_report == 0" select>Não</option>
+                    </select>
+                  </div>
+  
+              </div>
+  
+              <div class="form-row">
+                <div class="form-group col-md-3">
+                  <label for="occurrence_date">Data da ocorrência</label>
+                  <input [disabled]="status.loading"
+                    data-toggle="tooltip"
+                    title='Escolha a data através das setas ao lado'
+                    type="date"
+                    value="{{ occurrence.occurrence_date }}"
+                    class="form-control" />
+                </div>
+  
+                <div class="form-group col-md-2">
+                  <label for="occurrence_time">Hora da ocorrência</label>
+                  <input [disabled]="status.loading"
+                    data-toggle="tooltip"
+                    title='Escolha a hora da ocorrência, de preferência utilize as setas'
+                    type="time"
+                    value="{{ occurrence.occurrence_time }}"
+                    class="form-control"/>
+                </div>
+  
+                <div class="form-group col-md-3">
+                  <label for="title">Local da Ocorrência</label>
+                  <input [disabled]="status.loading"
+                  data-toggle="tooltip"
+                  title='Escolha a data através das setas ao lado'
+                  type="text"
+                  value="{{ occurrence.zone.name }}"
+                  class="form-control"/>
+                </div>
+  
+              <div class="form-group col-md-4">
+                  <label for="title">Tipo de Ocorrência</label>
+                  <select [disabled]="status.loading"
+                    data-toggle="tooltip"
+                    title='Selecione o tipo da ocorrência'
+                    class="form-control">
+                    <option [ngValue]=" occurrence.occurrence_type.id" select>{{ occurrence.occurrence_type.name }}</option>
+                    <option [ngValue]="1">Bicicleta</option>
+                    <option [ngValue]="2">Celular</option>
+                    <option [ngValue]="3">Documentos</option>
+                    <option [ngValue]="4">Notebook</option>
+                    <option [ngValue]="5">Veículos</option>
+                    <option [ngValue]="6">Objetos Pessoais</option>
+                    <option [ngValue]="7">Outros</option>
+                    <option [ngValue]="8">Arma branca</option>
+                    <option [ngValue]="9">Arma de fogo</option>
+                  </select>
+              </div>
+            </div>
+
+              <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label for="story">Descrição da Ocorrência</label>
+                    <textarea [disabled]="status.loading" data-toggle="tooltip" class="form-control" rows="5">{{ occurrence.story }}</textarea>
+                </div>
+              </div>
+  
+              <!-- BUTTON SUBMIT -->
+              <button routerLink="/list-occurrence" class="btn btn-primary">Voltar</button>
+              <button class="btn btn-primary" (click)=arquivarInvestigator()>Desativar</button>
+              <button class="btn btn-primary" (click)=validaInvestigator()>Validar</button>
+              <!-- button type="button" class="btn btn-primary" (click)=noDisable2()>Editar</button -->
+  
+            </form>
+  
+            <div class="col-md-4">
+              <div class="map">
+  
+              </div>
+            </div>
+          </div> <!-- div background  -->
+  
+      </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
