@@ -13,6 +13,7 @@ import { ListUserComponent } from './components/list-user/list-user.component';
 import { FormComplaintComponent } from './components/form-complaint/form-complaint.component';
 import { ListOccurrenceComponent } from './components/list-occurrence/list-occurrence.component';
 import { ViewOccurrenceComponent } from './components/view-occurrence/view-occurrence.component';
+import { ListIrregularitiesComponent} from './components/list-irregularities/list-irregularities.component';
 
 const routes: Routes = [
 
@@ -55,6 +56,12 @@ const routes: Routes = [
     component: ListOccurrenceComponent,
     canActivate: [AuthGuardService],
     resolve: { route: AclResolver, state: AclResolver}
+  },
+  {
+    path: 'list-irregularities',
+    component: ListIrregularitiesComponent,
+    //canActivate: [AuthGuardService],
+    //resolve: { route: AclResolver, state: AclResolver}
   }
 ];
 

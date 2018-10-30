@@ -41,6 +41,7 @@ export class FormRegisterComponent implements OnInit {
       skin_color: ['', [Validators.required]],
       cellphone: ['', [Validators.required, Validators.pattern(this.cellpPattern)]],
       phone: ['', [Validators.required, Validators.pattern(this.phonePattern)]],
+      terms: ['', [Validators.required]],
       status: 'ATIVO'
     });
   }
