@@ -23,6 +23,7 @@
   border-right: 1px solid #e5e5e5;
   position: relative;
   z-index: 3;
+  position: fixed;
   img{
     height: 90px;
     width: 200px;
@@ -39,7 +40,7 @@
     right: 0;
     height: 95px;
     z-index: 3;
-
+    position: fixed;
     span{
       i{
         font-size: 50px;
@@ -86,4 +87,9 @@ body {
   color: black;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+//margin top de todos os formulários
+.margin-top-sisi{
+  margin-top: 5.6% !important;
 }
