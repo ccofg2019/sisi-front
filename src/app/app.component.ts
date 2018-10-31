@@ -28,7 +28,8 @@ export class AppComponent implements OnInit {
             ABILITIES.ADD_OCCURRENCE,
             ABILITIES.ADD_IRREGULARITY,
             ABILITIES.LIST_USER,
-            ABILITIES.LIST_OCCURRENCE
+            ABILITIES.LIST_OCCURRENCE,
+            ABILITIES.LIST_IRREGULARITY
           ],
           director: [
             ABILITIES.DEFAULT,
@@ -36,7 +37,8 @@ export class AppComponent implements OnInit {
             ABILITIES.ADD_OCCURRENCE,
             ABILITIES.ADD_IRREGULARITY,
             ABILITIES.LIST_USER,
-            ABILITIES.LIST_OCCURRENCE
+            ABILITIES.LIST_OCCURRENCE,
+            ABILITIES.LIST_IRREGULARITY
           ],
           sec_guard: [
             ABILITIES.DEFAULT,
@@ -44,7 +46,8 @@ export class AppComponent implements OnInit {
             ABILITIES.ADD_OCCURRENCE,
             ABILITIES.ADD_IRREGULARITY,
             ABILITIES.LIST_USER,
-            ABILITIES.LIST_OCCURRENCE
+            ABILITIES.LIST_OCCURRENCE,
+            ABILITIES.LIST_IRREGULARITY
           ],
           inspector2: [
             ABILITIES.DEFAULT,
@@ -52,7 +55,8 @@ export class AppComponent implements OnInit {
             ABILITIES.ADD_OCCURRENCE,
             ABILITIES.ADD_IRREGULARITY,
             ABILITIES.LIST_USER,
-            ABILITIES.LIST_OCCURRENCE
+            ABILITIES.LIST_OCCURRENCE,
+            ABILITIES.LIST_IRREGULARITY
           ],
           gen_inspector: [
             ABILITIES.DEFAULT,
@@ -60,14 +64,17 @@ export class AppComponent implements OnInit {
             ABILITIES.ADD_OCCURRENCE,
             ABILITIES.ADD_IRREGULARITY,
             ABILITIES.LIST_USER,
-            ABILITIES.LIST_OCCURRENCE],
+            ABILITIES.LIST_OCCURRENCE,
+            ABILITIES.LIST_IRREGULARITY
+          ],
           op_director: [
             ABILITIES.DEFAULT,
             ABILITIES.USER_CONTENT,
             ABILITIES.ADD_OCCURRENCE,
             ABILITIES.ADD_IRREGULARITY,
             ABILITIES.LIST_USER,
-            ABILITIES.LIST_OCCURRENCE
+            ABILITIES.LIST_OCCURRENCE,
+            ABILITIES.LIST_IRREGULARITY
           ],
           superintendent: [
             ABILITIES.DEFAULT,
@@ -75,7 +82,8 @@ export class AppComponent implements OnInit {
             ABILITIES.ADD_OCCURRENCE,
             ABILITIES.ADD_IRREGULARITY,
             ABILITIES.LIST_USER,
-            ABILITIES.LIST_OCCURRENCE
+            ABILITIES.LIST_OCCURRENCE,
+            ABILITIES.LIST_IRREGULARITY
           ],
           investigator: [
             ABILITIES.DEFAULT,
@@ -83,7 +91,8 @@ export class AppComponent implements OnInit {
             ABILITIES.ADD_OCCURRENCE,
             ABILITIES.ADD_IRREGULARITY,
             ABILITIES.LIST_USER,
-            ABILITIES.LIST_OCCURRENCE
+            ABILITIES.LIST_OCCURRENCE,
+            ABILITIES.LIST_IRREGULARITY
           ],
           chief_investigator: [
             ABILITIES.DEFAULT,
@@ -91,7 +100,8 @@ export class AppComponent implements OnInit {
             ABILITIES.ADD_OCCURRENCE,
             ABILITIES.ADD_IRREGULARITY,
             ABILITIES.LIST_USER,
-            ABILITIES.LIST_OCCURRENCE
+            ABILITIES.LIST_OCCURRENCE,
+            ABILITIES.LIST_IRREGULARITY
           ],
           superintendent2: [
             ABILITIES.DEFAULT,
@@ -99,7 +109,8 @@ export class AppComponent implements OnInit {
             ABILITIES.ADD_OCCURRENCE,
             ABILITIES.ADD_IRREGULARITY,
             ABILITIES.LIST_USER,
-            ABILITIES.LIST_OCCURRENCE
+            ABILITIES.LIST_OCCURRENCE,
+            ABILITIES.LIST_IRREGULARITY
           ],
       };
       this.aclService.setAbilities(this.aclData);

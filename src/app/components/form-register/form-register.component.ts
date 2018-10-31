@@ -48,6 +48,7 @@ export class FormRegisterComponent implements OnInit {
 
   get f() {return this.registerForm.controls; }
 
+
   onSubmit() {
     this.submitted = true;
 

@@ -15,6 +15,9 @@
           <a *ngIf="aclService.can('list_occurrence')" routerLink="/list-occurrence" ><i class=" large material-icons">format_list_numbered</i><p class="btn">Ocorrências</p></a><br>
         </li>
         <li>
+          <a *ngIf="aclService.can('list_irregularity')" routerLink="/list-irregularities" ><i class=" large material-icons">format_list_numbered</i><p class="btn">Irregularidades</p></a><br>
+        </li>
+        <li>
           <a *ngIf="aclService.can('list_user')" routerLink="/list-user" ><i class=" large material-icons">format_list_numbered</i><p class="btn">Usuários</p></a><br>
         </li>
         <li>

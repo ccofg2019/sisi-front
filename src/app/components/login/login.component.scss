@@ -1,7 +1,7 @@
 form {
   display: flex;
   position: absolute;
-  margin-top: 50px;
+  margin: auto;
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -10,11 +10,11 @@ form {
 }
 
 .login-container {
-  margin: 0 auto;
+  margin-top: auto;
+  margin-bottom: auto;
   display: flex;
   justify-content: center;
-  margin-right: 25%;
-  margin-top: 8%;
+  margin-right: 23%;
 }
 
 .container {

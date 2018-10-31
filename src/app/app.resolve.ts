@@ -94,7 +94,14 @@ export class AclResolver implements Resolve<any> {
              test = of(true);
             }
 
-          }
+          } else if (this.match(state, '/list-irregularities')) {
+
+            if (this.aclService.can('list_irregularity')) {
+
+               test = of(true);
+              }
+
+            }
 
     return test;
   }

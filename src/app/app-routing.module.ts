@@ -55,8 +55,8 @@ const routes: Routes = [
   {
     path: 'list-irregularities',
     component: ListIrregularitiesComponent,
-    // canActivate: [AuthGuardService],
-    // resolve: { route: AclResolver, state: AclResolver}
+    canActivate: [AuthGuardService],
+    resolve: { route: AclResolver, state: AclResolver}
   }
 ];
 

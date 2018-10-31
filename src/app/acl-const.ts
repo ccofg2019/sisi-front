@@ -4,7 +4,8 @@ export  const ABILITIES = {
     ADD_OCCURRENCE: 'add_occurrence',
     ADD_IRREGULARITY: 'add_irregularity',
     LIST_USER: 'list_user',
-    LIST_OCCURRENCE: 'list_occurrence'
+    LIST_OCCURRENCE: 'list_occurrence',
+    LIST_IRREGULARITY: 'list_irregularity'
   };
 export  const ROLES = {
     '1': 'user',
