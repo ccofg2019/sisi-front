@@ -45,14 +45,13 @@
               </thead>
               <tbody>
                 <tr class="list" *ngFor="let occurrence of data">
-                  <th scope="row">{{ occurrence.id }}</th>
-                  <td>{{ occurrence.status }}</td>
-                  <td><i class=" large material-icons">info</i>{{ occurrence.occurrence_type.name }}</td>
-                  <td><i class=" large material-icons">account_circle</i>{{ occurrence.user.name }}</td>
-                  <td><i class=" large material-icons">supervised_user_circle</i>{{ occurrence.agent }}</td>
-                  <td><i class=" large material-icons">room</i>{{ occurrence.zone.name }}</td>
-                  <td> <i class=" large material-icons">calendar_today</i>{{ occurrence.occurrence_date }}</td>
-                </tr>
+                  <th scope="row" [routerLink]="['/view-occurrence', occurrence.id]">{{ occurrence.id }}</th>
+                  <td [routerLink]="['/view-occurrence', occurrence.id]">{{ occurrence.status }}</td>
+                  <td [routerLink]="['/view-occurrence', occurrence.id]"><i class=" large material-icons">info</i>{{ occurrence.occurrence_type.name }}</td>
+                  <td [routerLink]="['/view-occurrence', occurrence.id]"><i class=" large material-icons">account_circle</i>{{ occurrence.user.name }}</td>
+                  <td [routerLink]="['/view-occurrence', occurrence.id]"><i class=" large material-icons">supervised_user_circle</i>{{ occurrence.agent }}</td>
+                  <td [routerLink]="['/view-occurrence', occurrence.id]"><i class=" large material-icons">room</i>{{ occurrence.zone.name }}</td>
+                  <td [routerLink]="['/view-occurrence', occurrence.id]"> <i class=" large material-icons">calendar_today</i>{{ occurrence.occurrence_date }}</td>
               </tbody>
             </table>
 

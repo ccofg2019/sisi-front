@@ -27,4 +27,5 @@ export class ListOccurrenceComponent extends ListPagination
   ngOnInit() {
     this.loadData();
   }
+
 }

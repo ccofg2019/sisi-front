@@ -1,7 +1,7 @@
-import {config} from '../../config';
+import { config } from '../../config';
 
 export const environment = {
-    production: config.production,
+   production: config.production,
     NODE_ENV: config.NODE_ENV,
     API_URL: config.API_URL,
     // Url de teste API_URL: 'http://104.131.99.239:5050/',

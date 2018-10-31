@@ -10,7 +10,6 @@ import { AgmCoreModule } from '@agm/core';
 import { NotifierModule } from 'angular-notifier';
 import { HttpModule } from '@angular/http';
 
-
 // Components
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -22,6 +21,7 @@ import { FormOccurrenceComponent } from './components/form-occurrence/form-occur
 import { ListUserComponent } from './components/list-user/list-user.component';
 import { FormIrregularityComponent } from './components/form-irregularity/form-irregularity.component';
 import { ListOccurrenceComponent } from './components/list-occurrence/list-occurrence.component';
+import { ViewOccurrenceComponent } from './components/view-occurrence/view-occurrence.component';
 import { ListIrregularitiesComponent } from './components/list-irregularities/list-irregularities.component';
 import { MenuHeaderComponent } from './components/menu-header/menu-header.component';
 
@@ -54,7 +54,9 @@ import {
     ListOccurrenceComponent,
     FormIrregularityComponent,
     ListIrregularitiesComponent,
-    MenuHeaderComponent],
+    MenuHeaderComponent,
+    ViewOccurrenceComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
