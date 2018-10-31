@@ -11,7 +11,8 @@ import { first } from 'rxjs/operators';
   styleUrls: ['./form-functionary.component.scss']
 })
 export class FormFunctionaryComponent implements OnInit {
-  registerForm: FormGroup;
+
+  registerFormFunc: FormGroup;
   loading = false;
   submitted;
 
@@ -22,6 +23,7 @@ export class FormFunctionaryComponent implements OnInit {
   passPattern = '^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$';
   phonePattern = '^((\\+91-?)|0)?[0-9]{10}$';
   cpfPattern = '^[0-9]{11}$';
+
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
@@ -30,8 +32,8 @@ export class FormFunctionaryComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-    this.registerForm = this.formBuilder.group({
-    /*  name: ['', [Validators.required, Validators.pattern(this.namePattern) ]],
+    this.registerFormFunc = this.formBuilder.group({
+      name: ['', [Validators.required, Validators.pattern(this.namePattern) ]],
       password: ['', [Validators.required, Validators.pattern(this.passPattern)]],
       email: ['', [Validators.required, Validators.email]],
       cpf: ['', [Validators.required, Validators.pattern(this.cpfPattern)]],
@@ -43,7 +45,7 @@ export class FormFunctionaryComponent implements OnInit {
       terms: ['', [Validators.required]],
       role_id: ['', [Validators.required]],
       status: 'ATIVO'
-*/
+
      /* name: [''],
       password: [''],
       email: [''],
@@ -54,37 +56,25 @@ export class FormFunctionaryComponent implements OnInit {
       cellphone: [''],
       phone: [''],
       terms: [''],
-      role_id: [''],
+      role_id: [5],
       status: 'ATIVO'*/
-
-      name: [''],
-      password: [''],
-      email: [''],
-      cpf: [''],
-      birthdate: [''],
-      gender: [''],
-      skin_color: [''],
-      cellphone: [''],
-      phone: [''],
-      terms: [''],
-      role_id: [''],
-      status: 'ATIVO'
     });
   }
 
-  get f() {return this.registerForm.controls; }
+  get f() {return this.registerFormFunc.controls; }
 
   onSubmit() {
     this.submitted = true;
 
         // stop here if form is invalid
-        if (this.registerForm.invalid) {
+        if (this.registerFormFunc.invalid) {
           this.notifier.show('warning', 'Confira se os campos foram preenchidos corretamente.');
+          console.log(this.registerFormFunc.invalid);
           return;
         }
 
         this.loading = true;
-        this.userService.register(this.registerForm.value)
+        this.userService.registerFuncionario(this.registerFormFunc.value)
             .pipe(first())
             .subscribe(
                 data => {
@@ -93,6 +83,8 @@ export class FormFunctionaryComponent implements OnInit {
                 error => {
                   this.loading = false;
                 });
+
+                console.log(this.registerFormFunc.value.role_id);
   }
 
 }

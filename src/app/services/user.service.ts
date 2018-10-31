@@ -16,6 +16,9 @@ export class UserService {
         return this.http.post(`${environment.API_URL}/api/mobile/users`, user);
     }
 
+    registerFuncionario(user: User) {
+        return this.http.post(`${environment.API_URL}/api/users`, user);
+    }
     public getUsers() {
         return this.http.get(`${environment.API_URL}/api/users`);
     }
