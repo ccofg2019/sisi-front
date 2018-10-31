@@ -1,5 +1,6 @@
 $color:#990000 ;
 button {
+  border-radius: 25px;
   background: $color;
   color: #fff;
   cursor: pointer;
@@ -19,9 +20,35 @@ button {
     opacity: 0.5;
   }
 }
+.form-style{
+  width: 80%;
+  margin: 9%;
+}
+
+.card{
+  border-radius: 10px;
+}
+
+.card-header{
+  display: flex;
+  justify-content: center;
+  border-radius: 10px 10px 0px 0px;
+  padding-top: 17px;
+  background: #990000;
+  color: white;
+}
 
 h3{
   font-weight: bolder;
+}
+
+.form-row{
+  margin-bottom: -25px;
+}
+
+.form-control {
+  padding: 5px 10px;
+  border-radius: 10px;
 }
 
 .background-sub-menu-sisi{
@@ -31,10 +58,9 @@ h3{
 
 .form-default-sisi{
 width: 100%;
-padding: 10px;
+padding: 30px;
 padding-top: 20px;
 height: 80%;
-background-color: #0000001a;
 
 form{
   padding: 10px;

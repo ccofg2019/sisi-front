@@ -10,8 +10,8 @@ import { HomeComponent } from './components/home/home.component';
 import { FormRegisterComponent } from './components/form-register/form-register.component';
 import { FormFunctionaryComponent } from './components/form-functionary/form-functionary.component';
 import { FormOccurrenceComponent } from './components/form-occurrence/form-occurrence.component';
-import { FormComplaintComponent } from './components/form-complaint/form-complaint.component';
 import { ListUserComponent } from './components/list-user/list-user.component';
+import { FormIrregularityComponent } from './components/form-irregularity/form-irregularity.component';
 import { ListOccurrenceComponent } from './components/list-occurrence/list-occurrence.component';
 import { ListIrregularitiesComponent} from './components/list-irregularities/list-irregularities.component';
 import { ViewOccurrenceComponent } from './components/view-occurrence/view-occurrence.component';
@@ -43,8 +43,8 @@ const routes: Routes = [
     resolve: { route: AclResolver, state: AclResolver}
   },
   {
-    path: 'view-occurrence/:id',
-    component: ViewOccurrenceComponent,
+    path: 'irregularity',
+    component: FormIrregularityComponent,
   },
   {
     path: 'list-user',
@@ -53,8 +53,10 @@ const routes: Routes = [
     resolve: { route: AclResolver, state: AclResolver}
   },
   {
-    path: 'form-complaint',
-    component: FormComplaintComponent
+    path: 'list-user',
+    component: ListUserComponent,
+    canActivate: [AuthGuardService],
+    resolve: { route: AclResolver, state: AclResolver}
   },
   {
     path: 'list-occurrence',
@@ -65,9 +67,13 @@ const routes: Routes = [
   {
     path: 'list-irregularities',
     component: ListIrregularitiesComponent,
-    // canActivate: [AuthGuardService],
-    // resolve: { route: AclResolver, state: AclResolver}
-  }
+    canActivate: [AuthGuardService],
+    resolve: { route: AclResolver, state: AclResolver}
+  },
+  {
+    path: 'view-occurrence/:id',
+    component: ViewOccurrenceComponent,
+  },
 ];
 
 @NgModule({

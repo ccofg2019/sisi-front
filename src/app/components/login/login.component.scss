@@ -1,11 +1,20 @@
 form {
   display: flex;
   position: absolute;
+  margin: auto;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 100%;
-  height: 100%;
+  background: white;
+  border-radius: 10px;
+}
+
+.login-container {
+  margin-top: auto;
+  margin-bottom: auto;
+  display: flex;
+  justify-content: center;
+  margin-right: 23%;
 }
 
 .container {
@@ -22,31 +31,23 @@ div#logo {
   margin-bottom: 20px;
 }
 
-#inputs {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: 10px;
-}
-
-.input-sisi {
-  font-size: 10px;
+.form-control {
   padding: 5px 10px;
-  min-width: 350px;
-  border: none;
-  border-radius: 6px;
+  min-width: 200px;
+  width: 300px !important;
+  border-radius: 10px;
 }
 $color: #990000;
 button {
   background: $color;
+  border-radius: 45px;
   color: #fff;
   cursor: pointer;
   font-size: 20px;
   font-weight: bold;
   font-family: Trebuchet MS, Helvetica, sans-serif;
-  height: 50px;
-  width: 140px;
+  height: 40px;
+  width: 120px;
   margin: 10px;
   float: right;
   border: none;
@@ -62,3 +63,4 @@ button {
   font-size: 15px;
   margin-right: 210px;
 }
+

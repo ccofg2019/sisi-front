@@ -31,7 +31,7 @@ export class FormFunctionaryComponent implements OnInit {
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
-     /* name: ['', [Validators.required, Validators.pattern(this.namePattern) ]],
+    /*  name: ['', [Validators.required, Validators.pattern(this.namePattern) ]],
       password: ['', [Validators.required, Validators.pattern(this.passPattern)]],
       email: ['', [Validators.required, Validators.email]],
       cpf: ['', [Validators.required, Validators.pattern(this.cpfPattern)]],
@@ -41,7 +41,20 @@ export class FormFunctionaryComponent implements OnInit {
       cellphone: ['', [Validators.required, Validators.pattern(this.cellpPattern)]],
       phone: ['', [Validators.required, Validators.pattern(this.phonePattern)]],
       terms: ['', [Validators.required]],
-      role: ['', [Validators.required]],
+      role_id: ['', [Validators.required]],
+      status: 'ATIVO'
+*/
+     /* name: [''],
+      password: [''],
+      email: [''],
+      cpf: [''],
+      birthdate: [''],
+      gender: [''],
+      skin_color: [''],
+      cellphone: [''],
+      phone: [''],
+      terms: [''],
+      role_id: [''],
       status: 'ATIVO'*/
 
       name: [''],
@@ -54,7 +67,7 @@ export class FormFunctionaryComponent implements OnInit {
       cellphone: [''],
       phone: [''],
       terms: [''],
-      role: [5],
+      role_id: [''],
       status: 'ATIVO'
     });
   }
@@ -75,7 +88,6 @@ export class FormFunctionaryComponent implements OnInit {
             .pipe(first())
             .subscribe(
                 data => {
-
                   this.router.navigate(['']);
                 },
                 error => {

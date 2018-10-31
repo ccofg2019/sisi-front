@@ -2,22 +2,94 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import "~angular-notifier/styles";
 
-.background-sisi{
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: 100% 100%;
-  background-image: url("assets/background.png");
+// HEADER
+.box-md-2-sisi{
+  background: #ffffff;
+  height: 95px;
+  padding: 0 35px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+  border-right: 1px solid #e5e5e5;
+  position: relative;
+  z-index: 3;
+  position: fixed;
+  img{
+    height: 90px;
+    width: 200px;
+    margin: 5px;
+  }
 }
-#topnav {
-  background: #000000;
-  height: 70px;
-  width: 100%;
+
+.box-md-10-sisi{
+  background: #fcfcfc;
+    -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+    top: 0;
+    right: 0;
+    height: 95px;
+    z-index: 3;
+    position: fixed;
+    span{
+      i{
+        font-size: 50px;
+        padding: 13px;
+        float: left;
+      }
+    }
+    .col-md-4{
+      padding-top: 10px;
+    }
+    .container-user{
+      padding-right: 10px;
+      padding-top: 20px;
+
+      .btn-sair{
+        margin-left: 45px;
+        border: 1px solid #13131340;
+        width: 100px;
+        height: 35px;
+        font-size: 18px;
+        padding: 3px;
+        border-radius: 70px;
+        color: white;
+      }
+
+      a:hover{
+        border: 1px solid #ff000040;
+        transition: 0s;
+      }
+    }
 }
-#topnav-home {
-  background: #000000;
-  height: 70px;
-  width: 100%;
-  position: absolute;
-  top: 0;
-  margin-top: 100px;
+
+//BACKGROUND COLOR
+.background-sisi {
+  background: rgb(230, 228, 228);
+}
+
+//TYPOGRAPHY
+body {
+  font-family: Trebuchet MS, Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.625;
+  color: black;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+//margin top de todos os formulários
+.margin-top-sisi{
+  margin-top: 14vh;
 }
