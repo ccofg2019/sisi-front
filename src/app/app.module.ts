@@ -37,6 +37,7 @@ import {
   MatInputModule,
   MatAutocompleteModule
 } from '@angular/material';
+import { FormFunctionaryComponent } from './components/form-functionary/form-functionary.component';
 
 
 @NgModule({
@@ -51,7 +52,8 @@ import {
     ListOccurrenceComponent,
     FormComplaintComponent,
     ViewOccurrenceComponent,
-    ListIrregularitiesComponent
+    ListIrregularitiesComponent,
+    FormFunctionaryComponent
   ],
   imports: [
     BrowserModule,
