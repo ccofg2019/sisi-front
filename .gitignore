@@ -39,3 +39,5 @@ Thumbs.db
 !.vscode/launch.json
 !.vscode/extensions.json
 
+# env
+config.ts
