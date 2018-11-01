@@ -101,3 +101,20 @@ input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+
+@media (max-width: 576px) {
+
+  .form-style{
+    width: 100%;
+    margin: 0;
+  }
+
+  .form-check{
+    margin-top: 20px;
+  }
+
+  h3{
+    font-size: 25px;
+  }
+
+}
