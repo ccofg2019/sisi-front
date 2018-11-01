@@ -42,22 +42,8 @@ export class FormFunctionaryComponent implements OnInit {
       skin_color: ['', [Validators.required]],
       cellphone: ['', [Validators.required, Validators.pattern(this.cellpPattern)]],
       phone: ['', [Validators.required, Validators.pattern(this.phonePattern)]],
-      terms: ['', [Validators.required]],
-      role_id: ['', [Validators.required]],
+      role_id: [1, [Validators.required]],
       status: 'ATIVO'
-
-     /* name: [''],
-      password: [''],
-      email: [''],
-      cpf: [''],
-      birthdate: [''],
-      gender: [''],
-      skin_color: [''],
-      cellphone: [''],
-      phone: [''],
-      terms: [''],
-      role_id: [5],
-      status: 'ATIVO'*/
     });
   }
 
@@ -69,22 +55,20 @@ export class FormFunctionaryComponent implements OnInit {
         // stop here if form is invalid
         if (this.registerFormFunc.invalid) {
           this.notifier.show('warning', 'Confira se os campos foram preenchidos corretamente.');
-          console.log(this.registerFormFunc.invalid);
           return;
         }
-
         this.loading = true;
         this.userService.registerFuncionario(this.registerFormFunc.value)
             .pipe(first())
             .subscribe(
                 data => {
-                  this.router.navigate(['']);
+                  this.notifier.show('success', 'Funcionário cadastrado com sucesso!');
+                  this.router.navigate(['/home']);
                 },
                 error => {
+                  this.notifier.show('error', 'Desculpe, ocorreu um problema, suas informações não foram enviadas.');
                   this.loading = false;
                 });
-
-                console.log(this.registerFormFunc.value.role_id);
   }
 
 }
