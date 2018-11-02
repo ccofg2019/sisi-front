@@ -5,15 +5,16 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 // COMPONENT
-import { FormRegisterComponent } from './components/form-register/form-register.component';
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
+import { FormRegisterComponent } from './components/form-register/form-register.component';
+import { FormFunctionaryComponent } from './components/form-functionary/form-functionary.component';
 import { FormOccurrenceComponent } from './components/form-occurrence/form-occurrence.component';
 import { ListUserComponent } from './components/list-user/list-user.component';
 import { FormIrregularityComponent } from './components/form-irregularity/form-irregularity.component';
 import { ListOccurrenceComponent } from './components/list-occurrence/list-occurrence.component';
-import { ViewOccurrenceComponent } from './components/view-occurrence/view-occurrence.component';
 import { ListIrregularitiesComponent} from './components/list-irregularities/list-irregularities.component';
+import { ViewOccurrenceComponent } from './components/view-occurrence/view-occurrence.component';
 
 const routes: Routes = [
 
@@ -24,6 +25,10 @@ const routes: Routes = [
   {
     path: 'register',
     component: FormRegisterComponent
+  },
+  {
+    path: 'functionary',
+    component: FormFunctionaryComponent
   },
   {
     path: 'home',

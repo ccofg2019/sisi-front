@@ -1,20 +1,16 @@
 form {
   display: flex;
-  position: absolute;
-  margin: auto;
+
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background: white;
-  border-radius: 10px;
-}
+  width: 122%;
+  height: 641.5px;
+  margin: -95px 50px -70px -240px;
+  padding: auto;
 
-.login-container {
-  margin-top: auto;
-  margin-bottom: auto;
-  display: flex;
-  justify-content: center;
-  margin-right: 23%;
+
+
 }
 
 .container {
@@ -63,4 +59,25 @@ button {
   font-size: 15px;
   margin-right: 210px;
 }
+
+
+<<<<<<< HEAD
+@media (max-width: 576px) {
+
+  .login-container {
+    margin: -20% 2% 0 0;
+    width: 100%;
+  }
+
+  form{
+    width: 325px;
+  }
+
+  .d-flex{
+    display: block !important;
+  }
+
+}
+=======
+>>>>>>> a8678f0cc286c2d8b3639c9bf9c776a18d98305e
 

@@ -24,6 +24,7 @@ import { ListOccurrenceComponent } from './components/list-occurrence/list-occur
 import { ViewOccurrenceComponent } from './components/view-occurrence/view-occurrence.component';
 import { ListIrregularitiesComponent } from './components/list-irregularities/list-irregularities.component';
 import { MenuHeaderComponent } from './components/menu-header/menu-header.component';
+import { FormFunctionaryComponent } from './components/form-functionary/form-functionary.component';
 
 // Services
 import { TokenInterceptor } from './services/token/token.interceptor';
@@ -56,6 +57,7 @@ import {
     ListIrregularitiesComponent,
     MenuHeaderComponent,
     ViewOccurrenceComponent,
+    FormFunctionaryComponent
   ],
   imports: [
     BrowserModule,
