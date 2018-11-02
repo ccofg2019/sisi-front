@@ -10,3 +10,4 @@ export class User {
     public phone: string;
     public status: string;
 }
+

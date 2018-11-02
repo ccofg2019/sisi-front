@@ -1,13 +1,20 @@
-  <div class="container-fluid">
-    <div class="row">
-        <header class="header-geral-sisi">
-            <div class="col align-self-start">
-                <!--a routerLink="/home"--><img class="img-fluid" src="assets/ufpe-logo-white-full.png">
-            </div>
-          </header>
-    </div>
-    <body class="background-sisi">
+  <div *ngIf="aclService.can('user_content')" class="container-fluid">
+    <div class="row" style="margin-bottom: 15px;">
+      <div class="col-md-2 box-md-2-sisi">
+            <img class="img-fluid" src="assets/large-sisi-logo-title.png">
+      </div>
 
-    </body>
-  </div>
+        <div class="col-md-10 box-md-10-sisi">
+          <div class="row">
+            <div class="col-md-8" ></div>
+            <div class="col-md-4" >
+                <span><i class=" large material-icons">portrait</i></span>
+              <div class="container-user">
+                  <span>User, Role</span><a class="btn btn-sair" (click)=exit() >Sair</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
 

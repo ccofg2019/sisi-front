@@ -1,18 +1,18 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { first } from 'rxjs/operators';
 import { UserService } from '../../services/user.service';
 import { NotifyService } from '../../services/notify/notify.service';
+import { first } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-form-register',
-  templateUrl: './form-register.component.html',
-  styleUrls: ['./form-register.component.scss']
+  selector: 'app-form-functionary',
+  templateUrl: './form-functionary.component.html',
+  styleUrls: ['./form-functionary.component.scss']
 })
-export class FormRegisterComponent implements OnInit {
+export class FormFunctionaryComponent implements OnInit {
 
-  registerForm: FormGroup;
+  registerFormFunc: FormGroup;
   loading = false;
   submitted;
 
@@ -23,6 +23,7 @@ export class FormRegisterComponent implements OnInit {
   passPattern = '^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$';
   phonePattern = '^((\\+91-?)|0)?[0-9]{10}$';
   cpfPattern = '^[0-9]{11}$';
+
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
@@ -31,7 +32,7 @@ export class FormRegisterComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-    this.registerForm = this.formBuilder.group({
+    this.registerFormFunc = this.formBuilder.group({
       name: ['', [Validators.required, Validators.pattern(this.namePattern) ]],
       password: ['', [Validators.required, Validators.pattern(this.passPattern)]],
       email: ['', [Validators.required, Validators.email]],
@@ -41,33 +42,33 @@ export class FormRegisterComponent implements OnInit {
       skin_color: ['', [Validators.required]],
       cellphone: ['', [Validators.required, Validators.pattern(this.cellpPattern)]],
       phone: ['', [Validators.required, Validators.pattern(this.phonePattern)]],
-      terms: ['', [Validators.required]],
+      role_id: [1, [Validators.required]],
       status: 'ATIVO'
     });
   }
 
-  get f() {return this.registerForm.controls; }
-
+  get f() {return this.registerFormFunc.controls; }
 
   onSubmit() {
     this.submitted = true;
 
         // stop here if form is invalid
-        if (this.registerForm.invalid) {
+        if (this.registerFormFunc.invalid) {
           this.notifier.show('warning', 'Confira se os campos foram preenchidos corretamente.');
           return;
         }
-
         this.loading = true;
-        this.userService.register(this.registerForm.value)
+        this.userService.registerFuncionario(this.registerFormFunc.value)
             .pipe(first())
             .subscribe(
                 data => {
-
-                  this.router.navigate(['']);
+                  this.notifier.show('success', 'Funcionário cadastrado com sucesso!');
+                  this.router.navigate(['/home']);
                 },
                 error => {
+                  this.notifier.show('error', 'Desculpe, ocorreu um problema, suas informações não foram enviadas.');
                   this.loading = false;
                 });
   }
+
 }

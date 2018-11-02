@@ -1,14 +1,12 @@
-<div>
-  <header>
-    <div id="topnav">
-
-        <button (click)=exit()  class="btn btn-primary">Sair</button>
-        <a *ngIf="aclService.can('add_occurrence')"  routerLink="/occurrence"><button class="btn btn-primary">Registrar Ocorrência</button></a>
-        <a *ngIf="aclService.can('list_user')" routerLink="/list-user"><button class="btn btn-primary">Usuários</button></a>
-        <a *ngIf="aclService.can('list_occurrence')" routerLink="/list-occurrence"><button class="btn btn-primary">Ocorrências</button></a>
+<div class="margin-top-sisi">
+  <div class="card" style="width: 100%;">
+    <div class="card-header">
+      <h3>Mapa de Ocorrências</h3>
     </div>
-  </header>
-  <agm-map [zoom]="17" [latitude]="lat" [longitude]="lng" (mapClick)="onChoseLocation($event)">
-    <agm-marker [latitude]="lat" [longitude]="lng" *ngIf="locationChosen"></agm-marker>
-  </agm-map>
+      <div class="card-body" style="width: 100%; height: 70%;">
+        <agm-map [zoom]="17" [latitude]="lat" [longitude]="lng" (mapClick)="onChoseLocation($event)">
+          <agm-marker [latitude]="lat" [longitude]="lng" *ngIf="locationChosen"></agm-marker>
+        </agm-map>
+      </div>
+    </div>
 </div>

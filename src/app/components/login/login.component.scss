@@ -1,12 +1,15 @@
 form {
   display: flex;
-  position: absolute;
+
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 100%;
-  height: 100%;
-  margin: -1px 0px 0px 0px;
+  width: 122%;
+  height: 641.5px;
+  margin: -95px 50px -70px -240px;
+  padding: auto;
+
+
 
 }
 
@@ -14,7 +17,7 @@ form {
   padding: 20px;
   background: #eee;
   border-radius: 7px;
-  max-width: 600px;
+  max-width: 500px;
 }
 
 div#logo {
@@ -24,31 +27,23 @@ div#logo {
   margin-bottom: 20px;
 }
 
-#inputs {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: 10px;
-}
-
-.input-sisi {
-  font-size: 10px;
+.form-control {
   padding: 5px 10px;
-  min-width: 350px;
-  border: none;
-  border-radius: 6px;
+  min-width: 200px;
+  width: 300px !important;
+  border-radius: 10px;
 }
 $color: #990000;
 button {
   background: $color;
+  border-radius: 45px;
   color: #fff;
   cursor: pointer;
   font-size: 20px;
   font-weight: bold;
   font-family: Trebuchet MS, Helvetica, sans-serif;
-  height: 50px;
-  width: 140px;
+  height: 40px;
+  width: 120px;
   margin: 10px;
   float: right;
   border: none;
@@ -64,3 +59,6 @@ button {
   font-size: 15px;
   margin-right: 210px;
 }
+
+
+

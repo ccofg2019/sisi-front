@@ -1,4 +1,18 @@
 <app-header></app-header>
-<router-outlet>
-</router-outlet>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2">
+            <app-menu-header></app-menu-header>
+        </div>
+        <div class="col-md-10">
+            <div class="margin-top-sisi">
+            <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
 <notifier-container></notifier-container>
