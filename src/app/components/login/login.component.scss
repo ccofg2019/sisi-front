@@ -64,3 +64,21 @@ button {
   margin-right: 210px;
 }
 
+
+@media (max-width: 576px) {
+
+  .login-container {
+    margin: -20% 2% 0 0;
+    width: 100%;
+  }
+
+  form{
+    width: 325px;
+  }
+
+  .d-flex{
+    display: block !important;
+  }
+
+}
+
