@@ -22,7 +22,7 @@ button {
 }
 .form-style{
   width: 80%;
-  margin-top: 5%;
+  margin: 9%;
 }
 
 .card{
@@ -100,21 +100,4 @@ input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
-}
-
-@media (max-width: 576px) {
-
-  .form-style{
-    width: 100%;
-    margin: 0;
-  }
-
-  .form-check{
-    margin-top: 20px;
-  }
-
-  h3{
-    font-size: 25px;
-  }
-
 }

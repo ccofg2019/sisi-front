@@ -19,76 +19,98 @@ export class AppComponent implements OnInit {
           user: [
             ABILITIES.DEFAULT,
             ABILITIES.USER_CONTENT,
-            ABILITIES.ADD_OCCURRENCE
+            ABILITIES.ADD_OCCURRENCE,
+            ABILITIES.ADD_IRREGULARITY
           ],
           inspector: [
             ABILITIES.DEFAULT,
             ABILITIES.USER_CONTENT,
             ABILITIES.ADD_OCCURRENCE,
+            ABILITIES.ADD_IRREGULARITY,
             ABILITIES.LIST_USER,
-            ABILITIES.LIST_OCCURRENCE
+            ABILITIES.LIST_OCCURRENCE,
+            ABILITIES.LIST_IRREGULARITY
           ],
           director: [
             ABILITIES.DEFAULT,
             ABILITIES.USER_CONTENT,
             ABILITIES.ADD_OCCURRENCE,
+            ABILITIES.ADD_IRREGULARITY,
             ABILITIES.LIST_USER,
-            ABILITIES.LIST_OCCURRENCE
+            ABILITIES.LIST_OCCURRENCE,
+            ABILITIES.LIST_IRREGULARITY
           ],
           sec_guard: [
             ABILITIES.DEFAULT,
             ABILITIES.USER_CONTENT,
             ABILITIES.ADD_OCCURRENCE,
+            ABILITIES.ADD_IRREGULARITY,
             ABILITIES.LIST_USER,
-            ABILITIES.LIST_OCCURRENCE
+            ABILITIES.LIST_OCCURRENCE,
+            ABILITIES.LIST_IRREGULARITY
           ],
           inspector2: [
             ABILITIES.DEFAULT,
             ABILITIES.USER_CONTENT,
             ABILITIES.ADD_OCCURRENCE,
+            ABILITIES.ADD_IRREGULARITY,
             ABILITIES.LIST_USER,
-            ABILITIES.LIST_OCCURRENCE
+            ABILITIES.LIST_OCCURRENCE,
+            ABILITIES.LIST_IRREGULARITY
           ],
           gen_inspector: [
             ABILITIES.DEFAULT,
             ABILITIES.USER_CONTENT,
             ABILITIES.ADD_OCCURRENCE,
+            ABILITIES.ADD_IRREGULARITY,
             ABILITIES.LIST_USER,
-            ABILITIES.LIST_OCCURRENCE],
+            ABILITIES.LIST_OCCURRENCE,
+            ABILITIES.LIST_IRREGULARITY
+          ],
           op_director: [
             ABILITIES.DEFAULT,
             ABILITIES.USER_CONTENT,
             ABILITIES.ADD_OCCURRENCE,
+            ABILITIES.ADD_IRREGULARITY,
             ABILITIES.LIST_USER,
-            ABILITIES.LIST_OCCURRENCE
+            ABILITIES.LIST_OCCURRENCE,
+            ABILITIES.LIST_IRREGULARITY
           ],
           superintendent: [
             ABILITIES.DEFAULT,
             ABILITIES.USER_CONTENT,
             ABILITIES.ADD_OCCURRENCE,
+            ABILITIES.ADD_IRREGULARITY,
             ABILITIES.LIST_USER,
-            ABILITIES.LIST_OCCURRENCE
+            ABILITIES.LIST_OCCURRENCE,
+            ABILITIES.LIST_IRREGULARITY
           ],
           investigator: [
             ABILITIES.DEFAULT,
             ABILITIES.USER_CONTENT,
             ABILITIES.ADD_OCCURRENCE,
+            ABILITIES.ADD_IRREGULARITY,
             ABILITIES.LIST_USER,
-            ABILITIES.LIST_OCCURRENCE
+            ABILITIES.LIST_OCCURRENCE,
+            ABILITIES.LIST_IRREGULARITY
           ],
           chief_investigator: [
             ABILITIES.DEFAULT,
             ABILITIES.USER_CONTENT,
             ABILITIES.ADD_OCCURRENCE,
+            ABILITIES.ADD_IRREGULARITY,
             ABILITIES.LIST_USER,
-            ABILITIES.LIST_OCCURRENCE
+            ABILITIES.LIST_OCCURRENCE,
+            ABILITIES.LIST_IRREGULARITY
           ],
           superintendent2: [
             ABILITIES.DEFAULT,
             ABILITIES.USER_CONTENT,
             ABILITIES.ADD_OCCURRENCE,
+            ABILITIES.ADD_IRREGULARITY,
             ABILITIES.LIST_USER,
-            ABILITIES.LIST_OCCURRENCE
+            ABILITIES.LIST_OCCURRENCE,
+            ABILITIES.LIST_IRREGULARITY
           ],
       };
       this.aclService.setAbilities(this.aclData);
