@@ -1,4 +1,5 @@
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { AclService } from 'ng2-acl';
@@ -44,6 +45,7 @@ export class ViewOccurrenceComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
+    private router: Router,
     private occurrenceService: OccurrenceService,
     public aclService: AclService,
     private notifier: NotifyService
@@ -66,8 +68,8 @@ export class ViewOccurrenceComponent implements OnInit {
               coordinates: '41.40338, 2.17403',
               police_report: [occurrence.data.police_report, Validators.required],
               estimated_loss: ['345'],
-              occurrence_type_id: [occurrence.data.occurrence_type_id, Validators.required],
-              zone_id: [occurrence.data.zone_id, Validators.required],
+              occurrence_type_id: [occurrence.data.occurrence_type.id, Validators.required],
+              zone_id: [occurrence.data.zone.id, Validators.required],
               involved_person: this.formBuilder.group({
                 name: ['', Validators.pattern(this.namePattern)],
                 cpf: ['', [Validators.pattern(this.cpfPattern)]],
@@ -112,6 +114,28 @@ export class ViewOccurrenceComponent implements OnInit {
         error => {
           this.notifier.show('error', 'Ocorreu um erro ao tentar alterar o status da ocorrência');
         });
+    }
+
+    onSubmit() {
+      this.submitted = true;
+          // stop here if form is invalid
+          if (this.formOccurrence.invalid) {
+            this.notifier.show('warning', 'Erro ao tentar editar uma ocorrência, confira se os campos foram preenchidos corretamente.');
+            return;
+          }
+
+          this.loading = true;
+          this.occurrenceService.editarOccurrences(this.formOccurrence.value, this.idOccurrence)
+              .pipe(first())
+              .subscribe(
+                  data => {
+                    this.notifier.show('success', 'Ocorrência editada com sucesso!');
+                    this.router.navigate(['/list-occurrence']);
+                  },
+                  error => {
+                    this.loading = false;
+                    this.notifier.show('error', 'Ocorreu um erro ao tentar editar uma ocorrência, suas informações não foram enviadas.');
+                  });
     }
 
   get f() { return this.formOccurrence.controls; }

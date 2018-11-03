@@ -88,8 +88,15 @@
             <label for="title">Local da Ocorrência</label>
             <select data-toggle="tooltip" title='Selecione a área em que a ocorrência ocorreu' class="form-control"
               formControlName="zone_id" [ngClass]="{ 'is-invalid': submitted && f.zone_id.errors }">
-              <option value="" select disabled>Escolha uma opção</option>
-              <option value="1">Departamento de Tecnologia do Campus</option>
+              <option value="1">Fox - Medicina</option>
+              <option value="2">Zona 009 - Fisioterapia</option>
+              <option value="3">Horse - CCO</option>
+              <option value="4">Dog - Artes</option>
+              <option value="5">Zona 002 - Odontologia</option>
+              <option value="6">Cat - Educação fisica</option>
+              <option value="7">Cat - Educação fisica</option>
+              <option value="8">Fish - Artes</option>
+              <option value="9">Zona 3421 - Educação fisica</option>
             </select>
 
             <div *ngIf="submitted && f.zone_id.errors" class="invalid-feedback">
@@ -138,7 +145,7 @@
         </div>
 
         <!-- MODAL DE ENVOLVIDO -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        <!--div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
           aria-hidden="true">
 
           <div class="modal-dialog" role="document">
@@ -214,11 +221,12 @@
           </div>
         </div>
         <!-- FIM MODAL ENVOLVIDO -->
-
+      
         <!-- BUTTON SUBMIT -->
         <button routerLink="/list-occurrence" class="btn btn-primary">Voltar</button>
         <button class="btn btn-primary" (click)=arquivarInvestigator()>Desativar</button>
         <button class="btn btn-primary" (click)=validaInvestigator()>Validar</button>
+        <button [disabled]="loading" class="btn btn-primary">Editar</button>
 
       </form>
     </div>

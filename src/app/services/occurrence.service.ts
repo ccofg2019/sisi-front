@@ -31,9 +31,12 @@ export class OccurrenceService {
     //     return this.http.put(`${environment.API_URL}/api/occurrence-reports/${id}`, occurrence);
     // }
 
-
-     public statusOccurrences(id: number, status: string) {
+    public statusOccurrences(id: number, status: string) {
        return this.http.put(`${environment.API_URL}/api/occurrence-reports/${id}?status=${status}`, status);
+    }
+
+    public editarOccurrences(occurrence: Occurrence, id: number) {
+        return this.http.put(`${environment.API_URL}/api/occurrence-reports/${id}`, occurrence);
     }
 
 }
