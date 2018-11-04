@@ -45,8 +45,6 @@ export class FormIrregularityComponent implements OnInit {
     this.formIrregularity = this.formBuilder.group({
       title: ['', [ Validators.required, Validators.pattern(this.titlePattern)]],
       story: ['', [Validators.required, Validators.pattern(this.storyPattern)]],
-      irregularity_date: ['', [Validators.required]],
-      irregularity_time: ['', Validators.required],
       coordinates: '41.40338, 2.17403',
       irregularity_type_id: ['', Validators.required],
       zone_id: ['', Validators.required],
@@ -69,12 +67,12 @@ export class FormIrregularityComponent implements OnInit {
             .pipe(first())
             .subscribe(
                 data => {
-                  alert('Registro de ocorrência realizado com sucesso!');
+                  alert('Registro de irregularidade realizado com sucesso!');
                   this.router.navigate(['home']);
                 },
                 error => {
                   this.loading = false;
-                  alert('Ocorreu um erro ao tentar registrar sua ocorrência.');
+                  alert('Ocorreu um erro ao tentar registrar sua irregularidade.');
                 });
   }
 }
