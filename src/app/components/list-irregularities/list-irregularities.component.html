@@ -7,7 +7,7 @@
       <div class="col-md-6">
         <div class="row">
           <div class="col-md-8">
-              <label>Filtrar Ocorrências por:</label>
+              <label>Filtrar Irregularidades por:</label>
           </div>
           <div class="col-md-4">
                 <select class="custom-select" id="inputGroupSelect01">
@@ -44,14 +44,14 @@
                 </tr>
               </thead>
               <tbody>
-                <tr class="list" *ngFor="let occurrence of data">
-                  <th scope="row">{{ occurrence.id }}</th>
-                  <td>{{ occurrence.status }}</td>
-                  <td><i class=" large material-icons">info</i>{{ occurrence.occurrence_type.name }}</td>
-                  <td><i class=" large material-icons">account_circle</i>{{ occurrence.user.name }}</td>
-                  <td><i class=" large material-icons">supervised_user_circle</i>{{ occurrence.agent }}</td>
-                  <td><i class=" large material-icons">room</i>{{ occurrence.zone.name }}</td>
-                  <td> <i class=" large material-icons">calendar_today</i>{{ occurrence.occurrence_date }}</td>
+                <tr class="list" *ngFor="let irregularity of data">
+                  <th scope="row">{{ irregularity.id }}</th>
+                  <td>{{ irregularity.status }}</td>
+                  <td><i class=" large material-icons">info</i>{{ irregularity.irregularity_type.name }}</td>
+                  <td><i class=" large material-icons">account_circle</i>{{ irregularity.user.name }}</td>
+                  <td><i class=" large material-icons">supervised_user_circle</i>{{ irregularity.agent.name }}</td>
+                  <td><i class=" large material-icons">room</i>{{ irregularity.zone.name }}</td>
+                  <td> <i class=" large material-icons">calendar_today</i>{{ irregularity.created_at }}</td>
                 </tr>
               </tbody>
             </table>

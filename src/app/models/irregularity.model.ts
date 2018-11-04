@@ -1,12 +1,8 @@
 export class Irregularity {
   title: string;
   story: string;
-  occurrence_date: string;
-  occurrence_time: string;
   coordinates: string;
-  police_report: boolean;
-  estimated_loss: string;
-  occurrence_type_id: string;
+  irregularity_type_id: string;
   zone_id: string;
 }
 

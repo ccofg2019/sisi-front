@@ -1,3 +1,4 @@
+import { Irregularity } from './../../models/irregularity.model';
 import { Component, OnInit } from '@angular/core';
 import { AclService } from 'ng2-acl';
 import { ListComponent } from '../../interfaces/list.component';
@@ -13,6 +14,7 @@ export class ListIrregularitiesComponent extends ListPagination
   implements OnInit, ListComponent {
   public service;
   public methodLoad;
+  public irregularity: Irregularity;
 
   constructor(
     private irregularityService: IrregularityService,
