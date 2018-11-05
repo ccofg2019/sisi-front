@@ -11,10 +11,40 @@
                 <span><i class=" large material-icons">portrait</i></span>
               <div class="container-user">
                   <span>User, Role</span><a class="btn btn-sair" (click)=exit() >Sair</a>
+
+                  <div class="dropdown">
+                    <button class="btn btn-secondary" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="
+                    width: 50px; height: 40px;">
+                    <i class=" large material-icons">dehaze</i>
+                    </button>
+                    <div *ngIf="aclService.can('user_content')" class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                      <button *ngIf="aclService.can('user_content')" routerLink="/home" class="dropdown-item" type="button"><i class=" large material-icons">home</i><p class="btn">Home</p></button>
+                     
+                      <button *ngIf="aclService.can('add_occurrence')" routerLink="/occurrence" class="dropdown-item" type="button"><i class=" large material-icons">event_note</i><p class="btn">Reg. Ocorrência</p></button>
+                      
+                      <button *ngIf="aclService.can('add_irregularity')" routerLink="/irregularity" class="dropdown-item" type="button"><i class=" large material-icons">event_note</i><p class="btn">Reg. Irregularidade</p></button>
+                      
+                      <button routerLink="/functionary" class="dropdown-item" type="button"><i class=" large material-icons">event_note</i><p class="btn">Reg. Funcionários</p></button>
+                      
+                      <button *ngIf="aclService.can('list_occurrence')" routerLink="/list-occurrence" class="dropdown-item" type="button"><i class=" large material-icons">format_list_numbered</i><p class="btn">Ocorrências</p></button>
+                      
+                      <button *ngIf="aclService.can('list_irregularity')" routerLink="/list-irregularities" class="dropdown-item" type="button"><i class=" large material-icons">format_list_numbered</i><p class="btn">Irregularidades</p></button>
+                      
+                      <button *ngIf="aclService.can('list_user')" routerLink="/list-user" class="dropdown-item" type="button"><i class=" large material-icons">format_list_numbered</i><p class="btn">Usuários</p></button>
+                      
+                      <button *ngIf="aclService.can('user_content')" routerLink="/home" class="dropdown-item" type="button"><i class=" large material-icons">map</i><p class="btn">Mapa</p></button>
+                      
+                      <button class="dropdown-item" type="button" (click)=exit()><i class=" large material-icons">exit_to_app</i><p class="btn">Sair</p></button>
+
+                    </div>
+                  </div>
+                  
               </div>
             </div>
           </div>
         </div>
       </div>
 </div>
+
+
 

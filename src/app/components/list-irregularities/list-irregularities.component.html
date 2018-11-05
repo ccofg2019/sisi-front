@@ -45,13 +45,13 @@
               </thead>
               <tbody>
                 <tr class="list" *ngFor="let irregularity of data">
-                  <th scope="row">{{ irregularity.id }}</th>
-                  <td>{{ irregularity.status }}</td>
-                  <td><i class=" large material-icons">info</i>{{ irregularity.irregularity_type.name }}</td>
-                  <td><i class=" large material-icons">account_circle</i>{{ irregularity.user.name }}</td>
-                  <td><i class=" large material-icons">supervised_user_circle</i>{{ irregularity.agent.name }}</td>
-                  <td><i class=" large material-icons">room</i>{{ irregularity.zone.name }}</td>
-                  <td> <i class=" large material-icons">calendar_today</i>{{ irregularity.created_at }}</td>
+                  <th scope="row" [routerLink]="['/view-irregularity', irregularity.id]">{{ irregularity.id }}</th>
+                  <td [routerLink]="['/view-irregularity', irregularity.id]">{{ irregularity.status }}</td>
+                  <td [routerLink]="['/view-irregularity', irregularity.id]"><i class=" large material-icons">info</i>{{ irregularity.irregularity_type.name }}</td>
+                  <td [routerLink]="['/view-irregularity', irregularity.id]"><i class=" large material-icons">account_circle</i>{{ irregularity.user.name }}</td>
+                  <td [routerLink]="['/view-irregularity', irregularity.id]"><i class=" large material-icons">supervised_user_circle</i>{{ irregularity.agent.name }}</td>
+                  <td [routerLink]="['/view-irregularity', irregularity.id]"><i class=" large material-icons">room</i>{{ irregularity.zone.name }}</td>
+                  <td [routerLink]="['/view-irregularity', irregularity.id]"> <i class=" large material-icons">calendar_today</i>{{ irregularity.created_at }}</td>
                 </tr>
               </tbody>
             </table>

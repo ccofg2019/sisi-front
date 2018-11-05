@@ -27,3 +27,34 @@ a {
   }
 }
 
+// BOTÃO RESPONSIVO
+
+.dropdown{
+  display: none;
+}
+.btn-secondary{
+  background-color: darkred;
+  border-color: darkred;
+}
+.dropdown-menu{
+  overflow-x: scroll;
+  height: 500px;
+  top: 0px;
+  left: 0px;
+}
+
+@media (max-width: 576px) {
+
+  .btn-sair{
+    display: none;
+  }
+
+  .dropdown{
+    height: 50px;
+    float: right;
+    display: block;
+  }
+
+}
+
+
