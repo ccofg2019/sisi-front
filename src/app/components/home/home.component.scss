@@ -38,5 +38,13 @@ h3{
 }
 
 agm-map {
-  height: 82vh;
+  height: 75vh;
+}
+
+@media (max-width: 576px) {
+
+  agm-map {
+    height: 70vh;
+  }
+
 }

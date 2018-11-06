@@ -1,9 +1,9 @@
 <div class="margin-top-sisi">
   <div style="width: 100%">
     <div class="form-default-sisi row">
-      <div class="card col-md-8" style="padding:0px;width: 60%;">
+      <div class="card col-md-8" style="padding:0px;width: 100%;">
         <div class="card-header">
-          <h3>Cadastro de Irregularidades</h3>
+          <h3 class="title-mobile">Cadastro de Irregularidades</h3>
         </div>
 
       <form class="col-md-12" [formGroup]="formIrregularity" (ngSubmit)="onSubmit()">
@@ -73,12 +73,12 @@
         </div>
 
         <!-- BUTTON SUBMIT -->
-        <button [disabled]="loading" class="btn btn-primary">Salvar Irregularidade</button>
+        <button [disabled]="loading" class="btn btn-primary buttom-mobile">Salvar Irregularidade</button>
 
       </form>
     </div>
 
-      <div class="col-md-4">
+      <div class="col-md-4 container-map-mobile">
           <div class="card" style="padding:0;">
               <div class="card-header">
                 <h3>Mapa</h3>
