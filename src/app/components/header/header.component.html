@@ -8,10 +8,11 @@
           <div class="row">
             <div class="col-md-8" ></div>
             <div class="col-md-4" >
-                <span><i class=" large material-icons">portrait</i></span>
+                <span class="hidden-sm"><i class=" large material-icons">portrait</i></span>
               <div class="container-user">
-                  <span>User, Role</span><a class="btn btn-sair" (click)=exit() >Sair</a>
+                  <span class="hidden-sm">User, Role</span><a class="btn btn-sair" (click)=exit() >Sair</a>
 
+                  <img class="img-responsive" src="assets/large-sisi-logo-title.png">
                   <div class="dropdown">
                     <button class="btn btn-secondary" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="
                     width: 50px; height: 40px;">
@@ -33,13 +34,19 @@
                       <button *ngIf="aclService.can('list_user')" routerLink="/list-user" class="dropdown-item" type="button"><i class=" large material-icons">format_list_numbered</i><p class="btn">Usuários</p></button>
                       
                       <button *ngIf="aclService.can('user_content')" routerLink="/home" class="dropdown-item" type="button"><i class=" large material-icons">map</i><p class="btn">Mapa</p></button>
-                      
+
                       <button class="dropdown-item" type="button" (click)=exit()><i class=" large material-icons">exit_to_app</i><p class="btn">Sair</p></button>
+                      
+                      <hr>
+                      <button class="dropdown-item" type="button" data-toggle="collapse" data-target="#demo"><i class=" large material-icons">portrait</i><p class="btn">User, Role</p></button>
 
                     </div>
                   </div>
-                  
+
               </div>
+            </div>
+            <div id="demo" class="collapse">
+                <button class="dropdown-item" type="button" (click)=exit()><i class=" large material-icons">exit_to_app</i><p class="btn">Sair</p></button>
             </div>
           </div>
         </div>
