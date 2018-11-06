@@ -11,9 +11,16 @@
         <div class="form-row">
           <div class="form-group col-md-7">
             <label for="title">Titulo da Irregularidade</label>
-            <input data-toggle="tooltip" title='Insira um resumo da descrição da irregularidade' type="text" class="form-control"
-              placeholder="Título da irregularidade" formControlName="title" [ngClass]="{ 'is-invalid': f.title.dirty && f.title.errors }" />
-
+            <input
+              data-toggle="tooltip"
+              title='Insira um resumo da descrição da irregularidade'
+              type="text"
+              maxlength="32"
+              class="form-control"
+              placeholder="Título da irregularidade"
+              formControlName="title"
+              [ngClass]="{ 'is-invalid': f.title.dirty && f.title.errors }"
+              />
             <div *ngIf="f.title.dirty && f.title.errors" class="invalid-feedback">
               <div *ngIf="f.title.errors.required">Campo obrigatório*</div>
               <div *ngIf="f.title.errors.pattern">Título deve ter de 6 a 32 caracteres*</div>
@@ -23,8 +30,13 @@
 
           <div class="form-group col-md-5">
             <label for="title">Tipo de Irregularidade</label>
-            <select data-toggle="tooltip" title='Selecione o tipo da irregularidade' class="form-control" formControlName="irregularity_type_id"
-              [ngClass]="{ 'is-invalid': f.irregularity_type_id.dirty && f.irregularity_type_id.errors }">
+            <select
+              data-toggle="tooltip"
+              title='Selecione o tipo da irregularidade'
+              class="form-control"
+              formControlName="irregularity_type_id"
+              [ngClass]="{ 'is-invalid': f.irregularity_type_id.dirty && f.irregularity_type_id.errors }"
+            >
               <option value="" select disabled>Escolha uma opção</option>
               <option value="1">Controle de Animais</option>
               <option value="2">Iluminação</option>
@@ -33,7 +45,6 @@
               <option value="5">Poluição</option>
               <option value="6">Outros</option>
             </select>
-
             <div *ngIf="f.irregularity_type_id.dirty && f.irregularity_type_id.errors" class="invalid-feedback">
               <div *ngIf="f.irregularity_type_id.errors.required"> Campo obrigatório*</div>
             </div>
@@ -41,15 +52,18 @@
         </div>
 
         <div class="form-row">
-
           <div class="form-group col-md-6">
             <label for="title">Local da Irregularidade</label>
-            <select data-toggle="tooltip" title='Selecione a área em que a irregularidade ocorreu' class="form-control"
-              formControlName="zone_id" [ngClass]="{ 'is-invalid': submitted && f.zone_id.errors }">
+            <select
+              data-toggle="tooltip"
+              title='Selecione a área em que a irregularidade ocorreu'
+              class="form-control"
+              formControlName="zone_id"
+              [ngClass]="{ 'is-invalid': submitted && f.zone_id.errors }"
+            >
               <option value="" select disabled>Escolha uma opção</option>
               <option value="1">Departamento de Tecnologia do Campus</option>
             </select>
-
             <div *ngIf="submitted && f.zone_id.errors" class="invalid-feedback">
               <div *ngIf="f.zone_id.errors.required"> Campo obrigatório*</div>
             </div>
@@ -61,9 +75,16 @@
         <div class="form-row">
           <div class="form-group col-md-12">
             <label for="story">Descrição da irregularidade</label>
-            <textarea data-toggle="tooltip" title='Faça uma descrição detalhada da irregularidade' class="form-control"
-              rows="3" placeholder="Descrição da irregularidade" formControlName="story" [ngClass]="{ 'is-invalid': f.story.dirty && f.story.errors }"></textarea>
-
+            <textarea
+              data-toggle="tooltip"
+              title='Faça uma descrição detalhada da irregularidade'
+              maxlength="256"
+              class="form-control"
+              rows="3"
+              placeholder="Descrição da irregularidade"
+              formControlName="story"
+              [ngClass]="{ 'is-invalid': f.story.dirty && f.story.errors }">
+            </textarea>
             <div *ngIf="f.story.dirty && f.story.errors" class="invalid-feedback">
               <div *ngIf="f.story.errors.required"> Campo obrigatório*</div>
               <div *ngIf="f.story.errors.minlength"> Descrição deve ter mais de 12 dígitos*</div>

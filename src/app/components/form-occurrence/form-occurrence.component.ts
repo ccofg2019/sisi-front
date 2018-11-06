@@ -50,7 +50,7 @@ export class FormOccurrenceComponent implements OnInit {
       story: ['', [Validators.required, Validators.pattern(this.storyPattern)]],
       occurrence_date: ['', [Validators.required]],
       occurrence_time: ['', Validators.required],
-      coordinates: '41.40338, 2.17403',
+      coordinates: [this.lat, this.lng],
       police_report: ['', Validators.required],
       estimated_loss: ['345'],
       occurrence_type_id: ['', Validators.required],
@@ -67,8 +67,9 @@ export class FormOccurrenceComponent implements OnInit {
       occurrence_objects: this.formBuilder.group({
         object_id: [Number]
       })
-
     });
+    (<HTMLInputElement>document.getElementById('datefield')).max = new Date(new Date().getTime()
+    - new Date().getTimezoneOffset() * 60000).toISOString().split('T')[0];
   }
 
   get f() { return this.formOccurrence.controls; }
