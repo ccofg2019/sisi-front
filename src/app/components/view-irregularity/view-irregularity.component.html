@@ -3,7 +3,7 @@
     <div class="form-default-sisi row">
       <div class="card col-md-8" style="padding:0px;width: 100%;">
         <div class="card-header">
-          <h3 class="title-mobile">Cadastro de Irregularidades</h3>
+          <h3>Cadastro de Irregularidades</h3>
         </div>
 
       <form class="col-md-12" [formGroup]="formIrregularity" (ngSubmit)="onSubmit()">
@@ -73,7 +73,10 @@
         </div>
 
         <!-- BUTTON SUBMIT -->
-        <button [disabled]="loading" class="btn btn-primary buttom-mobile">Salvar Irregularidade</button>
+        <button routerLink="/list-irregularities" class="btn btn-primary buttom-mobile">Voltar</button>
+        <button class="btn btn-primary buttom-mobile" (click)=arquivarInvestigator()>Desativar</button>
+        <button class="btn btn-primary buttom-mobile" (click)=validaInvestigator()>Validar</button>
+        <button [disabled]="loading" class="btn btn-primary buttom-mobile">Editar</button>
 
       </form>
     </div>
