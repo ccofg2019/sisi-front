@@ -1,9 +1,9 @@
 <div class="">
   <div class="margin-top-sisi" style="width: 100%">
     <div class="form-default-sisi row">
-      <div class="card col-md-8" style="padding:0px;width: 60%;">
+      <div class="card col-md-8" style="padding:0px;width: 100%;">
         <div class="card-header">
-          <h3>Acompanhar Ocorrência</h3>
+          <h3 class="title-mobile">Acompanhar Ocorrência</h3>
         </div>
 
       <form class="col-md-12" [formGroup]="formOccurrence" (ngSubmit)="onSubmit()">
@@ -144,94 +144,16 @@
           </div>
         </div>
 
-        <!-- MODAL DE ENVOLVIDO -->
-        <!--div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-          aria-hidden="true">
-
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Adicionar Envolvidos</h5>
-              </div>
-              <div class="modal-body">
-                <div formGroupName="involved_person">
-
-                  <div class="form-group">
-                    <label for="type">Tipo</label>
-                    <select data-toggle="tooltip" title='Escolha se o envolvido é uma vítima, suspeito ou testemunha'
-                      class="form-control" formControlName="type">
-
-                      <option value="" select disabled>Escolha uma opção</option>
-                      <option value="VITIMA">Vítima</option>
-                      <option value="SUSPEITO">Suspeito</option>
-                      <option value="TESTEMUNHA">Testemunha</option>
-                    </select>
-
-                  </div>
-
-
-                  <div class="form-group">
-                    <label for="name">Nome</label>
-                    <input data-toggle="tooltip" title='Se souber, insira o nome do envolvido' type="text" class="form-control"
-                      formControlName="name">
-                  </div>
-
-                  <div class="form-group">
-                    <label for="cpf">Cpf</label>
-                    <input data-toggle="tooltip" title='Se souber, insira o CPF do envolvido' type="number" class="form-control"
-                      formControlName="cpf">
-                  </div>
-
-                  <div class="form-group">
-                    <label for="gender">Gênero</label>
-                    <select data-toggle="tooltip" title='Se souber, selecione o gênero do envolvido' class="form-control"
-                      formControlName="gender">
-
-                      <option value="" select disabled>Escolha uma opção</option>
-                      <option value="MASCULINO">Masculino</option>
-                      <option value="FEMININO">Feminino</option>
-                      <option value="TRANS_MASC">Trans-Masculino </option>
-                      <option value="TRANS_FEM">Trans-Feminino</option>
-                    </select>
-
-                  </div>
-
-
-                  <div class="form-group">
-                    <label for="skin_color">Etnia</label>
-                    <select data-toggle="tooltip" title='Se souber, selecione a etnia do envolvido' formControlName="skin_color"
-                      class="form-control">
-
-                      <option value="" select disabled>Escolha uma opção</option>
-                      <option value="BRANCO">Branca</option>
-                      <option value="NEGRO">Negro</option>
-                      <option value="PARDO">Pardo</option>
-                      <option value="INDIGENA">Indígena</option>
-                      <option value="AMARELO">Amarelo</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-primary" (click)="confirmInvolved()" data-dismiss="modal">Confirmar</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- FIM MODAL ENVOLVIDO -->
-      
         <!-- BUTTON SUBMIT -->
-        <button routerLink="/list-occurrence" class="btn btn-primary">Voltar</button>
-        <button class="btn btn-primary" (click)=arquivarInvestigator()>Desativar</button>
-        <button class="btn btn-primary" (click)=validaInvestigator()>Validar</button>
-        <button [disabled]="loading" class="btn btn-primary">Editar</button>
+        <button routerLink="/list-occurrence" class="btn btn-primary buttom-mobile">Voltar</button>
+        <button (click)=arquivarInvestigator() class="btn btn-primary buttom-mobile" >Desativar</button>
+        <button (click)=validaInvestigator() class="btn btn-primary buttom-mobile" >Validar</button>
+        <button [disabled]="loading" class="btn btn-primary buttom-mobile">Editar</button>
 
       </form>
     </div>
 
-      <div class="col-md-4">
+      <div class="col-md-4 container-map-mobile">
           <div class="card" style="padding:0;">
               <div class="card-header">
                 <h3>Mapa</h3>

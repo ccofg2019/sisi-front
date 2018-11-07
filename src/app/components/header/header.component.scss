@@ -5,6 +5,7 @@
           min-height: 65px;
       }
   }
+
   $color: #990000;
 a {
   background: $color;
@@ -24,6 +25,74 @@ a {
   }
   &:disabled {
     opacity: 0.5;
+  }
+}
+
+// BOTÃO RESPONSIVO
+
+.dropdown{
+  display: none;
+}
+.btn-secondary{
+  background-color: darkred;
+  border-color: darkred;
+}
+.dropdown-menu{
+  overflow-x: scroll;
+  height: 500px;
+  top: 0px;
+  left: 0px;
+}
+
+.box-md-10-sisi{
+  .container-user{
+    img{
+      display: none;
+    }
+  }
+}
+
+.box-md-10-sisi span i {
+  font-size: 40px;
+  padding: 4px;
+  float: left;
+}
+
+
+@media (max-width: 576px) {
+
+  .btn-sair{
+    display: none;
+  }
+
+  .dropdown{
+    height: 50px;
+    float: right;
+    display: block;
+    margin: 15px;
+  }
+
+  .hidden-sm{
+    display: none;
+  }
+  
+  .box-md-10-sisi{
+    .container-user{
+      padding-top: 0px;
+      padding-right: 0px;
+
+      img{
+        width: 170px;
+        height: 70px;
+        display: inline;
+      }
+
+      .container-perfil{
+        margin-top: 25px;
+        background-color: #f2f4f6;
+        height: 50px;
+      }
+    }
   }
 }
 

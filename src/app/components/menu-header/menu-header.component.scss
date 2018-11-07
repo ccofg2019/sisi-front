@@ -27,3 +27,11 @@
         transition: 0.2s;
     }
 }
+
+@media (max-width: 576px) {
+
+  .menu-box{
+    display: none;
+  }
+
+}

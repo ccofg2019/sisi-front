@@ -18,5 +18,17 @@ export class IrregularityService {
 
     public getIrregularitiesPage(paginator: Paginator) {
       return this.http.get(`${environment.API_URL}/api/irregularity-reports?page=${paginator.current_page}`);
-  }
+    }
+
+    public getIrregularitiesID(id: number) {
+        return this.http.get(`${environment.API_URL}/api/irregularity-reports/${id}`);
+    }
+
+    public statusOccurrences(id: number, status: string) {
+        return this.http.put(`${environment.API_URL}/api/irregularity-reports/${id}?status=${status}`, status);
+    }
+
+    public editarIrregularities(irregularity: Irregularity, id: number) {
+        return this.http.put(`${environment.API_URL}/api/irregularity-reports/${id}`, irregularity);
+    }
 }

@@ -40,6 +40,7 @@ import {
   MatInputModule,
   MatAutocompleteModule
 } from '@angular/material';
+import { ViewIrregularityComponent } from './components/view-irregularity/view-irregularity.component';
 
 
 
@@ -57,7 +58,8 @@ import {
     ListIrregularitiesComponent,
     MenuHeaderComponent,
     ViewOccurrenceComponent,
-    FormFunctionaryComponent
+    FormFunctionaryComponent,
+    ViewIrregularityComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,5 @@
 <div *ngIf="aclService.can('user_content')" class="row">
-  <div class="col-md-12 menu-box" style="margin-right: -225px !important; width: 225px">
+  <div class="col-md-12 col-sm-12 menu-box">
     <div class="navbar-sidebar">
       <ul class="list-unstyled navbar_list">
         <li>
@@ -27,6 +27,9 @@
           <a *ngIf="aclService.can('list_user')" routerLink="/list-user" ><i class=" large material-icons">format_list_numbered</i><p class="btn">Usuários</p></a><br>
         </li>
       </ul>
+
     </div>
   </div>
 </div>
+
+

@@ -15,6 +15,7 @@ import { FormIrregularityComponent } from './components/form-irregularity/form-i
 import { ListOccurrenceComponent } from './components/list-occurrence/list-occurrence.component';
 import { ListIrregularitiesComponent} from './components/list-irregularities/list-irregularities.component';
 import { ViewOccurrenceComponent } from './components/view-occurrence/view-occurrence.component';
+import { ViewIrregularityComponent } from './components/view-irregularity/view-irregularity.component';
 
 const routes: Routes = [
 
@@ -74,6 +75,10 @@ const routes: Routes = [
     path: 'view-occurrence/:id',
     component: ViewOccurrenceComponent,
   },
+  {
+    path: 'view-irregularity/:id',
+    component: ViewIrregularityComponent,
+  }
 ];
 
 @NgModule({

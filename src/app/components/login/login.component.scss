@@ -4,12 +4,14 @@ form {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 122%;
-  height: 641.5px;
-  margin: -95px 50px -70px -240px;
+  width: 400px;
+  height: 580px;
+  background-color: #fff;
+  border-radius: 2%;
   padding: auto;
+  margin-left: 24%; 
 
-
+  box-shadow: 3px 4px 8px -1px  rgba(0, 0, 0, 0.1);
 
 }
 
@@ -70,6 +72,9 @@ button {
 
   form{
     width: 325px;
+    height: 540px;
+    margin-left: 0%;
+    margin-top: 25%;
   }
 
   .d-flex{
