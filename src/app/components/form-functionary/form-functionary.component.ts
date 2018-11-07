@@ -41,7 +41,7 @@ export class FormFunctionaryComponent implements OnInit {
       gender: ['', [Validators.required]],
       skin_color: ['', [Validators.required]],
       cellphone: ['', [Validators.required, Validators.pattern(this.cellpPattern)]],
-      phone: ['', [Validators.required, Validators.pattern(this.phonePattern)]],
+      phone: ['', [Validators.pattern(this.phonePattern)]],
       role_id: [1, [Validators.required]],
       status: 'ATIVO'
     });

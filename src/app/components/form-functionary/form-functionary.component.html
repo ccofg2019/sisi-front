@@ -69,9 +69,10 @@
                   <div class="form-group col-md-4">
                       <label for="cpf">CPF</label>
                       <input
+                        onkeypress='return event.charCode >= 48 && event.charCode <= 57'
                         data-toggle="tooltip"
                         title='Apenas números'
-                        type="number"
+                        type="tel"
                         maxlength="11"
                         class="form-control"
                         formControlName="cpf"
@@ -176,18 +177,18 @@
                 <div class="form-group col-md-3">
                   <label for="phone">Telefone Residencial</label>
                   <input
+                    onkeypress='return event.charCode >= 48 && event.charCode <= 57'
                     data-toggle="tooltip"
                     title="Apenas números incluindo DDD, exatamente 10 dígitos"
-                    type="text"
+                    type="tel"
                     maxlength="10"
                     class="form-control "
                     formControlName="phone"
                     placeholder="(00) 0000-0000"
-                    [ngClass]="{ 'is-invalid': submitted && f.phone.errors }"
+                    [ngClass]="{ 'is-invalid': f.phone.dirty && f.phone.errors }"
                   />
-                    <div *ngIf="submitted && !f.phone.errors" class="valid-feedback"></div>
-                    <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
-                      <div *ngIf="f.phone.errors.required">Campo obrigatório*</div>
+                    <div *ngIf="f.phone.dirty && !f.phone.errors" class="valid-feedback"></div>
+                    <div *ngIf="f.phone.dirty && f.phone.errors" class="invalid-feedback">
                       <div *ngIf="f.phone.errors.pattern"> Número de telefone inválido, deve ter 10 dígitos</div>
                   </div>
                 </div>
@@ -195,16 +196,17 @@
                 <div class="form-group col-md-3">
                     <label for="cellphone">Telefone Celular</label>
                     <input
+                      onkeypress='return event.charCode >= 48 && event.charCode <= 57'
                       data-toggle="tooltip"
                       title="Apenas números incluindo DDD, exatamente 11 dígitos"
-                      type="text"
+                      type="tel"
                       maxlength="11"
                       class="form-control"
                       formControlName="cellphone"
                       placeholder="(00) 0000-0000"
-                      [ngClass]="{ 'is-invalid': submitted && f.cellphone.errors }"
+                      [ngClass]="{ 'is-invalid': f.cellphone.dirty && f.cellphone.errors }"
                     />
-                  <div *ngIf="submitted && f.cellphone.errors" class="invalid-feedback">
+                  <div *ngIf="f.cellphone.dirty && f.cellphone.errors" class="invalid-feedback">
                       <div *ngIf="f.cellphone.errors.required">Campo obrigatório*</div>
                       <div *ngIf="f.cellphone.errors.pattern"> Número de celular inválido, deve ter 11 dígitos</div>
                   </div>

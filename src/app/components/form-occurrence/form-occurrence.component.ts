@@ -17,6 +17,7 @@ export class FormOccurrenceComponent implements OnInit {
   formOccurrence: FormGroup;
   loading = false;
   submitted = false;
+  jQuery: any;
 
   // Validator patterns
   titlePattern = '^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ0-9,.!?*"#%(); -]{6,32}$';
@@ -50,7 +51,7 @@ export class FormOccurrenceComponent implements OnInit {
       story: ['', [Validators.required, Validators.pattern(this.storyPattern)]],
       occurrence_date: ['', [Validators.required]],
       occurrence_time: ['', Validators.required],
-      coordinates: [this.lat, this.lng],
+      coordinates: '41.40338, 2.17403',
       police_report: ['', Validators.required],
       estimated_loss: ['345'],
       occurrence_type_id: ['', Validators.required],
@@ -67,9 +68,9 @@ export class FormOccurrenceComponent implements OnInit {
       occurrence_objects: this.formBuilder.group({
         object_id: [Number]
       })
+
     });
-    (<HTMLInputElement>document.getElementById('datefield')).max = new Date(new Date().getTime()
-    - new Date().getTimezoneOffset() * 60000).toISOString().split('T')[0];
+
   }
 
   get f() { return this.formOccurrence.controls; }
@@ -79,6 +80,7 @@ export class FormOccurrenceComponent implements OnInit {
 
         // stop here if form is invalid
         if (this.formOccurrence.invalid) {
+          console.log(this.f.occurrence_objects);
           this.notifier.show('warning', 'Erro ao tentar registrar, confira se os campos foram preenchidos corretamente.');
           return;
         }
