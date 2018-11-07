@@ -101,7 +101,14 @@ export class AclResolver implements Resolve<any> {
                test = of(true);
               }
 
-            }
+            } else if (this.match(state, '/functionary')) {
+
+              if (this.aclService.can('register_functionary')) {
+
+                 test = of(true);
+                }
+
+              }
 
     return test;
   }

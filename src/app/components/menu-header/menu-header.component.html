@@ -12,7 +12,10 @@
           <a *ngIf="aclService.can('add_irregularity')" routerLink="/irregularity" ><i class=" large material-icons">event_note</i><p class="btn">Reg. Irregularidade</p></a><br>
         </li>
         <li>
-          <a routerLink="/functionary" ><i class=" large material-icons">event_note</i><p class="btn">Reg. Funcionários</p></a><br>
+          <a *ngIf="aclService.can('register_functionary')" routerLink="/functionary" ><i class=" large material-icons">event_note</i><p class="btn">Reg. Funcionários</p></a><br>
+        </li>
+        <li>
+          <a *ngIf="aclService.can('user_content')" routerLink="/home" ><i class=" large material-icons">map</i><p class="btn">Mapa</p></a><br>
         </li>
         <li>
           <a *ngIf="aclService.can('list_occurrence')" routerLink="/list-occurrence" ><i class=" large material-icons">format_list_numbered</i><p class="btn">Ocorrências</p></a><br>
@@ -22,9 +25,6 @@
         </li>
         <li>
           <a *ngIf="aclService.can('list_user')" routerLink="/list-user" ><i class=" large material-icons">format_list_numbered</i><p class="btn">Usuários</p></a><br>
-        </li>
-        <li>
-          <a *ngIf="aclService.can('user_content')" routerLink="/home" ><i class=" large material-icons">map</i><p class="btn">Mapa</p></a><br>
         </li>
       </ul>
 

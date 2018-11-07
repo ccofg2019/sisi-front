@@ -38,7 +38,8 @@ export class AppComponent implements OnInit {
             ABILITIES.ADD_IRREGULARITY,
             ABILITIES.LIST_USER,
             ABILITIES.LIST_OCCURRENCE,
-            ABILITIES.LIST_IRREGULARITY
+            ABILITIES.LIST_IRREGULARITY,
+            ABILITIES.REGISTER_FUNCTIONARY
           ],
           sec_guard: [
             ABILITIES.DEFAULT,
@@ -65,7 +66,8 @@ export class AppComponent implements OnInit {
             ABILITIES.ADD_IRREGULARITY,
             ABILITIES.LIST_USER,
             ABILITIES.LIST_OCCURRENCE,
-            ABILITIES.LIST_IRREGULARITY
+            ABILITIES.LIST_IRREGULARITY,
+            ABILITIES.REGISTER_FUNCTIONARY
           ],
           op_director: [
             ABILITIES.DEFAULT,
@@ -74,7 +76,8 @@ export class AppComponent implements OnInit {
             ABILITIES.ADD_IRREGULARITY,
             ABILITIES.LIST_USER,
             ABILITIES.LIST_OCCURRENCE,
-            ABILITIES.LIST_IRREGULARITY
+            ABILITIES.LIST_IRREGULARITY,
+            ABILITIES.REGISTER_FUNCTIONARY
           ],
           superintendent: [
             ABILITIES.DEFAULT,
@@ -83,7 +86,8 @@ export class AppComponent implements OnInit {
             ABILITIES.ADD_IRREGULARITY,
             ABILITIES.LIST_USER,
             ABILITIES.LIST_OCCURRENCE,
-            ABILITIES.LIST_IRREGULARITY
+            ABILITIES.LIST_IRREGULARITY,
+            ABILITIES.REGISTER_FUNCTIONARY
           ],
           investigator: [
             ABILITIES.DEFAULT,
@@ -101,7 +105,8 @@ export class AppComponent implements OnInit {
             ABILITIES.ADD_IRREGULARITY,
             ABILITIES.LIST_USER,
             ABILITIES.LIST_OCCURRENCE,
-            ABILITIES.LIST_IRREGULARITY
+            ABILITIES.LIST_IRREGULARITY,
+            ABILITIES.REGISTER_FUNCTIONARY
           ],
           superintendent2: [
             ABILITIES.DEFAULT,

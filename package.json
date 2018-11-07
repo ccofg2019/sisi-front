@@ -26,6 +26,7 @@
     "angular-material": "^1.1.10",
     "angular-notifier": "^4.1.1",
     "bootstrap": "^4.1.1",
+    "bootstrap-select": "^1.13.3",
     "core-js": "^2.5.4",
     "jquery": "^3.3.1",
     "jw-angular-pagination": "^1.0.5",

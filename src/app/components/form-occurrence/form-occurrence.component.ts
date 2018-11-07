@@ -17,6 +17,7 @@ export class FormOccurrenceComponent implements OnInit {
   formOccurrence: FormGroup;
   loading = false;
   submitted = false;
+  jQuery: any;
 
   // Validator patterns
   titlePattern = '^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ0-9,.!?*"#%(); -]{6,32}$';
@@ -69,6 +70,7 @@ export class FormOccurrenceComponent implements OnInit {
       })
 
     });
+
   }
 
   get f() { return this.formOccurrence.controls; }
@@ -78,6 +80,7 @@ export class FormOccurrenceComponent implements OnInit {
 
         // stop here if form is invalid
         if (this.formOccurrence.invalid) {
+          console.log(this.f.occurrence_objects);
           this.notifier.show('warning', 'Erro ao tentar registrar, confira se os campos foram preenchidos corretamente.');
           return;
         }

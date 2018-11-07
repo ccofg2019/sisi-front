@@ -5,7 +5,8 @@ export  const ABILITIES = {
     ADD_IRREGULARITY: 'add_irregularity',
     LIST_USER: 'list_user',
     LIST_OCCURRENCE: 'list_occurrence',
-    LIST_IRREGULARITY: 'list_irregularity'
+    LIST_IRREGULARITY: 'list_irregularity',
+    REGISTER_FUNCTIONARY: 'register_functionary'
   };
 export  const ROLES = {
     '1': 'user',

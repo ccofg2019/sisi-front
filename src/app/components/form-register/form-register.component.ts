@@ -40,7 +40,7 @@ export class FormRegisterComponent implements OnInit {
       gender: ['', [Validators.required]],
       skin_color: ['', [Validators.required]],
       cellphone: ['', [Validators.required, Validators.pattern(this.cellpPattern)]],
-      phone: ['', [Validators.required, Validators.pattern(this.phonePattern)]],
+      phone: ['', [Validators.pattern(this.phonePattern)]],
       terms: ['', [Validators.required]],
       status: 'ATIVO'
     });
@@ -63,11 +63,12 @@ export class FormRegisterComponent implements OnInit {
             .pipe(first())
             .subscribe(
                 data => {
-
+                  this.notifier.show('success', 'Usuário registrado com sucesso');
                   this.router.navigate(['']);
                 },
                 error => {
-                  this.loading = false;
+                    this.notifier.show('error', 'Houve um erro ao tentar registrar');
+                    this.loading = false;
                 });
   }
 }

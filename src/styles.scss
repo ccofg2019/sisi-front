@@ -1,6 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import "~angular-notifier/styles";
+@import "../node_modules/bootstrap/scss/bootstrap";
+@import "../node_modules/bootstrap-select/dist/css/bootstrap-select.css";
 
 // HEADER
 .box-md-2-sisi{
@@ -100,5 +102,5 @@ body {
   .margin-top-sisi{
     margin-top: 14vh;
   }
-  
+
 }
