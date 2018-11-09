@@ -56,7 +56,7 @@
         </div>
 
         <div class="form-row">
-          <div class="form-group col-md-5">
+          <div class="form-group col-md-6">
             <label for="police_report">B.O feito?</label>
             <select
               data-toggle="tooltip"
@@ -73,6 +73,13 @@
               <div *ngIf="f.police_report.errors.required"> Campo obrigatório*</div>
             </div>
           </div>
+
+          <div class="form-group col-md-6" style="display: none;">
+            <label for="title">coordinates</label>
+            <input data-toggle="tooltip" type="text" class="form-control"
+              placeholder="coordinates" formControlName="coordinates" [(ngModel)]="cord" />
+          </div>
+
 
         </div>
 
@@ -310,7 +317,7 @@
               </div>
           </div>
         <agm-map [zoom]="17" [latitude]="lat" [longitude]="lng" (mapClick)="onChoseLocation($event)">
-          <agm-marker [latitude]="lat" [longitude]="lng" *ngIf="locationChosen"></agm-marker>
+          <agm-marker [latitude]="lat" [longitude]="lng" *ngIf="locationChosen" [markerDraggable]="true"></agm-marker>
         </agm-map>
       </div>
     </div> <!-- div background  -->

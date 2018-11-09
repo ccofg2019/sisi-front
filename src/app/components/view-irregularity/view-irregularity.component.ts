@@ -16,6 +16,7 @@ export class ViewIrregularityComponent implements OnInit {
 
   public irregularities: Irregularity;
   public idIrregularities: number;
+
   formIrregularity: FormGroup;
   loading = false;
   submitted = false;
@@ -26,12 +27,19 @@ export class ViewIrregularityComponent implements OnInit {
 
   lat  = -8.05225025;
   lng  = -34.9450490084884;
-  locationChosen = false;
+  locationChosen = true;
+
+   // Variaveis de conversão das cordenadas do mapa
+   coordString: string;
+   resultado: string[];
+   numberLAT;
+   numberLNG;
 
   onChoseLocation(event) {
     this.lat = event.coords.lat;
     this.lng = event.coords.lng;
     this.locationChosen = true;
+    this.coordString = this.lat.toFixed(5) + ',' + this.lng.toFixed(5);
   }
 
   constructor(private formBuilder: FormBuilder,
@@ -42,18 +50,27 @@ export class ViewIrregularityComponent implements OnInit {
     private notifier: NotifyService) { }
 
   ngOnInit() {
+
     this.route.params.subscribe(
       (params: Params) => {
         this.irregularityService.getIrregularitiesID(params.id)
         .subscribe( (irregularities: any) => {
           this.irregularities = irregularities.data;
           this.idIrregularities = irregularities.data.id;
+
+          // separando as coordenadas
+          this.coordString = irregularities.data.coordinates;
+          this.resultado = this.coordString.split(',');
+          this.lat = +this.resultado[0];
+          this.lng = +this.resultado[1];
+
           this.formIrregularity = this.formBuilder.group({
             title: [irregularities.data.title, [ Validators.required, Validators.pattern(this.titlePattern)]],
             story: [irregularities.data.story, [Validators.required, Validators.pattern(this.storyPattern)]],
-            coordinates: '41.40338, 2.17403',
+            coordinates: [this.coordString, Validators.required],
             irregularity_type_id: [irregularities.data.irregularity_type.id, Validators.required],
             zone_id: [irregularities.data.zone.id, Validators.required],
+
           });
 
         });

@@ -23,32 +23,44 @@ export class FormIrregularityComponent implements OnInit {
 
   lat  = -8.05225025;
   lng  = -34.9450490084884;
-  locationChosen = false;
+  locationChosen = true;
+
+  // Two Way Databind - passando as cordenadas para o form.
+  cord;
 
   onChoseLocation(event) {
     this.lat = event.coords.lat;
     this.lng = event.coords.lng;
     this.locationChosen = true;
+    this.cord = this.lat.toFixed(5) + ',' + this.lng.toFixed(5); // convertendo para string e concatenando cordenadas do mapa
   }
 
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
     private irregularityService: IrregularityService,
+    private notifier: NotifyService,
     public aclService: AclService,
-    private notifier: NotifyService
 
   ) { }
 
+
+
   ngOnInit() {
+
+    // definindo valor default para o mapa
+    if (this.cord === undefined) {
+      this.cord = '-8.05241,-34.94523';
+    }
 
     this.formIrregularity = this.formBuilder.group({
       title: ['', [ Validators.required, Validators.pattern(this.titlePattern)]],
       story: ['', [Validators.required, Validators.pattern(this.storyPattern)]],
-      coordinates: '41.40338, 2.17403',
+      coordinates: [this.cord, Validators.required],
       irregularity_type_id: ['', Validators.required],
       zone_id: ['', Validators.required],
     });
+    console.log(this.cord);
   }
 
   get f() { return this.formIrregularity.controls; }
@@ -67,19 +79,17 @@ export class FormIrregularityComponent implements OnInit {
             .pipe(first())
             .subscribe(
                 data => {
-                  alert('Registro de irregularidade realizado com sucesso!');
+                  this.notifier.show('success', 'Registro de irregularidade realizado com sucesso!');
                   this.router.navigate(['home']);
                 },
                 error => {
                   this.loading = false;
-                  alert('Ocorreu um erro ao tentar registrar sua irregularidade.');
+                  this.notifier.show('error', 'Ocorreu um erro ao tentar registrar sua irregularidade.');
                 });
   }
+
 }
 // <div class="row">
 // <div class="col-md-4">
 //     <input id='file' name="file" type='file' class="file_customizada" accept='image/*'  capture />
 // </div>
-
-
-

@@ -46,7 +46,7 @@
         </div>
 
         <div class="form-row">
-          <div class="form-group col-md-5">
+          <div class="form-group col-md-6">
             <label for="police_report">B.O feito?</label>
             <select data-toggle="tooltip" title='Informe se um boletim de ocorrência foi ou não feito antes desse registro'
               class="form-control" formControlName="police_report" [ngClass]="{ 'is-invalid': f.police_report.dirty && formOccurrence.get('police_report').errors }">
@@ -57,6 +57,12 @@
             <div *ngIf="f.police_report.dirty && f.police_report.errors" class="invalid-feedback">
               <div *ngIf="f.police_report.errors.required"> Campo obrigatório*</div>
             </div>
+          </div>
+
+          <div class="form-group col-md-6" style="display: none;">
+            <label for="title">coordinates</label>
+            <input data-toggle="tooltip" type="text" class="form-control"
+              placeholder="Título da irregularidade" formControlName="coordinates" [(ngModel)]="coordString" />
           </div>
 
         </div>
@@ -127,9 +133,6 @@
           </div>
         </div>
 
-        <!--input type="text" value="41.40338, 2.17403" hidden formControlName="coordinates" /-->
-        <!--input type="text" value="false" hidden formControlName="police_report" /-->
-
         <div class="form-row">
           <div class="form-group col-md-12">
             <label for="story">Descrição da Ocorrência</label>
@@ -160,7 +163,7 @@
               </div>
           </div>
         <agm-map [zoom]="17" [latitude]="lat" [longitude]="lng" (mapClick)="onChoseLocation($event)">
-          <agm-marker [latitude]="lat" [longitude]="lng" *ngIf="locationChosen"></agm-marker>
+          <agm-marker [latitude]="lat" [longitude]="lng" *ngIf="locationChosen" [markerDraggable]="true"></agm-marker>
         </agm-map>
       </div>
     </div> <!-- div background  -->
