@@ -18,6 +18,11 @@ export class FormOccurrenceComponent implements OnInit {
   loading = false;
   submitted = false;
   jQuery: any;
+  today = new Date().toJSON().split('T')[0];
+  date = new Date();
+  minDate: string;
+  // Two Way Databind - passando as cordenadas para o form.
+  cord;
 
   // Validator patterns
   titlePattern = '^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ0-9,.!?*"#%(); -]{6,32}$';
@@ -28,9 +33,6 @@ export class FormOccurrenceComponent implements OnInit {
   lat  = -8.05225025;
   lng  = -34.9450490084884;
   locationChosen = true;
-
-  // Two Way Databind - passando as cordenadas para o form.
-  cord;
 
   onChoseLocation(event) {
     this.lat = event.coords.lat;
@@ -44,9 +46,8 @@ export class FormOccurrenceComponent implements OnInit {
     private router: Router,
     private occurrenceService: OccurrenceService,
     public aclService: AclService,
-    private notifier: NotifyService
-
-  ) { }
+    private notifier: NotifyService,
+  ) {}
 
   ngOnInit() {
 
@@ -54,7 +55,8 @@ export class FormOccurrenceComponent implements OnInit {
     if (this.cord === undefined) {
       this.cord = '-8.05241,-34.94523';
     }
-
+    this.date.setFullYear(this.date.getFullYear() - 1);
+    this.minDate = this.date.toJSON().split('T')[0];
     this.formOccurrence = this.formBuilder.group({
       title: ['', [ Validators.required, Validators.pattern(this.titlePattern)]],
       story: ['', [Validators.required, Validators.pattern(this.storyPattern)]],

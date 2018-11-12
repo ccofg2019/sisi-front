@@ -15,7 +15,10 @@ export class FormFunctionaryComponent implements OnInit {
   registerFormFunc: FormGroup;
   loading = false;
   submitted;
-
+  date = new Date();
+  date2= new Date();
+  minDate: string;
+  maxDate: string;
   // Validator patterns
 
   namePattern = '^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]{10,52}$';
@@ -32,6 +35,11 @@ export class FormFunctionaryComponent implements OnInit {
     ) { }
 
   ngOnInit() {
+    this.date.setFullYear(this.date.getFullYear() - 95);
+    this.date2.setFullYear(this.date2.getFullYear() - 16);
+    this.minDate = this.date.toJSON().split('T')[0];
+    this.maxDate = this.date2.toJSON().split('T')[0];
+    
     this.registerFormFunc = this.formBuilder.group({
       name: ['', [Validators.required, Validators.pattern(this.namePattern) ]],
       password: ['', [Validators.required, Validators.pattern(this.passPattern)]],

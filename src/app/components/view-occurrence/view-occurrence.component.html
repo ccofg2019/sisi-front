@@ -70,7 +70,7 @@
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="occurrence_date">Data da ocorrência</label>
-            <input onkeydown="return false" data-toggle="tooltip" title='Escolha a data através das setas ao lado' type="date"
+            <input onkeydown="return false" min={{minDate}} max={{today}} data-toggle="tooltip" title='Escolha a data através das setas ao lado' type="date"
               class="form-control" formControlName="occurrence_date" [ngClass]="{ 'is-invalid': f.occurrence_date.dirty && f.occurrence_date.errors }">
 
             <div *ngIf="f.occurrence_date.dirty && f.occurrence_date.errors" class="invalid-feedback">

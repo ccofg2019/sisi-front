@@ -20,6 +20,9 @@ export class ViewOccurrenceComponent implements OnInit {
   public status = { 'loading': true};
   public idOccurrence: number;
   public titleOccurrence: string;
+  today = new Date().toJSON().split('T')[0];
+  date = new Date();
+  minDate: string;
 
   formOccurrence: FormGroup;
   loading = false;
@@ -60,6 +63,8 @@ export class ViewOccurrenceComponent implements OnInit {
     ) {}
 
     ngOnInit() {
+      this.date.setFullYear(this.date.getFullYear() - 1);
+      this.minDate = this.date.toJSON().split('T')[0];
       this.route.params.subscribe(
         (params: Params) => {
           this.occurrenceService.getOccurrencesID(params.id)
