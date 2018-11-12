@@ -91,8 +91,8 @@
                         data-toggle="tooltip"
                         title="Escolha a data através das setas ao lado"
                         type="date"
-                        max="2002-12-31"
-                        min="1930-01-01"
+                        max={{maxDate}}
+                        min={{minDate}}
                         class="form-control"
                         formControlName="birthdate"
                         [ngClass]="{ 'is-invalid': f.birthdate.dirty && f.birthdate.errors }"
