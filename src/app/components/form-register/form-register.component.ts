@@ -39,7 +39,7 @@ export class FormRegisterComponent implements OnInit {
     this.date2.setFullYear(this.date2.getFullYear() - 16);
     this.minDate = this.date.toJSON().split('T')[0];
     this.maxDate = this.date2.toJSON().split('T')[0];
-    
+
     this.registerForm = this.formBuilder.group({
       name: ['', [Validators.required, Validators.pattern(this.namePattern) ]],
       password: ['', [Validators.required, Validators.pattern(this.passPattern)]],
@@ -50,6 +50,7 @@ export class FormRegisterComponent implements OnInit {
       skin_color: ['', [Validators.required]],
       cellphone: ['', [Validators.required, Validators.pattern(this.cellpPattern)]],
       phone: ['', [Validators.pattern(this.phonePattern)]],
+      role_id: [1],
       terms: ['', [Validators.required]],
       status: 'ATIVO'
     });
