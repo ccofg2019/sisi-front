@@ -16,7 +16,7 @@ export class FormRegisterComponent implements OnInit {
   loading = false;
   submitted;
   date = new Date();
-  date2= new Date();
+  date2 = new Date();
   minDate: string;
   maxDate: string;
 
