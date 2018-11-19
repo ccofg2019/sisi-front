@@ -1,5 +1,6 @@
+import { User } from './../../models/user.model';
 import { Component, OnInit } from '@angular/core';
-import {Router} from '@angular/router';
+import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth/auth.service';
 import { AclService } from 'ng2-acl';
 
@@ -10,7 +11,7 @@ import { AclService } from 'ng2-acl';
 })
 
 export class HomeComponent implements OnInit {
-
+  currentUser: User;
   lat  = -8.05225025;
   lng  = -34.9450490084884;
   locationChosen = false;
@@ -24,9 +25,10 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private router: Router,
-    public aclService: AclService
+    public aclService: AclService,
+    private authService: AuthService
     ) { }
 
   ngOnInit() {
- }
+  }
 }

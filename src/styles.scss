@@ -5,48 +5,35 @@
 @import "../node_modules/bootstrap-select/dist/css/bootstrap-select.css";
 
 // HEADER
-.box-md-2-sisi{
+.container-logo{
   background: #ffffff;
-  height: 95px;
-  padding: 0 35px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
+  height: 60px;
+  width: 206px;
+  padding: 0px 10px;
   display: flex;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-  -moz-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
-  -moz-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+  justify-content: center;
   box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
   border-right: 1px solid #e5e5e5;
   position: relative;
-  z-index: 3;
+  z-index: 4;
   position: fixed;
-  img{
-    height: 90px;
-    width: 200px;
-    margin: 5px;
-  }
 }
 
-.box-md-10-sisi{
+.container-header{
   background: #fcfcfc;
-    -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
-    -moz-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
     box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
     top: 0;
     right: 0;
-    height: 95px;
+    display: flex;
+    justify-content: flex-end;
+    height: 60px;
+    width: 100%;
     z-index: 3;
     position: fixed;
     span{
       i{
         font-size: 50px;
-        padding: 13px;
+        padding: 10px;
         float: left;
       }
     }
@@ -57,22 +44,33 @@
       padding-right: 10px;
       padding-top: 20px;
 
-      .btn-sair{
-        margin-left: 45px;
-        border: 1px solid #13131340;
-        width: 100px;
-        height: 35px;
-        font-size: 18px;
-        padding: 3px;
-        border-radius: 70px;
-        color: white;
-      }
-
       a:hover{
         border: 1px solid #ff000040;
         transition: 0s;
       }
     }
+}
+
+.container-user-menu{
+  background: #ffffff;
+  height: 60px;
+  width: 220px;
+  display: flex;
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+  border-left: 1px solid #e5e5e5;
+  position: relative;
+  z-index: 3;
+  position: fixed;
+}
+.container-sidebar{
+  width:225px;
+}
+.container-view{
+  width:75%;
+}
+.content-header{
+  display: flex;
+  justify-content: right;
 }
 
 //BACKGROUND COLOR
@@ -91,16 +89,29 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-//margin top de todos os formulários
+// margin top de todos os formulários
 .margin-top-sisi{
-  margin-top: 14vh;
+  margin-top: 8vh;
 }
 
 
 @media (max-width: 576px) {
 
   .margin-top-sisi{
-    margin-top: 14vh;
+    margin-top: 8vh;
   }
 
+  .container-logo{
+    box-shadow: 0px 2px 0px 0px rgba(0, 0, 0, 0.1);
+    border-right: 0px solid #e5e5e5;
+    justify-content: flex-start;
+  }
+
+  .container-user-menu{
+    width: 20%;
+  }
+
+  .container-view{
+    width: 100%;
+  }
 }

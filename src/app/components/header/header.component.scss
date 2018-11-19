@@ -1,25 +1,49 @@
   // LOGO - DESKTOP
   @media (min-width: 260px) {
-      img{
-          width: 260px;
-          min-height: 65px;
+      .img-logo{
+        width: 140px;
+        min-height: 60px;
       }
   }
-
+  $color-profile: white;
   $color: #990000;
-a {
-  background: $color;
-  border-radius: 45px;
-  color: #fff;
+
+.button-profile {
+  background: $color-profile;
+  color: black;
   cursor: pointer;
   font-size: 20px;
   font-weight: bold;
   font-family: Trebuchet MS, Helvetica, sans-serif;
-  height: 40px;
-  width: 120px;
+  display: flex;
+  justify-content: flex-start;
+  height: 60px;
+  width: 220px;
   float: right;
   border: none;
   transition: background 0.2s ease-in-out;
+  &:hover {
+    background: darken($color-profile, 5);
+  }
+  &:disabled {
+    opacity: 0.5;
+  }
+}
+
+.button-dropdown {
+  background: $color;
+    color: white;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: Trebuchet MS, Helvetica, sans-serif;
+    display: flex;
+    justify-content: flex-start;
+    padding: 18px 25px;
+    height: 60px;
+    width: 75px;
+    border: none;
+    transition: background 0.2s ease-in-out;
   &:hover {
     background: darken($color, 5);
   }
@@ -27,32 +51,23 @@ a {
     opacity: 0.5;
   }
 }
-
+.img-profile{
+  height: 50px;
+  width: 50px;
+  border-radius: 30px;
+}
+.user-info{
+  font-size: 16px;
+  font-weight: normal;
+  padding: 13px;
+}
 // BOTÃO RESPONSIVO
 
 .dropdown{
   display: none;
 }
-.btn-secondary{
-  background-color: darkred;
-  border-color: darkred;
-}
-.dropdown-menu{
-  overflow-x: scroll;
-  height: 500px;
-  top: 0px;
-  left: 0px;
-}
 
-.box-md-10-sisi{
-  .container-user{
-    img{
-      display: none;
-    }
-  }
-}
-
-.box-md-10-sisi span i {
+.container-header span i {
   font-size: 40px;
   padding: 4px;
   float: left;
@@ -61,37 +76,21 @@ a {
 
 @media (max-width: 576px) {
 
-  .btn-sair{
+  .dropdown-user{
     display: none;
   }
 
   .dropdown{
-    height: 50px;
-    float: right;
     display: block;
-    margin: 15px;
   }
 
-  .hidden-sm{
-    display: none;
+  .dropdown-menu{
   }
-  
-  .box-md-10-sisi{
+
+  .container-header{
     .container-user{
       padding-top: 0px;
       padding-right: 0px;
-
-      img{
-        width: 170px;
-        height: 70px;
-        display: inline;
-      }
-
-      .container-perfil{
-        margin-top: 25px;
-        background-color: #f2f4f6;
-        height: 50px;
-      }
     }
   }
 }

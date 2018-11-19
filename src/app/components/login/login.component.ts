@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
     private authService: AuthService,
     private fb: FormBuilder,
     private router: Router,
-    private notify: NotifyService,
+    private notifier: NotifyService,
     public aclService: AclService
   ) {
   }
@@ -59,7 +59,14 @@ export class LoginComponent implements OnInit {
   /**
    * Login de usuário
    */
+
   public login(): void {
+
+    if (this.form.invalid) {
+      this.notifier.show('warning', 'Confira se os campos foram preenchidos corretamente.');
+      return;
+    }
+
     if (this.form.valid && !this.status.loading) {
       this.controlStateLogin('loading');
 
