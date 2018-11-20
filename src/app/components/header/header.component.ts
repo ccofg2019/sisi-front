@@ -1,5 +1,5 @@
 import { AuthService } from './../../services/auth/auth.service';
-import { Component, OnInit, NgZone } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AclService } from 'ng2-acl';
 import { User } from '../../models/user.model';
 
@@ -10,36 +10,21 @@ import { User } from '../../models/user.model';
 })
 export class HeaderComponent implements OnInit {
   currentUser: User;
-  subscription: any;
+  name: string;
 
   constructor(
     public aclService: AclService,
-    private authService: AuthService,
-    private zone: NgZone
-  ) {
-
-  }
+    private authService: AuthService
+  ) {}
 
   ngOnInit() {
     if (this.authService.isLoggedIn()) {
-      this.subscription = this.authService.getUserAuthenticated()
-        .subscribe (
-          user => {
-            console.log(user.data);
-            this.currentUser = user.data;
-            this.zone.run(() => {
-              this.currentUser = user.data;
-            });
-          }
-        );
-    } else {
-      return;
+     this.currentUser = this.authService.getDataUser();
+     this.name = this.currentUser.name;
     }
   }
-
   exit() {
     this.authService.logout();
-    this.subscription.unsubscribe();
     this.currentUser.name = '';
   }
 }

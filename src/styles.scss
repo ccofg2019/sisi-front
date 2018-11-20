@@ -1,10 +1,9 @@
-/* You can add global styles to this file, and also import other style files */
-@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+/* Imports */
 @import "~angular-notifier/styles";
 @import "../node_modules/bootstrap/scss/bootstrap";
 @import "../node_modules/bootstrap-select/dist/css/bootstrap-select.css";
 
-// HEADER
+// 1- Header
 .container-logo{
   background: #ffffff;
   height: 60px;
@@ -73,12 +72,12 @@
   justify-content: right;
 }
 
-//BACKGROUND COLOR
+// 2- Background
 .background-sisi {
   background: rgb(230, 228, 228);
 }
 
-//TYPOGRAPHY
+// 3- Typography
 body {
   font-family: Trebuchet MS, Helvetica, sans-serif;
   font-weight: 400;
@@ -89,11 +88,16 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+//
 // margin top de todos os formulários
 .margin-top-sisi{
   margin-top: 8vh;
 }
 
+// Remove borda padrão do chrome ao clicar em um button
+button:focus{
+  outline: none;
+  }
 
 @media (max-width: 576px) {
 

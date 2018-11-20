@@ -10,7 +10,7 @@
                   <button class="button-profile" type="button" id="dropdownUser" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <img class="img-profile" src="https://images.pexels.com/photos/555790/pexels-photo-555790.png?auto=compress&cs=tinysrgb&h=350">
                       <div class="user-info">
-                        {{ currentUser.name }}
+                        <p>Hello, {{ name }}</p>
                       </div>
                   </button>
                   <div *ngIf="aclService.can('user_content')" class="dropdown-menu" aria-labelledby="dropdownUser">

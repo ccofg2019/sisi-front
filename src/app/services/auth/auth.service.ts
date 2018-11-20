@@ -80,7 +80,7 @@ export class AuthService {
     if (_.isEmpty(jsonData) && !_.isObject(jsonData)) {
 
       eraseCookie('auth_token');
-      this.router.navigate(['']);
+      // this.router.navigate(['']);
 
     } else {
 
