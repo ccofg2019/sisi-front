@@ -26,13 +26,13 @@
             </thead>
             <tbody>
               <tr class="list" *ngFor="let user of data">
-                <th scope="row">{{ user.id }}</th>
-                <td><i class=" large material-icons">account_circle</i>{{ user.name }}</td>
-                <td>{{ user.cpf }}</td>
-                <td><i class=" large material-icons">email</i>{{ user.email }}</td>
-                <td>{{ user.gender }}</td>
-                <td>{{ user.skin_color }}</td>
-                <td><i class=" large material-icons">work</i>{{ user.role.name }}</td>
+                <th scope="row"><div class="table-content">{{ user.id }}</div></th>
+                <td><div class="table-content"><i class=" large material-icons">account_circle</i>{{ user.name }}</div></td>
+                <td><div class="table-content">{{ user.cpf }}</div></td>
+                <td><div class="table-content"><i class=" large material-icons">email</i>{{ user.email }}</div></td>
+                <td><div class="table-content">{{ user.gender }}</div></td>
+                <td><div class="table-content">{{ user.skin_color }}</div></td>
+                <td><div class="table-content"><i class=" large material-icons">work</i>{{ user.role.name }}</div></td>
               </tr>
             </tbody>
         </table>
