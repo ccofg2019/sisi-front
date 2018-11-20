@@ -3,7 +3,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {getObjectCookie, getCookie, eraseCookie} from '../../app.utils';
 import { environment } from '../../../environments/environment';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import * as moment from 'moment';
 import * as _ from 'lodash';
 import { NotifyService } from '../notify/notify.service';
@@ -15,6 +15,7 @@ import { ROLES } from '../../acl-const';
 })
 export class AuthService {
 
+  public loginSubject = new Subject<boolean>();
 
   constructor(
     private router: Router,
@@ -140,6 +141,12 @@ export class AuthService {
     return result;
 
   }
+
+  public loginInfo(boolean) {
+      this.loginSubject.next(boolean);
+  }
+
+
   /**
    *
    */

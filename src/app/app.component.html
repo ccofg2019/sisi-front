@@ -1,9 +1,9 @@
-<app-header></app-header>
+<app-header *ngIf="isLoggedIn"></app-header>
 
 <div class="container-fluid">
     <div class="row">
         <div class="container-sidebar">
-            <app-menu-header></app-menu-header>
+            <app-menu-header ></app-menu-header>
 
         </div>
         <div class="container-view">
