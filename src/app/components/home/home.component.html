@@ -1,12 +1,17 @@
-<div class="margin-top-sisi">
-  <div class="card" style="width: 100%;">
-    <div class="card-header">
-      <h3>Mapa de Ocorrências</h3>
-    </div>
-      <div class="card-body" style="width: 100%; height: 70%;">
-        <agm-map [zoom]="17" [latitude]="lat" [longitude]="lng" (mapClick)="onChoseLocation($event)">
-          <agm-marker [latitude]="lat" [longitude]="lng" *ngIf="locationChosen"></agm-marker>
-        </agm-map>
-      </div>
+<app-header></app-header>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="container-sidebar">
+            <app-menu-header ></app-menu-header>
+
+        </div>
+        <div class="container-view">
+            <div class="margin-top-sisi">
+              <router-outlet></router-outlet>
+            </div>
+        </div>
     </div>
 </div>
+
+<notifier-container></notifier-container>

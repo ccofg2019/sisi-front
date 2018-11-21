@@ -23,41 +23,26 @@ export class AuthService {
     private notify: NotifyService,
     private aclService: AclService
     ) {}
-  /**
-   *
-   * @param {string} username
-   * @returns {Observable<any>}
-   */
-  private checksBlocked(username: string): Observable<any> {
-    // const version = json.version;
-    const version = '2.2.2';
-    const data = { 'username': username, 'version-front-busca': version };
-    const url = `${environment.API_URL}/api/users/checksBlocked`;
 
-    return this.http.post(url, data);
+  // private checksBlocked(username: string): Observable<any> {
+  //   // const version = json.version;
+  //   const version = '2.2.2';
+  //   const data = { 'username': username, 'version-front-busca': version };
+  //   const url = `${environment.API_URL}/api/users/checksBlocked`;
 
-  }
+  //   return this.http.post(url, data);
 
+  // }
 
-  /**
-   *
-   * @param {string} user
-   */
   private createUserData(user: string): void {
 
      eraseCookie('user_data');
      document.cookie = `user_data=${user};Max-Age=21600`;
      const user_request = JSON.parse(user);
-     const userRole = ROLES[user_request.role_id];
+     const userRole = ROLES[user_request.data.role.id];
      this.aclService.attachRole(userRole);
-
   }
 
-
-  /**
-   *
-   * @param {string} token
-   */
   private createTokenData(token: string): void {
 
     eraseCookie('auth_token');
@@ -69,11 +54,6 @@ export class AuthService {
 
   }
 
-
-  /**
-   *
-   * @returns {any}
-   */
   public getToken(): any {
 
     const jsonData: any = getObjectCookie('auth_token');
@@ -91,11 +71,6 @@ export class AuthService {
 
   }
 
-
-  /**
-   *
-   * @returns {any}
-   */
   public getDataUser(): any {
 
     const jsonData: any = getObjectCookie('user_data');
@@ -104,15 +79,10 @@ export class AuthService {
       this.logout();
     }
 
-    return jsonData;
+    return jsonData.data;
 
   }
 
-
-  /**
-   *
-   * @returns {boolean}
-   */
   public isLoggedIn(): boolean {
 
     // moment.locale('pt-br');
@@ -126,7 +96,7 @@ export class AuthService {
     let result: boolean;
 
     try {
-      if ((token && token.token && token.token.access_token) && (user && user.id)) {
+      if ((token && token.token && token.token.access_token) && (user.data && user.data.id)) {
 
         const timeExpire = moment(parseInt(token.timeLogin, 10)).add(parseInt(token.token.expires_in, 10), 'seconds');
         const isTokenExpired = timeExpire.isBefore(moment());
@@ -146,10 +116,6 @@ export class AuthService {
       this.loginSubject.next(boolean);
   }
 
-
-  /**
-   *
-   */
   public logout(): void {
 
     eraseCookie('auth_token');
@@ -157,12 +123,9 @@ export class AuthService {
     this.router.navigate(['']);
     window.stop();
     this.aclService.flushRoles();
+    this.loginInfo(false);
 
   }
-  /**
-   *
-   * @returns {Observable<any>}
-   */
   public getUserAuthenticated(): Observable<any> {
     return this.http.get(`${environment.API_URL}/api/user/authenticated`, {});
 
@@ -170,12 +133,6 @@ export class AuthService {
   public registerNewUser(): Observable<any> {
     return this.http.post(`${environment.API_URL}/api/mobile/users`, {});
   }
-  /**
-   *
-   * @param {string} username
-   * @param {string} password
-   * @returns {any}
-   */
   public loginUser(username: string, password: string): any {
 
     const grant_type: string = environment.GRANT_TYPE;

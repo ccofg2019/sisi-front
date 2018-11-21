@@ -1,19 +1,2 @@
-<app-header *ngIf="isLoggedIn"></app-header>
-
-<div class="container-fluid">
-    <div class="row">
-        <div class="container-sidebar">
-            <app-menu-header ></app-menu-header>
-
-        </div>
-        <div class="container-view">
-            <div class="margin-top-sisi">
-            <router-outlet></router-outlet>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
+<router-outlet></router-outlet>
 <notifier-container></notifier-container>

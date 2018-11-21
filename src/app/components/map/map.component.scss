@@ -1,0 +1,54 @@
+$color: #990000;
+button {
+  background: $color;
+  color: #fff;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  font-family: Trebuchet MS, Helvetica, sans-serif;
+  height: 50px;
+  width: 210px;
+  margin: 10px;
+  float: right;
+  border: none;
+  transition: background 0.2s ease-in-out;
+  &:hover {
+    background: darken($color, 5);
+  }
+  &:disabled {
+    opacity: 0.5;
+  }
+}
+
+.card{
+  border-radius:10px;
+}
+
+.card-header{
+  display: flex;
+  justify-content: center;
+  border-radius: 10px 10px 0px 0px;
+  padding-top: 17px;
+  background: #990000;
+  color: white;
+}
+
+h3{
+  font-weight: bolder;
+}
+
+.card-body{
+  padding: 0%;
+}
+
+agm-map {
+  height: 75vh;
+}
+
+@media (max-width: 576px) {
+
+  agm-map {
+    height: 75vh;
+  }
+
+}

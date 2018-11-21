@@ -124,14 +124,6 @@ export class AppComponent implements OnInit {
           ],
       };
       this.aclService.setAbilities(this.aclData);
-
-      this.authService.loginSubject.subscribe(boolean => {
-        this.isLoggedIn = boolean;
-      });
-
-      if (this.authService.isLoggedIn()) {
-        this.isLoggedIn = true;
-      };
   }
 
 }

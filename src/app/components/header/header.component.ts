@@ -11,6 +11,7 @@ import { User } from '../../models/user.model';
 export class HeaderComponent implements OnInit {
   currentUser: User;
   name: string;
+  role: string;
 
   constructor(
     public aclService: AclService,
@@ -18,15 +19,15 @@ export class HeaderComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    console.log(1);
-
     if (this.authService.isLoggedIn()) {
      this.currentUser = this.authService.getDataUser();
      this.name = this.currentUser.name;
+     this.role = this.currentUser.role.name;
     }
   }
   exit() {
+    this.name = '';
+    this.role = '';
     this.authService.logout();
-    this.currentUser.name = '';
   }
 }
