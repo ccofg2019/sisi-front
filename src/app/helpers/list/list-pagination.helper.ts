@@ -28,9 +28,16 @@ export class ListPagination {
   nextPage() {
 
     if (this.paginator.current_page < this.paginator.total_pages) {
+
       this.paginator.current_page ++;
+
+      let desativar: Boolean;
+      desativar = false;
+
       this.loadData();
+
     }
+
   }
 
   previousPage() {

@@ -12,14 +12,8 @@
           <div class="col-md-4">
                 <select class="custom-select" id="inputGroupSelect01">
                     <option selected disabled>Tipo</option>
-                    <option value="1">Furto</option>
-                    <option value="2">Roubo</option>
-                    <option value="3">Assalto a grupo</option>
-                    <option value="4">Sequestro relâmpago</option>
-                    <option value="5">Arrombamento de veículo</option>
-                    <option value="6">Roubo de veículo</option>
-                    <option value="7">Arrastão</option>
-                    <option value="8">Tentativa de assalto</option>
+                    <option *ngFor="let types of irregularityType" value="{{ types.id }}" >{{ types.name }}</option>
+                   
                 </select>
           </div>
 
