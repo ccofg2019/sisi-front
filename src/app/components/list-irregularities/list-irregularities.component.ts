@@ -4,6 +4,7 @@ import { AclService } from 'ng2-acl';
 import { ListComponent } from '../../interfaces/list.component';
 import { ListPagination } from '../../helpers/list/list-pagination.helper';
 import { IrregularityService } from './../../services/irregularity.service';
+import { IrregularityTypes } from 'src/app/models/irregularityTypes.model';
 
 @Component({
   selector: 'app-list-irregularities',
@@ -15,6 +16,7 @@ export class ListIrregularitiesComponent extends ListPagination
   public service;
   public methodLoad;
   public irregularity: Irregularity;
+  public irregularityType: IrregularityTypes[];
 
   constructor(
     private irregularityService: IrregularityService,
@@ -27,5 +29,6 @@ export class ListIrregularitiesComponent extends ListPagination
 
   ngOnInit() {
     this.loadData();
+    this.irregularityService.getIrregularitiesType().subscribe((response: any) => this.irregularityType = response.data);
   }
 }

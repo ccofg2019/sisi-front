@@ -16,6 +16,10 @@ export class IrregularityService {
         return this.http.get(`${environment.API_URL}/api/irregularity-reports`);
     }
 
+    public getIrregularitiesType() {
+        return this.http.get(`${environment.API_URL}/api/irregularity-types`);
+    }
+
     public getIrregularitiesPage(paginator: Paginator) {
       return this.http.get(`${environment.API_URL}/api/irregularity-reports?page=${paginator.current_page}`);
     }
