@@ -48,7 +48,7 @@ export class FormIrregularityComponent implements OnInit {
 
   ngOnInit() {
 
-    // definindo valor default para o mapa
+    // Definindo valor default para o mapa
     if (this.cord === undefined) {
       this.cord = '-8.05241,-34.94523';
     }
@@ -60,7 +60,6 @@ export class FormIrregularityComponent implements OnInit {
       irregularity_type_id: ['', Validators.required],
       zone_id: ['', Validators.required],
     });
-    console.log(this.cord);
   }
 
   get f() { return this.formIrregularity.controls; }

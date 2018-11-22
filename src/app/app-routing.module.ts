@@ -4,9 +4,10 @@ import { AclResolver } from './app.resolve';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-// COMPONENT
+// Components
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
+import { MapComponent } from './components/map/map.component';
 import { FormRegisterComponent } from './components/form-register/form-register.component';
 import { FormFunctionaryComponent } from './components/form-functionary/form-functionary.component';
 import { FormOccurrenceComponent } from './components/form-occurrence/form-occurrence.component';
@@ -19,66 +20,44 @@ import { ViewIrregularityComponent } from './components/view-irregularity/view-i
 
 const routes: Routes = [
 
+  { path: '', component: LoginComponent },
+  { path: 'register', component: FormRegisterComponent},
   {
-    path: '',
-    component: LoginComponent
+    path: 'home', component: HomeComponent, canActivate: [AuthGuardService],
+    resolve: { route: AclResolver, state: AclResolver },
+    children: [
+      {
+        path: 'map', component: MapComponent,
+      },
+      {
+        path: 'functionary', component: FormFunctionaryComponent,
+      },
+      {
+        path: 'occurrence', component: FormOccurrenceComponent,
+      },
+      {
+        path: 'irregularity', component: FormIrregularityComponent,
+      },
+      {
+        path: 'list-user', component: ListUserComponent,
+      },
+      {
+        path: 'list-user', component: ListUserComponent,
+      },
+      {
+        path: 'list-occurrence', component: ListOccurrenceComponent,
+      },
+      {
+        path: 'list-irregularities', component: ListIrregularitiesComponent,
+      },
+      {
+        path: 'view-occurrence/:id', component: ViewOccurrenceComponent,
+      },
+      {
+        path: 'view-irregularity/:id', component: ViewIrregularityComponent,
+      }
+    ]
   },
-  {
-    path: 'register',
-    component: FormRegisterComponent
-  },
-  {
-    path: 'functionary',
-    component: FormFunctionaryComponent
-  },
-  {
-    path: 'home',
-    component: HomeComponent,
-    canActivate: [AuthGuardService],
-    resolve: { route: AclResolver, state: AclResolver}
-  },
-  {
-    path: 'occurrence',
-    component: FormOccurrenceComponent,
-    canActivate: [AuthGuardService],
-    resolve: { route: AclResolver, state: AclResolver}
-  },
-  {
-    path: 'irregularity',
-    component: FormIrregularityComponent,
-  },
-  {
-    path: 'list-user',
-    component: ListUserComponent,
-    canActivate: [AuthGuardService],
-    resolve: { route: AclResolver, state: AclResolver}
-  },
-  {
-    path: 'list-user',
-    component: ListUserComponent,
-    canActivate: [AuthGuardService],
-    resolve: { route: AclResolver, state: AclResolver}
-  },
-  {
-    path: 'list-occurrence',
-    component: ListOccurrenceComponent,
-    canActivate: [AuthGuardService],
-    resolve: { route: AclResolver, state: AclResolver}
-  },
-  {
-    path: 'list-irregularities',
-    component: ListIrregularitiesComponent,
-    canActivate: [AuthGuardService],
-    resolve: { route: AclResolver, state: AclResolver}
-  },
-  {
-    path: 'view-occurrence/:id',
-    component: ViewOccurrenceComponent,
-  },
-  {
-    path: 'view-irregularity/:id',
-    component: ViewIrregularityComponent,
-  }
 ];
 
 @NgModule({

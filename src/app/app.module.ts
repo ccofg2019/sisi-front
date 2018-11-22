@@ -15,6 +15,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { HeaderComponent } from './components/header/header.component';
+import { MapComponent } from './components/map/map.component';
 import { FormRegisterComponent } from './components/form-register/form-register.component';
 import { HomeComponent } from './components/home/home.component';
 import { FormOccurrenceComponent } from './components/form-occurrence/form-occurrence.component';
@@ -23,6 +24,7 @@ import { FormIrregularityComponent } from './components/form-irregularity/form-i
 import { ListOccurrenceComponent } from './components/list-occurrence/list-occurrence.component';
 import { ViewOccurrenceComponent } from './components/view-occurrence/view-occurrence.component';
 import { ListIrregularitiesComponent } from './components/list-irregularities/list-irregularities.component';
+import { ViewIrregularityComponent } from './components/view-irregularity/view-irregularity.component';
 import { MenuHeaderComponent } from './components/menu-header/menu-header.component';
 import { FormFunctionaryComponent } from './components/form-functionary/form-functionary.component';
 
@@ -34,16 +36,6 @@ import { OccurrenceService } from './services/occurrence.service';
 import { IrregularityService } from './services/irregularity.service';
 import { AlertService } from './services/alert.service';
 
-// Libraries
-import {
-  MatButtonModule,
-  MatInputModule,
-  MatAutocompleteModule
-} from '@angular/material';
-import { ViewIrregularityComponent } from './components/view-irregularity/view-irregularity.component';
-
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,6 +43,7 @@ import { ViewIrregularityComponent } from './components/view-irregularity/view-i
     FormRegisterComponent,
     LoginComponent,
     HomeComponent,
+    MapComponent,
     FormOccurrenceComponent,
     ListUserComponent,
     ListOccurrenceComponent,
@@ -59,7 +52,8 @@ import { ViewIrregularityComponent } from './components/view-irregularity/view-i
     MenuHeaderComponent,
     ViewOccurrenceComponent,
     FormFunctionaryComponent,
-    ViewIrregularityComponent
+    ViewIrregularityComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,
@@ -68,9 +62,6 @@ import { ViewIrregularityComponent } from './components/view-irregularity/view-i
     ReactiveFormsModule,
     HttpClientModule,
     HttpModule,
-    MatButtonModule,
-    MatInputModule,
-    MatAutocompleteModule,
     NotifierModule,
     BrowserAnimationsModule,
     CommonModule,

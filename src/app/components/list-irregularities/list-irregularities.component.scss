@@ -30,7 +30,7 @@ button {
   }
 
   .row-table{
-    margin-top: -33px;
+    margin-top: -50px;
   }
 
   .thead-sisi{
@@ -48,7 +48,7 @@ button {
   }
 
   th{
-    font-size: 18px;
+    font-size: 16px;
     padding: 10px;
   }
 
@@ -58,13 +58,17 @@ button {
   }
 
   td{
-      font-size: 18px;
+      font-size: 13px;
+  }
+
+  .table-content{
+    display:flex;
   }
 
   tr:hover{
     background-color: #fc6e6e !important;
   }
-  
+
   .material-icons{
     padding-right: 5px;
   }
@@ -88,6 +92,6 @@ button {
       margin: 0;
       margin-top: 2%;
     }
-    
-  
+
+
   }

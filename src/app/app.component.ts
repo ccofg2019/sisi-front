@@ -1,3 +1,5 @@
+import { Subject } from 'rxjs';
+import { AuthService } from './services/auth/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { AclService } from 'ng2-acl/dist';
 import { ABILITIES } from './acl-const';
@@ -11,9 +13,12 @@ export class AppComponent implements OnInit {
   title = 'sisi-dashboard';
   aclData = {};
 
-  constructor(private aclService: AclService) {}
+  public isLoggedIn: boolean;
+
+  constructor(private aclService: AclService, private authService: AuthService) {}
 
   ngOnInit() {
+
       this.aclData = {
           guest: [ABILITIES.DEFAULT],
           user: [

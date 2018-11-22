@@ -15,18 +15,19 @@ export class FormRegisterComponent implements OnInit {
   registerForm: FormGroup;
   loading = false;
   submitted;
+  // Date variables
   date = new Date();
   date2 = new Date();
   minDate: string;
   maxDate: string;
 
   // Validator patterns
-
   namePattern = '^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]{10,52}$';
   cellpPattern = '^((\\+91-?)|0)?[0-9]{11}$';
   passPattern = '^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$';
   phonePattern = '^((\\+91-?)|0)?[0-9]{10}$';
   cpfPattern = '^[0-9]{11}$';
+
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
@@ -35,6 +36,7 @@ export class FormRegisterComponent implements OnInit {
     ) { }
 
   ngOnInit() {
+    // Set min and max dates for datepicker
     this.date.setFullYear(this.date.getFullYear() - 95);
     this.date2.setFullYear(this.date2.getFullYear() - 16);
     this.minDate = this.date.toJSON().split('T')[0];
@@ -58,11 +60,10 @@ export class FormRegisterComponent implements OnInit {
 
   get f() {return this.registerForm.controls; }
 
-
   onSubmit() {
     this.submitted = true;
 
-        // stop here if form is invalid
+        // Stop here if form is invalid
         if (this.registerForm.invalid) {
           this.notifier.show('warning', 'Confira se os campos foram preenchidos corretamente.');
           return;
@@ -73,12 +74,14 @@ export class FormRegisterComponent implements OnInit {
             .pipe(first())
             .subscribe(
                 data => {
+                  console.log(data);
                   this.notifier.show('success', 'Usuário registrado com sucesso');
                   this.router.navigate(['']);
                 },
                 error => {
-                    this.notifier.show('error', 'Houve um erro ao tentar registrar');
-                    this.loading = false;
+                  console.log(error);
+                  this.notifier.show('error', 'Houve um erro ao tentar registrar');
+                  this.loading = false;
                 });
   }
 }

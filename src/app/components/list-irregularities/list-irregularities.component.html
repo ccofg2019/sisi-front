@@ -41,11 +41,11 @@
                 <tr class="list" *ngFor="let irregularity of data">
                   <th scope="row" [routerLink]="['/view-irregularity', irregularity.id]">{{ irregularity.id }}</th>
                   <td [routerLink]="['/view-irregularity', irregularity.id]">{{ irregularity.status }}</td>
-                  <td [routerLink]="['/view-irregularity', irregularity.id]"><i class=" large material-icons">info</i>{{ irregularity.irregularity_type.name }}</td>
-                  <td [routerLink]="['/view-irregularity', irregularity.id]"><i class=" large material-icons">account_circle</i>{{ irregularity.user.name }}</td>
-                  <td [routerLink]="['/view-irregularity', irregularity.id]"><i class=" large material-icons">supervised_user_circle</i>{{ irregularity.agent.name }}</td>
-                  <td [routerLink]="['/view-irregularity', irregularity.id]"><i class=" large material-icons">room</i>{{ irregularity.zone.name }}</td>
-                  <td [routerLink]="['/view-irregularity', irregularity.id]"> <i class=" large material-icons">calendar_today</i>{{ irregularity.created_at }}</td>
+                  <td [routerLink]="['/view-irregularity', irregularity.id]"><div class="table-content"><i class=" large material-icons">info</i>{{ irregularity.irregularity_type.name }}</div></td>
+                  <td [routerLink]="['/view-irregularity', irregularity.id]"><div class="table-content"><i class=" large material-icons">account_circle</i>{{ irregularity.user.name }}</div></td>
+                  <td [routerLink]="['/view-irregularity', irregularity.id]"><div class="table-content"><i class=" large material-icons">supervised_user_circle</i>{{ irregularity.agent.name }}</div></td>
+                  <td [routerLink]="['/view-irregularity', irregularity.id]"><div class="table-content"><i class=" large material-icons">room</i>{{ irregularity.zone.name }}</div></td>
+                  <td [routerLink]="['/view-irregularity', irregularity.id]"><div class="table-content"><i class=" large material-icons">calendar_today</i>{{ irregularity.created_at | date: 'medium' }}</div></td>
                 </tr>
               </tbody>
             </table>
