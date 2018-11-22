@@ -3,14 +3,14 @@
     <div class="form-default-sisi row">
       <div class="card col-md-8" style="padding:0px;width: 100%;">
         <div class="card-header">
-          <h3 class="title-mobile" >Cadastro de Ocorrências</h3>
+          <h3 class="title-mobile" >Registro de Ocorrências</h3>
         </div>
 
       <form class="col-md-12" [formGroup]="formOccurrence" (ngSubmit)="onSubmit()">
 
         <div class="form-row">
           <div class="form-group col-md-7">
-            <label for="title">Titulo da ocorrência</label>
+            <label for="title">Titulo da ocorrência*</label>
             <input
               data-toggle="tooltip"
               title='Insira um resumo da descrição da ocorrência'
@@ -27,8 +27,7 @@
             </div>
           </div>
 
-          <!-- FORM GROUP -->
-          <div class="selectpicker form-group col-md-5">
+          <!-- <div class="selectpicker form-group col-md-5">
             <div formGroupName="occurrence_objects">
               <label for="object_id">Objeto/Arma Envolvido(a)</label>
               <select
@@ -51,13 +50,10 @@
                 <option [ngValue]="9">Arma de fogo</option>
               </select>
             </div>
-          </div>
+          </div> -->
           <!-- FORM GROUP END -->
-        </div>
-
-        <div class="form-row">
-          <div class="form-group col-md-6">
-            <label for="police_report">B.O feito?</label>
+          <div class="form-group col-md-5">
+            <label for="police_report">B.O feito?*</label>
             <select
               data-toggle="tooltip"
               title='Informe se um boletim de ocorrência foi ou não feito antes desse registro'
@@ -73,6 +69,9 @@
               <div *ngIf="f.police_report.errors.required"> Campo obrigatório*</div>
             </div>
           </div>
+        </div>
+
+        <div class="form-row">
 
           <div class="form-group col-md-6" style="display: none;">
             <label for="title">coordinates</label>
@@ -80,12 +79,58 @@
               placeholder="coordinates" formControlName="coordinates" [(ngModel)]="cord" />
           </div>
 
-
         </div>
 
         <div class="form-row">
           <div class="form-group col-md-6">
-            <label for="occurrence_date">Data da ocorrência</label>
+            <label for="title">Local da Ocorrência*</label>
+            <select
+              data-toggle="tooltip"
+              title='Selecione a área em que a ocorrência ocorreu'
+              class="form-control"
+              formControlName="zone_id"
+              [ngClass]="{ 'is-invalid': submitted && f.zone_id.errors }"
+            >
+              <option value="" select disabled>Escolha uma opção</option>
+              <option *ngFor="let zone of zones" value="{{ zone.id }}">{{ zone.name }}</option>
+            </select>
+
+            <div *ngIf="submitted && f.zone_id.errors" class="invalid-feedback">
+              <div *ngIf="f.zone_id.errors.required"> Campo obrigatório*</div>
+            </div>
+          </div>
+
+          <div class="form-group col-md-6">
+            <label for="title">Tipo de Ocorrência*</label>
+            <select
+              data-toggle="tooltip"
+              title='Selecione o tipo da ocorrência'
+              class="form-control"
+              formControlName="occurrence_type_id"
+              [ngClass]="{ 'is-invalid': f.occurrence_type_id.dirty && f.occurrence_type_id.errors }"
+            >
+              <option value="" select disabled>Escolha uma opção</option>
+              <option value="1">Furto</option>
+              <option value="2">Roubo</option>
+              <option value="3">Assalto a grupo</option>
+              <option value="4">Sequestro relâmpago</option>
+              <option value="5">Arrombamento de veículo</option>
+              <option value="6">Roubo de veículo</option>
+              <option value="7">Arrastão</option>
+              <option value="8">Tentativa de assalto</option>
+              <option value="11">Violência contra mulher</option>
+              <option value="12">Violência contra LGBT</option>
+            </select>
+
+            <div *ngIf="f.occurrence_type_id.dirty && f.occurrence_type_id.errors" class="invalid-feedback">
+              <div *ngIf="f.occurrence_type_id.errors.required"> Campo obrigatório*</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="occurrence_date">Data da ocorrência*</label>
             <input
               onkeydown="return false"
               data-toggle="tooltip"
@@ -103,7 +148,7 @@
           </div>
 
           <div class="form-group col-md-6">
-            <label for="occurrence_time">Hora da ocorrência</label>
+            <label for="occurrence_time">Hora da ocorrência*</label>
             <input
               data-toggle="tooltip"
               title='Escolha a hora da ocorrência, de preferência utilize as setas'
@@ -118,59 +163,13 @@
           </div>
         </div>
 
-        <div class="form-row">
-          <div class="form-group col-md-6">
-            <label for="title">Local da Ocorrência</label>
-            <select
-              data-toggle="tooltip"
-              title='Selecione a área em que a ocorrência ocorreu'
-              class="form-control"
-              formControlName="zone_id"
-              [ngClass]="{ 'is-invalid': submitted && f.zone_id.errors }"
-            >
-              <option value="" select disabled>Escolha uma opção</option>
-              <option value="1">Departamento de Tecnologia do Campus</option>
-            </select>
-
-            <div *ngIf="submitted && f.zone_id.errors" class="invalid-feedback">
-              <div *ngIf="f.zone_id.errors.required"> Campo obrigatório*</div>
-            </div>
-          </div>
-
-          <div class="form-group col-md-6">
-            <label for="title">Tipo de Ocorrência</label>
-            <select
-              data-toggle="tooltip"
-              title='Selecione o tipo da ocorrência'
-              class="form-control"
-              formControlName="occurrence_type_id"
-              [ngClass]="{ 'is-invalid': f.occurrence_type_id.dirty && f.occurrence_type_id.errors }"
-            >
-              <option value="" select disabled>Escolha uma opção</option>
-              <option value="1">Furto</option>
-              <option value="2">Roubo</option>
-              <option value="3">Assalto a grupo</option>
-              <option value="4">Sequestro relâmpago</option>
-              <option value="5">Arrombamento de veículo</option>
-              <option value="6">Roubo de veículo</option>
-              <option value="7">Arrastão</option>
-              <option value="8">Tentativa de assalto</option>
-              <option value="9">Violência contra mulher</option>
-              <option value="10">Violência contra LGBT</option>
-            </select>
-
-            <div *ngIf="f.occurrence_type_id.dirty && f.occurrence_type_id.errors" class="invalid-feedback">
-              <div *ngIf="f.occurrence_type_id.errors.required"> Campo obrigatório*</div>
-            </div>
-          </div>
-        </div>
 
         <!--input type="text" value="41.40338, 2.17403" hidden formControlName="coordinates" /-->
         <!--input type="text" value="false" hidden formControlName="police_report" /-->
 
         <div class="form-row">
           <div class="form-group col-md-12">
-            <label for="story">Descrição da Ocorrência</label>
+            <label for="story">Descrição da Ocorrência*</label>
             <textarea
               data-toggle="tooltip"
               title='Faça uma descrição detalhada da ocorrência'
@@ -189,6 +188,8 @@
           </div>
         </div>
 
+
+
         <!-- MODAL DE ENVOLVIDO -->
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
           aria-hidden="true">
@@ -199,7 +200,7 @@
                 <h5 class="modal-title" id="exampleModalLabel">Adicionar Envolvidos</h5>
               </div>
               <div class="modal-body">
-                <div formGroupName="involved_person">
+                <div formGroupName="involved_people">
 
                   <div class="form-group">
                     <label for="type">Tipo</label>
@@ -211,10 +212,7 @@
                       <option value="SUSPEITO">Suspeito</option>
                       <option value="TESTEMUNHA">Testemunha</option>
                     </select>
-
                   </div>
-
-
                   <div class="form-group">
                     <label for="name">Nome</label>
                     <input
@@ -273,23 +271,6 @@
                       <option value="AMARELO">Amarelo</option>
                     </select>
                   </div>
-
-                   <div class="form-group">
-                    <label for="skin_color">Etnia</label>
-                    <select
-                      data-toggle="tooltip"
-                      title='Se souber, selecione a etnia do envolvido'
-                      formControlName="skin_color"
-                      class="form-control"
-                    >
-                      <option value="" select disabled>Escolha uma opção</option>
-                      <option value="BRANCO">Branca</option>
-                      <option value="NEGRO">Negro</option>
-                      <option value="PARDO">Pardo</option>
-                      <option value="INDIGENA">Indígena</option>
-                      <option value="AMARELO">Amarelo</option>
-                    </select>
-                  </div>
                 </div>
               </div>
 
@@ -304,8 +285,8 @@
 
         <!-- BUTTON SUBMIT -->
         <button [disabled]="loading" class="btn btn-primary buttom-mobile">Salvar Ocorrência</button>
-        <button type="button" class="btn btn-primary buttom-mobile" id="myBtn" data-toggle="modal" data-target="#exampleModal"
-          data-whatever="@mdo">Adicionar Envolvidos</button>
+        <!-- <button type="button" class="btn btn-primary buttom-mobile" id="myBtn" data-toggle="modal" data-target="#exampleModal"
+          data-whatever="@mdo">Adicionar Envolvidos</button> -->
 
       </form>
     </div>
@@ -314,6 +295,7 @@
           <div class="card" style="padding:0;">
               <div class="card-header">
                 <h3>Mapa</h3>
+                <p class="map-info">*Selecione um ponto no mapa*</p>
               </div>
           </div>
         <agm-map [zoom]="17" [latitude]="lat" [longitude]="lng" (mapClick)="onChoseLocation($event)">

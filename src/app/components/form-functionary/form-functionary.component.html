@@ -3,12 +3,12 @@
       <div class="form-style">
         <div class="card" style="padding:0px;">
           <div class="card-header">
-            <h3 class="title-mobile">Cadastro de funcionários</h3>
+            <h3 class="title-mobile">Cadastro de Funcionários</h3>
           </div>
           <form class="card-body form-default-sisi" [formGroup]="registerFormFunc" (ngSubmit)="onSubmit()">
               <div class="form-row">
                 <div class="form-group col-md-12">
-                  <label for="name">Nome Completo</label>
+                  <label for="name">Nome Completo*</label>
                   <input
                     data-toggle="tooltip"
                     title="Insira seu nome completo"
@@ -28,7 +28,7 @@
 
               <div class="form-row">
                 <div class="form-group col-md-6">
-                  <label for="email">Email</label>
+                  <label for="email">Email*</label>
                   <input
                     data-toggle="tooltip"
                     title="Insira um email válido"
@@ -46,7 +46,7 @@
                 </div>
 
                 <div class="form-group col-md-6">
-                  <label for="password">Senha</label>
+                  <label for="password">Senha*</label>
                   <input
                     data-toggle="tooltip"
                     title="Pelo menos 8 caracteres, 1 número, 1 letra maiúscula e 1 letra minúscula"
@@ -67,7 +67,7 @@
 
               <div class="form-row">
                   <div class="form-group col-md-4">
-                      <label for="cpf">CPF</label>
+                      <label for="cpf">CPF*</label>
                       <input
                         onkeypress='return event.charCode >= 48 && event.charCode <= 57'
                         data-toggle="tooltip"
@@ -87,7 +87,7 @@
                   </div>
 
                   <div class="form-group col-md-4">
-                      <label for="birthdate">Data Nascimento</label>
+                      <label for="birthdate">Data Nascimento*</label>
                       <input
                         id="datefield"
                         onkeydown="return false"
@@ -106,7 +106,7 @@
                   </div>
 
                   <div class="form-group col-md-4">
-                    <label for="gender">Gênero</label>
+                    <label for="gender">Gênero*</label>
                     <select
                       data-toggle="tooltip"
                       title="Escolha o seu respectivo gênero"
@@ -128,7 +128,7 @@
 
               <div class="form-row">
                 <div class="form-group col-md-3">
-                  <label for="role_id">Função</label>
+                  <label for="role_id">Função*</label>
                   <select
                     data-toggle="tooltip"
                     title="Escolha uma função"
@@ -138,25 +138,23 @@
                   >
                       <option [ngValue]="1">Usuário Comum</option>
                       <option [ngValue]="2">Inspetor - DFCU</option>
-                      <option [ngValue]="3">Diretor</option>
-                      <option [ngValue]="4">Segurança</option>
+                      <option [ngValue]="3">Diretor - DFCU</option>
+                      <option [ngValue]="4">Segurança - DENS</option>
                       <option [ngValue]="5">Inspetor - DENS</option>
-                      <option [ngValue]="6">Inspetor Geral</option>
-                      <option [ngValue]="7">Diretor Operacional</option>
-                      <option [ngValue]="8">Superitendente</option>
-                      <option [ngValue]="9">Investigador</option>
-                      <option [ngValue]="10">Investigador Chefe</option>
-                      <option [ngValue]="11">Superitendente</option>
+                      <option [ngValue]="6">Inspetor Geral -DENS</option>
+                      <option [ngValue]="7">Diretor Operacional -DENS</option>
+                      <option [ngValue]="8">Superintendente -DENS</option>
+                      <option [ngValue]="9">Investigador -DIP</option>
+                      <option [ngValue]="10">Investigador Chefe -DIP</option>
+                      <option [ngValue]="11">Superintendente -DIP</option>
                   </select>
                   <div *ngIf="f.role_id.dirty && f.role_id.errors" class="invalid-feedback">
                       <div *ngIf="f.role_id.errors.required">Campo obrigatório*</div>
                   </div>
               </div>
 
-
-
                 <div class="form-group col-md-3">
-                    <label for="skin_color">Etnia</label>
+                    <label for="skin_color">Etnia*</label>
                     <select
                       data-toggle="tooltip"
                       title="Escolha sua respectiva etnia"
@@ -196,7 +194,7 @@
                 </div>
 
                 <div class="form-group col-md-3">
-                    <label for="cellphone">Telefone Celular</label>
+                    <label for="cellphone">Telefone Celular*</label>
                     <input
                       onkeypress='return event.charCode >= 48 && event.charCode <= 57'
                       data-toggle="tooltip"

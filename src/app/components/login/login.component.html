@@ -24,24 +24,11 @@
           placeholder="Senha"
           >
       <div class="d-flex justify-content-around">
-        <!-- <div>
-          <div class="custom-control custom-checkbox">
-            <input
-              type="checkbox"
-              class="custom-control-input"
-              id="defaultLoginFormRemember"
-            >
-            <label class="custom-control-label" for="defaultLoginFormRemember">Lembrar dados &nbsp;</label>
-          </div>
-        </div> -->
-        <div>
-          <a href="">&nbsp; Esqueceu a senha?</a>
-        </div>
       </div>
 
       <button type="submit" [disabled]="status.loading" mat-raised-button class="btn btn-info btn-block my-4 login-btn">Entrar</button>
 
-      <p>Não tem conta? <a routerLink="/register"> Registre-se</a> </p>
+      <p>Não possui conta? <a routerLink="/register"> Registre-se</a> </p>
     </form>
     </div>
   </div>

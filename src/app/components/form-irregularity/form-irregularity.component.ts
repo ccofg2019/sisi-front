@@ -3,8 +3,10 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import { IrregularityService } from '../../services/irregularity.service';
+import { OccurrenceService } from './../../services/occurrence.service';
 import { AclService } from 'ng2-acl';
 import { NotifyService } from './../../services/notify/notify.service';
+import { Zone } from './../../models/zone.model';
 
 @Component({
   selector: 'app-form-irregularity',
@@ -16,6 +18,7 @@ export class FormIrregularityComponent implements OnInit {
   formIrregularity: FormGroup;
   loading = false;
   submitted = false;
+  public zones: Zone[];
 
   // Validator patterns
   titlePattern = '^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ0-9,.!?*"#%(); -]{6,32}$';
@@ -39,6 +42,7 @@ export class FormIrregularityComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private irregularityService: IrregularityService,
+    private occurrenceService: OccurrenceService,
     private notifier: NotifyService,
     public aclService: AclService,
 
@@ -47,6 +51,8 @@ export class FormIrregularityComponent implements OnInit {
 
 
   ngOnInit() {
+
+    this.occurrenceService.getZones().subscribe((response: any) => this.zones = response.data);
 
     // Definindo valor default para o mapa
     if (this.cord === undefined) {
@@ -79,7 +85,7 @@ export class FormIrregularityComponent implements OnInit {
             .subscribe(
                 data => {
                   this.notifier.show('success', 'Registro de irregularidade realizado com sucesso!');
-                  this.router.navigate(['home']);
+                  this.router.navigate(['home/map']);
                 },
                 error => {
                   this.loading = false;

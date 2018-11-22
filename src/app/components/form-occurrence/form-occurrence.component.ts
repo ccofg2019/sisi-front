@@ -5,6 +5,7 @@ import { first } from 'rxjs/operators';
 import { OccurrenceService } from '../../services/occurrence.service';
 import { AclService } from 'ng2-acl';
 import { NotifyService } from './../../services/notify/notify.service';
+import { Zone } from './../../models/zone.model';
 
 @Component({
   selector: 'app-form-occurrence',
@@ -21,6 +22,7 @@ export class FormOccurrenceComponent implements OnInit {
   today = new Date().toJSON().split('T')[0];
   date = new Date();
   minDate: string;
+  public zones: Zone[];
   // Two Way Databind - passando as cordenadas para o form.
   cord;
 
@@ -50,6 +52,7 @@ export class FormOccurrenceComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.occurrenceService.getZones().subscribe((response: any) => this.zones = response.data);
 
     // definindo valor default para o mapa
     if (this.cord === undefined) {
@@ -67,8 +70,7 @@ export class FormOccurrenceComponent implements OnInit {
       estimated_loss: ['345'],
       occurrence_type_id: ['', Validators.required],
       zone_id: ['', Validators.required],
-
-      involved_person: this.formBuilder.group({
+      involved_people: this.formBuilder.group({
         name: ['', Validators.pattern(this.namePattern)],
         cpf: ['', [Validators.pattern(this.cpfPattern)]],
         gender: [''],
@@ -102,7 +104,7 @@ export class FormOccurrenceComponent implements OnInit {
             .subscribe(
                 data => {
                   this.notifier.show('success', 'Registro de ocorrência realizado com sucesso!');
-                  this.router.navigate(['home']);
+                  this.router.navigate(['home/map']);
                 },
                 error => {
                   this.loading = false;

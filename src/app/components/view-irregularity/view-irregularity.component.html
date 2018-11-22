@@ -7,7 +7,7 @@
         </div>
 
       <form class="col-md-12" [formGroup]="formIrregularity" (ngSubmit)="onSubmit()">
-
+        <p class="edit-info">*Os campos podem ser editados e a edição confirmada ao selecionar "Editar"*</p>
         <div class="form-row">
           <div class="form-group col-md-7">
             <label for="title">Titulo da Irregularidade</label>
@@ -47,7 +47,7 @@
             <select data-toggle="tooltip" title='Selecione a área em que a irregularidade ocorreu' class="form-control"
               formControlName="zone_id" [ngClass]="{ 'is-invalid': submitted && f.zone_id.errors }">
               <option value="" select disabled>Escolha uma opção</option>
-              <option value="1">Departamento de Tecnologia do Campus</option>
+              <option *ngFor="let zone of zones" value="{{ zone.id }}">{{ zone.name }}</option>
             </select>
 
             <div *ngIf="submitted && f.zone_id.errors" class="invalid-feedback">
@@ -78,10 +78,10 @@
         </div>
 
         <!-- BUTTON SUBMIT -->
-        <button routerLink="/list-irregularities" class="btn btn-primary buttom-mobile">Voltar</button>
+        <button [disabled]="loading" class="btn btn-primary buttom-mobile">Editar</button>
         <button class="btn btn-primary buttom-mobile" (click)=arquivarInvestigator()>Desativar</button>
         <button class="btn btn-primary buttom-mobile" (click)=validaInvestigator()>Validar</button>
-        <button [disabled]="loading" class="btn btn-primary buttom-mobile">Editar</button>
+        <button routerLink="/list-irregularities" class="btn btn-primary buttom-mobile">Voltar</button>
 
       </form>
     </div>

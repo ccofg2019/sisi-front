@@ -6,20 +6,17 @@
       </div>
       <div class="col-md-6">
         <div class="row">
-          <div class="col-md-8">
+          <!-- <div class="col-md-8">
               <label class="title-filter-mobile">Filtrar Ocorrências por:</label>
           </div>
           <div class="col-md-4">
                 <select class="custom-select" id="inputGroupSelect01">
                     <option *ngFor="let types of occurrencesType" value="{{ types.id }}" >{{ types.name }}</option>
                 </select>
-          </div>
-
+          </div> -->
       </div>
-
       </div>
     </div>
-
     <br>
     <div class="row row-table">
         <div class="table-responsive table--no-card m-b-30">
@@ -37,13 +34,13 @@
               </thead>
               <tbody>
                 <tr class="list" *ngFor="let occurrence of data">
-                  <th scope="row" [routerLink]="['/view-occurrence', occurrence.id]"><div class="table-content">{{ occurrence.id }}</div></th>
-                  <td [routerLink]="['/view-occurrence', occurrence.id]"><div class="table-content">{{ occurrence.status }}</div></td>
-                  <td [routerLink]="['/view-occurrence', occurrence.id]"><div class="table-content"><i class=" large material-icons">info</i>{{ occurrence.occurrence_type.name }}</div></td>
-                  <td [routerLink]="['/view-occurrence', occurrence.id]"><div class="table-content"><i class=" large material-icons">account_circle</i>{{ occurrence.user.name }}</div></td>
-                  <td [routerLink]="['/view-occurrence', occurrence.id]"><div class="table-content"><i class=" large material-icons">supervised_user_circle</i>{{ occurrence.agent }}</div></td>
-                  <td [routerLink]="['/view-occurrence', occurrence.id]"><div class="table-content"><i class=" large material-icons">room</i>{{ occurrence.zone.name }}</div></td>
-                  <td [routerLink]="['/view-occurrence', occurrence.id]"><div class="table-content"><i class=" large material-icons">calendar_today</i>{{ occurrence.occurrence_date }}</div></td>
+                  <th scope="row" [routerLink]="['/home/view-occurrence', occurrence.id]"><div class="table-content">{{ occurrence.id }}</div></th>
+                  <td [routerLink]="['/home/view-occurrence', occurrence.id]"><div class="table-content">{{ occurrence.status }}</div></td>
+                  <td [routerLink]="['/home/view-occurrence', occurrence.id]"><div class="table-content"><i class=" large material-icons">info</i>{{ occurrence.occurrence_type.name }}</div></td>
+                  <td [routerLink]="['/home/view-occurrence', occurrence.id]"><div class="table-content"><i class=" large material-icons">account_circle</i>{{ occurrence.user.name }}</div></td>
+                  <td [routerLink]="['/home/view-occurrence', occurrence.id]"><div class="table-content"><i class=" large material-icons">supervised_user_circle</i>{{ occurrence.agent }}</div></td>
+                  <td [routerLink]="['/home/view-occurrence', occurrence.id]"><div class="table-content"><i class=" large material-icons">room</i>{{ occurrence.zone.name }}</div></td>
+                  <td [routerLink]="['/home/view-occurrence', occurrence.id]"><div class="table-content"><i class=" large material-icons">calendar_today</i>{{ occurrence.occurrence_date | date }}</div></td>
               </tbody>
             </table>
 

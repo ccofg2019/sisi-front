@@ -13,7 +13,7 @@ import { AclService } from 'ng2-acl';
 })
 export class LoginComponent implements OnInit {
 
-  loginForm: FormGroup;
+  public loginForm: FormGroup;
   public btn_title: string;
   public status = { 'loading': false, error: false };
 

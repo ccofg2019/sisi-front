@@ -10,8 +10,8 @@ export  const ABILITIES = {
   };
 export  const ROLES = {
     '1': 'user',
-    '2': 'inspector',
-    '3': 'director',
+    '2': 'inspectorDFCU',
+    '3': 'directorDFCU',
     '4': 'sec_guard',
     '5': 'inspector2',
     '6': 'gen_inspector',
