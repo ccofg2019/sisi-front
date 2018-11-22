@@ -6,22 +6,18 @@
       </div>
       <div class="col-md-6">
         <div class="row">
-          <div class="col-md-8">
+          <!-- <div class="col-md-8">
               <label class="title-filter-mobile">Filtrar Irregularidades por:</label>
           </div>
           <div class="col-md-4">
                 <select class="custom-select" id="inputGroupSelect01">
                     <option selected disabled>Tipo</option>
                     <option *ngFor="let types of irregularityType" value="{{ types.id }}" >{{ types.name }}</option>
-                   
                 </select>
-          </div>
-
-      </div>
-
+          </div> -->
+       </div>
       </div>
     </div>
-
     <br>
     <div class="row row-table">
         <div class="table-responsive table--no-card m-b-30">
@@ -29,7 +25,7 @@
               <thead class="thead-sisi">
                 <tr>
                   <th scope="col" class="padding-thead-sisi">ID</th>
-                  <th scope="col" class="padding-thead-sisi">Situação</th>
+                  <!-- <th scope="col" class="padding-thead-sisi">Situação</th> -->
                   <th scope="col" class="padding-thead-sisi">Tipo</th>
                   <th scope="col" class="padding-thead-sisi">Registrado por</th>
                   <th scope="col" class="padding-thead-sisi">Investigador</th>
@@ -39,13 +35,13 @@
               </thead>
               <tbody>
                 <tr class="list" *ngFor="let irregularity of data">
-                  <th scope="row" [routerLink]="['/view-irregularity', irregularity.id]">{{ irregularity.id }}</th>
-                  <td [routerLink]="['/view-irregularity', irregularity.id]">{{ irregularity.status }}</td>
-                  <td [routerLink]="['/view-irregularity', irregularity.id]"><div class="table-content"><i class=" large material-icons">info</i>{{ irregularity.irregularity_type.name }}</div></td>
-                  <td [routerLink]="['/view-irregularity', irregularity.id]"><div class="table-content"><i class=" large material-icons">account_circle</i>{{ irregularity.user.name }}</div></td>
-                  <td [routerLink]="['/view-irregularity', irregularity.id]"><div class="table-content"><i class=" large material-icons">supervised_user_circle</i>{{ irregularity.agent.name }}</div></td>
-                  <td [routerLink]="['/view-irregularity', irregularity.id]"><div class="table-content"><i class=" large material-icons">room</i>{{ irregularity.zone.name }}</div></td>
-                  <td [routerLink]="['/view-irregularity', irregularity.id]"><div class="table-content"><i class=" large material-icons">calendar_today</i>{{ irregularity.created_at | date: 'medium' }}</div></td>
+                  <th scope="row" [routerLink]="['/home/view-irregularity', irregularity.id]">{{ irregularity.id }}</th>
+                  <!-- <td [routerLink]="['/view-irregularity', irregularity.id]">{{ irregularity.status }}</td> -->
+                  <td [routerLink]="['/home/view-irregularity', irregularity.id]"><div class="table-content"><i class=" large material-icons">info</i>{{ irregularity.irregularity_type.name }}</div></td>
+                  <td [routerLink]="['/home/view-irregularity', irregularity.id]"><div class="table-content"><i class=" large material-icons">account_circle</i>{{ irregularity.user.name }}</div></td>
+                  <td [routerLink]="['/home/view-irregularity', irregularity.id]"><div class="table-content"><i class=" large material-icons">supervised_user_circle</i>{{ irregularity.agent.name }}</div></td>
+                  <td [routerLink]="['/home/view-irregularity', irregularity.id]"><div class="table-content"><i class=" large material-icons">room</i>{{ irregularity.zone.name }}</div></td>
+                  <td [routerLink]="['/home/view-irregularity', irregularity.id]"><div class="table-content"><i class=" large material-icons">calendar_today</i>{{ irregularity.created_at | date: 'medium' }}</div></td>
                 </tr>
               </tbody>
             </table>

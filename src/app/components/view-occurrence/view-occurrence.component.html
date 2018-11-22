@@ -4,10 +4,11 @@
       <div class="card col-md-8" style="padding:0px;width: 100%;">
         <div class="card-header">
           <h3 class="title-mobile">Acompanhar Ocorrência</h3>
+
         </div>
 
       <form class="col-md-12" [formGroup]="formOccurrence" (ngSubmit)="onSubmit()">
-
+        <p class="edit-info">*Os campos podem ser editados e a edição confirmada ao selecionar "Editar"*</p>
         <div class="form-row">
           <div class="form-group col-md-7">
             <label for="title">Titulo da ocorrência</label>
@@ -22,7 +23,7 @@
           </div>
 
           <!-- FORM GROUP -->
-          <div class="form-group col-md-5">
+          <!-- <div class="form-group col-md-5">
             <div formGroupName="occurrence_objects">
               <label for="object_id">Objeto/Arma Envolvido(a)</label>
               <select data-toggle="tooltip" title='Selecione o objeto envolvido com a ocorrência, caso exista um' class="form-control"
@@ -41,12 +42,10 @@
                 <option [ngValue]="9">Arma de fogo</option>
               </select>
             </div>
-          </div>
+          </div> -->
           <!-- FORM GROUP END -->
-        </div>
 
-        <div class="form-row">
-          <div class="form-group col-md-6">
+          <div class="form-group col-md-5">
             <label for="police_report">B.O feito?</label>
             <select data-toggle="tooltip" title='Informe se um boletim de ocorrência foi ou não feito antes desse registro'
               class="form-control" formControlName="police_report" [ngClass]="{ 'is-invalid': f.police_report.dirty && formOccurrence.get('police_report').errors }">
@@ -58,13 +57,56 @@
               <div *ngIf="f.police_report.errors.required"> Campo obrigatório*</div>
             </div>
           </div>
+        </div>
 
+        <div class="form-row">
           <div class="form-group col-md-6" style="display: none;">
             <label for="title">coordinates</label>
             <input data-toggle="tooltip" type="text" class="form-control"
               placeholder="Título da irregularidade" formControlName="coordinates" [(ngModel)]="coordString" />
           </div>
+        </div>
 
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="title">Local da Ocorrência</label>
+            <select
+              data-toggle="tooltip"
+              title='Selecione a área em que a ocorrência ocorreu'
+              class="form-control"
+              formControlName="zone_id"
+              [ngClass]="{ 'is-invalid': submitted && f.zone_id.errors }"
+            >
+              <option value="" select disabled>Escolha uma opção</option>
+              <option *ngFor="let zone of zones" value="{{ zone.id }}">{{ zone.name }}</option>
+            </select>
+
+            <div *ngIf="submitted && f.zone_id.errors" class="invalid-feedback">
+              <div *ngIf="f.zone_id.errors.required"> Campo obrigatório*</div>
+            </div>
+          </div>
+
+          <div class="form-group col-md-6">
+            <label for="title">Tipo de Ocorrência</label>
+            <select data-toggle="tooltip" title='Selecione o tipo da ocorrência' class="form-control" formControlName="occurrence_type_id"
+              [ngClass]="{ 'is-invalid': f.occurrence_type_id.dirty && f.occurrence_type_id.errors }">
+              <option value="" select disabled>Escolha uma opção</option>
+              <option value="1">Furto</option>
+              <option value="2">Roubo</option>
+              <option value="3">Assalto a grupo</option>
+              <option value="4">Sequestro relâmpago</option>
+              <option value="5">Arrombamento de veículo</option>
+              <option value="6">Roubo de veículo</option>
+              <option value="7">Arrastão</option>
+              <option value="8">Tentativa de assalto</option>
+              <option value="11">Violência contra mulher</option>
+              <option value="12">Violência contra LGBT</option>
+            </select>
+
+            <div *ngIf="f.occurrence_type_id.dirty && f.occurrence_type_id.errors" class="invalid-feedback">
+              <div *ngIf="f.occurrence_type_id.errors.required"> Campo obrigatório*</div>
+            </div>
+          </div>
         </div>
 
         <div class="form-row">
@@ -89,49 +131,6 @@
           </div>
         </div>
 
-        <div class="form-row">
-          <div class="form-group col-md-6">
-            <label for="title">Local da Ocorrência</label>
-            <select data-toggle="tooltip" title='Selecione a área em que a ocorrência ocorreu' class="form-control"
-              formControlName="zone_id" [ngClass]="{ 'is-invalid': submitted && f.zone_id.errors }">
-              <option value="1">Fox - Medicina</option>
-              <option value="2">Zona 009 - Fisioterapia</option>
-              <option value="3">Horse - CCO</option>
-              <option value="4">Dog - Artes</option>
-              <option value="5">Zona 002 - Odontologia</option>
-              <option value="6">Cat - Educação fisica</option>
-              <option value="7">Cat - Educação fisica</option>
-              <option value="8">Fish - Artes</option>
-              <option value="9">Zona 3421 - Educação fisica</option>
-            </select>
-
-            <div *ngIf="submitted && f.zone_id.errors" class="invalid-feedback">
-              <div *ngIf="f.zone_id.errors.required"> Campo obrigatório*</div>
-            </div>
-          </div>
-
-          <div class="form-group col-md-6">
-            <label for="title">Tipo de Ocorrência</label>
-            <select data-toggle="tooltip" title='Selecione o tipo da ocorrência' class="form-control" formControlName="occurrence_type_id"
-              [ngClass]="{ 'is-invalid': f.occurrence_type_id.dirty && f.occurrence_type_id.errors }">
-              <option value="" select disabled>Escolha uma opção</option>
-              <option value="1">Furto</option>
-              <option value="2">Roubo</option>
-              <option value="3">Assalto a grupo</option>
-              <option value="4">Sequestro relâmpago</option>
-              <option value="5">Arrombamento de veículo</option>
-              <option value="6">Roubo de veículo</option>
-              <option value="7">Arrastão</option>
-              <option value="8">Tentativa de assalto</option>
-              <option value="9">Violência contra mulher</option>
-              <option value="10">Violência contra LGBT</option>
-            </select>
-
-            <div *ngIf="f.occurrence_type_id.dirty && f.occurrence_type_id.errors" class="invalid-feedback">
-              <div *ngIf="f.occurrence_type_id.errors.required"> Campo obrigatório*</div>
-            </div>
-          </div>
-        </div>
 
         <div class="form-row">
           <div class="form-group col-md-12">
@@ -148,10 +147,10 @@
         </div>
 
         <!-- BUTTON SUBMIT -->
-        <button routerLink="/list-occurrence" class="btn btn-primary buttom-mobile">Voltar</button>
-        <button (click)=arquivarInvestigator() class="btn btn-primary buttom-mobile" >Desativar</button>
-        <button (click)=validaInvestigator() class="btn btn-primary buttom-mobile" >Validar</button>
         <button [disabled]="loading" class="btn btn-primary buttom-mobile">Editar</button>
+        <button (click)=arquivarInvestigator() class="btn btn-primary buttom-mobile" >Arquivar</button>
+        <button (click)=validaInvestigator() class="btn btn-primary buttom-mobile" >Validar</button>
+        <button routerLink="/home/list-occurrence" class="btn btn-primary buttom-mobile">Voltar</button>
 
       </form>
     </div>
@@ -169,4 +168,3 @@
     </div> <!-- div background  -->
   </div>
 </div>
-  

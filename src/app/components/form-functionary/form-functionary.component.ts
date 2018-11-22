@@ -16,7 +16,7 @@ export class FormFunctionaryComponent implements OnInit {
   loading = false;
   submitted;
   date = new Date();
-  date2= new Date();
+  date2 = new Date();
   minDate: string;
   maxDate: string;
   // Validator patterns
@@ -39,7 +39,7 @@ export class FormFunctionaryComponent implements OnInit {
     this.date2.setFullYear(this.date2.getFullYear() - 16);
     this.minDate = this.date.toJSON().split('T')[0];
     this.maxDate = this.date2.toJSON().split('T')[0];
-    
+
     this.registerFormFunc = this.formBuilder.group({
       name: ['', [Validators.required, Validators.pattern(this.namePattern) ]],
       password: ['', [Validators.required, Validators.pattern(this.passPattern)]],
@@ -71,7 +71,7 @@ export class FormFunctionaryComponent implements OnInit {
             .subscribe(
                 data => {
                   this.notifier.show('success', 'Funcionário cadastrado com sucesso!');
-                  this.router.navigate(['/home']);
+                  this.router.navigate(['home/map']);
                 },
                 error => {
                   this.notifier.show('error', 'Desculpe, ocorreu um problema, suas informações não foram enviadas.');

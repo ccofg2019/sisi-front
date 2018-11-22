@@ -7,6 +7,7 @@ import { OccurrenceService } from '../../services/occurrence.service';
 import { Occurrence } from '../../models/occurrence.model';
 import { first } from 'rxjs/operators';
 import { NotifyService } from '../../services/notify/notify.service';
+import { Zone } from './../../models/zone.model';
 
 @Component({
   selector: 'app-view-occurrence',
@@ -23,11 +24,11 @@ export class ViewOccurrenceComponent implements OnInit {
   today = new Date().toJSON().split('T')[0];
   date = new Date();
   minDate: string;
+  public zones: Zone[];
 
   formOccurrence: FormGroup;
   loading = false;
   submitted = false;
-
 
   // Validator patterns
   titlePattern = '^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ0-9,.!?*"#%(); -]{6,32}$';
@@ -63,6 +64,8 @@ export class ViewOccurrenceComponent implements OnInit {
     ) {}
 
     ngOnInit() {
+      this.occurrenceService.getZones().subscribe((response: any) => this.zones = response.data);
+
       this.date.setFullYear(this.date.getFullYear() - 1);
       this.minDate = this.date.toJSON().split('T')[0];
       this.route.params.subscribe(

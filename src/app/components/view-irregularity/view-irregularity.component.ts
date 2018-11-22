@@ -2,10 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, Params, ActivatedRoute } from '@angular/router';
 import { IrregularityService } from 'src/app/services/irregularity.service';
+import { OccurrenceService } from '../../services/occurrence.service';
 import { AclService } from 'ng2-acl';
 import { NotifyService } from 'src/app/services/notify/notify.service';
 import { first } from 'rxjs/operators';
 import { Irregularity } from 'src/app/models/irregularity.model';
+import { Zone } from './../../models/zone.model';
 
 @Component({
   selector: 'app-view-irregularity',
@@ -16,6 +18,7 @@ export class ViewIrregularityComponent implements OnInit {
 
   public irregularities: Irregularity;
   public idIrregularities: number;
+  public zones: Zone[];
 
   formIrregularity: FormGroup;
   loading = false;
@@ -45,11 +48,13 @@ export class ViewIrregularityComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
+    private occurrenceService: OccurrenceService,
     private irregularityService: IrregularityService,
     public aclService: AclService,
     private notifier: NotifyService) { }
 
   ngOnInit() {
+    this.occurrenceService.getZones().subscribe((response: any) => this.zones = response.data);
 
     this.route.params.subscribe(
       (params: Params) => {

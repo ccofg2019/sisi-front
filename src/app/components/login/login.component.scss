@@ -1,6 +1,26 @@
+html, body {
+  height: 100%;
+}
+body {
+  margin: 0;
+}
+.login-container {
+  width: 100%;
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  background: #f2f2f2;
+}
+
 form {
   display: flex;
-
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -8,11 +28,7 @@ form {
   height: 510px;
   background-color: #fff;
   border-radius: 2%;
-  padding: auto;
-  margin-left: 24%;
-
   box-shadow: 3px 4px 8px -1px  rgba(0, 0, 0, 0.1);
-
 }
 
 .container {
@@ -45,7 +61,7 @@ button {
   font-weight: bold;
   font-family: Trebuchet MS, Helvetica, sans-serif;
   height: 40px;
-  width: 120px;
+  width: 300px;
   margin: 10px;
   float: right;
   border: none;

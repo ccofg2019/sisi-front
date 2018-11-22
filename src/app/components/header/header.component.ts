@@ -12,6 +12,7 @@ export class HeaderComponent implements OnInit {
   currentUser: User;
   name: string;
   role: string;
+  department: string;
 
   constructor(
     public aclService: AclService,
@@ -23,11 +24,13 @@ export class HeaderComponent implements OnInit {
      this.currentUser = this.authService.getDataUser();
      this.name = this.currentUser.name;
      this.role = this.currentUser.role.name;
+     this.department = this.currentUser.role.department;
     }
   }
   exit() {
     this.name = '';
     this.role = '';
+    this.department = '';
     this.authService.logout();
   }
 }

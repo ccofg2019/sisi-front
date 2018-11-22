@@ -13,7 +13,7 @@ import { retry, map } from 'rxjs/operators';
 export class OccurrenceService {
     constructor(private http: HttpClient) { }
 
-    registerOccurrence(occurrence: Occurrence) {
+    public registerOccurrence(occurrence: Occurrence) {
         return this.http.post(`${environment.API_URL}/api/occurrence-reports`, occurrence);
     }
     public getOccurrences() {
@@ -39,5 +39,8 @@ export class OccurrenceService {
     public editarOccurrences(occurrence: Occurrence, id: number) {
         return this.http.put(`${environment.API_URL}/api/occurrence-reports/${id}`, occurrence);
     }
+    public getZones() {
+      return this.http.get(`${environment.API_URL}/api/zones`);
+  }
 
 }
