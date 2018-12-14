@@ -1,5 +1,6 @@
 $color:#990000 ;
 button {
+  border-radius: 25px;
   background: $color;
   color: #fff;
   cursor: pointer;
@@ -19,9 +20,50 @@ button {
     opacity: 0.5;
   }
 }
+.form-style{
+  width: 100%;
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  background: #f2f2f2;
+}
+
+.card{
+  border-radius: 10px;
+  box-shadow: 3px 4px 8px -1px  rgba(0, 0, 0, 0.1);
+}
+
+.card-header{
+  display: flex;
+  justify-content: center;
+  border-radius: 10px 10px 0px 0px;
+  padding-top: 17px;
+  background: #990000;
+  color: white;
+}
 
 h3{
   font-weight: bolder;
+}
+
+.form-row{
+  margin-bottom: -25px;
+}
+
+.form-group {
+  margin-bottom: 2rem;
+}
+
+.form-control {
+  padding: 5px 10px;
+  border-radius: 10px;
 }
 
 .background-sub-menu-sisi{
@@ -31,10 +73,9 @@ h3{
 
 .form-default-sisi{
 width: 100%;
-padding: 10px;
+padding: 30px;
 padding-top: 20px;
 height: 80%;
-background-color: #0000001a;
 
 form{
   padding: 10px;
@@ -74,4 +115,21 @@ input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+@media (max-width: 576px) {
+
+  .form-style{
+    width: 100%;
+    margin: 0;
+  }
+
+  .form-check{
+    margin-top: 20px;
+  }
+
+  h3{
+    font-size: 25px;
+  }
+
 }

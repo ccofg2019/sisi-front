@@ -1,11 +1,34 @@
+html, body {
+  height: 100%;
+}
+body {
+  margin: 0;
+}
+.login-container {
+  width: 100%;
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  background: #f2f2f2;
+}
+
 form {
   display: flex;
-  position: absolute;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 100%;
-  height: 100%;
+  width: 390px;
+  height: 510px;
+  background-color: #fff;
+  border-radius: 2%;
+  box-shadow: 3px 4px 8px -1px  rgba(0, 0, 0, 0.1);
 }
 
 .container {
@@ -22,31 +45,23 @@ div#logo {
   margin-bottom: 20px;
 }
 
-#inputs {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: 10px;
-}
-
-.input-sisi {
-  font-size: 10px;
+.form-control {
   padding: 5px 10px;
-  min-width: 350px;
-  border: none;
-  border-radius: 6px;
+  min-width: 200px;
+  width: 300px !important;
+  border-radius: 10px;
 }
 $color: #990000;
 button {
   background: $color;
+  border-radius: 45px;
   color: #fff;
   cursor: pointer;
   font-size: 20px;
   font-weight: bold;
   font-family: Trebuchet MS, Helvetica, sans-serif;
-  height: 50px;
-  width: 140px;
+  height: 40px;
+  width: 300px;
   margin: 10px;
   float: right;
   border: none;
@@ -62,3 +77,25 @@ button {
   font-size: 15px;
   margin-right: 210px;
 }
+
+
+@media (max-width: 576px) {
+
+  .login-container {
+    margin: -20% 2% 0 0;
+    width: 100%;
+  }
+
+  form{
+    width: 100%;
+    height: 100%;
+    margin-left: 0%;
+    margin-top: 35%;
+  }
+
+  .d-flex{
+    display: block !important;
+  }
+
+}
+

@@ -9,4 +9,8 @@ export class User {
     public cellphone: string;
     public phone: string;
     public status: string;
+    public role: {
+      name: string;
+      department: string;
+    };
 }

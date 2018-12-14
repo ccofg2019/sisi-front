@@ -13,60 +13,69 @@ import { AclService } from 'ng2-acl';
 })
 export class LoginComponent implements OnInit {
 
-
+  public loginForm: FormGroup;
   public btn_title: string;
   public status = { 'loading': false, error: false };
-  public form: FormGroup;
-
-  @Output() loginSubmit: EventEmitter<any> = new EventEmitter<any>();
 
   constructor(
     private authService: AuthService,
-    private fb: FormBuilder,
+    private formBuilder: FormBuilder,
     private router: Router,
-    private notify: NotifyService,
+    private notifier: NotifyService,
     public aclService: AclService
   ) {
   }
 
+  ngOnInit() {
+    if (this.authService.isLoggedIn()) {
+      this.router.navigate(['home']);
+      return;
+    }
 
-  /**
-   * Controla o estado e texto do botão de login
-   *
-   * @param {string} state
-   */
+    this.btn_title = 'Entrar';
+
+    this.loginForm = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required]
+
+    });
+
+  }
+
   private controlStateLogin(state: string): void {
 
     if (state === 'loading') {
       this.status.loading = true;
       this.status.error = false;
       this.btn_title = 'Entrando';
-      this.form.controls.email.setErrors(null);
-      this.form.controls.password.setErrors(null);
+      this.loginForm.controls.email.setErrors(null);
+      this.loginForm.controls.password.setErrors(null);
 
 
     } else {
       this.status.error = true;
       this.status.loading = false;
       this.btn_title = 'Entrar';
-      this.form.controls.email.reset();
-      this.form.controls.password.reset();
+      this.loginForm.controls.email.reset();
+      this.loginForm.controls.password.reset();
     }
 
   }
 
-
-  /**
-   * Login de usuário
-   */
   public login(): void {
-    if (this.form.valid && !this.status.loading) {
+
+    if (this.loginForm.invalid) {
+      this.notifier.show('warning', 'Confira se os campos foram preenchidos corretamente.');
+      return;
+    }
+
+    if (this.loginForm.valid && !this.status.loading) {
       this.controlStateLogin('loading');
 
-      this.authService.loginUser(this.form.value.email, this.form.value.password).subscribe(
+      this.authService.loginUser(this.loginForm.value.email, this.loginForm.value.password).subscribe(
         (res) => {
           this.router.navigate(['home']);
-          this.loginSubmit.emit(true);
+          this.authService.loginInfo(true);
 
         },
         (err) => {
@@ -77,20 +86,4 @@ export class LoginComponent implements OnInit {
 
   }
 
-
-  ngOnInit() {
-    if (this.authService.isLoggedIn()) {
-      this.router.navigate(['home']);
-      return;
-    }
-
-    this.btn_title = 'Entrar';
-
-    this.form = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required]
-
-    });
-
-  }
 }

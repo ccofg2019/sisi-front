@@ -1,0 +1,147 @@
+<div class="margin-top-sisi">
+  <div style="width: 100%">
+    <div class="form-default-sisi row">
+      <div class="card col-md-8" style="padding:0px;width: 100%;">
+        <div class="card-header">
+          <h3>Acompanhar Irregularidade</h3>
+        </div>
+
+      <form class="col-md-12" [formGroup]="formIrregularity" (ngSubmit)="onSubmit()">
+        <div class="form-row">
+          <div class="form-group col-md-7">
+            <label for="title">Titulo da Irregularidade</label>
+            <input
+            [readonly] = "disabled"
+            data-toggle="tooltip"
+            title='Insira um resumo da descrição da irregularidade'
+            type="text" class="form-control"
+            placeholder="Título da irregularidade"
+            formControlName="title"
+            [ngClass]="{ 'is-invalid': f.title.dirty && f.title.errors }" />
+
+            <div *ngIf="f.title.dirty && f.title.errors" class="invalid-feedback">
+              <div *ngIf="f.title.errors.required">Campo obrigatório*</div>
+              <div *ngIf="f.title.errors.pattern">Título deve ter de 6 a 32 caracteres*</div>
+            </div>
+
+          </div>
+
+          <div class="form-group col-md-5">
+            <label for="title">Tipo de Irregularidade</label>
+            <select
+            *ngIf="disabledSelect"
+            data-toggle="tooltip"
+            title='Selecione o tipo da irregularidade'
+            class="form-control"
+            formControlName="irregularity_type_id"
+            [ngClass]="{ 'is-invalid': f.irregularity_type_id.dirty && f.irregularity_type_id.errors }">
+              <option value="" select disabled>Escolha uma opção</option>
+              <option value="1">Controle de Animais</option>
+              <option value="2">Iluminação</option>
+              <option value="3">Acessibilidade</option>
+              <option value="4">Poda</option>
+              <option value="5">Poluição</option>
+              <option value="6">Outros</option>
+            </select>
+
+            <select *ngIf="disabled"
+            disabled
+            data-toggle="tooltip"
+            title='Selecione o tipo da irregularidade'
+            class="form-control"
+            formControlName="irregularity_type_id"
+            [ngClass]="{ 'is-invalid': f.irregularity_type_id.dirty && f.irregularity_type_id.errors }">
+              <option value="" select disabled>Escolha uma opção</option>
+              <option value="1">Controle de Animais</option>
+              <option value="2">Iluminação</option>
+              <option value="3">Acessibilidade</option>
+              <option value="4">Poda</option>
+              <option value="5">Poluição</option>
+              <option value="6">Outros</option>
+            </select>
+
+            <div *ngIf="f.irregularity_type_id.dirty && f.irregularity_type_id.errors" class="invalid-feedback">
+              <div *ngIf="f.irregularity_type_id.errors.required"> Campo obrigatório*</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+
+          <div class="form-group col-md-6">
+            <label for="title">Local da Irregularidade</label>
+            <select *ngIf="disabledSelect"
+            data-toggle="tooltip"
+            title='Selecione a área em que a irregularidade ocorreu'
+            class="form-control"
+            formControlName="zone_id" [ngClass]="{ 'is-invalid': submitted && f.zone_id.errors }">
+              <option value="" select disabled>Escolha uma opção</option>
+              <option *ngFor="let zone of zones" value="{{ zone.id }}">{{ zone.name }}</option>
+            </select>
+
+            <select *ngIf="disabled"
+            disabled
+            data-toggle="tooltip"
+            title='Selecione a área em que a irregularidade ocorreu'
+            class="form-control"
+            formControlName="zone_id" [ngClass]="{ 'is-invalid': submitted && f.zone_id.errors }">
+              <option value="" select disabled>Escolha uma opção</option>
+              <option *ngFor="let zone of zones" value="{{ zone.id }}">{{ zone.name }}</option>
+            </select>
+
+            <div *ngIf="submitted && f.zone_id.errors" class="invalid-feedback">
+              <div *ngIf="f.zone_id.errors.required"> Campo obrigatório*</div>
+            </div>
+          </div>
+
+          <div class="form-group col-md-6" style="display: none;">
+            <label for="title">coordinates</label>
+            <input data-toggle="tooltip" type="text" class="form-control"
+              placeholder="Título da irregularidade" formControlName="coordinates" [(ngModel)]="coordString" />
+          </div>
+
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-12">
+            <label for="story">Descrição da irregularidade</label>
+            <textarea
+            [readonly] = "disabled"
+            data-toggle="tooltip"
+            title='Faça uma descrição detalhada da irregularidade'
+            class="form-control"
+            rows="3"
+            placeholder="Descrição da irregularidade"
+            formControlName="story" [ngClass]="{ 'is-invalid': f.story.dirty && f.story.errors }"></textarea>
+
+            <div *ngIf="f.story.dirty && f.story.errors" class="invalid-feedback">
+              <div *ngIf="f.story.errors.required"> Campo obrigatório*</div>
+              <div *ngIf="f.story.errors.minlength"> Descrição deve ter mais de 12 dígitos*</div>
+              <div *ngIf="f.story.errors.maxlength"> Descrição deve ter no máximo 256 dígitos*</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- BUTTON SUBMIT -->
+        <button *ngIf="!disabled" [disabled]="loading" class="btn btn-primary buttom-mobile">Atualizar</button>
+        <button type="button" class="btn btn-primary" (click)='onDisable()'>{{ nameButtom }}</button>
+        <button type="button" routerLink="/home/list-irregularities" class="btn btn-primary buttom-mobile">Voltar</button>
+        <!-- <button class="btn btn-primary buttom-mobile" (click)=arquivarInvestigator()>Desativar</button>
+        <button class="btn btn-primary buttom-mobile" (click)=validaInvestigator()>Validar</button> -->
+
+      </form>
+    </div>
+
+      <div class="col-md-4 container-map-mobile">
+          <div class="card" style="padding:0;">
+              <div class="card-header">
+                <h3>Mapa</h3>
+              </div>
+          </div>
+        <agm-map [zoom]="17" [latitude]="lat" [longitude]="lng" (mapClick)="onChoseLocation($event)">
+          <agm-marker [latitude]="lat" [longitude]="lng" *ngIf="locationChosen" [markerDraggable]="true"></agm-marker>
+        </agm-map>
+      </div>
+    </div> <!-- div background  -->
+  </div>
+</div>

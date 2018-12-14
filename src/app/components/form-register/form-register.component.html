@@ -1,110 +1,115 @@
 
     <div>
-      <div id="topnav">
-        <a routerLink=""><button class="btn btn-primary" >Login</button></a>
-      </div>
-
-      <div class="container-fluid" style="padding:0px;">
-        <form class="form-default-sisi" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <div class="form-style">
+        <div class="card" style="padding:0px;">
+          <div class="card-header">
             <h3>Formulário de Cadastro</h3>
-            <div class="form-row">
-              <div class="form-group col-md-4">
-                <label for="name">Nome Completo</label>
-                <input
-                  data-toggle="tooltip"
-                  title="Insira seu nome completo"
-                  type="text"
-                  class="form-control"
-                  placeholder="Nome"
-                  formControlName="name"
-                  [ngClass]="{ 'is-invalid': f.name.dirty && f.name.errors }" />
-
-                <div *ngIf="f.name.dirty && f.name.errors" class="invalid-feedback">
-                  <div *ngIf="f.name.errors.required"> Campo obrigatório*</div>
-                  <div *ngIf="f.name.errors.pattern"> Nome deve possuir mais de 10 caracteres</div>
+          </div>
+          <form class="card-body form-default-sisi" [formGroup]="registerForm" (submit)="onSubmit()">
+              <div class="form-row">
+                <div class="form-group col-md-12">
+                  <label for="name">Nome Completo*</label>
+                  <input
+                    data-toggle="tooltip"
+                    title="Insira seu nome completo"
+                    type="text"
+                    maxlength="52"
+                    class="form-control"
+                    placeholder="Nome"
+                    formControlName="name"
+                    [ngClass]="{ 'is-invalid': f.name.dirty && f.name.errors }"
+                  />
+                  <div *ngIf="f.name.dirty && f.name.errors" class="invalid-feedback">
+                    <div *ngIf="f.name.errors.required"> Campo obrigatório*</div>
+                    <div *ngIf="f.name.errors.pattern"> Nome deve possuir mais de 10 caracteres</div>
+                  </div>
                 </div>
               </div>
 
-              <div class="form-group col-md-4">
-                <label for="email">Email</label>
-                <input
-                  data-toggle="tooltip"
-                  title="Insira um email válido"
-                  type="email"
-                  class="form-control"
-                  formControlName="email"
-                  placeholder="exemplo@email.com"
-                  [ngClass]="{ 'is-invalid': f.email.dirty && f.email.errors }" />
-                <div *ngIf="f.email.dirty && f.email.errors" class="invalid-feedback">
-                    <div *ngIf="f.email.errors.required"> Campo obrigatório*</div>
-                    <div *ngIf="f.email.errors.email" > Insira um email válido</div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="email">Email*</label>
+                  <input
+                    data-toggle="tooltip"
+                    title="Insira um email válido"
+                    type="email"
+                    maxlength="32"
+                    class="form-control"
+                    formControlName="email"
+                    placeholder="exemplo@email.com"
+                    [ngClass]="{ 'is-invalid': f.email.dirty && f.email.errors }"
+                  />
+                  <div *ngIf="f.email.dirty && f.email.errors" class="invalid-feedback">
+                      <div *ngIf="f.email.errors.required"> Campo obrigatório*</div>
+                      <div *ngIf="f.email.errors.email" > Insira um email válido</div>
+                  </div>
+                </div>
+
+                <div class="form-group col-md-6">
+                  <label for="password">Senha*</label>
+                  <input
+                    data-toggle="tooltip"
+                    title="Pelo menos 8 caracteres, 1 número, 1 letra maiúscula e 1 letra minúscula"
+                    type="password"
+                    maxlength="28"
+                    class="form-control"
+                    formControlName="password"
+                    placeholder="Senha"
+                    [ngClass]="{ 'is-invalid': f.password.dirty && f.password.errors }"
+                  />
+                  <div *ngIf="f.password.dirty && f.password.errors" class="invalid-feedback">
+                    <div *ngIf="f.password.errors.required">Campo obrigatório*</div>
+                    <div *ngIf="f.password.errors.pattern"> Senha inválida, deve possuir pelo menos:8 caracteres, 1 letra maiúscula, 1 letra minúscula e 1 número</div>
+                  </div>
                 </div>
               </div>
 
-              <div class="form-group col-md-4">
-                <label for="password">Senha</label>
-                <input
-                  data-toggle="tooltip"
-                  title="Pelo menos 8 caracteres, 1 número, 1 letra maiúscula e 1 letra minúscula"
-                  type="password"
-                  class="form-control"
-                  formControlName="password"
-                  placeholder="Senha"
-                  [ngClass]="{ 'is-invalid': f.password.dirty && f.password.errors }" />
+              <div class="form-row">
+                  <div class="form-group col-md-4">
+                      <label for="cpf">CPF*</label>
+                      <input
+                        onkeypress='return event.charCode >= 48 && event.charCode <= 57'
+                        data-toggle="tooltip"
+                        title='Apenas números'
+                        type="tel"
+                        maxlength="11"
+                        class="form-control"
+                        formControlName="cpf"
+                        placeholder="000.000.000-00"
+                        [ngClass]="{ 'is-invalid': f.cpf.dirty && f.cpf.errors }"
+                      />
+                      <div *ngIf="f.cpf.dirty && f.cpf.errors" class="invalid-feedback">
+                          <div *ngIf="f.cpf.errors.required"> Campo obrigatório*</div>
+                          <div *ngIf="f.cpf.errors.pattern"> Apenas números, e exatamente 11 dígitos</div>
+                      </div>
+                  </div>
 
-                <div *ngIf="f.password.dirty && f.password.errors" class="invalid-feedback">
-                  <div *ngIf="f.password.errors.required">Campo obrigatório*</div>
-                  <div *ngIf="f.password.errors.pattern"> Senha inválida, deve possuir pelo menos:8 caracteres, 1 letra maiúscula, 1 letra minúscula e 1 número</div>
-                </div>
-              </div>
+                  <div class="form-group col-md-4">
+                      <label for="birthdate">Data Nascimento*</label>
+                      <input
+                        data-toggle="tooltip"
+                        title="Escolha a data através das setas ao lado"
+                        type="date"
+                        max={{maxDate}}
+                        min={{minDate}}
+                        class="form-control"
+                        formControlName="birthdate"
+                        [ngClass]="{ 'is-invalid': f.birthdate.dirty && f.birthdate.errors }"
+                      />
+                      <div *ngIf="f.birthdate.dirty && f.birthdate.errors" class="invalid-feedback">
+                          <div *ngIf="f.birthdate.errors.required">Campo obrigatório*</div>
+                      </div>
+                  </div>
 
-            </div>
-
-
-            <div class="form-row">
-                <div class="form-group col-md-3">
-                    <label for="cpf">CPF</label>
-                    <input
-                      data-toggle="tooltip"
-                      title='Apenas números'
-                      type="number"
-                      class="form-control"
-                      formControlName="cpf"
-                      placeholder="000.000.000-00"
-                    [ngClass]="{ 'is-invalid': f.cpf.dirty && f.cpf.errors }"
-                    />
-
-                    <div *ngIf="f.cpf.dirty && f.cpf.errors" class="invalid-feedback">
-                        <div *ngIf="f.cpf.errors.required"> Campo obrigatório*</div>
-                        <div *ngIf="f.cpf.errors.pattern"> Apenas números, e exatamente 11 dígitos</div>
-                    </div>
-                </div>
-
-                <div class="form-group col-md-3">
-                    <label for="birthdate">Data Nascimento</label>
-                    <input
-                      onkeydown="return false"
-                      data-toggle="tooltip"
-                      title="Escolha a data através das setas ao lado"
-                      type="date"
-                      class="form-control"
-                      formControlName="birthdate"
-                    [ngClass]="{ 'is-invalid': f.birthdate.dirty && f.birthdate.errors }" />
-
-                    <div *ngIf="f.birthdate.dirty && f.birthdate.errors" class="invalid-feedback">
-                        <div *ngIf="f.birthdate.errors.required">Campo obrigatório*</div>
-                    </div>
-                </div>
-
-                <div class="form-group col-md-3">
-                    <label for="gender">Gênero</label>
+                  <div class="form-group col-md-4">
+                    <label for="gender">Gênero*</label>
                     <select
                       data-toggle="tooltip"
                       title="Escolha o seu respectivo gênero"
                       formControlName="gender"
                       class="form-control"
-                      [ngClass]="{ 'is-invalid': f.gender.dirty && f.gender.errors }">
-
+                      [ngClass]="{ 'is-invalid': f.gender.dirty && f.gender.errors }"
+                    >
                         <option value="" select disabled>Escolha uma opção</option>
                         <option value="MASCULINO">Masculino</option>
                         <option value="FEMININO">Feminino</option>
@@ -114,133 +119,138 @@
                       <div *ngIf="f.gender.dirty && f.gender.errors" class="invalid-feedback">
                           <div *ngIf="f.gender.errors.required">Campo obrigatório*</div>
                       </div>
-                </div>
+                  </div>
 
-                <div class="form-group col-md-3">
-                    <label for="skin_color">Etnia</label>
-                    <select
-                      data-toggle="tooltip"
-                      title="Escolha sua respectiva etnia"
-                      formControlName="skin_color"
-                      class="form-control"
-                      [ngClass]="{ 'is-invalid': f.skin_color.dirty && f.skin_color.errors }">
-                        <option value="" select disabled>Escolha uma opção</option>
-                        <option value="BRANCO">Branca</option>
-                        <option value="NEGRO">Negro</option>
-                        <option value="PARDO">Pardo</option>
-                        <option value="INDIGENA">Indígena</option>
-                        <option value="AMARELO">Amarelo</option>
-                    </select>
-                    <div *ngIf="f.skin_color.dirty && f.skin_color.errors" class="invalid-feedback">
-                        <div *ngIf="f.skin_color.errors.required">Campo obrigatório*</div>
-                    </div>
-                </div>
+              </div>
 
+              <div class="form-row">
 
-            </div>
+              <div class="form-group col-md-4">
+                  <label for="skin_color">Etnia*</label>
+                  <select
+                    data-toggle="tooltip"
+                    title="Escolha sua respectiva etnia"
+                    formControlName="skin_color"
+                    class="form-control"
+                    [ngClass]="{ 'is-invalid': f.skin_color.dirty && f.skin_color.errors }"
+                  >
+                      <option value="" select disabled>Escolha uma opção</option>
+                      <option value="BRANCO">Branca</option>
+                      <option value="NEGRO">Negro</option>
+                      <option value="PARDO">Pardo</option>
+                      <option value="INDIGENA">Indígena</option>
+                      <option value="AMARELO">Amarelo</option>
+                  </select>
+                  <div *ngIf="f.skin_color.dirty && f.skin_color.errors" class="invalid-feedback">
+                      <div *ngIf="f.skin_color.errors.required">Campo obrigatório*</div>
+                  </div>
+              </div>
 
-            <div class="form-row">
-              <div class="form-group col-md-6">
+              <div class="form-group col-md-4">
                 <label for="phone">Telefone Residencial</label>
                 <input
+                  onkeypress='return event.charCode >= 48 && event.charCode <= 57'
                   data-toggle="tooltip"
                   title="Apenas números incluindo DDD, exatamente 10 dígitos"
-                  type="text"
+                  type="tel"
+                  maxlength="10"
                   class="form-control"
                   formControlName="phone"
                   placeholder="(00) 0000-0000"
-                  [ngClass]="{ 'is-invalid': submitted && f.phone.errors }" />
-                  <div *ngIf="submitted && !f.phone.errors" class="valid-feedback"></div>
-                  <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
-                    <div *ngIf="f.phone.errors.required">Campo obrigatório*</div>
+                  [ngClass]="{ 'is-invalid': f.phone.dirty && f.phone.errors }"
+                />
+                  <div *ngIf="f.phone.dirty && !f.phone.errors" class="valid-feedback"></div>
+                  <div *ngIf="f.phone.dirty && f.phone.errors" class="invalid-feedback">
                     <div *ngIf="f.phone.errors.pattern"> Número de telefone inválido, deve ter 10 dígitos</div>
                 </div>
               </div>
-              <div class="form-group col-md-6">
-                  <label for="cellphone">Telefone Celular</label>
+              <div class="form-group col-md-4">
+                  <label for="cellphone">Telefone Celular*</label>
                   <input
+                    onkeypress='return event.charCode >= 48 && event.charCode <= 57'
                     data-toggle="tooltip"
                     title="Apenas números incluindo DDD, exatamente 11 dígitos"
-                    type="text"
+                    type="tel"
+                    maxlength="11"
                     class="form-control"
                     formControlName="cellphone"
                     placeholder="(00) 0000-0000"
-                    [ngClass]="{ 'is-invalid': submitted && f.cellphone.errors }" />
-
-                <div *ngIf="submitted && f.cellphone.errors" class="invalid-feedback">
+                    [ngClass]="{ 'is-invalid': f.cellphone.dirty && f.cellphone.errors }"
+                  />
+                <div *ngIf="f.cellphone.dirty && f.cellphone.errors" class="invalid-feedback">
                     <div *ngIf="f.cellphone.errors.required">Campo obrigatório*</div>
                     <div *ngIf="f.cellphone.errors.pattern"> Número de celular inválido, deve ter 11 dígitos</div>
                 </div>
               </div>
 
-              <div class="form-group col-md-12">
-                <div class="form-check">
-                  <input 
-                    data-toggle="tooltip"
-                    title="Você precisa aceitar os termos de uso da aplicação"
-                    type="checkbox"
-                    class="form-check-input"
-                    formControlName="terms"
-                    [ngClass]="{ 'is-invalid': submitted && f.terms.errors }"
-                  >
-                  <label class="form-check-label" for="gridCheck">
-                    <a href="" id="myBtn"  data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo"> Termos de uso</a>
-                  </label>
+              </div>
 
-                    <div *ngIf="submitted && f.terms.errors" class="invalid-feedback">
-                      <div *ngIf="f.cellphone.errors.required">É necessário aceita todos os termos do sistema*</div>
-                    </div>
+              <div class="form-row">
+
+                <div class="form-group col-md-12">
+                  <div class="form-check">
+                    <input
+                      data-toggle="tooltip"
+                      title="Você precisa aceitar os termos de uso da aplicação"
+                      type="checkbox"
+                      class="form-check-input"
+                      formControlName="terms"
+                      [ngClass]="{ 'is-invalid': submitted && f.terms.errors }"
+                    >
+                    <label class="form-check-label" for="gridCheck">
+                      <a href="" id="myBtn"
+                        data-toggle="modal"
+                        data-target="#exampleModal"
+                        data-whatever="@mdo"> Termos de uso
+                      </a>
+                    </label>
+                      <div *ngIf="submitted && f.terms.errors" class="invalid-feedback">
+                        <div *ngIf="f.terms.errors.required">É necessário aceitar os termos de uso*</div>
+                      </div>
+                  </div>
                 </div>
-              </div><br>
-
-              <button [disabled]="loading" class="btn btn-primary">Cadastrar</button>
+              </div>
+              <div class="form-row">
+                <button [disabled]="loading" class="btn btn-primary">Cadastrar</button>
+                <a  style="margin-top: 20px;" routerLink="">Já possui conta?</a>
             </div>
-
-          </form>
-        </div>
-    </div>
-
-
- <!-- MODAL DE ENVOLVIDO -->
- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Adicionar Envolvidos</h5>
-      </div>
-      <div class="modal-body">
-          <div>
-            <p>
-
-              Todos as descrições das pessoas são sobre a humanidade do atendimento, a pessoa pega no pulso, examina, olha com carinho. Então eu acho que vai ter outra coisa, que os médicos cubanos trouxeram pro brasil, um alto grau de humanidade.
-
-              Se hoje é o dia das crianças... Ontem eu disse: o dia da criança é o dia da mãe, dos pais, das professoras, mas também é o dia dos animais, sempre que você olha uma criança, há sempre uma figura oculta, que é um cachorro atrás. O que é algo muito importante!
-              
-              A única área que eu acho, que vai exigir muita atenção nossa, e aí eu já aventei a hipótese de até criar um ministério. É na área de... Na área... Eu diria assim, como uma espécie de analogia com o que acontece na área agrícola.
-              
-              Primeiro eu queria cumprimentar os internautas. -Oi Internautas! Depois dizer que o meio ambiente é sem dúvida nenhuma uma ameaça ao desenvolvimento sustentável. E isso significa que é uma ameaça pro futuro do nosso planeta e dos nossos países. O desemprego beira 20%, ou seja, 1 em cada 4 portugueses.
-              
-              Ai você fala o seguinte: "- Mas vocês acabaram isso?" Vou te falar: -"Não, está em andamento!" Tem obras que "vai" durar pra depois de 2010. Agora, por isso, nós já não desenhamos, não começamos a fazer projeto do que nós "podêmo fazê"? 11, 12, 13, 14... Por que é que não?
-              
-              No meu xinélo da humildade eu gostaria muito de ver o Neymar e o Ganso. Por que eu acho que.... 11 entre 10 brasileiros gostariam. Você veja, eu já vi, parei de ver. Voltei a ver, e acho que o Neymar e o Ganso têm essa capacidade de fazer a gente olhar.
-              
-              A população ela precisa da Zona Franca de Manaus, porque na Zona franca de Manaus, não é uma zona de exportação, é uma zona para o Brasil. Portanto ela tem um objetivo, ela evita o desmatamento, que é altamente lucravito. Derrubar arvores da natureza é muito lucrativo!
-              
-              Eu dou dinheiro pra minha filha. Eu dou dinheiro pra ela viajar, então é... é... Já vivi muito sem dinheiro, já vivi muito com dinheiro. -Jornalista: Coloca esse dinheiro na poupança que a senhora ganha R$10 mil por mês. -Dilma: O que que é R$10 mil?
-              
-              
-
-            </p>
+            </form>
           </div>
       </div>
 
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Aceitar</button>
+
+  <!-- MODAL DE TERMOS DE USO -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Termos de Uso</h5>
+        </div>
+        <div class="modal-body">
+            <div>
+              <p>
+                <strong> Política de privacidade para SISI: </strong>
+                  Todas as suas informações pessoais recolhidas, serão usadas para o ajudar a tornar a sua visita no nosso site o mais produtiva e agradável possível.
+                  A garantia da confidencialidade dos dados pessoais dos utilizadores do nosso site é importante para o SISI.
+                  Todas as informações pessoais relativas a membros, assinantes, clientes ou visitantes que usem o SISI serão tratadas em concordância com a Lei da Proteção de Dados Pessoais de 26 de outubro de 1998 (Lei n.º 67/98).
+                  A informação pessoal recolhida pode incluir o seu nome, e-mail, número de telefone e/ou telemóvel, morada, data de nascimento e/ou outros.
+                  O uso do SISI pressupõe a aceitação deste Acordo de privacidade. A equipa do SISI reserva-se ao direito de alterar este acordo sem aviso prévio. Deste modo, recomendamos que consulte a nossa política de privacidade com regularidade de forma a estar sempre atualizado.
+              </p>
+              <p>
+                <strong>Os Cookies e Web Beacons: </strong>
+                Utilizamos cookies para armazenar informação, tais como as suas preferências pessoas quando visita o nosso website. Isto poderá incluir um simples popup, ou uma ligação em vários serviços que providenciamos, tais como fóruns.
+                Em adição também utilizamos publicidade de terceiros no nosso website para suportar os custos de manutenção. Alguns destes publicitários, poderão utilizar tecnologias como os cookies e/ou web beacons quando publicitam no nosso website, o que fará com que esses publicitários (como o Google através do Google AdSense) também recebam a sua informação pessoal, como o endereço IP, o seu ISP, o seu browser, etc. Esta função é geralmente utilizada para geotargeting (mostrar publicidade de Lisboa apenas aos leitores oriundos de Lisboa por ex.) ou apresentar publicidade direcionada a um tipo de utilizador (como mostrar publicidade de restaurante a um utilizador que visita sites de culinária regularmente, por ex.).
+                 Você detém o poder de desligar os seus cookies, nas opções do seu browser, ou efetuando alterações nas ferramentas de programas Anti-Virus, como o Norton Internet Security. No entanto, isso poderá alterar a forma como interage com o nosso website, ou outros websites. Isso poderá afetar ou não permitir que faça logins em programas, sites ou fóruns da nossa e de outras redes.
+              </p>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Aceitar</button>
+        </div>
       </div>
     </div>
   </div>
 </div>
-<!-- FIM MODAL ENVOLVIDO -->    
+<!-- FIM MODAL TERMOS DE USO -->
 
 

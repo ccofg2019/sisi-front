@@ -1,76 +1,42 @@
 <div>
-  <!-- MENU DE NAVEGAÇÃO -->
-  <div id="topnav">
-    <a *ngIf="aclService.can('list_occurrence')" routerLink="/list-occurrence"><button class="btn btn-primary">Ocorrências</button></a>
-    <a *ngIf="aclService.can('add_occurrence')" routerLink="/occurrence"><button class="btn btn-primary">Registrar Ocorrência</button></a>
-    <a *ngIf="aclService.can('user_content')" routerLink="/home"><button class="btn btn-primary" >Mapa</button></a>
-  </div>
-
-  <!-- HEADER LIST-->
   <div class="container-fluid margin-top-sisi">
-    <div class="row">
+    <div class="row" style="margin-bottom: 20px;">
       <div class="col-md-6">
         <h2> Usuários </h2>
       </div>
       <div class="col-md-6">
-        <div class="row">
-
-          <div class="col-md-2">
-            <!--
-            <div class="form-check" style="display:none;">
-              <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-                <label class="form-check-label" for="exampleRadios1">Gráfico</label>
-            </div>
-
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2" checked>
-              <label class="form-check-label" for="exampleRadios2"> Tebela </label>
-            </div> -->
-          </div>
-
-        <div class="col-md-10">
-            <button class="btn btn-primary" style="float:left; margin: 0px;"  onclick="window.print();" style="float:right;">Download</button>
-        </div>
-
-      </div>
-
       </div>
     </div>
-
     <br>
-    <div class="row">
-      <div class="col-md-12">
-          <table class="table table-hover">
-              <thead class="thead-sisi">
+
+    <div class="row row-table">
+
+      <div class="table-responsive table--no-card m-b-30">
+        <table class="table table-borderless table-striped table-earning">
+            <thead class="thead-sisi">
                 <tr>
-                  <th scope="col" class="padding-thead-sisi">#</th>
                   <th scope="col" class="padding-thead-sisi">Nome</th>
                   <th scope="col" class="padding-thead-sisi">Cpf</th>
                   <th scope="col" class="padding-thead-sisi">Email</th>
                   <th scope="col" class="padding-thead-sisi">Genêro</th>
                   <th scope="col" class="padding-thead-sisi">Etnia</th>
                   <th scope="col" class="padding-thead-sisi">Autorização</th>
-
                 </tr>
-              </thead>
-              <tbody>
-
-               <tr *ngFor="let user of data">
-                  <th scope="row">{{ user.id }}</th>
-                  <td>{{ user.name }}</td>
-                  <td>{{ user.cpf }}</td>
-                  <td>{{ user.email }}</td>
-                  <td>{{ user.gender }}</td>
-                  <td>{{ user.skin_color }}</td>
-                  <td>{{ user.role.name }}</td>
-                </tr>
-              </tbody>
-            </table>
-
-            <button (click)=nextPage()>Próximo</button>
-            <button (click)=previousPage()>Anterior</button>
-
-      </div>
+            </thead>
+            <tbody>
+              <tr class="list table-data" *ngFor="let user of data">
+                <td [routerLink]="['/home/view-user', user.id]"><div class="table-content"><i class=" large material-icons">account_circle</i>{{ user.name }}</div></td>
+                <td [routerLink]="['/home/view-user', user.id]" ><div class="table-content">{{ user.cpf }}</div></td>
+                <td [routerLink]="['/home/view-user', user.id]"><div class="table-content"><i class=" large material-icons">email</i>{{ user.email }}</div></td>
+                <td [routerLink]="['/home/view-user', user.id]"><div class="table-content">{{ user.gender }}</div></td>
+                <td [routerLink]="['/home/view-user', user.id]"><div class="table-content">{{ user.skin_color }}</div></td>
+                <td [routerLink]="['/home/view-user', user.id]"><div class="table-content"><i class=" large material-icons">work</i>{{ user.role.name }}</div></td>
+              </tr>
+            </tbody>
+        </table>
+        <button class="buttom-mobile" (click)=nextPage()>Próximo</button>
+        <button class="buttom-mobile" (click)=previousPage()>Anterior</button>
+    </div>
     </div>
 
   </div>

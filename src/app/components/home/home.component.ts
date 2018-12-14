@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from '@angular/router';
+import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth/auth.service';
 import { AclService } from 'ng2-acl';
 
@@ -10,27 +10,22 @@ import { AclService } from 'ng2-acl';
 })
 
 export class HomeComponent implements OnInit {
-
-  lat  = -8.05225025;
-  lng  = -34.9450490084884;
-  locationChosen = false;
-
-  onChoseLocation(event) {
-    this.lat = event.coords.lat;
-    this.lng = event.coords.lng;
-    this.locationChosen = true;
-  }
-
+  public isLoggedIn: boolean;
 
   constructor(
     private router: Router,
-    private authService: AuthService,
-    public aclService: AclService
+    public aclService: AclService,
+    private authService: AuthService
     ) { }
 
   ngOnInit() {
- }
-  exit() {
-      this.authService.logout();
+
+    this.authService.loginSubject.subscribe(boolean => {
+      this.isLoggedIn = boolean;
+    });
+
+    if (this.authService.isLoggedIn()) {
+      this.isLoggedIn = true;
+    }
   }
 }

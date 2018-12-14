@@ -1,133 +1,237 @@
+<div class="">
+  <div class="margin-top-sisi" style="width: 100%">
+    <div class="form-default-sisi row">
+      <div class="card col-md-8" style="padding:0px;width: 100%;">
+        <div class="card-header">
+          <h3 class="title-mobile">Acompanhar Ocorrência</h3>
 
-    <div>
-        <div id="topnav">
-          <a routerLink="/list-user"><button class="btn btn-primary" >Usuários</button></a>
-          <a routerLink="/list-occurrence"><button class="btn btn-primary">Ocorrências</button></a>
-          <a routerLink="/home"><button class="btn btn-primary" >Mapa</button></a>
         </div>
-        
-        <div class="form-default-sisi row">
-          <form class="col-md-8">
-            <h3>Acompanhar Ocorrência</h3><br/>
 
-              <div class="form-row">
-                  <div class="form-group col-md-5">
-                    <label for="title">Titulo da ocorrência</label>
-                    <input [disabled]="status.loading"
-                      data-toggle="tooltip"
-                      title='Insira um resumo da descrição da ocorrência'
-                      type="text"
-                      value="{{ occurrence.title }}"
-                      class="form-control"/>
-                  </div>
-                  
-                  <div class="form-group col-md-4">
-                    <div>
-                       <label for="object_id">Objeto Envolvido</label>
-                       <input [disabled]="status.loading"
-                       data-toggle="tooltip"
-                       title='Insira um resumo da descrição da ocorrência'
-                       type="text"
-                       value="{{ occurrence.occurrence_objects }}"
-                       class="form-control"/>
-                    </div>
-                  </div>
-  
-                  <div class="form-group col-md-3">
-                    <label for="police_report">B.O feito?</label>
-                    <select disabled
-                      data-toggle="tooltip"
-                      title='Selecione o tipo da ocorrência'
-                      class="form-control">
-                      <option *ngIf="occurrence.police_report == 1" select>Sim</option>
-                      <option *ngIf="occurrence.police_report == 0" select>Não</option>
-                    </select>
-                  </div>
-  
-              </div>
-  
-              <div class="form-row">
-                <div class="form-group col-md-3">
-                  <label for="occurrence_date">Data da ocorrência</label>
-                  <input [disabled]="status.loading"
-                    data-toggle="tooltip"
-                    title='Escolha a data através das setas ao lado'
-                    type="date"
-                    value="{{ occurrence.occurrence_date }}"
-                    class="form-control" />
-                </div>
-  
-                <div class="form-group col-md-2">
-                  <label for="occurrence_time">Hora da ocorrência</label>
-                  <input [disabled]="status.loading"
-                    data-toggle="tooltip"
-                    title='Escolha a hora da ocorrência, de preferência utilize as setas'
-                    type="time"
-                    value="{{ occurrence.occurrence_time }}"
-                    class="form-control"/>
-                </div>
-  
-                <div class="form-group col-md-3">
-                  <label for="title">Local da Ocorrência</label>
-                  <input [disabled]="status.loading"
-                  data-toggle="tooltip"
-                  title='Escolha a data através das setas ao lado'
-                  type="text"
-                  value="{{ occurrence.zone.name }}"
-                  class="form-control"/>
-                </div>
-  
-              <div class="form-group col-md-4">
-                  <label for="title">Tipo de Ocorrência</label>
-                  <select [disabled]="status.loading"
-                    data-toggle="tooltip"
-                    title='Selecione o tipo da ocorrência'
-                    class="form-control">
-                    <option [ngValue]=" occurrence.occurrence_type.id" select>{{ occurrence.occurrence_type.name }}</option>
-                    <option [ngValue]="1">Bicicleta</option>
-                    <option [ngValue]="2">Celular</option>
-                    <option [ngValue]="3">Documentos</option>
-                    <option [ngValue]="4">Notebook</option>
-                    <option [ngValue]="5">Veículos</option>
-                    <option [ngValue]="6">Objetos Pessoais</option>
-                    <option [ngValue]="7">Outros</option>
-                    <option [ngValue]="8">Arma branca</option>
-                    <option [ngValue]="9">Arma de fogo</option>
-                  </select>
-              </div>
+      <form class="col-md-12" [formGroup]="formOccurrence" (ngSubmit)="onSubmit()">
+        <div class="form-row">
+          <div class="form-group col-md-7">
+            <label for="title">Titulo da ocorrência</label>
+            <input
+            [readonly] = "disabled"
+             data-toggle="tooltip" title='Insira um resumo da descrição da ocorrência' type="text" class="form-control"
+              placeholder="Título da ocorrência" formControlName="title" [ngClass]="{ 'is-invalid': f.title.dirty && f.title.errors }" />
+
+            <div *ngIf="f.title.dirty && f.title.errors" class="invalid-feedback">
+              <div *ngIf="f.title.errors.required">Campo obrigatório*</div>
+              <div *ngIf="f.title.errors.pattern">Título deve ter de 6 a 32 caracteres*</div>
             </div>
 
-              <div class="form-row">
-                <div class="form-group col-md-12">
-                    <label for="story">Descrição da Ocorrência</label>
-                    <textarea [disabled]="status.loading" data-toggle="tooltip" class="form-control" rows="5">{{ occurrence.story }}</textarea>
-                </div>
-              </div>
-  
-              <!-- BUTTON SUBMIT -->
-              <button routerLink="/list-occurrence" class="btn btn-primary">Voltar</button>
-              <button class="btn btn-primary" (click)=arquivarInvestigator()>Desativar</button>
-              <button class="btn btn-primary" (click)=validaInvestigator()>Validar</button>
-              <!-- button type="button" class="btn btn-primary" (click)=noDisable2()>Editar</button -->
-  
-            </form>
-  
-            <div class="col-md-4">
-              <div class="map">
-  
-              </div>
+          </div>
+
+          <!-- FORM GROUP -->
+          <!-- <div class="form-group col-md-5">
+            <div formGroupName="occurrence_objects">
+              <label for="object_id">Objeto/Arma Envolvido(a)</label>
+              <select data-toggle="tooltip" title='Selecione o objeto envolvido com a ocorrência, caso exista um' class="form-control"
+                formControlName="object_id">
+                <option value="" select disabled>Escolha uma opção</option>
+                <option disabled style="font-weight: 900;">Objetos</option>
+                <option [ngValue]="1">Bicicleta</option>
+                <option [ngValue]="2">Celular</option>
+                <option [ngValue]="3">Documentos</option>
+                <option [ngValue]="4">Notebook</option>
+                <option [ngValue]="5">Veículos</option>
+                <option [ngValue]="6">Objetos Pessoais</option>
+                <option [ngValue]="7">Outros</option>
+                <option disabled style="font-weight: 900;">Armas</option>
+                <option [ngValue]="8">Arma branca</option>
+                <option [ngValue]="9">Arma de fogo</option>
+              </select>
             </div>
-          </div> <!-- div background  -->
-  
+          </div> -->
+          <!-- FORM GROUP END -->
+
+          <div class="form-group col-md-5">
+            <label for="police_report">B.O feito?</label>
+            <select
+            *ngIf="disabledSelect"
+            data-toggle="tooltip" title='Informe se um boletim de ocorrência foi ou não feito antes desse registro'
+              class="form-control" formControlName="police_report" [ngClass]="{ 'is-invalid': f.police_report.dirty && formOccurrence.get('police_report').errors }">
+              <option value="" select disabled>Escolha uma opção</option>
+              <option value=1>Sim</option>
+              <option value=0>Não</option>
+            </select>
+
+            <select
+            *ngIf="disabled"
+            disabled
+            data-toggle="tooltip" title='Informe se um boletim de ocorrência foi ou não feito antes desse registro'
+            class="form-control" formControlName="police_report" [ngClass]="{ 'is-invalid': f.police_report.dirty && formOccurrence.get('police_report').errors }">
+            <option value="" select disabled>Escolha uma opção</option>
+            <option value=1>Sim</option>
+            <option value=0>Não</option>
+          </select>
+
+            <div *ngIf="f.police_report.dirty && f.police_report.errors" class="invalid-feedback">
+              <div *ngIf="f.police_report.errors.required"> Campo obrigatório*</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-6" style="display: none;">
+            <label for="title">coordinates</label>
+            <input [readonly] = "disabled" data-toggle="tooltip" type="text" class="form-control"
+              placeholder="Título da irregularidade" formControlName="coordinates" [(ngModel)]="coordString" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="title">Local da Ocorrência</label>
+            <select
+            *ngIf="disabledSelect"
+              data-toggle="tooltip"
+              title='Selecione a área em que a ocorrência ocorreu'
+              class="form-control"
+              formControlName="zone_id"
+              [ngClass]="{ 'is-invalid': submitted && f.zone_id.errors }"
+            >
+              <option value="" select disabled>Escolha uma opção</option>
+              <option *ngFor="let zone of zones" value="{{ zone.id }}">{{ zone.name }}</option>
+            </select>
+
+            <select
+            *ngIf="disabled"
+            disabled
+              data-toggle="tooltip"
+              title='Selecione a área em que a ocorrência ocorreu'
+              class="form-control"
+              formControlName="zone_id"
+              [ngClass]="{ 'is-invalid': submitted && f.zone_id.errors }"
+            >
+              <option value="" select disabled>Escolha uma opção</option>
+              <option *ngFor="let zone of zones" value="{{ zone.id }}">{{ zone.name }}</option>
+            </select>
+
+            <div *ngIf="submitted && f.zone_id.errors" class="invalid-feedback">
+              <div *ngIf="f.zone_id.errors.required"> Campo obrigatório*</div>
+            </div>
+          </div>
+
+          <div class="form-group col-md-6">
+            <label for="title">Tipo de Ocorrência</label>
+            <select
+            *ngIf="disabledSelect"
+             data-toggle="tooltip" title='Selecione o tipo da ocorrência' class="form-control" formControlName="occurrence_type_id"
+              [ngClass]="{ 'is-invalid': f.occurrence_type_id.dirty && f.occurrence_type_id.errors }">
+              <option value="" select disabled>Escolha uma opção</option>
+              <option value="1">Furto</option>
+              <option value="2">Roubo</option>
+              <option value="3">Assalto a grupo</option>
+              <option value="4">Sequestro relâmpago</option>
+              <option value="5">Arrombamento de veículo</option>
+              <option value="6">Roubo de veículo</option>
+              <option value="7">Arrastão</option>
+              <option value="8">Tentativa de assalto</option>
+              <option value="11">Violência contra mulher</option>
+              <option value="12">Violência contra LGBT</option>
+            </select>
+
+            <select *ngIf="disabled"
+            disabled
+            data-toggle="tooltip" title='Selecione o tipo da ocorrência' class="form-control" formControlName="occurrence_type_id"
+            [ngClass]="{ 'is-invalid': f.occurrence_type_id.dirty && f.occurrence_type_id.errors }">
+            <option value="" select disabled>Escolha uma opção</option>
+            <option value="1">Furto</option>
+            <option value="2">Roubo</option>
+            <option value="3">Assalto a grupo</option>
+            <option value="4">Sequestro relâmpago</option>
+            <option value="5">Arrombamento de veículo</option>
+            <option value="6">Roubo de veículo</option>
+            <option value="7">Arrastão</option>
+            <option value="8">Tentativa de assalto</option>
+            <option value="11">Violência contra mulher</option>
+            <option value="12">Violência contra LGBT</option>
+          </select>
+
+            <div *ngIf="f.occurrence_type_id.dirty && f.occurrence_type_id.errors" class="invalid-feedback">
+              <div *ngIf="f.occurrence_type_id.errors.required"> Campo obrigatório*</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="occurrence_date">Data da ocorrência</label>
+            <input
+            [readonly] = "disabled"
+            min={{minDate}} max={{today}}
+            data-toggle="tooltip"
+            title='Escolha a data através das setas ao lado'
+            type="date"
+            class="form-control"
+            formControlName="occurrence_date" [ngClass]="{ 'is-invalid': f.occurrence_date.dirty && f.occurrence_date.errors }">
+
+            <div *ngIf="f.occurrence_date.dirty && f.occurrence_date.errors" class="invalid-feedback">
+              <div *ngIf="f.occurrence_date.errors.required"> Campo obrigatório*</div>
+            </div>
+          </div>
+
+          <div class="form-group col-md-6">
+            <label for="occurrence_time">Hora da ocorrência</label>
+            <input
+            [readonly] = "disabled"
+            data-toggle="tooltip"
+            title='Escolha a hora da ocorrência, de preferência utilize as setas'
+            type="time"
+            class="form-control"
+            formControlName="occurrence_time"
+            [ngClass]="{ 'is-invalid': f.occurrence_time.dirty && f.occurrence_time.errors }">
+
+            <div *ngIf="f.occurrence_time.dirty && f.occurrence_time.errors" class="invalid-feedback">
+              <div *ngIf="f.occurrence_time.errors.required"> Campo obrigatório*</div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="form-row">
+          <div class="form-group col-md-12">
+            <label for="story">Descrição da Ocorrência</label>
+            <textarea
+            [readonly] = "disabled"
+            data-toggle="tooltip"
+            title='Faça uma descrição detalhada da ocorrência'
+            class="form-control"
+            rows="3"
+            placeholder="Descrição da Ocorrência"
+            formControlName="story"
+            [ngClass]="{ 'is-invalid': f.story.dirty && f.story.errors }"></textarea>
+
+            <div *ngIf="f.story.dirty && f.story.errors" class="invalid-feedback">
+              <div *ngIf="f.story.errors.required"> Campo obrigatório*</div>
+              <div *ngIf="f.story.errors.minlength"> Descrição deve ter mais de 12 dígitos*</div>
+              <div *ngIf="f.story.errors.maxlength"> Descrição deve ter no máximo 256 dígitos*</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- BUTTON SUBMIT -->
+        <button *ngIf="!disabled" [disabled]="loading" class="btn btn-primary buttom-mobile">Atualizar</button>
+        <button type="button" class="btn btn-primary" (click)='onDisable()'>{{ nameButtom }}</button>
+        <button type="button" (click)=arquivarInvestigator() class="btn btn-primary buttom-mobile" >Arquivar</button>
+        <button type="button" (click)=validaInvestigator() class="btn btn-primary buttom-mobile" >Validar</button>
+        <button type="button" routerLink="/home/list-occurrence" class="btn btn-primary buttom-mobile">Voltar</button>
+
+      </form>
+    </div>
+
+      <div class="col-md-4 container-map-mobile">
+          <div class="card" style="padding:0;">
+              <div class="card-header">
+                <h3>Mapa</h3>
+              </div>
+          </div>
+        <agm-map [zoom]="17" [latitude]="lat" [longitude]="lng" (mapClick)="onChoseLocation($event)">
+          <agm-marker [latitude]="lat" [longitude]="lng" *ngIf="locationChosen" [markerDraggable]="true"></agm-marker>
+        </agm-map>
       </div>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+    </div> <!-- div background  -->
+  </div>
+</div>

@@ -1,45 +1,26 @@
 <div>
-  <!-- MENU DE NAVEGAÇÃO -->
-  <div id="topnav">
-    <a *ngIf="aclService.can('list_user')" routerLink="/list-user"><button class="btn btn-primary" >Usuários</button></a>
-    <a *ngIf="aclService.can('add_occurrence')" routerLink="/occurrence"><button class="btn btn-primary" >Registrar Ocorrência</button></a>
-    <a *ngIf="aclService.can('user_content')" routerLink="/home"><button class="btn btn-primary" >Mapa</button></a>
-  </div>
-
-  <!-- HEADER LIST-->
   <div class="container-fluid margin-top-sisi">
-    <div class="row">
+    <div class="row" style="margin-bottom: 20px;">
       <div class="col-md-6">
         <h2> Ocorrências </h2>
       </div>
       <div class="col-md-6">
         <div class="row">
-          <div class="col-md-8">
-              <label>Filtrar Ocorrências por:</label>
+          <!-- <div class="col-md-8">
+              <label class="title-filter-mobile">Filtrar Ocorrências por:</label>
           </div>
           <div class="col-md-4">
                 <select class="custom-select" id="inputGroupSelect01">
-                    <option selected disabled>Tipo</option>
-                    <option value="1">Furto</option>
-                    <option value="2">Roubo</option>
-                    <option value="3">Assalto a grupo</option>
-                    <option value="4">Sequestro relâmpago</option>
-                    <option value="5">Arrombamento de veículo</option>
-                    <option value="6">Roubo de veículo</option>
-                    <option value="7">Arrastão</option>
-                    <option value="8">Tentativa de assalto</option>
+                    <option *ngFor="let types of occurrencesType" value="{{ types.id }}" >{{ types.name }}</option>
                 </select>
-          </div>
-
+          </div> -->
       </div>
-
       </div>
     </div>
-
     <br>
-    <div class="row">
-      <div class="col-md-12">
-          <table class="table table-hover">
+    <div class="row row-table">
+        <div class="table-responsive table--no-card m-b-30">
+            <table class="table table-borderless table-striped table-earning">
               <thead class="thead-sisi">
                 <tr>
                   <th scope="col" class="padding-thead-sisi">ID</th>
@@ -52,20 +33,19 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let occurrence of data">
-                    <th scope="row" [routerLink]="['/view-occurrence', occurrence.id]">{{ occurrence.id }}</th>
-                    <td [routerLink]="['/view-occurrence', occurrence.id]">{{ occurrence.status }}</td>
-                    <td [routerLink]="['/view-occurrence', occurrence.id]">{{ occurrence.occurrence_type.name }}</td>
-                    <td [routerLink]="['/view-occurrence', occurrence.id]">{{ occurrence.user.name }}</td>
-                    <td [routerLink]="['/view-occurrence', occurrence.id]">{{ occurrence.agent }}</td>
-                    <td [routerLink]="['/view-occurrence', occurrence.id]">{{ occurrence.zone.name }}</td>
-                    <td [routerLink]="['/view-occurrence', occurrence.id]">{{ occurrence.occurrence_date }}</td>
-                </tr>
+                <tr class="list table-data" *ngFor="let occurrence of data">
+                  <th scope="row" [routerLink]="['/home/view-occurrence', occurrence.id]"><div class="table-content">{{ occurrence.id }}</div></th>
+                  <td [routerLink]="['/home/view-occurrence', occurrence.id]"><div class="table-content">{{ occurrence.status }}</div></td>
+                  <td [routerLink]="['/home/view-occurrence', occurrence.id]"><div class="table-content"><i class=" large material-icons">info</i>{{ occurrence.occurrence_type.name }}</div></td>
+                  <td [routerLink]="['/home/view-occurrence', occurrence.id]"><div class="table-content"><i class=" large material-icons">account_circle</i>{{ occurrence.user.name }}</div></td>
+                  <td [routerLink]="['/home/view-occurrence', occurrence.id]"><div class="table-content"><i class=" large material-icons">supervised_user_circle</i>{{ occurrence.agent }}</div></td>
+                  <td [routerLink]="['/home/view-occurrence', occurrence.id]"><div class="table-content"><i class=" large material-icons">room</i>{{ occurrence.zone.name }}</div></td>
+                  <td [routerLink]="['/home/view-occurrence', occurrence.id]"><div class="table-content"><i class=" large material-icons">calendar_today</i>{{ occurrence.occurrence_date | date }}</div></td>
               </tbody>
             </table>
 
-            <button (click)=nextPage()>Próximo</button>
-            <button (click)=previousPage()>Anterior</button>
+            <button class="buttom-mobile" (click)=nextPage()>Próximo</button>
+            <button class="buttom-mobile" (click)=previousPage()>Anterior</button>
       </div>
     </div>
 

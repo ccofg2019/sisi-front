@@ -15,29 +15,28 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { HeaderComponent } from './components/header/header.component';
+import { MapComponent } from './components/map/map.component';
 import { FormRegisterComponent } from './components/form-register/form-register.component';
 import { HomeComponent } from './components/home/home.component';
 import { FormOccurrenceComponent } from './components/form-occurrence/form-occurrence.component';
 import { ListUserComponent } from './components/list-user/list-user.component';
-import { FormComplaintComponent } from './components/form-complaint/form-complaint.component';
+import { FormIrregularityComponent } from './components/form-irregularity/form-irregularity.component';
 import { ListOccurrenceComponent } from './components/list-occurrence/list-occurrence.component';
 import { ViewOccurrenceComponent } from './components/view-occurrence/view-occurrence.component';
+import { ViewUserComponent } from './components/view-user/view-user.component';
+import { ViewIrregularityComponent } from './components/view-irregularity/view-irregularity.component';
 import { ListIrregularitiesComponent } from './components/list-irregularities/list-irregularities.component';
+import { MenuHeaderComponent } from './components/menu-header/menu-header.component';
+import { FormFunctionaryComponent } from './components/form-functionary/form-functionary.component';
+import { PerfilUserComponent } from './components/perfil-user/perfil-user.component';
 
 // Services
 import { TokenInterceptor } from './services/token/token.interceptor';
 import { AuthGuardService } from './services/auth/auth-guard.service';
 import { UserService } from './services/user.service';
 import { OccurrenceService } from './services/occurrence.service';
+import { IrregularityService } from './services/irregularity.service';
 import { AlertService } from './services/alert.service';
-
-// Libraries
-import {
-  MatButtonModule,
-  MatInputModule,
-  MatAutocompleteModule
-} from '@angular/material';
-
 
 @NgModule({
   declarations: [
@@ -46,12 +45,19 @@ import {
     FormRegisterComponent,
     LoginComponent,
     HomeComponent,
+    MapComponent,
     FormOccurrenceComponent,
     ListUserComponent,
     ListOccurrenceComponent,
-    FormComplaintComponent,
+    FormIrregularityComponent,
+    ListIrregularitiesComponent,
+    MenuHeaderComponent,
     ViewOccurrenceComponent,
-    ListIrregularitiesComponent
+    FormFunctionaryComponent,
+    ViewIrregularityComponent,
+    MapComponent,
+    ViewUserComponent,
+    PerfilUserComponent
   ],
   imports: [
     BrowserModule,
@@ -60,9 +66,6 @@ import {
     ReactiveFormsModule,
     HttpClientModule,
     HttpModule,
-    MatButtonModule,
-    MatInputModule,
-    MatAutocompleteModule,
     NotifierModule,
     BrowserAnimationsModule,
     CommonModule,
@@ -73,9 +76,10 @@ import {
   providers: [
     AuthGuardService,
     UserService,
+    OccurrenceService,
+    IrregularityService,
     AclService,
     AclRedirection,
-    OccurrenceService,
     AlertService,
     {
       provide: HTTP_INTERCEPTORS,

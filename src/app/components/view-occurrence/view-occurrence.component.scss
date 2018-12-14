@@ -1,13 +1,14 @@
 $color:#990000 ;
 button {
+  border-radius: 25px;
   background: $color;
   color: #fff;
   cursor: pointer;
-  font-size: 18px;
+  font-size: 17px;
   font-weight: bold;
   font-family: Trebuchet MS, Helvetica, sans-serif;
-  height: 50px;
-  width: 210px;
+  height: 40px;
+  width: 170px;
   margin: 10px;
   float: right;
   border: none;
@@ -20,10 +21,31 @@ button {
   }
 }
 
+.form-style{
+  width: 80%;
+  margin-top: 50px;
+}
+
+.card{
+  border-radius: 10px;
+}
+
+.card-header{
+  text-align: center;
+  justify-content: center;
+  border-radius: 10px 10px 0px 0px;
+  padding-top: 17px;
+  background: #990000;
+  color: white;
+}
+
 h3{
   font-weight: bolder;
 }
-
+.edit-info{
+  font-size:13px;
+  font-weight: bold;
+}
 .background-sub-menu-sisi{
   background-color: #831010;
   height: 50px;
@@ -31,10 +53,9 @@ h3{
 
 .form-default-sisi{
 width: 100%;
-padding: 10px;
-padding-top: 20px;
+padding: 15px;
+padding-top: 0px;
 height: 80%;
-background-color: #0000001a;
 
 form{
   padding: 10px;
@@ -83,3 +104,38 @@ textarea.ng-valid.ng-touched {
   border: 2px solid green;
 }
 
+agm-map {
+  height: 85%;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+@media (max-width: 576px) {
+
+  .container-map-mobile{
+    margin-top: 5%;
+    height: 400px;
+  }
+
+  .buttom-mobile{
+    width: 100%;
+    height: 40px;
+    font-size: 18px;
+    margin: 0;
+    margin-top: 2%;
+  }
+
+  .title-mobile{
+    font-size: 25px
+  }
+
+  .form-default-sisi{
+    padding: 0;
+    margin: 0;
+  }
+
+}

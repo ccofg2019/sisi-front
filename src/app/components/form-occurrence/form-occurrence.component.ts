@@ -5,6 +5,7 @@ import { first } from 'rxjs/operators';
 import { OccurrenceService } from '../../services/occurrence.service';
 import { AclService } from 'ng2-acl';
 import { NotifyService } from './../../services/notify/notify.service';
+import { Zone } from './../../models/zone.model';
 
 @Component({
   selector: 'app-form-occurrence',
@@ -17,6 +18,13 @@ export class FormOccurrenceComponent implements OnInit {
   formOccurrence: FormGroup;
   loading = false;
   submitted = false;
+  jQuery: any;
+  today = new Date().toJSON().split('T')[0];
+  date = new Date();
+  minDate: string;
+  public zones: Zone[];
+  // Two Way Databind - passando as cordenadas para o form.
+  cord;
 
   // Validator patterns
   titlePattern = '^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ0-9,.!?*"#%(); -]{6,32}$';
@@ -26,12 +34,13 @@ export class FormOccurrenceComponent implements OnInit {
 
   lat  = -8.05225025;
   lng  = -34.9450490084884;
-  locationChosen = false;
+  locationChosen = true;
 
   onChoseLocation(event) {
     this.lat = event.coords.lat;
     this.lng = event.coords.lng;
     this.locationChosen = true;
+    this.cord = this.lat.toFixed(5) + ',' + this.lng.toFixed(5); // convertendo para string e concatenando cordenadas do mapa
   }
 
   constructor(
@@ -39,24 +48,29 @@ export class FormOccurrenceComponent implements OnInit {
     private router: Router,
     private occurrenceService: OccurrenceService,
     public aclService: AclService,
-    private notifier: NotifyService
-
-  ) { }
+    private notifier: NotifyService,
+  ) {}
 
   ngOnInit() {
+    this.occurrenceService.getZones().subscribe((response: any) => this.zones = response.data);
 
+    // definindo valor default para o mapa
+    if (this.cord === undefined) {
+      this.cord = '-8.05241,-34.94523';
+    }
+    this.date.setFullYear(this.date.getFullYear() - 1);
+    this.minDate = this.date.toJSON().split('T')[0];
     this.formOccurrence = this.formBuilder.group({
       title: ['', [ Validators.required, Validators.pattern(this.titlePattern)]],
       story: ['', [Validators.required, Validators.pattern(this.storyPattern)]],
       occurrence_date: ['', [Validators.required]],
       occurrence_time: ['', Validators.required],
-      coordinates: '41.40338, 2.17403',
+      coordinates: [this.cord, Validators.required],
       police_report: ['', Validators.required],
       estimated_loss: ['345'],
       occurrence_type_id: ['', Validators.required],
       zone_id: ['', Validators.required],
-
-      involved_person: this.formBuilder.group({
+      involved_people: this.formBuilder.group({
         name: ['', Validators.pattern(this.namePattern)],
         cpf: ['', [Validators.pattern(this.cpfPattern)]],
         gender: [''],
@@ -69,6 +83,7 @@ export class FormOccurrenceComponent implements OnInit {
       })
 
     });
+
   }
 
   get f() { return this.formOccurrence.controls; }
@@ -78,6 +93,7 @@ export class FormOccurrenceComponent implements OnInit {
 
         // stop here if form is invalid
         if (this.formOccurrence.invalid) {
+          console.log(this.f.occurrence_objects);
           this.notifier.show('warning', 'Erro ao tentar registrar, confira se os campos foram preenchidos corretamente.');
           return;
         }
@@ -87,17 +103,17 @@ export class FormOccurrenceComponent implements OnInit {
             .pipe(first())
             .subscribe(
                 data => {
-                  alert('Registro de ocorrência realizado com sucesso!');
-                  this.router.navigate(['home']);
+                  this.notifier.show('success', 'Registro de ocorrência realizado com sucesso!');
+                  this.router.navigate(['home/map']);
                 },
                 error => {
                   this.loading = false;
-                  alert('Ocorreu um erro ao tentar registrar sua ocorrência.');
+                  this.notifier.show('error', 'Ocorreu um erro ao tentar registrar sua ocorrência.');
                 });
   }
 
   confirmInvolved() {
-      alert('Envolvido Adicionado');
+      this.notifier.show('success', 'Envolvido Adicionado');
   }
 
 

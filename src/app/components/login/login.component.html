@@ -1,38 +1,36 @@
 <div>
-  <div id="topnav">
-
-  </div>
-  <form (keyup.enter)="login()" [formGroup]="form" (submit)="login()">
-
-    <div class="container">
+  <div class="login-container">
+    <form (keyup.enter)="login()" [formGroup]="loginForm" (submit)="login()" class="text-center border border-light p-5">
       <div id="logo">
-        <img src="../assets/sisi-logo.png" alt="SISI" height="120" width="250" />
+        <img src="../assets/large-sisi-logo-title.png" alt="SISI" height="120" width="250" />
+      </div>
+        <input
+          class="form-control mb-4"
+          formControlName="email"
+          type="email"
+          maxlength="32"
+          style="width: 300px"
+          name="email"
+          placeholder="E-mail"
+        >
+        <input
+          class="form-control mb-4"
+          formControlName="password"
+          type="password"
+          maxlength="28"
+          style="width: 300px"
+          autocomplete="off"
+          name="password"
+          placeholder="Senha"
+          >
+      <div class="d-flex justify-content-around">
       </div>
 
-      <div id="inputs">
-        <div class="form-group">
-          <mat-form-field style="width:100%" appearance="outline">
-            <mat-label>Email</mat-label>
-            <input type="email" matInput name="email" formControlName="email"/>
-            <mat-hint *ngIf="status.error || form.controls['errors']" style="color: red;font-size: 14px">Email inválido</mat-hint>
-          </mat-form-field>
-        </div>
-        <div class="form-group">
-          <mat-form-field appearance="outline">
-            <mat-label>Senha</mat-label>
-            <input type="password" autocomplete="off" matInput name="password" formControlName="password"/>
-            <mat-hint *ngIf="status.error || form.controls['errors']" style="color: red; font-size: 14px">Senha inválida</mat-hint>
-          </mat-form-field>
-        </div>
-      </div>
-      <div>
-        <button [disabled]="status.loading" mat-raised-button class="login-btn">{{btn_title}}</button>
-        <a routerLink="register"><button class="btn btn-primary" >Cadastro</button></a>
-      </div>
+      <button type="submit" [disabled]="status.loading" mat-raised-button class="btn btn-info btn-block my-4 login-btn">Entrar</button>
 
-
+      <p>Não possui conta? <a routerLink="/register"> Registre-se</a> </p>
+      <a style=" color: #990000; " href="https://drive.google.com/uc?authuser=0&id=1DOkRdBVQVB9r6ium7PEeF5zYVpHNHRSh&export=download"><i class=" large material-icons">phone_android</i> <span>Baixe App</span></a>
+    </form>
     </div>
+  </div>
 
-  </form>
-
-</div>
