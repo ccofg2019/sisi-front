@@ -40,7 +40,7 @@ export class OccurrenceService {
         return this.http.put(`${environment.API_URL}/api/occurrence-reports/${id}`, occurrence);
     }
     public getZones() {
-      return this.http.get(`${environment.API_URL}/api/zones`);
+      return this.http.get(`${environment.API_URL}/api/zones?limit=9999`);
   }
 
 }

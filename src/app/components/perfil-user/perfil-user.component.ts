@@ -23,7 +23,12 @@ export class PerfilUserComponent implements OnInit {
   loading = false;
   submitted = false;
 
-  
+  // Date variables
+  date = new Date();
+  date2 = new Date();
+  minDate: string;
+  maxDate: string;
+
   // Validator patterns
   namePattern = '^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]{10,52}$';
   cellpPattern = '^((\\+91-?)|0)?[0-9]{11}$';
@@ -42,6 +47,11 @@ export class PerfilUserComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    // Set min and max dates for datepicker
+    this.date.setFullYear(this.date.getFullYear() - 95);
+    this.date2.setFullYear(this.date2.getFullYear() - 16);
+    this.minDate = this.date.toJSON().split('T')[0];
+    this.maxDate = this.date2.toJSON().split('T')[0];
 
     this.route.params.subscribe(
       (params: Params) => {
@@ -63,7 +73,7 @@ export class PerfilUserComponent implements OnInit {
             status: 'ATIVO'
           });
 
-         
+
 
         });
       }
@@ -74,7 +84,7 @@ export class PerfilUserComponent implements OnInit {
   get f() { return this.registerForm.controls; }
 
   onSubmit() {
-   
+
 
     this.submitted = true;
         // stop here if form is invalid

@@ -58,13 +58,21 @@
 }
 
 .user-icon {
-  font-size: 60px;
+  font-size: 20px;
 }
 
 .user-info{
-  font-size: 13px;
+  font-size: 14px;
   font-weight: normal;
-  padding: 13px;
+  padding-left: 15px;
+
+  .row {
+    margin-bottom: -15px;
+  }
+
+  p {
+    margin-left: 10px;
+  }
 }
 // BOTÃO RESPONSIVO
 
