@@ -3,7 +3,7 @@
       <div class="form-style">
         <div class="card" style="padding:0px;">
           <div class="card-header">
-            <h3>Editar Usuário</h3>
+            <h3>Informações do Servidor</h3>
           </div>
           <form class="card-body form-default-sisi" [formGroup]="registerForm" (submit)="onSubmit()">
               <div class="form-row">
@@ -57,14 +57,16 @@
                     [ngClass]="{ 'is-invalid': f.role_id.dirty && f.role_id.errors }"
                   >
                       <option [ngValue]="1">Usuário Comum</option>
-                      <option [ngValue]="3">Diretor</option>
-                      <option [ngValue]="4">Segurança</option>
-                      <option [ngValue]="5">Inspetor</option>
-                      <option [ngValue]="6">Inspetor Geral</option>
-                      <option [ngValue]="7">Diretor Operacional</option>
-                      <option [ngValue]="9">Investigador</option>
-                      <option [ngValue]="10">Investigador Chefe</option>
-                      <option [ngValue]="11">Superintendente</option>
+                      <option [ngValue]="4">Segurança - DGOS</option>
+                      <option [ngValue]="5">Inspetor - DGOS</option>
+                      <option [ngValue]="6">Inspetor Geral - DGOS</option>
+                      <option [ngValue]="2">Inspetor - DFCU</option>
+                      <option [ngValue]="3">Diretor - DFCU</option>
+                      <option [ngValue]="7">Diretor Operacional - DGOS</option>
+                      <option [ngValue]="9">Investigador - DIP</option>
+                      <option [ngValue]="10">Investigador Chefe - DIP</option>
+                      <option [ngValue]="8">Analista de Monitoramento</option>
+                      <option disabled [ngValue]="11">Superintendente</option>
                   </select>
 
                   <select *ngIf="disabled"
@@ -76,16 +78,18 @@
                     [ngClass]="{ 'is-invalid': f.role_id.dirty && f.role_id.errors }"
                   >
                       <option [ngValue]="1">Usuário Comum</option>
-                      <option [ngValue]="3">Diretor</option>
-                      <option [ngValue]="4">Segurança</option>
-                      <option [ngValue]="5">Inspetor</option>
-                      <option [ngValue]="6">Inspetor Geral</option>
-                      <option [ngValue]="7">Diretor Operacional</option>
-                      <option [ngValue]="9">Investigador</option>
-                      <option [ngValue]="10">Investigador Chefe</option>
-                      <option [ngValue]="11">Superintendente</option>
+                      <option [ngValue]="4">Segurança - DGOS</option>
+                      <option [ngValue]="5">Inspetor - DGOS</option>
+                      <option [ngValue]="6">Inspetor Geral - DGOS</option>
+                      <option [ngValue]="2">Inspetor - DFCU</option>
+                      <option [ngValue]="3">Diretor - DFCU</option>
+                      <option [ngValue]="7">Diretor Operacional - DGOS</option>
+                      <option [ngValue]="9">Investigador - DIP</option>
+                      <option [ngValue]="10">Investigador Chefe - DIP</option>
+                      <option [ngValue]="8">Analista de Monitoramento</option>
+                      <option disabled [ngValue]="11">Superintendente</option>
                   </select>
-                  
+
                   <div *ngIf="f.role_id.dirty && f.role_id.errors" class="invalid-feedback">
                       <div *ngIf="f.role_id.errors.required">Campo obrigatório*</div>
                   </div>
@@ -134,9 +138,8 @@
 
                   <div class="form-group col-md-4">
                       <label for="birthdate">Data Nascimento*</label>
-                      <input 
+                      <input
                         [readonly] = "disabled"
-                        onkeydown="return false"
                         data-toggle="tooltip"
                         title="Escolha a data através das setas ao lado"
                         type="date"
@@ -208,7 +211,7 @@
                       <option value="AMARELO">Amarelo</option>
                   </select>
 
-                  
+
                   <select *ngIf="disabled"
                     disabled
                     data-toggle="tooltip"
@@ -230,7 +233,7 @@
 
               <div class="form-group col-md-4">
                 <label for="phone">Telefone Residencial</label>
-                <input 
+                <input
                   [readonly] = "disabled"
                   onkeypress='return event.charCode >= 48 && event.charCode <= 57'
                   data-toggle="tooltip"
@@ -249,7 +252,7 @@
               </div>
               <div class="form-group col-md-4">
                   <label for="cellphone">Telefone Celular*</label>
-                  <input 
+                  <input
                     [readonly] = "disabled"
                     onkeypress='return event.charCode >= 48 && event.charCode <= 57'
                     data-toggle="tooltip"
@@ -266,12 +269,13 @@
                     <div *ngIf="f.cellphone.errors.pattern"> Número de celular inválido, deve ter 11 dígitos</div>
                 </div>
               </div>
-              
+
               </div>
 
               <div class="form-row">
-                <button type="button" class="btn btn-primary" (click)='onDisable()'>{{ nameButtom }}</button>
-                <button [disabled]="loading" class="btn btn-primary">Atualizar</button>
+                <button *ngIf="aclService.can('register_functionary')" type="button" class="btn btn-primary" (click)='onDisable()'>{{ nameButtom }}</button>
+                <button *ngIf="!disabled" [disabled]="loading" class="btn btn-primary">Atualizar</button>
+                <button type="button" routerLink="/home/list-user" class="btn btn-primary buttom-mobile">Voltar</button>
             </div>
             </form>
           </div>

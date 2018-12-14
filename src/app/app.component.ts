@@ -48,7 +48,7 @@ export class AppComponent implements OnInit {
             ABILITIES.ADD_IRREGULARITY,
             ABILITIES.LIST_OCCURRENCE,
           ],
-          inspector2: [
+          inspector: [
             ABILITIES.DEFAULT,
             ABILITIES.USER_CONTENT,
             ABILITIES.ADD_OCCURRENCE,
@@ -73,15 +73,13 @@ export class AppComponent implements OnInit {
             ABILITIES.LIST_OCCURRENCE,
             ABILITIES.LIST_IRREGULARITY
           ],
-          superintendent: [
+          monitor: [
             ABILITIES.DEFAULT,
             ABILITIES.USER_CONTENT,
             ABILITIES.ADD_OCCURRENCE,
             ABILITIES.ADD_IRREGULARITY,
             ABILITIES.LIST_USER,
             ABILITIES.LIST_OCCURRENCE,
-            ABILITIES.LIST_IRREGULARITY,
-            ABILITIES.REGISTER_FUNCTIONARY
           ],
           investigator: [
             ABILITIES.DEFAULT,
@@ -98,7 +96,7 @@ export class AppComponent implements OnInit {
             ABILITIES.LIST_USER,
             ABILITIES.LIST_OCCURRENCE,
           ],
-          superintendent2: [
+          superintendent: [
             ABILITIES.DEFAULT,
             ABILITIES.USER_CONTENT,
             ABILITIES.ADD_OCCURRENCE,

@@ -120,10 +120,10 @@ export class AuthService {
 
     eraseCookie('auth_token');
     eraseCookie('user_data');
-    this.router.navigate(['']);
     window.stop();
     this.aclService.flushRoles();
     this.loginInfo(false);
+    this.router.navigate(['']);
 
   }
   public getUserAuthenticated(): Observable<any> {

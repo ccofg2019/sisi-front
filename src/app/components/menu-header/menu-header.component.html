@@ -2,26 +2,26 @@
   <div class="col-md-12 col-sm-12 menu-box">
     <div class="navbar-sidebar">
       <ul class="list-unstyled navbar_list">
-        <li>
-          <a *ngIf="aclService.can('user_content')" routerLink="/home/map" ><i class=" large material-icons">map</i><p class="btn">Mapa</p></a><br>
+        <li *ngIf="aclService.can('user_content')">
+          <a routerLink="/home/map" ><i class=" large material-icons">map</i><p class="btn">Mapa</p></a><br>
         </li>
-        <li>
-          <a *ngIf="aclService.can('add_occurrence')" routerLink="/home/occurrence" ><i class=" large material-icons">event_note</i><p class="btn">Reg. Ocorrência</p></a><br>
+        <li *ngIf="aclService.can('add_occurrence')">
+          <a routerLink="/home/occurrence" ><i class=" large material-icons">event_note</i><p class="btn">Reg. Ocorrência</p></a><br>
         </li>
-        <li>
-          <a *ngIf="aclService.can('add_irregularity')" routerLink="/home/irregularity" ><i class=" large material-icons">event_note</i><p class="btn">Reg. Irregularidade</p></a><br>
+        <li *ngIf="aclService.can('add_irregularity')">
+          <a routerLink="/home/irregularity" ><i class=" large material-icons">event_note</i><p class="btn">Reg. Irregularidade</p></a><br>
         </li>
-        <li>
-          <a *ngIf="aclService.can('list_occurrence')" routerLink="/home/list-occurrence" ><i class=" large material-icons">format_list_numbered</i><p class="btn">Ocorrências</p></a><br>
+        <li *ngIf="aclService.can('list_occurrence')">
+          <a routerLink="/home/list-occurrence" ><i class=" large material-icons">format_list_numbered</i><p class="btn">Ocorrências</p></a><br>
         </li>
-        <li>
-          <a *ngIf="aclService.can('list_irregularity')" routerLink="/home/list-irregularities" ><i class=" large material-icons">format_list_numbered</i><p class="btn">Irregularidades</p></a><br>
+        <li *ngIf="aclService.can('list_irregularity')">
+          <a routerLink="/home/list-irregularities" ><i class=" large material-icons">format_list_numbered</i><p class="btn">Irregularidades</p></a><br>
         </li>
-        <li>
-          <a *ngIf="aclService.can('list_user')" routerLink="/home/list-user" ><i class=" large material-icons">format_list_numbered</i><p class="btn">Usuários</p></a><br>
+        <li *ngIf="aclService.can('list_user')">
+          <a  routerLink="/home/list-user" ><i class=" large material-icons">format_list_numbered</i><p class="btn">Usuários</p></a><br>
         </li>
-        <li>
-          <a *ngIf="aclService.can('register_functionary')" routerLink="/home/functionary" ><i class=" large material-icons">event_note</i><p class="btn">Cad. Funcionários</p></a><br>
+        <li *ngIf="aclService.can('register_functionary')">
+          <a routerLink="/home/functionary" ><i class=" large material-icons">event_note</i><p class="btn">Reg. Servidores</p></a><br>
         </li>
       </ul>
 

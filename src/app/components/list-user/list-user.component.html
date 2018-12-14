@@ -24,7 +24,7 @@
                 </tr>
             </thead>
             <tbody>
-              <tr class="list" *ngFor="let user of data">
+              <tr class="list table-data" *ngFor="let user of data">
                 <td [routerLink]="['/home/view-user', user.id]"><div class="table-content"><i class=" large material-icons">account_circle</i>{{ user.name }}</div></td>
                 <td [routerLink]="['/home/view-user', user.id]" ><div class="table-content">{{ user.cpf }}</div></td>
                 <td [routerLink]="['/home/view-user', user.id]"><div class="table-content"><i class=" large material-icons">email</i>{{ user.email }}</div></td>

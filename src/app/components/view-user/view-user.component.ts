@@ -31,7 +31,7 @@ export class ViewUserComponent implements OnInit {
   // ativar edição - GAMB
   disabled = true;
   disabledSelect = false;
-  nameButtom = "Editar";
+  nameButtom = 'Editar';
 
   // Validator patterns
   namePattern = '^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]{10,52}$';
@@ -55,7 +55,7 @@ export class ViewUserComponent implements OnInit {
     this.date2.setFullYear(this.date2.getFullYear() - 16);
     this.minDate = this.date.toJSON().split('T')[0];
     this.maxDate = this.date2.toJSON().split('T')[0];
-    
+
 
     this.route.params.subscribe(
       (params: Params) => {
@@ -64,7 +64,7 @@ export class ViewUserComponent implements OnInit {
           this.user = user.data;
           this.idUser = user.data.id;
           this.idRole = user.data.role.id;
-      
+
           console.log(this.idRole);
           this.registerForm = this.formBuilder.group({
             name: [user.data.name, [Validators.required, Validators.pattern(this.namePattern) ]],
@@ -90,7 +90,7 @@ export class ViewUserComponent implements OnInit {
   get f() { return this.registerForm.controls; }
 
   onSubmit() {
-   
+
 
     this.submitted = true;
         // stop here if form is invalid
@@ -113,17 +113,17 @@ export class ViewUserComponent implements OnInit {
                 });
   }
 
-  onDisable(){
-    if(this.disabled){
+  onDisable() {
+    if (this.disabled) {
       // ativa
       this.disabled = false;
       this.disabledSelect = true;
-      this.nameButtom = "Cancelar";
-    }else{
+      this.nameButtom = 'Cancelar';
+    } else {
       // desativa
       this.disabled = true;
       this.disabledSelect = false;
-      this.nameButtom = "Editar"
+      this.nameButtom = 'Editar';
     }
 
   }

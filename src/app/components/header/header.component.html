@@ -8,7 +8,7 @@
             <div>
                 <div class="dropdown-user">
                   <button class="button-profile" type="button" id="dropdownUser" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img class="img-profile" src="https://images.pexels.com/photos/555790/pexels-photo-555790.png?auto=compress&cs=tinysrgb&h=350">
+                    <i class="user-icon large material-icons">portrait</i>
                       <div class="user-info">
                         <p>
                           {{ name }}, {{ role }}-{{ department}}
@@ -16,7 +16,7 @@
                       </div>
                   </button>
                   <div *ngIf="aclService.can('user_content')" class="dropdown-menu" aria-labelledby="dropdownUser">
-                    <button class="dropdown-item" type="button" routerLink="/home/perfil" ><i class=" large material-icons">edit</i><p class="btn">Editar</p></button>
+                    <button class="dropdown-item" type="button" routerLink="/home/perfil" ><i class=" large material-icons">edit</i><p class="btn">Editar Perfil</p></button>
                     <button class="dropdown-item" type="button" (click)=exit()><i class=" large material-icons">exit_to_app</i><p class="btn">Sair</p></button>
                   </div>
                 </div>
@@ -34,13 +34,13 @@
 
                       <button *ngIf="aclService.can('add_irregularity')" routerLink="/home/irregularity" class="dropdown-item" type="button"><i class=" large material-icons">event_note</i><p class="btn">Reg. Irregularidade</p></button>
 
-                      <button *ngIf="aclService.can('register_functionary')" routerLink="/home/functionary" class="dropdown-item" type="button"><i class=" large material-icons">event_note</i><p class="btn">Reg. Funcionários</p></button>
-
                       <button *ngIf="aclService.can('list_occurrence')" routerLink="/home/list-occurrence" class="dropdown-item" type="button"><i class=" large material-icons">format_list_numbered</i><p class="btn">Ocorrências</p></button>
 
                       <button *ngIf="aclService.can('list_irregularity')" routerLink="/home/list-irregularities" class="dropdown-item" type="button"><i class=" large material-icons">format_list_numbered</i><p class="btn">Irregularidades</p></button>
 
                       <button *ngIf="aclService.can('list_user')" routerLink="/home/list-user" class="dropdown-item" type="button"><i class=" large material-icons">format_list_numbered</i><p class="btn">Usuários</p></button>
+
+                      <button *ngIf="aclService.can('register_functionary')" routerLink="/home/functionary" class="dropdown-item" type="button"><i class=" large material-icons">event_note</i><p class="btn">Reg. Servidores</p></button>
 
                       <button class="dropdown-item" type="button" (click)=exit()><i class=" large material-icons">exit_to_app</i><p class="btn">Sair</p></button>
 
