@@ -33,9 +33,9 @@
                     <div *ngIf="aclService.can('user_content')" class="dropdown-menu" aria-labelledby="dropdownMenu">
                       <button *ngIf="aclService.can('user_content')" routerLink="/home/map" class="dropdown-item" type="button"><i class=" large material-icons">map</i><p class="btn">Mapa</p></button>
 
-                      <button *ngIf="aclService.can('add_occurrence')" routerLink="/home/occurrence" class="dropdown-item" type="button"><i class=" large material-icons">event_note</i><p class="btn">Reg. Ocorrência</p></button>
+                      <button *ngIf="aclService.can('add_occurrence')" routerLink="/home/occurrence" class="dropdown-item" type="button"><i class=" large material-icons">touch_app</i><p class="btn">Reg. Ocorrência</p></button>
 
-                      <button *ngIf="aclService.can('add_irregularity')" routerLink="/home/irregularity" class="dropdown-item" type="button"><i class=" large material-icons">event_note</i><p class="btn">Reg. Irregularidade</p></button>
+                      <button *ngIf="aclService.can('add_irregularity')" routerLink="/home/irregularity" class="dropdown-item" type="button"><i class=" large material-icons">touch_app</i><p class="btn">Reg. Irregularidade</p></button>
 
                       <button *ngIf="aclService.can('list_occurrence')" routerLink="/home/list-occurrence" class="dropdown-item" type="button"><i class=" large material-icons">format_list_numbered</i><p class="btn">Ocorrências</p></button>
 
