@@ -23,10 +23,12 @@ import { ListUserComponent } from './components/list-user/list-user.component';
 import { FormIrregularityComponent } from './components/form-irregularity/form-irregularity.component';
 import { ListOccurrenceComponent } from './components/list-occurrence/list-occurrence.component';
 import { ViewOccurrenceComponent } from './components/view-occurrence/view-occurrence.component';
-import { ListIrregularitiesComponent } from './components/list-irregularities/list-irregularities.component';
+import { ViewUserComponent } from './components/view-user/view-user.component';
 import { ViewIrregularityComponent } from './components/view-irregularity/view-irregularity.component';
+import { ListIrregularitiesComponent } from './components/list-irregularities/list-irregularities.component';
 import { MenuHeaderComponent } from './components/menu-header/menu-header.component';
 import { FormFunctionaryComponent } from './components/form-functionary/form-functionary.component';
+import { PerfilUserComponent } from './components/perfil-user/perfil-user.component';
 
 // Services
 import { TokenInterceptor } from './services/token/token.interceptor';
@@ -53,7 +55,9 @@ import { AlertService } from './services/alert.service';
     ViewOccurrenceComponent,
     FormFunctionaryComponent,
     ViewIrregularityComponent,
-    MapComponent
+    MapComponent,
+    ViewUserComponent,
+    PerfilUserComponent
   ],
   imports: [
     BrowserModule,

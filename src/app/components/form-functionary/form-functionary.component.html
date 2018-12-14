@@ -137,21 +137,19 @@
                     [ngClass]="{ 'is-invalid': f.role_id.dirty && f.role_id.errors }"
                   >
                       <option [ngValue]="1">Usuário Comum</option>
-                      <option [ngValue]="2">Inspetor - DFCU</option>
-                      <option [ngValue]="3">Diretor - DFCU</option>
-                      <option [ngValue]="4">Segurança - DENS</option>
-                      <option [ngValue]="5">Inspetor - DENS</option>
-                      <option [ngValue]="6">Inspetor Geral -DENS</option>
-                      <option [ngValue]="7">Diretor Operacional -DENS</option>
-                      <option [ngValue]="8">Superintendente -DENS</option>
-                      <option [ngValue]="9">Investigador -DIP</option>
-                      <option [ngValue]="10">Investigador Chefe -DIP</option>
-                      <option [ngValue]="11">Superintendente -DIP</option>
+                      <option [ngValue]="3">Diretor</option>
+                      <option [ngValue]="4">Segurança</option>
+                      <option [ngValue]="5">Inspetor</option>
+                      <option [ngValue]="6">Inspetor Geral</option>
+                      <option [ngValue]="7">Diretor Operacional</option>
+                      <option [ngValue]="9">Investigador</option>
+                      <option [ngValue]="10">Investigador Chefe</option>
+                      <option [ngValue]="11">Superintendente</option>
                   </select>
                   <div *ngIf="f.role_id.dirty && f.role_id.errors" class="invalid-feedback">
                       <div *ngIf="f.role_id.errors.required">Campo obrigatório*</div>
                   </div>
-              </div>
+                </div>
 
                 <div class="form-group col-md-3">
                     <label for="skin_color">Etnia*</label>

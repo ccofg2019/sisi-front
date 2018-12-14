@@ -24,6 +24,11 @@ export class ViewIrregularityComponent implements OnInit {
   loading = false;
   submitted = false;
 
+  // ativar edição - GAMB
+  disabled = true;
+  disabledSelect = false;
+  nameButtom = "Editar";
+
   // Validator patterns
   titlePattern = '^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ0-9,.!?*"#%(); -]{6,32}$';
   storyPattern = '^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ0-9,.!?*"#%(); -]{12,256}$';
@@ -132,5 +137,19 @@ export class ViewIrregularityComponent implements OnInit {
         this.notifier.show('error', 'Ocorreu um erro ao tentar alterar o status da irregularidade');
       });
   }
+
+  onDisable(){
+    if(this.disabled){
+      // ativa
+      this.disabled = false;
+      this.disabledSelect = true;
+      this.nameButtom = "Cancelar";
+    }else{
+      // desativa
+      this.disabled = true;
+      this.disabledSelect = false;
+      this.nameButtom = "Editar"
+    }
+  }  
 
 }
