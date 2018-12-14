@@ -33,7 +33,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr class="list" *ngFor="let occurrence of data">
+                <tr class="list table-data" *ngFor="let occurrence of data">
                   <th scope="row" [routerLink]="['/home/view-occurrence', occurrence.id]"><div class="table-content">{{ occurrence.id }}</div></th>
                   <td [routerLink]="['/home/view-occurrence', occurrence.id]"><div class="table-content">{{ occurrence.status }}</div></td>
                   <td [routerLink]="['/home/view-occurrence', occurrence.id]"><div class="table-content"><i class=" large material-icons">info</i>{{ occurrence.occurrence_type.name }}</div></td>

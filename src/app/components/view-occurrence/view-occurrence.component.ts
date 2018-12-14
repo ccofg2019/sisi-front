@@ -33,7 +33,7 @@ export class ViewOccurrenceComponent implements OnInit {
   // ativar edição - GAMB
   disabled = true;
   disabledSelect = false;
-  nameButtom = "Editar";
+  nameButtom = 'Editar';
 
   // Validator patterns
   titlePattern = '^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ0-9,.!?*"#%(); -]{6,32}$';
@@ -168,20 +168,20 @@ export class ViewOccurrenceComponent implements OnInit {
 
   get f() { return this.formOccurrence.controls; }
 
-  onDisable(){
-    if(this.disabled){
+  onDisable() {
+    if (this.disabled) {
       // ativa
       this.disabled = false;
       this.disabledSelect = true;
-      this.nameButtom = "Cancelar";
-    }else{
+      this.nameButtom = 'Cancelar';
+    } else {
       // desativa
       this.disabled = true;
       this.disabledSelect = false;
-      this.nameButtom = "Editar"
+      this.nameButtom = 'Editar';
     }
 
   }
-  
+
 }
 

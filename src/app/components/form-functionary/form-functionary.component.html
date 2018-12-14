@@ -3,7 +3,7 @@
       <div class="form-style">
         <div class="card" style="padding:0px;">
           <div class="card-header">
-            <h3 class="title-mobile">Cadastro de Funcionários</h3>
+            <h3 class="title-mobile">Registro de Servidores</h3>
           </div>
           <form class="card-body form-default-sisi" [formGroup]="registerFormFunc" (ngSubmit)="onSubmit()">
               <div class="form-row">
@@ -90,7 +90,6 @@
                       <label for="birthdate">Data Nascimento*</label>
                       <input
                         id="datefield"
-                        onkeydown="return false"
                         data-toggle="tooltip"
                         title="Escolha a data através das setas ao lado"
                         type="date"
@@ -137,14 +136,15 @@
                     [ngClass]="{ 'is-invalid': f.role_id.dirty && f.role_id.errors }"
                   >
                       <option [ngValue]="1">Usuário Comum</option>
-                      <option [ngValue]="3">Diretor</option>
-                      <option [ngValue]="4">Segurança</option>
-                      <option [ngValue]="5">Inspetor</option>
-                      <option [ngValue]="6">Inspetor Geral</option>
-                      <option [ngValue]="7">Diretor Operacional</option>
-                      <option [ngValue]="9">Investigador</option>
-                      <option [ngValue]="10">Investigador Chefe</option>
-                      <option [ngValue]="11">Superintendente</option>
+                      <option [ngValue]="4">Segurança - DGOS</option>
+                      <option [ngValue]="5">Inspetor - DGOS</option>
+                      <option [ngValue]="6">Inspetor Geral - DGOS</option>
+                      <option [ngValue]="2">Inspetor - DFCU</option>
+                      <option [ngValue]="3">Diretor - DFCU</option>
+                      <option [ngValue]="7">Diretor Operacional - DGOS</option>
+                      <option [ngValue]="9">Investigador - DIP</option>
+                      <option [ngValue]="10">Investigador Chefe - DIP</option>
+                      <option [ngValue]="8">Analista de Monitoramento</option>
                   </select>
                   <div *ngIf="f.role_id.dirty && f.role_id.errors" class="invalid-feedback">
                       <div *ngIf="f.role_id.errors.required">Campo obrigatório*</div>

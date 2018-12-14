@@ -3,7 +3,7 @@
         <div class="form-style">
           <div class="card" style="padding:0px;">
             <div class="card-header">
-              <h3>Formulário de Cadastro</h3>
+              <h3>Editar Perfil</h3>
             </div>
             <form class="card-body form-default-sisi" [formGroup]="registerForm" (submit)="onSubmit()">
                 <div class="form-row">
@@ -25,7 +25,7 @@
                     </div>
                   </div>
                 </div>
-  
+
                 <div class="form-row">
                   <div class="form-group col-md-6">
                     <label for="email">Email*</label>
@@ -44,7 +44,7 @@
                         <div *ngIf="f.email.errors.email" > Insira um email válido</div>
                     </div>
                   </div>
-  
+
                   <!-- <div class="form-group col-md-6">
                     <label for="password">Senha*</label>
                     <input
@@ -63,7 +63,7 @@
                     </div>
                   </div> -->
                 </div>
-  
+
                 <div class="form-row">
                     <div class="form-group col-md-4">
                         <label for="cpf">CPF*</label>
@@ -82,11 +82,10 @@
                             <div *ngIf="f.cpf.errors.pattern"> Apenas números, e exatamente 11 dígitos</div>
                         </div>
                     </div>
-  
+
                     <div class="form-group col-md-4">
                         <label for="birthdate">Data Nascimento*</label>
                         <input
-                          onkeydown="return false"
                           data-toggle="tooltip"
                           title="Escolha a data através das setas ao lado"
                           type="date"
@@ -100,7 +99,7 @@
                             <div *ngIf="f.birthdate.errors.required">Campo obrigatório*</div>
                         </div>
                     </div>
-  
+
                     <div class="form-group col-md-4">
                       <label for="gender">Gênero*</label>
                       <select
@@ -120,11 +119,11 @@
                             <div *ngIf="f.gender.errors.required">Campo obrigatório*</div>
                         </div>
                     </div>
-  
+
                 </div>
-  
+
                 <div class="form-row">
-  
+
                 <div class="form-group col-md-4">
                     <label for="skin_color">Etnia*</label>
                     <select
@@ -145,7 +144,7 @@
                         <div *ngIf="f.skin_color.errors.required">Campo obrigatório*</div>
                     </div>
                 </div>
-  
+
                 <div class="form-group col-md-4">
                   <label for="phone">Telefone Residencial</label>
                   <input
@@ -182,16 +181,16 @@
                       <div *ngIf="f.cellphone.errors.pattern"> Número de celular inválido, deve ter 11 dígitos</div>
                   </div>
                 </div>
-  
+
                 </div>
-  
-              
+
+
                 <div class="form-row">
-                  <button [disabled]="loading" class="btn btn-primary">Cadastrar</button>
+                  <button [disabled]="loading" class="btn btn-primary">Confirmar</button>
+                  <button type="button" routerLink="/home/" class="btn btn-primary">Cancelar</button>
               </div>
               </form>
             </div>
         </div>
-  
 
-  
+

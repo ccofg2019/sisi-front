@@ -34,7 +34,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr class="list" *ngFor="let irregularity of data">
+                <tr class="list table-data" *ngFor="let irregularity of data">
                   <th scope="row" [routerLink]="['/home/view-irregularity', irregularity.id]">{{ irregularity.id }}</th>
                   <!-- <td [routerLink]="['/view-irregularity', irregularity.id]">{{ irregularity.status }}</td> -->
                   <td [routerLink]="['/home/view-irregularity', irregularity.id]"><div class="table-content"><i class=" large material-icons">info</i>{{ irregularity.irregularity_type.name }}</div></td>

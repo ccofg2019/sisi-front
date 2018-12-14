@@ -13,11 +13,11 @@ export  const ROLES = {
     '2': 'inspectorDFCU',
     '3': 'directorDFCU',
     '4': 'sec_guard',
-    '5': 'inspector2',
+    '5': 'inspector',
     '6': 'gen_inspector',
     '7': 'op_director',
-    '8': 'superintendent',
+    '8': 'monitor',
     '9': 'investigator',
     '10': 'chief_investigator',
-    '11': 'superintendent2'
+    '11': 'superintendent'
   };
