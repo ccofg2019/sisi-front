@@ -17,6 +17,8 @@ import { ListOccurrenceComponent } from './components/list-occurrence/list-occur
 import { ListIrregularitiesComponent} from './components/list-irregularities/list-irregularities.component';
 import { ViewOccurrenceComponent } from './components/view-occurrence/view-occurrence.component';
 import { ViewIrregularityComponent } from './components/view-irregularity/view-irregularity.component';
+import { ViewUserComponent } from './components/view-user/view-user.component';
+import { PerfilUserComponent } from './components/perfil-user/perfil-user.component';
 
 const routes: Routes = [
 
@@ -55,7 +57,12 @@ const routes: Routes = [
       },
       {
         path: 'view-irregularity/:id', component: ViewIrregularityComponent,
-      }
+      },
+      {
+        path: 'view-user/:id', component: ViewUserComponent,
+      },
+      { path: 'perfil', component: PerfilUserComponent}
+      
     ]
   },
 ];

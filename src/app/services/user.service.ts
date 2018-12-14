@@ -19,8 +19,17 @@ export class UserService {
     registerFuncionario(user: User) {
         return this.http.post(`${environment.API_URL}/api/users`, user);
     }
+    
     public getUsers() {
         return this.http.get(`${environment.API_URL}/api/users`);
+    }
+
+    public getUserID(id: number) {
+        return this.http.get(`${environment.API_URL}/api/users/${id}`);
+    }
+
+    public editarUser(user: User, id: number) {
+        return this.http.put(`${environment.API_URL}/api/users/${id}`, user);
     }
 
     public getUsersPage(paginator: Paginator) {

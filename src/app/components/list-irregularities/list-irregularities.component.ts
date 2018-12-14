@@ -31,4 +31,5 @@ export class ListIrregularitiesComponent extends ListPagination
     this.loadData();
     this.irregularityService.getIrregularitiesType().subscribe((response: any) => this.irregularityType = response.data);
   }
+
 }

@@ -30,6 +30,11 @@ export class ViewOccurrenceComponent implements OnInit {
   loading = false;
   submitted = false;
 
+  // ativar edição - GAMB
+  disabled = true;
+  disabledSelect = false;
+  nameButtom = "Editar";
+
   // Validator patterns
   titlePattern = '^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ0-9,.!?*"#%(); -]{6,32}$';
   storyPattern = '^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ0-9,.!?*"#%(); -]{12,256}$';
@@ -46,6 +51,7 @@ export class ViewOccurrenceComponent implements OnInit {
    numberLAT;
    numberLNG;
 
+   // GAMB
   onChoseLocation(event) {
     this.lat = event.coords.lat;
     this.lng = event.coords.lng;
@@ -161,5 +167,21 @@ export class ViewOccurrenceComponent implements OnInit {
     }
 
   get f() { return this.formOccurrence.controls; }
+
+  onDisable(){
+    if(this.disabled){
+      // ativa
+      this.disabled = false;
+      this.disabledSelect = true;
+      this.nameButtom = "Cancelar";
+    }else{
+      // desativa
+      this.disabled = true;
+      this.disabledSelect = false;
+      this.nameButtom = "Editar"
+    }
+
+  }
+  
 }
 
