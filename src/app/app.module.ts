@@ -70,7 +70,7 @@ import { AlertService } from './services/alert.service';
     BrowserAnimationsModule,
     CommonModule,
     AgmCoreModule.forRoot({ // Key
-      apiKey: 'AIzaSyD2GQ_dUPACR5Kj9ZojVVUgBQ1Bpg3TyRY'
+      apiKey: 'AIzaSyBeNmjjr1hYj-sHr7QdLbWSXvvuWjjZkiY'
     })
   ],
   providers: [
