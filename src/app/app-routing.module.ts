@@ -19,6 +19,7 @@ import { ViewOccurrenceComponent } from './components/view-occurrence/view-occur
 import { ViewIrregularityComponent } from './components/view-irregularity/view-irregularity.component';
 import { ViewUserComponent } from './components/view-user/view-user.component';
 import { PerfilUserComponent } from './components/perfil-user/perfil-user.component';
+import { PieChartComponent } from './components/pie-chart/pie-chart.component';
 
 const routes: Routes = [
 
@@ -51,6 +52,9 @@ const routes: Routes = [
       },
       {
         path: 'list-irregularities', component: ListIrregularitiesComponent,
+      },
+      {
+        path: 'charts', component: PieChartComponent,
       },
       {
         path: 'view-occurrence/:id', component: ViewOccurrenceComponent,

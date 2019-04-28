@@ -6,7 +6,8 @@ export  const ABILITIES = {
     LIST_USER: 'list_user',
     LIST_OCCURRENCE: 'list_occurrence',
     LIST_IRREGULARITY: 'list_irregularity',
-    REGISTER_FUNCTIONARY: 'register_functionary'
+    REGISTER_FUNCTIONARY: 'register_functionary',
+    CHARTS: 'charts'
   };
 export  const ROLES = {
     '1': 'user',
