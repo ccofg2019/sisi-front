@@ -35,4 +35,8 @@ export class IrregularityService {
     public editarIrregularities(irregularity: Irregularity, id: number) {
         return this.http.put(`${environment.API_URL}/api/irregularity-reports/${id}`, irregularity);
     }
+
+    public irregularitiesChart(year: number) {
+        return this.http.get(`${environment.API_URL}/api/irregularity-reports/getAllOfTheYear/${year}`);
+    }
 }

@@ -1,0 +1,13 @@
+<div style="display: block" *ngIf="dataLoaded">
+  <div class="card" style="padding: 0px;">
+    <div class="card-header">
+      <h3 class="title-mobile">Relatório de irregularidades</h3>
+    </div>
+    <div class="card-body">
+      <canvas baseChart
+              [data]="pieChartData"
+              [labels]="pieChartLabels"
+              [chartType]="pieChartType"></canvas>
+    </div>
+  </div>
+</div>
