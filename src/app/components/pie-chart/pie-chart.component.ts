@@ -18,10 +18,10 @@ export class PieChartComponent extends ListPagination
   public methodLoad;
   public irregularities: Irregularity[];
 
-  public pieChartLabels = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto',
-                            'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
+  public pieChartLabels = [];
   public pieChartData = [];
   public pieChartType = 'pie';
+  public dataLoaded = false;
   
   constructor(
     private irregularityService: IrregularityService,
@@ -30,16 +30,18 @@ export class PieChartComponent extends ListPagination
     super();
     this.methodLoad = 'getOccurrencesPage';
     this.service = this.irregularityService;
+    
   }
   
   ngOnInit() {
-
-    //this.loadData();
     this.irregularityService.irregularitiesChart(2019).subscribe((response: any) => {
-      console.log(response['months']);
-      this.pieChartData = response['months'].map(res => res.numIrregularity);
-    });
-
+      response['months'].map(res => {
+        if (res.numIrregularity > 0) {
+          this.pieChartLabels.push(res.name);
+          this.pieChartData.push(res.numIrregularity);
+        }
+      });
+      this.dataLoaded = true;
+    });  
   }
-
 }
