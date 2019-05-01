@@ -11,7 +11,7 @@ import { Occurrence } from 'src/app/models/occurrence.model';
   selector: 'app-pie-chart',
   templateUrl: './pie-chart.component.html',
   styleUrls: ['./pie-chart.component.scss'],
-  providers: [ OccurrenceService ]
+  providers: [OccurrenceService]
 })
 export class PieChartComponent extends ListPagination
   implements OnInit, ListComponent {
@@ -30,19 +30,19 @@ export class PieChartComponent extends ListPagination
   public pieChartDataOccurrence = [];
   public pieChartTypeOccurrence = 'pie';
   public dataLoadedOccurrence = false;
-  
+
   constructor(
     private irregularityService: IrregularityService,
     private occurrenceService: OccurrenceService,
     public aclService: AclService
-    ) {
+  ) {
     super();
     this.methodLoad = 'getOccurrencesPage';
     this.service = this.irregularityService;
     this.serviceOcurrence = this.occurrenceService;
-    
+
   }
-  
+
   ngOnInit() {
     this.irregularityService.irregularitiesChart(2019).subscribe((response: any) => {
       response['months'].map(res => {
@@ -52,16 +52,17 @@ export class PieChartComponent extends ListPagination
         }
       });
       this.dataLoaded = true;
-    });  
+    });
 
     this.occurrenceService.occurrenceisChart(2019).subscribe((response: any) => {
       response['months'].map(res => {
+        if (res.numOccurrence > 0) {
           this.pieChartLabelsOccurrence.push(res.name);
-          this.pieChartDataOccurrence.push(res.numOcurrency);
-        
+          this.pieChartDataOccurrence.push(res.numOccurrence);
+        }
       });
       this.dataLoadedOccurrence = true;
-    });  
+    });
 
 
   }
