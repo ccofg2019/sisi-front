@@ -74,7 +74,7 @@ import { AlertService } from './services/alert.service';
     CommonModule,
     ChartsModule,
     AgmCoreModule.forRoot({ // Key
-      apiKey: 'AIzaSyBeNmjjr1hYj-sHr7QdLbWSXvvuWjjZkiY'
+      apiKey: 'AIzaSyCiabqzJ-V6tjFCp8bNdPJHVJwVCPnRALA'
     })
   ],
   providers: [
