@@ -1,3 +1,17 @@
+<div style="display: block" *ngIf="dataLoadedOccurrence">
+  <div class="card" style="padding: 0px;">
+    <div class="card-header">
+      <h3 class="title-mobile">Relatório de Ocorrências</h3>
+    </div>
+    <div class="card-body">
+      <canvas baseChart
+              [data]="pieChartDataOccurrence"
+              [labels]="pieChartLabelsOccurrence"
+              [chartType]="pieChartTypeOccurrence"></canvas>
+    </div>
+  </div>
+</div>
+
 <div style="display: block" *ngIf="dataLoaded">
   <div class="card" style="padding: 0px;">
     <div class="card-header">

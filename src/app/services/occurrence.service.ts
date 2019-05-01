@@ -29,18 +29,20 @@ export class OccurrenceService {
     }
 
     public getOccurrencesPage(paginator: Paginator) {
-      return this.http.get(`${environment.API_URL}/api/occurrence-reports?page=${paginator.current_page}`);
+        return this.http.get(`${environment.API_URL}/api/occurrence-reports?page=${paginator.current_page}`);
     }
 
     public statusOccurrences(id: number, status: string) {
-       return this.http.put(`${environment.API_URL}/api/occurrence-reports/${id}?status=${status}`, status);
+        return this.http.put(`${environment.API_URL}/api/occurrence-reports/${id}?status=${status}`, status);
     }
 
     public editarOccurrences(occurrence: Occurrence, id: number) {
         return this.http.put(`${environment.API_URL}/api/occurrence-reports/${id}`, occurrence);
     }
     public getZones() {
-      return this.http.get(`${environment.API_URL}/api/zones?limit=9999`);
-  }
-
+        return this.http.get(`${environment.API_URL}/api/zones?limit=9999`);
+    }
+    public occurrenceisChart(year: number) {
+        return this.http.get(`${environment.API_URL}/api/occurrence-reports/getAllOfTheYear/${year}`);
+    }
 }
