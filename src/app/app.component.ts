@@ -104,7 +104,8 @@ export class AppComponent implements OnInit {
             ABILITIES.LIST_USER,
             ABILITIES.LIST_OCCURRENCE,
             ABILITIES.LIST_IRREGULARITY,
-            ABILITIES.REGISTER_FUNCTIONARY
+            ABILITIES.REGISTER_FUNCTIONARY,
+            ABILITIES.CHARTS
           ],
       };
       this.aclService.setAbilities(this.aclData);

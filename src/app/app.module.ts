@@ -9,6 +9,7 @@ import { CommonModule } from '@angular/common';
 import { AgmCoreModule } from '@agm/core';
 import { NotifierModule } from 'angular-notifier';
 import { HttpModule } from '@angular/http';
+import { ChartsModule } from 'ng2-charts';
 
 // Components
 import { AppRoutingModule } from './app-routing.module';
@@ -29,6 +30,7 @@ import { ListIrregularitiesComponent } from './components/list-irregularities/li
 import { MenuHeaderComponent } from './components/menu-header/menu-header.component';
 import { FormFunctionaryComponent } from './components/form-functionary/form-functionary.component';
 import { PerfilUserComponent } from './components/perfil-user/perfil-user.component';
+import { PieChartComponent } from './components/pie-chart/pie-chart.component';
 
 // Services
 import { TokenInterceptor } from './services/token/token.interceptor';
@@ -57,7 +59,8 @@ import { AlertService } from './services/alert.service';
     ViewIrregularityComponent,
     MapComponent,
     ViewUserComponent,
-    PerfilUserComponent
+    PerfilUserComponent,
+    PieChartComponent
   ],
   imports: [
     BrowserModule,
@@ -69,8 +72,9 @@ import { AlertService } from './services/alert.service';
     NotifierModule,
     BrowserAnimationsModule,
     CommonModule,
+    ChartsModule,
     AgmCoreModule.forRoot({ // Key
-      apiKey: 'AIzaSyBeNmjjr1hYj-sHr7QdLbWSXvvuWjjZkiY'
+      apiKey: 'AIzaSyCiabqzJ-V6tjFCp8bNdPJHVJwVCPnRALA'
     })
   ],
   providers: [
@@ -81,6 +85,7 @@ import { AlertService } from './services/alert.service';
     AclService,
     AclRedirection,
     AlertService,
+    ChartsModule,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
