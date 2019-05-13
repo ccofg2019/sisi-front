@@ -37,6 +37,6 @@ export class IrregularityService {
     }
 
     public irregularitiesChart(year: number) {
-        return this.http.get(`${environment.API_URL}/api/irregularity-reports/getAllOfTheYear/${year}`);
+        return this.http.get(`${environment.API_URL}/api/irregularity-reports/getAllOfTheYear?year=2019`);
     }
 }

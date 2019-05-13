@@ -1,27 +1,72 @@
 <div style="display: block" *ngIf="dataLoadedOccurrence">
-  <div class="card" style="padding: 0px;">
-    <div class="card-header">
-      <h3 class="title-mobile">Relatório de Ocorrências</h3>
-    </div>
-    <div class="card-body">
-      <canvas baseChart
-              [data]="pieChartDataOccurrence"
-              [labels]="pieChartLabelsOccurrence"
-              [chartType]="pieChartTypeOccurrence"></canvas>
+    <div class="card" style="padding: 0px;">
+      <div class="card-header">
+        <h3 class="title-mobile">Relatório de Ocorrências</h3>
+      </div>
+      <div class="card-body">
+          <form [formGroup]="occurrenceFilterForm" (submit)="submitFilter()">
+              <div class="form-row">
+      
+                <!--Year-->
+                <div class="form-group col-md-2">
+                  <label for="year">Ano</label>
+                  <input type="number" class="form-control" id="year" formControlName="year">
+                </div>
+      
+                <!--Month-->
+                <div class="form-group col-md-4">
+                  <label for="month">Mês</label>
+                  <select name="month" id="month"
+                    formControlName="month" class="form-control">
+                    <option value="1">Janeiro</option>
+                    <option value="2">Fevereiro</option>
+                    <option value="3">Março</option>
+                    <option value="4">Abril</option>
+                    <option value="5">Maio</option>
+                    <option value="6">Junho</option>
+                    <option value="7">Julho</option>
+                    <option value="8">Agosto</option>
+                    <option value="9">Setembro</option>
+                    <option value="10">Outubro</option>
+                    <option value="11">Novembro</option>
+                    <option value="12">Dezembro</option>
+                  </select>
+                </div>
+      
+                 <!--OccurrenceType-->
+                <div class="form-group col-md-4">
+                  <label for="occurrenceTypesId">Tipo de Ocorrencia</label>
+                  <select name="occurrenceTypesId" id="occurrenceTypesId"
+                    formControlName="occurrenceTypesId" class="form-control">
+                    <option value="1">Furto</option>
+                    <option value="2">Roubo</option>
+                    <option value="3">Assalto a grupo</option>
+                    <option value="4">Sequestro relâmpago</option>
+                    <option value="5">Arrombamento de veículo</option>
+                    <option value="6">Roubo de veículo</option>
+                    <option value="7">Arrastão</option>
+                    <option value="8">Tentativa de assalto</option>
+                    <option value="11">Violência contra mulher</option>
+                    <option value="12">Violência contra LGBT</option>
+                  </select>
+                </div>
+      
+                <button type="submit" class="btn btn-primary btn-lg float-right ml-2">Buscar</button>
+              </div>
+            </form> 
+            <canvas baseChart [data]="pieChartDataOccurrence" [labels]="pieChartLabelsOccurrence"
+            [chartType]="pieChartTypeOccurrence"></canvas>
+      </div>
     </div>
   </div>
-</div>
 
 <div style="display: block" *ngIf="dataLoaded">
   <div class="card" style="padding: 0px;">
     <div class="card-header">
       <h3 class="title-mobile">Relatório de irregularidades</h3>
     </div>
-    <div class="card-body">
-      <canvas baseChart
-              [data]="pieChartData"
-              [labels]="pieChartLabels"
-              [chartType]="pieChartType"></canvas>
+    <div class="card-body">        
+      <canvas baseChart [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType"></canvas>
     </div>
   </div>
-</div>
+</div> 

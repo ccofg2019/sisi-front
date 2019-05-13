@@ -8,6 +8,7 @@ import { OccurrenceTypes } from '../models/occurrenceTypes.models';
 
 import { Observable, from } from 'rxjs';
 import { retry, map } from 'rxjs/operators';
+import { OccurrenceFilter } from '../models/occurrenceFilter.model';
 
 @Injectable()
 export class OccurrenceService {
@@ -42,7 +43,26 @@ export class OccurrenceService {
     public getZones() {
         return this.http.get(`${environment.API_URL}/api/zones?limit=9999`);
     }
-    public occurrenceisChart(year: number) {
-        return this.http.get(`${environment.API_URL}/api/occurrence-reports/getAllOfTheYear/${year}`);
+    public occurrenceisChartFilter(occurrenceFilter: OccurrenceFilter) {
+        if (occurrenceFilter.month == null && occurrenceFilter.occurrenceTypesId == null) {
+            if (occurrenceFilter.year == null) {
+                occurrenceFilter.year = 2019;
+            }
+
+            return this.http.get(`${environment.API_URL}/api/occurrence-reports/getAllOfTheYear?year=${occurrenceFilter.year}`);
+        }
+        else if (occurrenceFilter.month != null && occurrenceFilter.occurrenceTypesId == null) {
+            if (occurrenceFilter.year == null) {
+                occurrenceFilter.year = 2019;
+            }
+
+            return this.http.get(`${environment.API_URL}/api/occurrence-reports/getAllOfTheYear?year=${occurrenceFilter.year}&month=${occurrenceFilter.month}`);
+        
+        } else if (occurrenceFilter.month != null && occurrenceFilter.occurrenceTypesId != null) {
+            if (occurrenceFilter.year == null) {
+                occurrenceFilter.year = 2019;
+            }
+            return this.http.get(`${environment.API_URL}/api/occurrence-reports/getAllOfTheYear?year=${occurrenceFilter.year}&month=${occurrenceFilter.month}&idOccurrenceType=${occurrenceFilter.occurrenceTypesId}`);
+        }
     }
 }
