@@ -75,6 +75,11 @@ export class PieChartComponent extends ListPagination
           this.pieChartDataOccurrence.push(res.numOccurrence);
         }
       });
+      if( this.pieChartLabelsOccurrence.length == 0 || this.pieChartDataOccurrence.length == 0){
+        this.pieChartLabelsOccurrence.push("Não há registos");
+        this.pieChartDataOccurrence.push(1);
+      }
+
       this.dataLoadedOccurrence = true;
     });
   }
@@ -82,9 +87,9 @@ export class PieChartComponent extends ListPagination
   private formSerialize(){
     this.occurrenceFilterForm = this.formBiulder.group({
       year: [2019],
-      month: [null],
-      occurrenceTypesId: [null],
-      occurrenceTypes: [null]
+      month: [""],
+      occurrenceTypesId: [""],
+      occurrenceTypes: [""]
     })
   }
 
