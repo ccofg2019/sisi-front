@@ -9,6 +9,7 @@ import { Occurrence } from 'src/app/models/occurrence.model';
 import { OccurrenceFilter } from 'src/app/models/occurrenceFilter.model';
 import { FormGroup, FormBuilder} from '@angular/forms';
 import { OccurrenceTypes } from 'src/app/models/occurrenceTypes.models';
+import { IrregularityFilter } from 'src/app/models/irregularityFilter.model';
 
 @Component({
   selector: 'app-pie-chart',
@@ -34,12 +35,16 @@ export class PieChartComponent extends ListPagination
   public pieChartTypeOccurrence = 'pie';
   public dataLoadedOccurrence = false;
   public occurrenceFilterForm: FormGroup;
+  public irregularityFilterForm: FormGroup;
+  public pieChartLabelsIrregularity = [];
+  public pieChartDataIrregularity = [];
 
   constructor(
     private irregularityService: IrregularityService,
     private occurrenceService: OccurrenceService,
     public aclService: AclService,
-    private formBiulder: FormBuilder
+    private formBiulder: FormBuilder,
+    private formBuilderIrregularity: FormBuilder
   ) {
     super();
     this.methodLoad = 'getOccurrencesPage';
@@ -48,18 +53,20 @@ export class PieChartComponent extends ListPagination
   }
 
   ngOnInit() {
-    this.irregularityService.irregularitiesChart(2019).subscribe((response: any) => {
-      response['months'].map(res => {
-        if (res.numIrregularity > 0) {
-          this.pieChartLabels.push(res.name);
-          this.pieChartData.push(res.numIrregularity);
-        }
-      });
-      this.dataLoaded = true;
-    });
+    // this.irregularityService.irregularitiesChart(2019).subscribe((response: any) => {
+    //   response['months'].map(res => {
+    //     if (res.numIrregularity > 0) {
+    //       this.pieChartLabels.push(res.name);
+    //       this.pieChartData.push(res.numIrregularity);
+    //     }
+    //   });
+    //   this.dataLoaded = true;
+    // });
 
     this.formSerialize();
+    this.formSerializeIrregularity();
     this.submitFilter();
+    this.submitFilterIrregularity();
   }
 
   submitFilter(){
@@ -84,12 +91,43 @@ export class PieChartComponent extends ListPagination
     });
   }
 
+  submitFilterIrregularity(){
+    const irregularityFilter: IrregularityFilter = Object.assign(new IrregularityFilter(), this.irregularityFilterForm.value);
+    
+    this.pieChartLabels = [];
+    this.pieChartData = [];
+
+    this.irregularityService.irregularitiesChartFilter(irregularityFilter).subscribe((response: any) => {
+      response['months'].map(res => {
+        if (res.numIrregularity > 0) {
+          this.pieChartLabels.push(res.name);
+          this.pieChartData.push(res.numIrregularity);
+        }
+      });
+      if( this.pieChartLabels.length == 0 || this.pieChartData.length == 0){
+        this.pieChartLabels.push("Não há registos");
+        this.pieChartData.push(1);
+      }
+
+      this.dataLoaded = true;
+    });
+  }
+
   private formSerialize(){
     this.occurrenceFilterForm = this.formBiulder.group({
       year: [2019],
       month: [""],
       occurrenceTypesId: [""],
       occurrenceTypes: [""]
+    })
+  }
+
+  private formSerializeIrregularity(){
+    this.irregularityFilterForm = this.formBuilderIrregularity.group({
+      year: [2019],
+      month: [""],
+      irregularityTypesId: [""],
+      irregularityTypes: [""]
     })
   }
 
