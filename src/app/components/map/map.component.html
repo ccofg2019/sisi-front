@@ -4,8 +4,8 @@
         <h3>Mapa de Ocorrências</h3>
       </div>
         <div class="card-body" style="width: 100%; height: 70%;">
-          <agm-map [zoom]="17" [latitude]="lat" [longitude]="lng" (mapClick)="onChoseLocation($event)">
-            <agm-marker [latitude]="lat" [longitude]="lng" *ngIf="locationChosen"></agm-marker>
+          <agm-map [zoom]="17" [latitude]="lat" [longitude]="lng">
+            <agm-marker *ngFor="let position of positions" [latitude]="position.latitude" [longitude]="position.longitude" iconUrl="./assets/images/caution.png"></agm-marker>
           </agm-map>
         </div>
       </div>

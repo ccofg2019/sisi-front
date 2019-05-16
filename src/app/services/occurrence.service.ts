@@ -9,6 +9,7 @@ import { OccurrenceTypes } from '../models/occurrenceTypes.models';
 import { Observable, from } from 'rxjs';
 import { retry, map } from 'rxjs/operators';
 import { OccurrenceFilter } from '../models/occurrenceFilter.model';
+import { OccurrenceCoordinates } from '../components/map/occurrence.coordinates';
 
 @Injectable()
 export class OccurrenceService {
@@ -64,5 +65,8 @@ export class OccurrenceService {
             }
             return this.http.get(`${environment.API_URL}/api/occurrence-reports/getAllOfTheYear?year=${occurrenceFilter.year}&month=${occurrenceFilter.month}&idOccurrenceType=${occurrenceFilter.occurrenceTypesId}`);
         }
+    }
+    public listOccurrenceOfAYearAgo(){
+        return this.http.get<OccurrenceCoordinates>(`${environment.API_URL}/api/occurrence-reports/listOccurrenceOfAYearAgo`)
     }
 }
