@@ -26,6 +26,9 @@
         <li *ngIf="aclService.can('charts')">
           <a routerLink="/home/charts" ><i class=" large material-icons">event_note</i><p class="btn">Relatórios</p></a><br>
         </li>
+        <li *ngIf="aclService.can('charts')">
+          <a routerLink="/home/emergency_map" ><i class=" large material-icons">map</i><p class="btn">Mapa de Emerg.</p></a><br>
+        </li>
       </ul>
 
     </div>

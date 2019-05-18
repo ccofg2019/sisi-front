@@ -46,7 +46,8 @@
                       <button *ngIf="aclService.can('register_functionary')" routerLink="/home/functionary" class="dropdown-item" type="button"><i class=" large material-icons">event_note</i><p class="btn">Reg. Servidores</p></button>
 
                       <button class="dropdown-item" type="button" (click)=exit()><i class=" large material-icons">exit_to_app</i><p class="btn">Sair</p></button>
-
+                      
+                      <button *ngIf="aclService.can('charts')" routerLink="/home/emergency_map" class="dropdown-item" type="button"><i class=" large material-icons">map</i><p class="btn">Mapa de Emerg.</p></button>
                       <hr>
                       <button class="dropdown-item" type="button" routerLink="/home/perfil"><i class=" large material-icons">edit</i><p class="btn">Editar</p></button>
                       <button class="dropdown-item" type="button" data-toggle="collapse" data-target="#demo"><i class=" large material-icons">person</i><p class="btn">{{ name }}, {{ role }}</p></button>

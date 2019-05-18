@@ -31,6 +31,7 @@ import { MenuHeaderComponent } from './components/menu-header/menu-header.compon
 import { FormFunctionaryComponent } from './components/form-functionary/form-functionary.component';
 import { PerfilUserComponent } from './components/perfil-user/perfil-user.component';
 import { PieChartComponent } from './components/pie-chart/pie-chart.component';
+import { EmergencyMapComponent } from './components/emergency_map/map.component';
 
 // Services
 import { TokenInterceptor } from './services/token/token.interceptor';
@@ -60,7 +61,8 @@ import { AlertService } from './services/alert.service';
     MapComponent,
     ViewUserComponent,
     PerfilUserComponent,
-    PieChartComponent
+    PieChartComponent,
+    EmergencyMapComponent
   ],
   imports: [
     BrowserModule,

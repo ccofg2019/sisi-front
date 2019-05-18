@@ -20,6 +20,7 @@ import { ViewIrregularityComponent } from './components/view-irregularity/view-i
 import { ViewUserComponent } from './components/view-user/view-user.component';
 import { PerfilUserComponent } from './components/perfil-user/perfil-user.component';
 import { PieChartComponent } from './components/pie-chart/pie-chart.component';
+import { EmergencyMapComponent } from './components/emergency_map/map.component';
 
 const routes: Routes = [
 
@@ -65,7 +66,10 @@ const routes: Routes = [
       {
         path: 'view-user/:id', component: ViewUserComponent,
       },
-      { path: 'perfil', component: PerfilUserComponent}
+      { path: 'perfil', component: PerfilUserComponent},
+      {
+        path: 'emergency_map', component: EmergencyMapComponent,
+      }
       
     ]
   },
