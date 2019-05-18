@@ -40,6 +40,7 @@ import { UserService } from './services/user.service';
 import { OccurrenceService } from './services/occurrence.service';
 import { IrregularityService } from './services/irregularity.service';
 import { AlertService } from './services/alert.service';
+import { EmergencyService } from './services/emergency.service';
 
 @NgModule({
   declarations: [
@@ -88,6 +89,7 @@ import { AlertService } from './services/alert.service';
     AclRedirection,
     AlertService,
     ChartsModule,
+    EmergencyService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,

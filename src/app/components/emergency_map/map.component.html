@@ -5,7 +5,7 @@
       </div>
         <div class="card-body" style="width: 100%; height: 70%;">
           <agm-map [zoom]="17" [latitude]="lat" [longitude]="lng">
-            <agm-marker *ngFor="let position of positions" [latitude]="position.latitude" [longitude]="position.longitude" iconUrl="./assets/images/caution.png"></agm-marker>
+            <agm-marker *ngFor="let marker of markers" [latitude]="marker.latitude" [longitude]="marker.longitude" [iconUrl]="marker.iconUrl" [animation]="marker.animation"></agm-marker>
           </agm-map>
         </div>
       </div>
