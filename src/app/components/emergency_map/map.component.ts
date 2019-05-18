@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth/auth.service';
 import { AclService } from 'ng2-acl';
@@ -12,7 +12,7 @@ import { MarkerMap } from './MarkerMap';
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.scss']
 })
-export class EmergencyMapComponent implements OnInit {
+export class EmergencyMapComponent implements OnInit, OnDestroy {
   
   lat  = -8.05225025;
   lng  = -34.9450490084884;
@@ -22,6 +22,8 @@ export class EmergencyMapComponent implements OnInit {
   private safe: string = "./assets/images/safe.png";
   private caution: string = "./assets/images/caution.png";
   private audio = new Audio("./assets/sounds/SoundPolice.mpeg");
+  public varInterval: any;
+  private timeDelayRequest: number = 5000;
 
   onChoseLocation(event) {
     this.lat = event.coords.lat;
@@ -39,9 +41,16 @@ export class EmergencyMapComponent implements OnInit {
     }
 
     ngOnInit(): void {
-      setInterval(()=>{
+      this.varInterval = setInterval(()=>{
         this.doRequestAndMarkerMap(true);
-      }, 5000);
+        console.log(this.varInterval);
+      }, this.timeDelayRequest);
+      
+    }
+
+    ngOnDestroy(): void {
+      clearInterval(this.varInterval);
+      this.audio.pause();
     }
 
     private doRequestAndMarkerMap(clearMap: boolean){
