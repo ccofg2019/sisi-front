@@ -35,7 +35,10 @@
               <tbody>
                 <tr class="list table-data" *ngFor="let occurrence of data">
                   <th scope="row" [routerLink]="['/home/view-occurrence', occurrence.id]"><div class="table-content">{{ occurrence.id }}</div></th>
-                  <td [routerLink]="['/home/view-occurrence', occurrence.id]"><div class="table-content">{{ occurrence.status }}</div></td>
+                  <td [routerLink]="['/home/view-occurrence', occurrence.id]"><div class="table-content" *ngIf="occurrence.status == 'NOVO'; then thenBlock else elseBlock"></div>
+                    <ng-template #thenBlock>AGUARDANDO VALIDAÇÃO</ng-template>
+                    <ng-template #elseBlock>{{occurrence.status}}</ng-template>
+                  </td>
                   <td [routerLink]="['/home/view-occurrence', occurrence.id]"><div class="table-content"><i class=" large material-icons">info</i>{{ occurrence.occurrence_type.name }}</div></td>
                   <td [routerLink]="['/home/view-occurrence', occurrence.id]"><div class="table-content"><i class=" large material-icons">account_circle</i>{{ occurrence.user.name }}</div></td>
                   <td [routerLink]="['/home/view-occurrence', occurrence.id]"><div class="table-content"><i class=" large material-icons">supervised_user_circle</i>{{ occurrence.agent }}</div></td>
