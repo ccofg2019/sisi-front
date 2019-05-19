@@ -47,4 +47,18 @@ export class ListPagination {
       this.loadData();
     }
   }
+  
+ firstPage() {
+
+    this.paginator.current_page =1 ;
+    this.loadData();
+
+}
+
+  lastPage() {
+
+  this.paginator.current_page = this.paginator.total_pages;
+  this.loadData();
+}
+  
 }
