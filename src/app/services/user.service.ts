@@ -34,5 +34,9 @@ export class UserService {
 
     public getUsersPage(paginator: Paginator) {
         return this.http.get(`${environment.API_URL}/api/users?page=${paginator.current_page}`);
+   }
+
+    public getUserInformations() {
+        return this.http.get<User>(`${environment.API_URL}/api/user/myInformations`);
     }
 }
