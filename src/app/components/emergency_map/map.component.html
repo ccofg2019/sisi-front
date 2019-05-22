@@ -4,8 +4,62 @@
         <h3>Mapa de Emergências</h3>
       </div>
         <div class="card-body" style="width: 100%; height: 60%;">
-          <agm-map [zoom]="17" [latitude]="lat" [longitude]="lng">
-            <agm-marker *ngFor="let marker of markers" [latitude]="marker.latitude" [longitude]="marker.longitude" [iconUrl]="marker.iconUrl" [animation]="marker.animation"></agm-marker>
+          <agm-map [zoom]="zoom" [latitude]="lat" [longitude]="lng">
+            <agm-marker *ngFor="let marker of markers" [latitude]="marker.latitude" [longitude]="marker.longitude" [iconUrl]="marker.iconUrl" [animation]="marker.animation" (markerClick)=select_marker(infoWindow) (centerChange)="centerChange($event)">
+                <agm-info-window #infoWindow>
+                    <div class="card">
+                      <div class="card-header">
+                        <h3>Informações do usuário</h3>
+                      </div>
+                      <div class="user-information card-body">
+                          <table class="table">
+                              <tbody>
+                                <tr>
+                                  <th scope="row">Id:</th>
+                                  <td>{{ marker.infoWindow.user.id }}</td>                                  
+                                </tr>
+                                <tr>
+                                  <th scope="row">Nome:</th>
+                                  <td>{{ marker.infoWindow.user.name }}</td>
+                                </tr>
+                                <tr>
+                                  <th scope="row">Cpf:</th>
+                                  <td>{{ marker.infoWindow.user.cpf }}</td>
+                                </tr>
+                                <tr>
+                                  <th scope="row">Gênero:</th>
+                                  <td>{{ marker.infoWindow.user.gender }}</td>
+                                </tr>
+                                <tr>
+                                  <th scope="row">Cor da pele:</th>
+                                  <td>{{ marker.infoWindow.user.skin_color }}</td>
+                                </tr>
+                                <tr>
+                                  <th scope="row">Celular:</th>
+                                  <td>{{ marker.infoWindow.user.phone }}</td>
+                                </tr>
+                                <tr>
+                                  <th scope="row">Telefone:</th>
+                                  <td>{{ marker.infoWindow.user.cellphone }}</td>
+                                </tr>
+                              </tbody>
+                          </table>                          
+                      </div>
+                      <div class="form-attend" [hidden]="marker.infoWindow.FormAttendIsHidden">
+                          <form #form_attend (ngSubmit)="attendEmergency(form_attend)">
+                              <input type="text" readonly [value]="" hidden name="emergency_id" [value]="marker.emergencyId">
+                              <button class="btn btn-primary buttom-mobile">Atender</button>
+                          </form>
+                      </div>
+                      <div class="form-finish" [hidden]="marker.infoWindow.FormFinishIsHidden">
+                          <form #form_finish (ngSubmit)="finishEmergency(form_finish)">
+                              <input type="text" readonly [value]="" hidden name="emergency_id" [value]="marker.emergencyId">
+                              <button class="btn btn-primary buttom-mobile">Finalizar</button>
+                          </form>
+                      </div>
+                    </div>                               
+                  </agm-info-window>
+            </agm-marker>
           </agm-map>
         </div>
       </div>
