@@ -15,10 +15,6 @@
                           <table class="table">
                               <tbody>
                                 <tr>
-                                  <th scope="row">Id:</th>
-                                  <td>{{ marker.infoWindow.user.id }}</td>                                  
-                                </tr>
-                                <tr>
                                   <th scope="row">Nome:</th>
                                   <td>{{ marker.infoWindow.user.name }}</td>
                                 </tr>
@@ -29,10 +25,6 @@
                                 <tr>
                                   <th scope="row">Gênero:</th>
                                   <td>{{ marker.infoWindow.user.gender }}</td>
-                                </tr>
-                                <tr>
-                                  <th scope="row">Cor da pele:</th>
-                                  <td>{{ marker.infoWindow.user.skin_color }}</td>
                                 </tr>
                                 <tr>
                                   <th scope="row">Celular:</th>
@@ -64,7 +56,7 @@
         </div>
       </div>
   </div>
-  <table>
+  <table class="legenda">
       <tr>
         <td><img src="./assets/images/safe.png" alt="SISI" height="50" width="50" /></td>
         
@@ -73,6 +65,9 @@
         <td><img src="./assets/images/caution.png" alt="SISI" height="50" width="50" /></td>
         
         <td> Emergência </td> 
+
+        <td><img src="./assets/images/police.png" alt="SISI" height="50" width="50" /></td>
+        <td> Em Atendimento </td>
       </tr>
      
 </table>
