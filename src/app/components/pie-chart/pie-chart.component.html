@@ -49,6 +49,71 @@
     </div>
 
 
+    <div class="card-body" *ngIf="tipoRelatorio == 'periodo' ">
+        <form [formGroup]="occurrenceFilterFormMensal" (submit)="submitFilterOcurrenceMensal()">    
+  
+          <div class="row mt-2" >
+            <h6>Tipos de ocorrências no mês</h6>
+          </div>
+          <div class="form-row">              
+            <!--Year-->
+              <label for="year">Ano</label>
+              <select name="year" id="year" formControlName="year" class="form-control">
+                <option value="2020">2020</option>
+                <option value="2019">2019</option>
+                <option value="2018">2018</option>
+                <option value="2017">2017</option>
+                <option value="2016">2016</option>
+              </select>
+            </div>
+  
+            <!--Month-->
+            <div class="form-group col-md-4">
+              <label for="month">Mês</label>
+              <select name="month" id="month" formControlName="month" class="form-control">
+                <option value="1">Janeiro</option>
+                <option value="2">Fevereiro</option>
+                <option value="3">Março</option>
+                <option value="4">Abril</option>
+                <option value="5">Maio</option>
+                <option value="6">Junho</option>
+                <option value="7">Julho</option>
+                <option value="8">Agosto</option>
+                <option value="9">Setembro</option>
+                <option value="10">Outubro</option>
+                <option value="11">Novembro</option>
+                <option value="12">Dezembro</option>
+              </select>
+            </div>
+  
+            <!-- OccurrenceType
+            <div class="form-group col-md-4">
+              <label for="occurrenceTypesId">Tipo de Ocorrencia</label>
+              <select name="occurrenceTypesId" id="occurrenceTypesId" formControlName="occurrenceTypesId"
+                class="form-control">
+                <option value="">Selecione</option>
+                <option value="1">Furto</option>
+                <option value="2">Roubo</option>
+                <option value="3">Assalto a grupo</option>
+                <option value="4">Sequestro relâmpago</option>
+                <option value="5">Arrombamento de veículo</option>
+                <option value="6">Roubo de veículo</option>
+                <option value="7">Arrastão</option>
+                <option value="8">Tentativa de assalto</option>
+                <option value="11">Violência contra mulher</option>
+                <option value="12">Violência contra LGBT</option>
+              </select>
+            </div> -->
+  
+            <button type="submit" style="height: 20%; margin-top: 30px;"
+              class="btn btn-primary btn-lg">Filtrar</button>
+          </div>
+        </form>
+        <canvas class="mt-4" baseChart [data]="pieChartDataOccurrenceMensal" [labels]="pieChartLabelsOccurrenceMensal"
+          [chartType]="pieChartTypeOccurrenceMensal"></canvas>
+      </div>
+
+
     <div class="card-body" *ngIf="tipoRelatorio == 'mensal' ">
         <form [formGroup]="occurrenceFilterFormMensal" (submit)="submitFilterOcurrenceMensal()">    
   
