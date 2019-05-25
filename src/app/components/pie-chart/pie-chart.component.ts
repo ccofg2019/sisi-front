@@ -30,11 +30,17 @@ export class PieChartComponent extends ListPagination
   public pieChartType = 'pie';
   public dataLoaded = false;
 
-  public pieChartLabelsOccurrence = [];
-  public pieChartDataOccurrence = [];
-  public pieChartTypeOccurrence = 'pie';
+  public pieChartLabelsOccurrenceAnual = [];  
+  public pieChartDataOccurrenceAnual = [];
+  public pieChartTypeOccurrenceAnual = 'pie';
+
+  public pieChartLabelsOccurrenceMensal = [];  
+  public pieChartDataOccurrenceMensal = [];
+  public pieChartTypeOccurrenceMensal = 'pie';
+
   public dataLoadedOccurrence = false;
   public occurrenceFilterFormAnual: FormGroup;
+  public occurrenceFilterFormMensal: FormGroup;
 
   public irregularityFilterForm: FormGroup;
   public pieChartLabelsIrregularity = [];
@@ -46,7 +52,8 @@ export class PieChartComponent extends ListPagination
     private irregularityService: IrregularityService,
     private occurrenceService: OccurrenceService,
     public aclService: AclService,
-    private formBiulder: FormBuilder,
+    private formBiulderAnual: FormBuilder,
+    private formBiulderMensal: FormBuilder,
     private formBuilderIrregularity: FormBuilder
   ) {
     super();
@@ -57,30 +64,53 @@ export class PieChartComponent extends ListPagination
 
   ngOnInit() {
     this.formSerializeFilterOcurrenceAnual();
-    this.formSerializeIrregularity();
+    this.formSerializeFilterOcurrenceMensal();
     this.submitFilterOcurrenceAnual();
+    this.submitFilterOcurrenceMensal();
+    
+    this.formSerializeIrregularity();
     this.submitFilterIrregularity();
   }
 
   submitFilterOcurrenceAnual(){
     const occurrenceFilter: OccurrenceFilter = Object.assign(new OccurrenceFilter(), this.occurrenceFilterFormAnual.value);
     
-    this.pieChartLabelsOccurrence = [];
-    this.pieChartDataOccurrence = [];
+    this.pieChartLabelsOccurrenceAnual = [];
+    this.pieChartDataOccurrenceAnual = [];
 
     this.occurrenceService.occurrenciesByYear(occurrenceFilter).subscribe((response: any) => {
       response['months'].map(res => {
         if (res.numOccurrence > 0) {
-          this.pieChartLabelsOccurrence.push(res.name);
-          this.pieChartDataOccurrence.push(res.numOccurrence);
+          this.pieChartLabelsOccurrenceAnual.push(res.name);
+          this.pieChartDataOccurrenceAnual.push(res.numOccurrence);
         }
       });
-      if( this.pieChartLabelsOccurrence.length == 0 || this.pieChartDataOccurrence.length == 0){
-        this.pieChartLabelsOccurrence.push("Não há registos");
-        this.pieChartDataOccurrence.push(1);
+      if( this.pieChartLabelsOccurrenceAnual.length == 0 || this.pieChartDataOccurrenceAnual.length == 0){
+        this.pieChartLabelsOccurrenceAnual.push("Não há registos");
+        this.pieChartDataOccurrenceAnual.push(1);
       }
 
       this.dataLoadedOccurrence = true;
+    });
+  }
+
+  submitFilterOcurrenceMensal(){
+    const occurrenceFilter: OccurrenceFilter = Object.assign(new OccurrenceFilter(), this.occurrenceFilterFormMensal.value);
+    
+    this.pieChartLabelsOccurrenceMensal = [];
+    this.pieChartDataOccurrenceMensal = [];
+
+    this.occurrenceService.occurrenceisChartFilter(occurrenceFilter).subscribe((response: any) => {
+      response['months'].map(res => {
+        if (res.numOccurrence > 0) {
+          this.pieChartLabelsOccurrenceMensal.push(res.name);
+          this.pieChartDataOccurrenceMensal.push(res.numOccurrence);
+        }
+      });
+      if( this.pieChartLabelsOccurrenceMensal.length == 0 || this.pieChartDataOccurrenceMensal.length == 0){
+        this.pieChartLabelsOccurrenceMensal.push("Não há registos");
+        this.pieChartDataOccurrenceMensal.push(1);
+      }
     });
   }
 
@@ -107,8 +137,15 @@ export class PieChartComponent extends ListPagination
   }
 
   private formSerializeFilterOcurrenceAnual(){
-    this.occurrenceFilterFormAnual = this.formBiulder.group({
+    this.occurrenceFilterFormAnual = this.formBiulderAnual.group({
       year: [2019]
+    })
+  }
+
+  private formSerializeFilterOcurrenceMensal(){
+    this.occurrenceFilterFormMensal = this.formBiulderMensal.group({
+      year: [2019],
+      month: [""]
     })
   }
 
