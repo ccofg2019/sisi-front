@@ -44,6 +44,17 @@ export class OccurrenceService {
     public getZones() {
         return this.http.get(`${environment.API_URL}/api/zones?limit=9999`);
     }
+
+    public occurrenciesByYear(occurrenceFilter: OccurrenceFilter){
+        if (occurrenceFilter.month == null && occurrenceFilter.occurrenceTypesId == null) {
+            if (occurrenceFilter.year == null) {
+                occurrenceFilter.year = 2019;
+            }
+
+            return this.http.get(`${environment.API_URL}/api/occurrence-reports/getAllOfTheYear?year=${occurrenceFilter.year}`);
+        }
+    }
+
     public occurrenceisChartFilter(occurrenceFilter: OccurrenceFilter) {
         if (occurrenceFilter.month == null && occurrenceFilter.occurrenceTypesId == null) {
             if (occurrenceFilter.year == null) {
@@ -52,19 +63,19 @@ export class OccurrenceService {
 
             return this.http.get(`${environment.API_URL}/api/occurrence-reports/getAllOfTheYear?year=${occurrenceFilter.year}`);
         }
-        else if (occurrenceFilter.month != null && occurrenceFilter.occurrenceTypesId == null) {
-            if (occurrenceFilter.year == null) {
-                occurrenceFilter.year = 2019;
-            }
+        // else if (occurrenceFilter.month != null && occurrenceFilter.occurrenceTypesId == null) {
+        //     if (occurrenceFilter.year == null) {
+        //         occurrenceFilter.year = 2019;
+        //     }
 
-            return this.http.get(`${environment.API_URL}/api/occurrence-reports/getAllOfTheYear?year=${occurrenceFilter.year}&month=${occurrenceFilter.month}`);
+        //     return this.http.get(`${environment.API_URL}/api/occurrence-reports/getAllOfTheYear?year=${occurrenceFilter.year}&month=${occurrenceFilter.month}`);
         
-        } else if (occurrenceFilter.month != null && occurrenceFilter.occurrenceTypesId != null) {
-            if (occurrenceFilter.year == null) {
-                occurrenceFilter.year = 2019;
-            }
-            return this.http.get(`${environment.API_URL}/api/occurrence-reports/getAllOfTheYear?year=${occurrenceFilter.year}&month=${occurrenceFilter.month}&idOccurrenceType=${occurrenceFilter.occurrenceTypesId}`);
-        }
+        // } //else if (occurrenceFilter.month != null && occurrenceFilter.occurrenceTypesId != null) {
+        //     if (occurrenceFilter.year == null) {
+        //         occurrenceFilter.year = 2019;
+        //     }
+        //     return this.http.get(`${environment.API_URL}/api/occurrence-reports/getAllOfTheYear?year=${occurrenceFilter.year}&month=${occurrenceFilter.month}&idOccurrenceType=${occurrenceFilter.occurrenceTypesId}`);
+        // }
     }
     public listOccurrenceOfAYearAgo(){
         return this.http.get<OccurrenceCoordinates>(`${environment.API_URL}/api/occurrence-reports/listOccurrenceOfAYearAgo`)

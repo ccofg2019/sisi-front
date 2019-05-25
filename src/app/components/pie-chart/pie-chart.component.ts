@@ -34,10 +34,13 @@ export class PieChartComponent extends ListPagination
   public pieChartDataOccurrence = [];
   public pieChartTypeOccurrence = 'pie';
   public dataLoadedOccurrence = false;
-  public occurrenceFilterForm: FormGroup;
+  public occurrenceFilterFormAnual: FormGroup;
+
   public irregularityFilterForm: FormGroup;
   public pieChartLabelsIrregularity = [];
   public pieChartDataIrregularity = [];
+
+  public tipoRelatorio =  'anual';
 
   constructor(
     private irregularityService: IrregularityService,
@@ -53,29 +56,19 @@ export class PieChartComponent extends ListPagination
   }
 
   ngOnInit() {
-    // this.irregularityService.irregularitiesChart(2019).subscribe((response: any) => {
-    //   response['months'].map(res => {
-    //     if (res.numIrregularity > 0) {
-    //       this.pieChartLabels.push(res.name);
-    //       this.pieChartData.push(res.numIrregularity);
-    //     }
-    //   });
-    //   this.dataLoaded = true;
-    // });
-
-    this.formSerialize();
+    this.formSerializeFilterOcurrenceAnual();
     this.formSerializeIrregularity();
-    this.submitFilter();
+    this.submitFilterOcurrenceAnual();
     this.submitFilterIrregularity();
   }
 
-  submitFilter(){
-    const occurrenceFilter: OccurrenceFilter = Object.assign(new OccurrenceFilter(), this.occurrenceFilterForm.value);
+  submitFilterOcurrenceAnual(){
+    const occurrenceFilter: OccurrenceFilter = Object.assign(new OccurrenceFilter(), this.occurrenceFilterFormAnual.value);
     
     this.pieChartLabelsOccurrence = [];
     this.pieChartDataOccurrence = [];
 
-    this.occurrenceService.occurrenceisChartFilter(occurrenceFilter).subscribe((response: any) => {
+    this.occurrenceService.occurrenciesByYear(occurrenceFilter).subscribe((response: any) => {
       response['months'].map(res => {
         if (res.numOccurrence > 0) {
           this.pieChartLabelsOccurrence.push(res.name);
@@ -113,12 +106,9 @@ export class PieChartComponent extends ListPagination
     });
   }
 
-  private formSerialize(){
-    this.occurrenceFilterForm = this.formBiulder.group({
-      year: [2019],
-      month: [""],
-      occurrenceTypesId: [""],
-      occurrenceTypes: [""]
+  private formSerializeFilterOcurrenceAnual(){
+    this.occurrenceFilterFormAnual = this.formBiulder.group({
+      year: [2019]
     })
   }
 
