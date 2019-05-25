@@ -10,6 +10,8 @@ import { OccurrenceFilter } from 'src/app/models/occurrenceFilter.model';
 import { FormGroup, FormBuilder} from '@angular/forms';
 import { OccurrenceTypes } from 'src/app/models/occurrenceTypes.models';
 import { IrregularityFilter } from 'src/app/models/irregularityFilter.model';
+import { OccurrenceByPeriod } from 'src/app/models/occurrenceByPeriod.model';
+import { OccurrenceByPeriod2 } from 'src/app/models/occurrenceByPeriod2.model';
 
 @Component({
   selector: 'app-pie-chart',
@@ -30,12 +32,20 @@ export class PieChartComponent extends ListPagination
   public pieChartType = 'pie';
   public dataLoaded = false;
 
+  public occurrenceByPeriodChartLabels = [];
+  public occurrenceByPeriodChartDataSet = [];
+  public occurrenceByPeriodChartType = 'bar';
+  public occurrenceByPeriodChartDataLoaded = false;
+  public occurrenceByPeriodChartDataLoaded2 = false;
+
   public pieChartLabelsOccurrence = [];
   public pieChartDataOccurrence = [];
   public pieChartTypeOccurrence = 'pie';
   public dataLoadedOccurrence = false;
   public occurrenceFilterForm: FormGroup;
   public irregularityFilterForm: FormGroup;
+  public occurrenceByPeriodFilterForm: FormGroup;
+  public occurrenceByPeriod2FilterForm: FormGroup;
   public pieChartLabelsIrregularity = [];
   public pieChartDataIrregularity = [];
 
@@ -44,7 +54,9 @@ export class PieChartComponent extends ListPagination
     private occurrenceService: OccurrenceService,
     public aclService: AclService,
     private formBiulder: FormBuilder,
-    private formBuilderIrregularity: FormBuilder
+    private formBuilderIrregularity: FormBuilder,
+    private formBuilderOccurrencecByPeriod: FormBuilder,
+    private formBuilderOccurrencecByPeriod2: FormBuilder
   ) {
     super();
     this.methodLoad = 'getOccurrencesPage';
@@ -67,6 +79,8 @@ export class PieChartComponent extends ListPagination
     this.formSerializeIrregularity();
     this.submitFilter();
     this.submitFilterIrregularity();
+    this.formSerializeOccurrenceByPeriod();
+    this.submitFilterOccurrenceByPeriod();
   }
 
   submitFilter(){
@@ -113,6 +127,54 @@ export class PieChartComponent extends ListPagination
     });
   }
 
+  submitFilterOccurrenceByPeriod(){
+    const occurrenceByPeriod: OccurrenceByPeriod = Object.assign(new OccurrenceByPeriod(), this.occurrenceByPeriodFilterForm.value);
+    
+    let totalCount: number = 0;
+    let totalCount2: number = 0;
+    let anyArray: any[] = [];
+    
+    this.occurrenceByPeriodChartLabels = [];
+    this.occurrenceByPeriodChartDataSet = [];
+    
+    this.occurrenceService.countOccurrenceOfEachType(occurrenceByPeriod).subscribe((response: any) => {
+      response.map(res => {
+        totalCount = totalCount + res.numberOfOccurrences;
+      });
+      
+      if(anyArray.length <= 0){
+        anyArray = [{data: [totalCount], label: 'Perído 1'}];
+      }else{
+        anyArray.push({data: [totalCount], label: 'Perído 1'});
+        
+        this.occurrenceByPeriodChartDataSet = anyArray;
+    
+        this.occurrenceByPeriodChartLabels = ['Períodos'];
+      }
+      console.log(anyArray);
+      this.occurrenceByPeriodChartDataLoaded = true;
+    });
+
+    const occurrenceByPeriod2: OccurrenceByPeriod2 = Object.assign(new OccurrenceByPeriod2(), this.occurrenceByPeriodFilterForm.value);
+    this.occurrenceService.countOccurrenceOfEachType2(occurrenceByPeriod2).subscribe((response: any) => {
+      response.map(res => {
+        totalCount2 = totalCount2 + res.numberOfOccurrences;
+      });
+
+      if(anyArray.length <= 0){
+        anyArray = [{data: [totalCount2], label: 'Perído 2'}];
+      }else{
+        anyArray.push({data: [totalCount2], label: 'Perído 2'});
+        
+        this.occurrenceByPeriodChartDataSet = anyArray;
+    
+        this.occurrenceByPeriodChartLabels = ['Períodos'];
+      }
+      console.log(anyArray);
+      this.occurrenceByPeriodChartDataLoaded2 = true;
+    });
+  }
+
   private formSerialize(){
     this.occurrenceFilterForm = this.formBiulder.group({
       year: [2019],
@@ -131,5 +193,12 @@ export class PieChartComponent extends ListPagination
     })
   }
 
-
+  private formSerializeOccurrenceByPeriod(){
+    this.occurrenceByPeriodFilterForm = this.formBuilderOccurrencecByPeriod.group({
+      date_start: ['2019-01-01'],
+      date_end: ['2020-01-01'],
+      date_start2: ['2020-01-02'],
+      date_end2: ['2021-01-01']
+    })
+  }
 }

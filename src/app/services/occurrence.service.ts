@@ -5,7 +5,8 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { Occurrence } from '../models/occurrence.model';
 import { OccurrenceTypes } from '../models/occurrenceTypes.models';
-
+import { OccurrenceByPeriod } from '../models/occurrenceByPeriod.model';
+import { OccurrenceByPeriod2 } from '../models/occurrenceByPeriod2.model';
 import { Observable, from } from 'rxjs';
 import { retry, map } from 'rxjs/operators';
 import { OccurrenceFilter } from '../models/occurrenceFilter.model';
@@ -68,5 +69,13 @@ export class OccurrenceService {
     }
     public listOccurrenceOfAYearAgo(){
         return this.http.get<OccurrenceCoordinates>(`${environment.API_URL}/api/occurrence-reports/listOccurrenceOfAYearAgo`)
+    }
+
+    public countOccurrenceOfEachType(occurrenceByPeriod: OccurrenceByPeriod){
+        return this.http.get(`${environment.API_URL}/api/occurrence-reports/countOccurrenceOfEachType?date_start=${occurrenceByPeriod.date_start}&date_end=${occurrenceByPeriod.date_end}`)
+    }
+
+    public countOccurrenceOfEachType2( occurrenceByPeriod2: OccurrenceByPeriod2){
+        return this.http.get(`${environment.API_URL}/api/occurrence-reports/countOccurrenceOfEachType?date_start=${occurrenceByPeriod2.date_start2}&date_end=${occurrenceByPeriod2.date_end2}`)
     }
 }
