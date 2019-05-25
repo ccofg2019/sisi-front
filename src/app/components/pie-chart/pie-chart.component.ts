@@ -145,7 +145,7 @@ export class PieChartComponent extends ListPagination
   private formSerializeFilterOcurrenceMensal(){
     this.occurrenceFilterFormMensal = this.formBiulderMensal.group({
       year: [2019],
-      month: [""]
+      month: ["1"]
     })
   }
 
