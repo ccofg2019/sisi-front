@@ -128,30 +128,44 @@
     </div>
     <div class="card-body">
         <form [formGroup]="occurrenceByPeriodFilterForm" (submit)="submitFilterOccurrenceByPeriod()">
-          <div class="form-row">
-            <h3>Período 1</h3>
-            <h3 style="margin-left: 28.5%">Período 2</h3>
-          </div>  
-          <div class="form-row">
+         
+        <div class="form-row">
+
+            <div class="col-md-2">
+                <h3> Período 1</h3>
+                
+            </div>
+            <div class="col-md-4">
+                
+            </div> 
+              <div class="col-md-2">
+                  <h3>Período 2</h3>
+                  
+              </div> 
+        </div> 
+              <div class="form-row">
               <!--Período 1-->
-              <div class="form-group col-md-2">
+              <div class="form-group col-md-3">
                 <label for="date_start">Data Inicial</label>
                 <input type="date" class="form-control" id="date_start" formControlName="date_start">
               </div>
-              <div class="form-group col-md-2">
+              <div class="form-group col-md-3">
                 <label for="date_end">Data Final</label>
                 <input type="date" class="form-control" id="date_end" formControlName="date_end">
               </div>
+              
               <!--Período 2-->
-              <div class="form-group col-md-2" style="margin-left: 50px">
+              <div class="form-group col-md-3" >
                 <label for="date_start2">Data Inicial</label>
                 <input type="date" class="form-control" id="date_start2" formControlName="date_start2">
               </div>
-              <div class="form-group col-md-2">
+              <div class="form-group col-md-3">
                 <label for="date_end2">Data Final</label>
                 <input type="date" class="form-control" id="date_end2" formControlName="date_end2">
               </div>
-              <button type="submit" style="height: 20%; margin-top: 30px;" class="btn btn-primary btn-lg ml-3">Filtrar</button>
+            </div>
+            <div class="text-right">
+              <button  type="submit"  class="btn btn-primary ">Filtrar</button>
             </div>
           </form> 
           <canvas class="mt-4" baseChart [datasets]="occurrenceByPeriodChartDataSet" [labels]="occurrenceByPeriodChartLabels"
@@ -159,3 +173,57 @@
     </div>
   </div>
 </div>
+
+<!-- GRÁFICO IRREGULARIDADES -->
+<div style="display: block" *ngIf="irregularityByPeriodChartDataLoaded && irregularityByPeriodChartDataLoaded2">
+    <div class="card" style="padding: 0px;">
+      <div class="card-header">
+        <h3 class="title-mobile" style="text-color: white;">Relatório Comparativo de Irregularidades por Período</h3>
+      </div>
+      <div class="card-body">
+          <form [formGroup]="irregularityByPeriodFilterForm" (submit)="submitFilterIrregularityByPeriod()">
+           
+          <div class="form-row">
+  
+              <div class="col-md-2">
+                  <h3> Período 1</h3>
+                  
+              </div>
+              <div class="col-md-4">
+                  
+              </div> 
+                <div class="col-md-2">
+                    <h3>Período 2</h3>
+                    
+                </div> 
+          </div> 
+                <div class="form-row">
+                <!--Período 1-->
+                <div class="form-group col-md-3">
+                  <label for="date_start">Data Inicial</label>
+                  <input  type="date" class=" form-control"   id="date_start" formControlName="date_start">
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="date_end">Data Final</label>
+                  <input type="date" class="form-control"   id="date_end" formControlName="date_end">
+                </div>
+                
+                <!--Período 2-->
+                <div class="form-group col-md-3" >
+                  <label for="date_start2">Data Inicial</label>
+                  <input type="date" class="form-control" id="date_start2" formControlName="date_start2">
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="date_end2">Data Final</label>
+                  <input type="date" class="form-control" id="date_end2" formControlName="date_end2">
+                </div>
+              </div>
+              <div class="text-right">
+                <button  type="submit"  class="btn btn-primary ">Filtrar</button>
+              </div>
+            </form> 
+            <canvas class="mt-4" baseChart [datasets]="irregularityByPeriodChartDataSet" [labels]="irregularityByPeriodChartLabels"
+            [chartType]="irregularityByPeriodChartType"></canvas>
+      </div>
+    </div>
+  </div>
