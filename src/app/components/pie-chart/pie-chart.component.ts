@@ -14,6 +14,7 @@ import { OccurrenceByPeriod } from 'src/app/models/occurrenceByPeriod.model';
 import { OccurrenceByPeriod2 } from 'src/app/models/occurrenceByPeriod2.model';
 import {IrregularityByPeriod } from 'src/app/models/irregularityByPeriod.model';
 import {IrregularityByPeriod2 } from 'src/app/models/irregularityByPeriod2.model'
+import { IrregularityMonthYear } from 'src/app/models/irregularityMonthYearFilter.model';
 
 @Component({
   selector: 'app-pie-chart',
@@ -46,6 +47,10 @@ export class PieChartComponent extends ListPagination
   public irregularityByPeriodChartDataLoaded = false;
   public irregularityByPeriodChartDataLoaded2 = false;
 
+  public irregularityMonthYearLabels = [];
+  public irregularityMonthYearData = [];
+  public irregularityMonthYearType = 'pie';
+  public irregularityMonthYearDataLoaded = false;
 
   public pieChartLabelsOccurrence = [];
   public pieChartDataOccurrence = [];
@@ -57,6 +62,7 @@ export class PieChartComponent extends ListPagination
   public occurrenceByPeriod2FilterForm: FormGroup;
   public irregularityByPeriodFilterForm: FormGroup;
   public irregularityByPeriod2FilterForm: FormGroup;
+  public irregularityMonthYearForm: FormGroup;
   public pieChartLabelsIrregularity = [];
   public pieChartDataIrregularity = [];
 
@@ -69,7 +75,8 @@ export class PieChartComponent extends ListPagination
     private formBuilderOccurrencecByPeriod: FormBuilder,
     private formBuilderOccurrencecByPeriod2: FormBuilder,
     private formBuilderIrregularityByPeriod: FormBuilder,
-    private formBuilderIrregularityByPeriod2: FormBuilder
+    private formBuilderIrregularityByPeriod2: FormBuilder,
+    private formIrregularityMonthYear: FormBuilder
   ) {
     super();
     this.methodLoad = 'getOccurrencesPage';
@@ -90,12 +97,36 @@ export class PieChartComponent extends ListPagination
 
     this.formSerialize();
     this.formSerializeIrregularity();
+    this.formSerializeIrregularityMonthYear();
     this.submitFilter();
     this.submitFilterIrregularity();
     this.formSerializeOccurrenceByPeriod();
     this.submitFilterOccurrenceByPeriod();
     this.formSerializeIrregularityByPeriod();
     this.submitFilterIrregularityByPeriod();
+    this.submitFilterIrregularityMonthYear();
+  }
+
+  submitFilterIrregularityMonthYear() {
+    const irregularityMonthYearFilter: IrregularityMonthYear = Object.assign(new IrregularityMonthYear(), this.irregularityMonthYearForm.value);
+    
+    this.irregularityMonthYearLabels = [];
+    this.irregularityMonthYearData = [];
+
+    this.irregularityService.irregularitiesMonthYearFilter(irregularityMonthYearFilter).subscribe((response: any) => {
+      response.map(res => {
+        if (res.numberOfIrregularitys > 0) {
+          this.irregularityMonthYearLabels.push(res.nameTypeIrregularity);
+          this.irregularityMonthYearData.push(res.numberOfIrregularitys);
+        }
+      });
+      if( this.irregularityMonthYearLabels.length == 0 || this.irregularityMonthYearData.length == 0){
+        this.irregularityMonthYearLabels.push("Não há registos");
+        this.irregularityMonthYearData.push(1);
+      }
+
+      this.irregularityMonthYearDataLoaded = true;
+    });
   }
 
   submitFilter(){
@@ -269,6 +300,13 @@ export class PieChartComponent extends ListPagination
       date_end: ['2020-01-01'],
       date_start2: ['2020-01-02'],
       date_end2: ['2021-01-01']
+    })
+  }
+
+  private formSerializeIrregularityMonthYear(){
+    this.irregularityMonthYearForm = this.formIrregularityMonthYear.group({
+      year: [2019],
+      month: [1]
     })
   }
 }
