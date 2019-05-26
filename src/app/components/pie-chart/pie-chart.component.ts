@@ -101,10 +101,10 @@ export class PieChartComponent extends ListPagination
     this.pieChartDataOccurrenceMensal = [];
 
     this.occurrenceService.occurrenceisChartFilter(occurrenceFilter).subscribe((response: any) => {
-      response['months'].map(res => {
-        if (res.numOccurrence > 0) {
-          this.pieChartLabelsOccurrenceMensal.push(res.name);
-          this.pieChartDataOccurrenceMensal.push(res.numOccurrence);
+      response.map(res => {
+        if (res.numberOfOccurrences > 0) {
+          this.pieChartLabelsOccurrenceMensal.push(res.nameTypeOccurrence);
+          this.pieChartDataOccurrenceMensal.push(res.numberOfOccurrences);
         }
       });
       if( this.pieChartLabelsOccurrenceMensal.length == 0 || this.pieChartDataOccurrenceMensal.length == 0){

@@ -55,27 +55,15 @@ export class OccurrenceService {
         }
     }
 
-    public occurrenceisChartFilter(occurrenceFilter: OccurrenceFilter) {
-        if (occurrenceFilter.month == null && occurrenceFilter.occurrenceTypesId == null) {
-            if (occurrenceFilter.year == null) {
-                occurrenceFilter.year = 2019;
-            }
-
-            return this.http.get(`${environment.API_URL}/api/occurrence-reports/getAllOfTheYear?year=${occurrenceFilter.year}`);
-        }
-         else if (occurrenceFilter.month != null && occurrenceFilter.occurrenceTypesId == null) {
+    public occurrenceisChartFilter(occurrenceFilter: OccurrenceFilter) {       
+         if (occurrenceFilter.month != null) {
              if (occurrenceFilter.year == null) {
                  occurrenceFilter.year = 2019;
              }
 
-             return this.http.get(`${environment.API_URL}/api/occurrence-reports/getAllOfTheYear?year=${occurrenceFilter.year}&month=${occurrenceFilter.month}`);
+             return this.http.get(`${environment.API_URL}/api/occurrence-reports/countAllOccurrenceOfMonthOfTheYear?year=${occurrenceFilter.year}&month=${occurrenceFilter.month}`);
         
-        } //else if (occurrenceFilter.month != null && occurrenceFilter.occurrenceTypesId != null) {
-        //     if (occurrenceFilter.year == null) {
-        //         occurrenceFilter.year = 2019;
-        //     }
-        //     return this.http.get(`${environment.API_URL}/api/occurrence-reports/getAllOfTheYear?year=${occurrenceFilter.year}&month=${occurrenceFilter.month}&idOccurrenceType=${occurrenceFilter.occurrenceTypesId}`);
-        // }
+        }
     }
     public listOccurrenceOfAYearAgo(){
         return this.http.get<OccurrenceCoordinates>(`${environment.API_URL}/api/occurrence-reports/listOccurrenceOfAYearAgo`)
