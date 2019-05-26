@@ -1,7 +1,7 @@
 <div style="display: block" *ngIf="dataLoadedOccurrence">
     <div class="card" style="padding: 0px;">
       <div class="card-header">
-        <h3 class="title-mobile" style="text-color: white;">Relatório de Ocorrências</h3>
+        <h3 class="title-mobile" style="text-color: white;">Relatório de Ocorrências de um determinado período</h3>
       </div>
       <div class="card-body">
           <form [formGroup]="occurrenceFilterForm" (submit)="submitFilter()">
@@ -65,7 +65,7 @@
 <div style="display: block" *ngIf="dataLoaded">
   <div class="card" style="padding: 0px;">
     <div class="card-header">
-      <h3 class="title-mobile">Relatório de irregularidades</h3>
+      <h3 class="title-mobile">Relatório de irregularidades de um determinado período</h3>
     </div>
     <div class="card-body">      
         <form [formGroup]="irregularityFilterForm" (submit)="submitFilterIrregularity()">
