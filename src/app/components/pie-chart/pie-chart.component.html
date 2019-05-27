@@ -28,7 +28,7 @@
     <div style="display: block" *ngIf="irregularityMonthYearDataLoaded">
       <div class="card" style="padding: 0px;" *ngIf="tipoRelatorio == 'mensalIrregularidades' ">
         <div class="card-header">
-          <h3 class="title-mobile" style="text-color: white;">Relatório Comparativo dos Tipos de Irregularidades por Mês</h3>
+          <h3 class="title-mobile" style="text-color: white;">Tipos de Irregularidades por mês</h3>
         </div>
         <div class="card-body">
             <form [formGroup]="irregularityMonthYearForm" (submit)="submitFilterIrregularityMonthYear()">
