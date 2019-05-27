@@ -45,7 +45,8 @@ export class OccurrenceService {
     public getZones() {
         return this.http.get(`${environment.API_URL}/api/zones?limit=9999`);
     }
-    public occurrenceisChartFilter(occurrenceFilter: OccurrenceFilter) {
+
+    public occurrenciesByYear(occurrenceFilter: OccurrenceFilter){
         if (occurrenceFilter.month == null && occurrenceFilter.occurrenceTypesId == null) {
             if (occurrenceFilter.year == null) {
                 occurrenceFilter.year = 2019;
@@ -53,18 +54,16 @@ export class OccurrenceService {
 
             return this.http.get(`${environment.API_URL}/api/occurrence-reports/getAllOfTheYear?year=${occurrenceFilter.year}`);
         }
-        else if (occurrenceFilter.month != null && occurrenceFilter.occurrenceTypesId == null) {
-            if (occurrenceFilter.year == null) {
-                occurrenceFilter.year = 2019;
-            }
+    }
 
-            return this.http.get(`${environment.API_URL}/api/occurrence-reports/getAllOfTheYear?year=${occurrenceFilter.year}&month=${occurrenceFilter.month}`);
+    public occurrenceisChartFilter(occurrenceFilter: OccurrenceFilter) {       
+         if (occurrenceFilter.month != null) {
+             if (occurrenceFilter.year == null) {
+                 occurrenceFilter.year = 2019;
+             }
+
+             return this.http.get(`${environment.API_URL}/api/occurrence-reports/countAllOccurrenceOfMonthOfTheYear?year=${occurrenceFilter.year}&month=${occurrenceFilter.month}`);
         
-        } else if (occurrenceFilter.month != null && occurrenceFilter.occurrenceTypesId != null) {
-            if (occurrenceFilter.year == null) {
-                occurrenceFilter.year = 2019;
-            }
-            return this.http.get(`${environment.API_URL}/api/occurrence-reports/getAllOfTheYear?year=${occurrenceFilter.year}&month=${occurrenceFilter.month}&idOccurrenceType=${occurrenceFilter.occurrenceTypesId}`);
         }
     }
     public listOccurrenceOfAYearAgo(){

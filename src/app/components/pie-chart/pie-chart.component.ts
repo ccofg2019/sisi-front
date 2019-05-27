@@ -35,6 +35,17 @@ export class PieChartComponent extends ListPagination
   public pieChartType = 'pie';
   public dataLoaded = false;
 
+<<<<<<< HEAD
+=======
+  public pieChartLabelsOccurrenceAnual = [];  
+  public pieChartDataOccurrenceAnual = [];
+  public pieChartTypeOccurrenceAnual = 'pie';
+
+  public pieChartLabelsOccurrenceMensal = [];  
+  public pieChartDataOccurrenceMensal = [];
+  public pieChartTypeOccurrenceMensal = 'pie';
+
+>>>>>>> inclusao_relatorio_ocorrencia
   public occurrenceByPeriodChartLabels = [];
   public occurrenceByPeriodChartDataSet = [];
   public occurrenceByPeriodChartType = 'bar';
@@ -56,7 +67,9 @@ export class PieChartComponent extends ListPagination
   public pieChartDataOccurrence = [];
   public pieChartTypeOccurrence = 'pie';
   public dataLoadedOccurrence = false;
-  public occurrenceFilterForm: FormGroup;
+  public occurrenceFilterFormAnual: FormGroup;
+  public occurrenceFilterFormMensal: FormGroup;
+
   public irregularityFilterForm: FormGroup;
   public occurrenceByPeriodFilterForm: FormGroup;
   public occurrenceByPeriod2FilterForm: FormGroup;
@@ -66,12 +79,21 @@ export class PieChartComponent extends ListPagination
   public pieChartLabelsIrregularity = [];
   public pieChartDataIrregularity = [];
 
+  public tipoRelatorio =  'anual';
+
   constructor(
     private irregularityService: IrregularityService,
     private occurrenceService: OccurrenceService,
     public aclService: AclService,
-    private formBiulder: FormBuilder,
+    private formBiulderAnual: FormBuilder,
+    private formBiulderMensal: FormBuilder,
     private formBuilderIrregularity: FormBuilder,
+    private formBiulder: FormBuilder,
+<<<<<<< HEAD
+    private formBuilderIrregularity: FormBuilder,
+=======
+   // private formBuilderIrregularity: FormBuilder,
+>>>>>>> inclusao_relatorio_ocorrencia
     private formBuilderOccurrencecByPeriod: FormBuilder,
     private formBuilderOccurrencecByPeriod2: FormBuilder,
     private formBuilderIrregularityByPeriod: FormBuilder,
@@ -85,26 +107,49 @@ export class PieChartComponent extends ListPagination
   }
 
   ngOnInit() {
-    // this.irregularityService.irregularitiesChart(2019).subscribe((response: any) => {
-    //   response['months'].map(res => {
-    //     if (res.numIrregularity > 0) {
-    //       this.pieChartLabels.push(res.name);
-    //       this.pieChartData.push(res.numIrregularity);
-    //     }
-    //   });
-    //   this.dataLoaded = true;
-    // });
-
-    this.formSerialize();
+    this.formSerializeFilterOcurrenceAnual();
+    this.formSerializeFilterOcurrenceMensal();
+    this.submitFilterOcurrenceAnual();
+    this.submitFilterOcurrenceMensal();
+    
     this.formSerializeIrregularity();
     this.formSerializeIrregularityMonthYear();
+<<<<<<< HEAD
     this.submitFilter();
+=======
+    //this.submitFilter();
+>>>>>>> inclusao_relatorio_ocorrencia
     this.submitFilterIrregularity();
     this.formSerializeOccurrenceByPeriod();
     this.submitFilterOccurrenceByPeriod();
     this.formSerializeIrregularityByPeriod();
     this.submitFilterIrregularityByPeriod();
     this.submitFilterIrregularityMonthYear();
+<<<<<<< HEAD
+  }
+
+  submitFilterIrregularityMonthYear() {
+    const irregularityMonthYearFilter: IrregularityMonthYear = Object.assign(new IrregularityMonthYear(), this.irregularityMonthYearForm.value);
+    
+    this.irregularityMonthYearLabels = [];
+    this.irregularityMonthYearData = [];
+
+    this.irregularityService.irregularitiesMonthYearFilter(irregularityMonthYearFilter).subscribe((response: any) => {
+      response.map(res => {
+        if (res.numberOfIrregularitys > 0) {
+          this.irregularityMonthYearLabels.push(res.nameTypeIrregularity);
+          this.irregularityMonthYearData.push(res.numberOfIrregularitys);
+        }
+      });
+      if( this.irregularityMonthYearLabels.length == 0 || this.irregularityMonthYearData.length == 0){
+        this.irregularityMonthYearLabels.push("Não há registos");
+        this.irregularityMonthYearData.push(1);
+      }
+
+      this.irregularityMonthYearDataLoaded = true;
+    });
+=======
+>>>>>>> inclusao_relatorio_ocorrencia
   }
 
   submitFilterIrregularityMonthYear() {
@@ -129,25 +174,45 @@ export class PieChartComponent extends ListPagination
     });
   }
 
-  submitFilter(){
-    const occurrenceFilter: OccurrenceFilter = Object.assign(new OccurrenceFilter(), this.occurrenceFilterForm.value);
+  submitFilterOcurrenceAnual(){
+    const occurrenceFilter: OccurrenceFilter = Object.assign(new OccurrenceFilter(), this.occurrenceFilterFormAnual.value);
     
-    this.pieChartLabelsOccurrence = [];
-    this.pieChartDataOccurrence = [];
+    this.pieChartLabelsOccurrenceAnual = [];
+    this.pieChartDataOccurrenceAnual = [];
 
-    this.occurrenceService.occurrenceisChartFilter(occurrenceFilter).subscribe((response: any) => {
+    this.occurrenceService.occurrenciesByYear(occurrenceFilter).subscribe((response: any) => {
       response['months'].map(res => {
         if (res.numOccurrence > 0) {
-          this.pieChartLabelsOccurrence.push(res.name);
-          this.pieChartDataOccurrence.push(res.numOccurrence);
+          this.pieChartLabelsOccurrenceAnual.push(res.name);
+          this.pieChartDataOccurrenceAnual.push(res.numOccurrence);
         }
       });
-      if( this.pieChartLabelsOccurrence.length == 0 || this.pieChartDataOccurrence.length == 0){
-        this.pieChartLabelsOccurrence.push("Não há registos");
-        this.pieChartDataOccurrence.push(1);
+      if( this.pieChartLabelsOccurrenceAnual.length == 0 || this.pieChartDataOccurrenceAnual.length == 0){
+        this.pieChartLabelsOccurrenceAnual.push("Não há registos");
+        this.pieChartDataOccurrenceAnual.push(1);
       }
 
       this.dataLoadedOccurrence = true;
+    });
+  }
+
+  submitFilterOcurrenceMensal(){
+    const occurrenceFilter: OccurrenceFilter = Object.assign(new OccurrenceFilter(), this.occurrenceFilterFormMensal.value);
+    
+    this.pieChartLabelsOccurrenceMensal = [];
+    this.pieChartDataOccurrenceMensal = [];
+
+    this.occurrenceService.occurrenceisChartFilter(occurrenceFilter).subscribe((response: any) => {
+      response.map(res => {
+        if (res.numberOfOccurrences > 0) {
+          this.pieChartLabelsOccurrenceMensal.push(res.nameTypeOccurrence);
+          this.pieChartDataOccurrenceMensal.push(res.numberOfOccurrences);
+        }
+      });
+      if( this.pieChartLabelsOccurrenceMensal.length == 0 || this.pieChartDataOccurrenceMensal.length == 0){
+        this.pieChartLabelsOccurrenceMensal.push("Não há registos");
+        this.pieChartDataOccurrenceMensal.push(1);
+      }
     });
   }
 
@@ -173,6 +238,15 @@ export class PieChartComponent extends ListPagination
     });
   }
 
+<<<<<<< HEAD
+=======
+  private formSerializeFilterOcurrenceAnual(){
+    this.occurrenceFilterFormAnual = this.formBiulderAnual.group({
+      year: [2019]
+    })
+  }
+
+>>>>>>> inclusao_relatorio_ocorrencia
   submitFilterOccurrenceByPeriod(){
     const occurrenceByPeriod: OccurrenceByPeriod = Object.assign(new OccurrenceByPeriod(), this.occurrenceByPeriodFilterForm.value);
     
@@ -267,12 +341,15 @@ export class PieChartComponent extends ListPagination
   }
 
 
+<<<<<<< HEAD
   private formSerialize(){
     this.occurrenceFilterForm = this.formBiulder.group({
+=======
+  private formSerializeFilterOcurrenceMensal(){
+    this.occurrenceFilterFormMensal = this.formBiulderMensal.group({
+>>>>>>> inclusao_relatorio_ocorrencia
       year: [2019],
-      month: [""],
-      occurrenceTypesId: [""],
-      occurrenceTypes: [""]
+      month: ["1"]
     })
   }
 
