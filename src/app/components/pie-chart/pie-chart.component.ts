@@ -35,8 +35,6 @@ export class PieChartComponent extends ListPagination
   public pieChartType = 'pie';
   public dataLoaded = false;
 
-<<<<<<< HEAD
-=======
   public pieChartLabelsOccurrenceAnual = [];  
   public pieChartDataOccurrenceAnual = [];
   public pieChartTypeOccurrenceAnual = 'pie';
@@ -45,7 +43,6 @@ export class PieChartComponent extends ListPagination
   public pieChartDataOccurrenceMensal = [];
   public pieChartTypeOccurrenceMensal = 'pie';
 
->>>>>>> inclusao_relatorio_ocorrencia
   public occurrenceByPeriodChartLabels = [];
   public occurrenceByPeriodChartDataSet = [];
   public occurrenceByPeriodChartType = 'bar';
@@ -89,11 +86,7 @@ export class PieChartComponent extends ListPagination
     private formBiulderMensal: FormBuilder,
     private formBuilderIrregularity: FormBuilder,
     private formBiulder: FormBuilder,
-<<<<<<< HEAD
-    private formBuilderIrregularity: FormBuilder,
-=======
    // private formBuilderIrregularity: FormBuilder,
->>>>>>> inclusao_relatorio_ocorrencia
     private formBuilderOccurrencecByPeriod: FormBuilder,
     private formBuilderOccurrencecByPeriod2: FormBuilder,
     private formBuilderIrregularityByPeriod: FormBuilder,
@@ -114,42 +107,13 @@ export class PieChartComponent extends ListPagination
     
     this.formSerializeIrregularity();
     this.formSerializeIrregularityMonthYear();
-<<<<<<< HEAD
-    this.submitFilter();
-=======
     //this.submitFilter();
->>>>>>> inclusao_relatorio_ocorrencia
     this.submitFilterIrregularity();
     this.formSerializeOccurrenceByPeriod();
     this.submitFilterOccurrenceByPeriod();
     this.formSerializeIrregularityByPeriod();
     this.submitFilterIrregularityByPeriod();
     this.submitFilterIrregularityMonthYear();
-<<<<<<< HEAD
-  }
-
-  submitFilterIrregularityMonthYear() {
-    const irregularityMonthYearFilter: IrregularityMonthYear = Object.assign(new IrregularityMonthYear(), this.irregularityMonthYearForm.value);
-    
-    this.irregularityMonthYearLabels = [];
-    this.irregularityMonthYearData = [];
-
-    this.irregularityService.irregularitiesMonthYearFilter(irregularityMonthYearFilter).subscribe((response: any) => {
-      response.map(res => {
-        if (res.numberOfIrregularitys > 0) {
-          this.irregularityMonthYearLabels.push(res.nameTypeIrregularity);
-          this.irregularityMonthYearData.push(res.numberOfIrregularitys);
-        }
-      });
-      if( this.irregularityMonthYearLabels.length == 0 || this.irregularityMonthYearData.length == 0){
-        this.irregularityMonthYearLabels.push("Não há registos");
-        this.irregularityMonthYearData.push(1);
-      }
-
-      this.irregularityMonthYearDataLoaded = true;
-    });
-=======
->>>>>>> inclusao_relatorio_ocorrencia
   }
 
   submitFilterIrregularityMonthYear() {
@@ -238,15 +202,12 @@ export class PieChartComponent extends ListPagination
     });
   }
 
-<<<<<<< HEAD
-=======
   private formSerializeFilterOcurrenceAnual(){
     this.occurrenceFilterFormAnual = this.formBiulderAnual.group({
       year: [2019]
     })
   }
 
->>>>>>> inclusao_relatorio_ocorrencia
   submitFilterOccurrenceByPeriod(){
     const occurrenceByPeriod: OccurrenceByPeriod = Object.assign(new OccurrenceByPeriod(), this.occurrenceByPeriodFilterForm.value);
     
@@ -341,13 +302,8 @@ export class PieChartComponent extends ListPagination
   }
 
 
-<<<<<<< HEAD
-  private formSerialize(){
-    this.occurrenceFilterForm = this.formBiulder.group({
-=======
   private formSerializeFilterOcurrenceMensal(){
     this.occurrenceFilterFormMensal = this.formBiulderMensal.group({
->>>>>>> inclusao_relatorio_ocorrencia
       year: [2019],
       month: ["1"]
     })
