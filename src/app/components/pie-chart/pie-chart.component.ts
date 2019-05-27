@@ -10,6 +10,11 @@ import { OccurrenceFilter } from 'src/app/models/occurrenceFilter.model';
 import { FormGroup, FormBuilder} from '@angular/forms';
 import { OccurrenceTypes } from 'src/app/models/occurrenceTypes.models';
 import { IrregularityFilter } from 'src/app/models/irregularityFilter.model';
+import { OccurrenceByPeriod } from 'src/app/models/occurrenceByPeriod.model';
+import { OccurrenceByPeriod2 } from 'src/app/models/occurrenceByPeriod2.model';
+import {IrregularityByPeriod } from 'src/app/models/irregularityByPeriod.model';
+import {IrregularityByPeriod2 } from 'src/app/models/irregularityByPeriod2.model'
+import { IrregularityMonthYear } from 'src/app/models/irregularityMonthYearFilter.model';
 
 @Component({
   selector: 'app-pie-chart',
@@ -38,11 +43,36 @@ export class PieChartComponent extends ListPagination
   public pieChartDataOccurrenceMensal = [];
   public pieChartTypeOccurrenceMensal = 'pie';
 
+  public occurrenceByPeriodChartLabels = [];
+  public occurrenceByPeriodChartDataSet = [];
+  public occurrenceByPeriodChartType = 'bar';
+  public occurrenceByPeriodChartDataLoaded = false;
+  public occurrenceByPeriodChartDataLoaded2 = false;
+
+  public irregularityByPeriodChartLabels = [];
+  public irregularityByPeriodChartDataSet = [];
+  public irregularityByPeriodChartType = 'bar';
+  public irregularityByPeriodChartDataLoaded = false;
+  public irregularityByPeriodChartDataLoaded2 = false;
+
+  public irregularityMonthYearLabels = [];
+  public irregularityMonthYearData = [];
+  public irregularityMonthYearType = 'pie';
+  public irregularityMonthYearDataLoaded = false;
+
+  public pieChartLabelsOccurrence = [];
+  public pieChartDataOccurrence = [];
+  public pieChartTypeOccurrence = 'pie';
   public dataLoadedOccurrence = false;
   public occurrenceFilterFormAnual: FormGroup;
   public occurrenceFilterFormMensal: FormGroup;
 
   public irregularityFilterForm: FormGroup;
+  public occurrenceByPeriodFilterForm: FormGroup;
+  public occurrenceByPeriod2FilterForm: FormGroup;
+  public irregularityByPeriodFilterForm: FormGroup;
+  public irregularityByPeriod2FilterForm: FormGroup;
+  public irregularityMonthYearForm: FormGroup;
   public pieChartLabelsIrregularity = [];
   public pieChartDataIrregularity = [];
 
@@ -54,7 +84,14 @@ export class PieChartComponent extends ListPagination
     public aclService: AclService,
     private formBiulderAnual: FormBuilder,
     private formBiulderMensal: FormBuilder,
-    private formBuilderIrregularity: FormBuilder
+    private formBuilderIrregularity: FormBuilder,
+    private formBiulder: FormBuilder,
+   // private formBuilderIrregularity: FormBuilder,
+    private formBuilderOccurrencecByPeriod: FormBuilder,
+    private formBuilderOccurrencecByPeriod2: FormBuilder,
+    private formBuilderIrregularityByPeriod: FormBuilder,
+    private formBuilderIrregularityByPeriod2: FormBuilder,
+    private formIrregularityMonthYear: FormBuilder
   ) {
     super();
     this.methodLoad = 'getOccurrencesPage';
@@ -69,7 +106,36 @@ export class PieChartComponent extends ListPagination
     this.submitFilterOcurrenceMensal();
     
     this.formSerializeIrregularity();
+    this.formSerializeIrregularityMonthYear();
+    //this.submitFilter();
     this.submitFilterIrregularity();
+    this.formSerializeOccurrenceByPeriod();
+    this.submitFilterOccurrenceByPeriod();
+    this.formSerializeIrregularityByPeriod();
+    this.submitFilterIrregularityByPeriod();
+    this.submitFilterIrregularityMonthYear();
+  }
+
+  submitFilterIrregularityMonthYear() {
+    const irregularityMonthYearFilter: IrregularityMonthYear = Object.assign(new IrregularityMonthYear(), this.irregularityMonthYearForm.value);
+    
+    this.irregularityMonthYearLabels = [];
+    this.irregularityMonthYearData = [];
+
+    this.irregularityService.irregularitiesMonthYearFilter(irregularityMonthYearFilter).subscribe((response: any) => {
+      response.map(res => {
+        if (res.numberOfIrregularitys > 0) {
+          this.irregularityMonthYearLabels.push(res.nameTypeIrregularity);
+          this.irregularityMonthYearData.push(res.numberOfIrregularitys);
+        }
+      });
+      if( this.irregularityMonthYearLabels.length == 0 || this.irregularityMonthYearData.length == 0){
+        this.irregularityMonthYearLabels.push("Não há registos");
+        this.irregularityMonthYearData.push(1);
+      }
+
+      this.irregularityMonthYearDataLoaded = true;
+    });
   }
 
   submitFilterOcurrenceAnual(){
@@ -142,6 +208,100 @@ export class PieChartComponent extends ListPagination
     })
   }
 
+  submitFilterOccurrenceByPeriod(){
+    const occurrenceByPeriod: OccurrenceByPeriod = Object.assign(new OccurrenceByPeriod(), this.occurrenceByPeriodFilterForm.value);
+    
+    let totalCount: number = 0;
+    let totalCount2: number = 0;
+    let anyArray: any[] = [];
+    
+    this.occurrenceByPeriodChartLabels = [];
+    this.occurrenceByPeriodChartDataSet = [];
+    
+    this.occurrenceService.countOccurrenceOfEachType(occurrenceByPeriod).subscribe((response: any) => {
+      response.map(res => {
+        totalCount = totalCount + res.numberOfOccurrences;
+      });
+      
+      if(anyArray.length <= 0){
+        anyArray = [{data: [totalCount], label: 'Perído 1'}];
+      }else{
+        anyArray.push({data: [totalCount], label: 'Perído 1'});
+        
+        this.occurrenceByPeriodChartDataSet = anyArray;
+    
+        this.occurrenceByPeriodChartLabels = ['Períodos'];
+      }
+      this.occurrenceByPeriodChartDataLoaded = true;
+    });
+
+    const occurrenceByPeriod2: OccurrenceByPeriod2 = Object.assign(new OccurrenceByPeriod2(), this.occurrenceByPeriodFilterForm.value);
+    this.occurrenceService.countOccurrenceOfEachType2(occurrenceByPeriod2).subscribe((response: any) => {
+      response.map(res => {
+        totalCount2 = totalCount2 + res.numberOfOccurrences;
+      });
+
+      if(anyArray.length <= 0){
+        anyArray = [{data: [totalCount2], label: 'Perído 2'}];
+      }else{
+        anyArray.push({data: [totalCount2], label: 'Perído 2'});
+        
+        this.occurrenceByPeriodChartDataSet = anyArray;
+    
+        this.occurrenceByPeriodChartLabels = ['Períodos'];
+      }
+      this.occurrenceByPeriodChartDataLoaded2 = true;
+    });
+  }
+
+  submitFilterIrregularityByPeriod(){
+    const irregularityByPeriod: IrregularityByPeriod = Object.assign(new IrregularityByPeriod(), this.irregularityByPeriodFilterForm.value);
+    
+    let totalCount: number = 0;
+    let totalCount2: number = 0;
+    let anyArray: any[] = [];
+    
+    this.irregularityByPeriodChartLabels = [];
+    this.irregularityByPeriodChartDataSet = [];
+    
+    this.irregularityService.countIrregularityOfEachType(irregularityByPeriod).subscribe((response: any) => {
+      response.map(res => {
+        totalCount = totalCount + res.numberOfIrregularitys;
+      });
+      
+      if(anyArray.length <= 0){
+        anyArray = [{data: [totalCount], label: 'Perído 1'}];
+      }else{
+        anyArray.push({data: [totalCount], label: 'Perído 1'});
+        
+        this.irregularityByPeriodChartDataSet = anyArray;
+    
+        this.irregularityByPeriodChartLabels = ['Períodos'];
+      }
+      this.irregularityByPeriodChartDataLoaded = true;
+    });
+
+    const irregularityByPeriod2: IrregularityByPeriod2 = Object.assign(new IrregularityByPeriod2(), this.irregularityByPeriodFilterForm.value);
+    this.irregularityService.countIrregularityOfEachType2(irregularityByPeriod2).subscribe((response: any) => {
+      response.map(res => {
+        totalCount2 = totalCount2 + res.numberOfIrregularitys;
+      });
+
+      if(anyArray.length <= 0){
+        anyArray = [{data: [totalCount2], label: 'Perído 2'}];
+      }else{
+        anyArray.push({data: [totalCount2], label: 'Perído 2'});
+        
+        this.irregularityByPeriodChartDataSet = anyArray;
+    
+        this.irregularityByPeriodChartLabels = ['Períodos'];
+      }
+      
+      this.irregularityByPeriodChartDataLoaded2 = true;
+    });
+  }
+
+
   private formSerializeFilterOcurrenceMensal(){
     this.occurrenceFilterFormMensal = this.formBiulderMensal.group({
       year: [2019],
@@ -158,5 +318,28 @@ export class PieChartComponent extends ListPagination
     })
   }
 
+  private formSerializeOccurrenceByPeriod(){
+    this.occurrenceByPeriodFilterForm = this.formBuilderOccurrencecByPeriod.group({
+      date_start: ['2019-01-01'],
+      date_end: ['2020-01-01'],
+      date_start2: ['2020-01-02'],
+      date_end2: ['2021-01-01']
+    })
+  }
 
+  private formSerializeIrregularityByPeriod(){
+    this.irregularityByPeriodFilterForm = this.formBuilderIrregularityByPeriod.group({
+      date_start: ['2019-01-01'],
+      date_end: ['2020-01-01'],
+      date_start2: ['2020-01-02'],
+      date_end2: ['2021-01-01']
+    })
+  }
+
+  private formSerializeIrregularityMonthYear(){
+    this.irregularityMonthYearForm = this.formIrregularityMonthYear.group({
+      year: [2019],
+      month: [1]
+    })
+  }
 }
