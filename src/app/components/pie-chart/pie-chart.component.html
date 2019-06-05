@@ -27,9 +27,6 @@
 
     <div style="display: block" *ngIf="irregularityMonthYearDataLoaded">
       <div class="card" style="padding: 0px;" *ngIf="tipoRelatorio == 'mensalIrregularidades' ">
-        <div class="card-header">
-          <h3 class="title-mobile" style="text-color: white;">Tipos de Irregularidades por mês</h3>
-        </div>
         <div class="card-body">
             <form [formGroup]="irregularityMonthYearForm" (submit)="submitFilterIrregularityMonthYear()">
                 <div class="form-row">
@@ -64,8 +61,11 @@
                   <button type="submit" style="height: 20%; margin-top: 30px;" class="btn btn-primary btn-lg ml-3">Filtrar</button>
                 </div>
               </form> 
+              <div>
+                <h3 class="title-chart">Tipos de Irregularidades por mês</h3>
+              </div>
               <canvas class="mt-4" baseChart [data]="irregularityMonthYearData" [labels]="irregularityMonthYearLabels"
-              [chartType]="irregularityMonthYearType"></canvas>
+              [chartType]="irregularityMonthYearType" [options]="pieChartOptions"></canvas>
         </div>
       </div>
     </div>
@@ -73,10 +73,6 @@
     <div class="card" style="padding: 0px;">
       <div class="card-body" *ngIf="tipoRelatorio == 'anualOcorrencia' ">
         <form [formGroup]="occurrenceFilterFormAnual" (submit)="submitFilterOcurrenceAnual()">           
-            <div class="card-header">
-              <h3 class="title-mobile" style="color: white"> Quantidade de ocorrências nos meses do ano</h3>
-            </div>
-        
           <div class="form-row">
             <!--Year-->
             <div class="form-group col-md-4">
@@ -96,17 +92,16 @@
               class="btn btn-primary btn-lg">Filtrar</button>
           </div>
         </form>
+        <div>
+          <h3 class="title-chart">Quantidade de ocorrências nos meses do ano</h3>
+        </div>
         <canvas class="mt-4" baseChart [data]="pieChartDataOccurrenceAnual" [labels]="pieChartLabelsOccurrenceAnual"
-          [chartType]="pieChartTypeOccurrenceAnual"></canvas>
+          [chartType]="pieChartTypeOccurrenceAnual" [options]="pieChartOptions"></canvas>
       </div>
     </div>
 
     <div class="card-body" *ngIf="tipoRelatorio == 'mensalOcorrencia' ">
         <form [formGroup]="occurrenceFilterFormMensal" (submit)="submitFilterOcurrenceMensal()">    
-  
-          <div class="card-header">
-            <h3 class="title-mobile" style="color: white"> Tipos de ocorrências no mês</h3>
-          </div>
           <div class="form-row">              
             <!--Year-->
             <div class="form-group col-md-4">
@@ -145,17 +140,17 @@
               class="btn btn-primary btn-lg">Filtrar</button>
           </div>
         </form>
+        <div>
+          <h3 class="title-chart">Tipos de ocorrências no mês</h3>
+        </div>
         <canvas class="mt-4" baseChart [data]="pieChartDataOccurrenceMensal" [labels]="pieChartLabelsOccurrenceMensal"
-          [chartType]="pieChartTypeOccurrenceMensal"></canvas>
+          [chartType]="pieChartTypeOccurrenceMensal" [options]="pieChartOptions"></canvas>
       </div>
   </div>
 </div>
 
 <div style="display: block" *ngIf="dataLoaded" class=" mt-4">
   <div class="card" style="padding: 0px;" *ngIf="tipoRelatorio == 'anualIrregularidades' ">
-    <div class="card-header">
-      <h3 class="title-mobile">Quantidade de irregularidades nos meses do ano</h3>
-    </div>
     <div class="card-body">
       <form [formGroup]="irregularityFilterForm" (submit)="submitFilterIrregularity()">
         <div class="form-row">
@@ -205,7 +200,11 @@
             class="btn btn-primary btn-lg ml-3">Filtrar</button>
         </div>
       </form>
-      <canvas baseChart [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType"></canvas>
+      <div>
+        <h3 class="title-chart">Quantidade de irregularidades nos meses do ano</h3>
+      </div>
+      <canvas baseChart [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType"
+        [options]="pieChartOptions"></canvas>
     </div>
   </div>
 </div> 

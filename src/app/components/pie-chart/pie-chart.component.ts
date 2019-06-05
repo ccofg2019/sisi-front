@@ -35,6 +35,16 @@ export class PieChartComponent extends ListPagination
   public pieChartType = 'pie';
   public dataLoaded = false;
 
+  public pieChartOptions:any = {
+    responsive: true,
+    legend: {
+      position: 'left',
+      labels: {
+        fontSize: 16
+      }
+    }
+  };
+
   public pieChartLabelsOccurrenceAnual = [];  
   public pieChartDataOccurrenceAnual = [];
   public pieChartTypeOccurrenceAnual = 'pie';
