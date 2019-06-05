@@ -6,6 +6,8 @@ import { Routes, RouterModule } from '@angular/router';
 
 // Components
 import { LoginComponent } from './components/login/login.component';
+import { RecoverComponent } from './components/recover-password/recover.component';
+import { InputPasswordComponent } from './components/input-password/input-password.component';
 import { HomeComponent } from './components/home/home.component';
 import { MapComponent } from './components/map/map.component';
 import { FormRegisterComponent } from './components/form-register/form-register.component';
@@ -25,6 +27,8 @@ import { EmergencyMapComponent } from './components/emergency_map/map.component'
 const routes: Routes = [
 
   { path: '', component: LoginComponent },
+  { path: 'recover', component: RecoverComponent },
+  { path: 'input-password', component: InputPasswordComponent },
   { path: 'register', component: FormRegisterComponent},
   {
     path: 'home', component: HomeComponent, canActivate: [AuthGuardService],
