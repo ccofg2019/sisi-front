@@ -15,6 +15,8 @@ import { ChartsModule } from 'ng2-charts';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
+import { RecoverComponent } from './components/recover-password/recover.component';
+import { InputPasswordComponent } from './components/input-password/input-password.component';
 import { HeaderComponent } from './components/header/header.component';
 import { MapComponent } from './components/map/map.component';
 import { FormRegisterComponent } from './components/form-register/form-register.component';
@@ -48,6 +50,8 @@ import { EmergencyService } from './services/emergency.service';
     HeaderComponent,
     FormRegisterComponent,
     LoginComponent,
+    RecoverComponent,
+    InputPasswordComponent,
     HomeComponent,
     MapComponent,
     FormOccurrenceComponent,

@@ -1,0 +1,48 @@
+<div>
+  <div class="login-container">
+    <form [formGroup]="recoverForm" (submit)="onSubmit()" class="text-center border border-light p-5">
+      <div id="logo">
+        <img src="../assets/large-sisi-logo-title.png" alt="SISI" height="120" width="250" />
+      </div>
+      <p>Insira seu E-mail, CPF e data de nascimento</p>
+        <input
+          class="form-control mb-4" 
+          formControlName="email"
+          type="email"
+          maxlength="32"
+          style="width: 300px"
+          name="email"
+          placeholder="E-mail"
+          style="margin-bottom: 5px !important;"
+        >
+        <input
+          class="form-control mb-4" 
+          formControlName="cpf"
+          type="text"
+          maxlength="32"
+          style="width: 300px"
+          name="cpf"
+          placeholder="CPF"
+          style="margin-bottom: 5px !important;"
+        >
+        <input
+          class="form-control mb-4" 
+          formControlName="birthdate"
+          type="date"
+          maxlength="32"
+          style="width: 300px"
+          name="birthdate"
+          placeholder="Data de nascimento"
+          style="margin-bottom: 5px !important;"
+        >
+      <div class="d-flex justify-content-around">
+      </div>
+
+      <button type="submit" [disabled]="loading" mat-raised-button class="btn btn-info btn-block my-4 login-btn">Recuperar Senha</button>
+
+      <p><a href="/"> Voltar</a> </p>
+      <a style=" color: #990000; " href="https://drive.google.com/uc?authuser=0&id=1cAY5USYmhTDwCGTJpdVuvISQ50WHyIn-&export=download"><i class=" large material-icons">phone_android</i> <span>Baixe App</span></a>
+    </form>
+    </div>
+  </div>
+
