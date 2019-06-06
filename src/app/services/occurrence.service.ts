@@ -93,10 +93,10 @@ export class OccurrenceService {
     }
 
     public countOccurrenceOfEachType(occurrenceByPeriod: OccurrenceByPeriod){
-        return this.http.get(`${environment.API_URL}/api/occurrence-reports/countOccurrenceOfEachType?date_start=${occurrenceByPeriod.date_start}&date_end=${occurrenceByPeriod.date_end}`)
+        return this.http.get(`${environment.API_URL}/api/occurrence-reports/countOccurrenceOfOneType?occurrence_id=${occurrenceByPeriod.occurrenceTypes}&date_start=${occurrenceByPeriod.date_start}&date_end=${occurrenceByPeriod.date_end}`)
     }
 
-    public countOccurrenceOfEachType2( occurrenceByPeriod2: OccurrenceByPeriod2){
-        return this.http.get(`${environment.API_URL}/api/occurrence-reports/countOccurrenceOfEachType?date_start=${occurrenceByPeriod2.date_start2}&date_end=${occurrenceByPeriod2.date_end2}`)
+    public countOccurrenceOfEachType2( occurrenceByPeriod2: OccurrenceByPeriod2, occurrenceTypeId: OccurrenceByPeriod){
+        return this.http.get(`${environment.API_URL}/api/occurrence-reports/countOccurrenceOfOneType?occurrence_id=${occurrenceTypeId.occurrenceTypes}&date_start=${occurrenceByPeriod2.date_start2}&date_end=${occurrenceByPeriod2.date_end2}`)
     }
 }

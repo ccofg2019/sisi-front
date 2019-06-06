@@ -8,7 +8,6 @@ import { IrregularityService } from 'src/app/services/irregularity.service';
 import { Occurrence } from 'src/app/models/occurrence.model';
 import { OccurrenceFilter } from 'src/app/models/occurrenceFilter.model';
 import { FormGroup, FormBuilder} from '@angular/forms';
-import { OccurrenceTypes } from 'src/app/models/occurrenceTypes.models';
 import { IrregularityFilter } from 'src/app/models/irregularityFilter.model';
 import { OccurrenceByPeriod } from 'src/app/models/occurrenceByPeriod.model';
 import { OccurrenceByPeriod2 } from 'src/app/models/occurrenceByPeriod2.model';
@@ -36,6 +35,16 @@ export class PieChartComponent extends ListPagination
   public dataLoaded = false;
 
   public pieChartOptions:any = {
+    responsive: true,
+    legend: {
+      position: 'left',
+      labels: {
+        fontSize: 16
+      }
+    }
+  };
+
+  public barChartOptions:any = {
     responsive: true,
     legend: {
       position: 'left',
@@ -106,9 +115,7 @@ export class PieChartComponent extends ListPagination
     private formBiulder: FormBuilder,
    // private formBuilderIrregularity: FormBuilder,
     private formBuilderOccurrencecByPeriod: FormBuilder,
-    private formBuilderOccurrencecByPeriod2: FormBuilder,
     private formBuilderIrregularityByPeriod: FormBuilder,
-    private formBuilderIrregularityByPeriod2: FormBuilder,
     private formIrregularityMonthYear: FormBuilder
   ) {
     super();
@@ -164,7 +171,6 @@ export class PieChartComponent extends ListPagination
     this.pieChartDataOccurrenceAnual = [];
 
     this.occurrenceService.occurrenciesByYear(occurrenceFilter).subscribe((response: any) => {
-      console.log(response);
       response['months'].map(res => {
         if (res.numOccurrence > 0) {
           this.pieChartLabelsOccurrenceAnual.push(res.name);
@@ -232,23 +238,16 @@ export class PieChartComponent extends ListPagination
 
   submitFilterOccurrenceByPeriod(){
     const occurrenceByPeriod: OccurrenceByPeriod = Object.assign(new OccurrenceByPeriod(), this.occurrenceByPeriodFilterForm.value);
-    
-    let totalCount: number = 0;
-    let totalCount2: number = 0;
     let anyArray: any[] = [];
     
     this.occurrenceByPeriodChartLabels = [];
     this.occurrenceByPeriodChartDataSet = [];
     
     this.occurrenceService.countOccurrenceOfEachType(occurrenceByPeriod).subscribe((response: any) => {
-      response.map(res => {
-        totalCount = totalCount + res.numberOfOccurrences;
-      });
-      
       if(anyArray.length <= 0){
-        anyArray = [{data: [totalCount], label: 'Perído 1'}];
+        anyArray = [{data: [response.numberOfOccurrences], label: 'Perído 1'}];
       }else{
-        anyArray.push({data: [totalCount], label: 'Perído 1'});
+        anyArray.push({data: [response.numberOfOccurrences], label: 'Perído 1'});
         
         this.occurrenceByPeriodChartDataSet = anyArray;
     
@@ -258,15 +257,11 @@ export class PieChartComponent extends ListPagination
     });
 
     const occurrenceByPeriod2: OccurrenceByPeriod2 = Object.assign(new OccurrenceByPeriod2(), this.occurrenceByPeriodFilterForm.value);
-    this.occurrenceService.countOccurrenceOfEachType2(occurrenceByPeriod2).subscribe((response: any) => {
-      response.map(res => {
-        totalCount2 = totalCount2 + res.numberOfOccurrences;
-      });
-
+    this.occurrenceService.countOccurrenceOfEachType2(occurrenceByPeriod2, occurrenceByPeriod).subscribe((response: any) => {
       if(anyArray.length <= 0){
-        anyArray = [{data: [totalCount2], label: 'Perído 2'}];
+        anyArray = [{data: [response.numberOfOccurrences], label: 'Perído 2'}];
       }else{
-        anyArray.push({data: [totalCount2], label: 'Perído 2'});
+        anyArray.push({data: [response.numberOfOccurrences], label: 'Perído 2'});
         
         this.occurrenceByPeriodChartDataSet = anyArray;
     
@@ -278,23 +273,16 @@ export class PieChartComponent extends ListPagination
 
   submitFilterIrregularityByPeriod(){
     const irregularityByPeriod: IrregularityByPeriod = Object.assign(new IrregularityByPeriod(), this.irregularityByPeriodFilterForm.value);
-    
-    let totalCount: number = 0;
-    let totalCount2: number = 0;
     let anyArray: any[] = [];
     
     this.irregularityByPeriodChartLabels = [];
     this.irregularityByPeriodChartDataSet = [];
     
-    this.irregularityService.countIrregularityOfEachType(irregularityByPeriod).subscribe((response: any) => {
-      response.map(res => {
-        totalCount = totalCount + res.numberOfIrregularitys;
-      });
-      
+    this.irregularityService.countIrregularityOfEachType(irregularityByPeriod).subscribe((response: any) => {      
       if(anyArray.length <= 0){
-        anyArray = [{data: [totalCount], label: 'Perído 1'}];
+        anyArray = [{data: [response.numberOfIrregularitys], label: 'Perído 1'}];
       }else{
-        anyArray.push({data: [totalCount], label: 'Perído 1'});
+        anyArray.push({data: [response.numberOfIrregularitys], label: 'Perído 1'});
         
         this.irregularityByPeriodChartDataSet = anyArray;
     
@@ -304,21 +292,16 @@ export class PieChartComponent extends ListPagination
     });
 
     const irregularityByPeriod2: IrregularityByPeriod2 = Object.assign(new IrregularityByPeriod2(), this.irregularityByPeriodFilterForm.value);
-    this.irregularityService.countIrregularityOfEachType2(irregularityByPeriod2).subscribe((response: any) => {
-      response.map(res => {
-        totalCount2 = totalCount2 + res.numberOfIrregularitys;
-      });
-
+    this.irregularityService.countIrregularityOfEachType2(irregularityByPeriod2, irregularityByPeriod).subscribe((response: any) => {
       if(anyArray.length <= 0){
-        anyArray = [{data: [totalCount2], label: 'Perído 2'}];
+        anyArray = [{data: [response.numberOfIrregularitys], label: 'Perído 2'}];
       }else{
-        anyArray.push({data: [totalCount2], label: 'Perído 2'});
+        anyArray.push({data: [response.numberOfIrregularitys], label: 'Perído 2'});
         
         this.irregularityByPeriodChartDataSet = anyArray;
     
         this.irregularityByPeriodChartLabels = ['Períodos'];
       }
-      
       this.irregularityByPeriodChartDataLoaded2 = true;
     });
   }
@@ -342,6 +325,7 @@ export class PieChartComponent extends ListPagination
 
   private formSerializeOccurrenceByPeriod(){
     this.occurrenceByPeriodFilterForm = this.formBuilderOccurrencecByPeriod.group({
+      occurrenceTypes: "1",
       date_start: ['2019-01-01'],
       date_end: ['2020-01-01'],
       date_start2: ['2020-01-02'],
@@ -351,6 +335,7 @@ export class PieChartComponent extends ListPagination
 
   private formSerializeIrregularityByPeriod(){
     this.irregularityByPeriodFilterForm = this.formBuilderIrregularityByPeriod.group({
+      irregularityTypes: "1",
       date_start: ['2019-01-01'],
       date_end: ['2020-01-01'],
       date_start2: ['2020-01-02'],
