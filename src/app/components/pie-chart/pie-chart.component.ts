@@ -45,6 +45,14 @@ export class PieChartComponent extends ListPagination
     }
   };
 
+  public backgroundColors: Array<any> = [
+    {
+      backgroundColor: ["#FF6384", "#f4e002", "#FFCE56", "#E7E9ED", 
+                        "#36A2EB", "#coffee", "#6FC8CE", "#ff7f00",
+                        "#18720c", "#1ffc02", "#ff0000", "#bc69ef", "#472160"]
+    }
+  ];
+
   public pieChartLabelsOccurrenceAnual = [];  
   public pieChartDataOccurrenceAnual = [];
   public pieChartTypeOccurrenceAnual = 'pie';
@@ -112,16 +120,17 @@ export class PieChartComponent extends ListPagination
   ngOnInit() {
     this.formSerializeFilterOcurrenceAnual();
     this.formSerializeFilterOcurrenceMensal();
+    this.formSerializeIrregularityMonthYear();
+    this.formSerializeOccurrenceByPeriod();
+    this.formSerializeIrregularity();
+    this.formSerializeIrregularityByPeriod();
+
     this.submitFilterOcurrenceAnual();
     this.submitFilterOcurrenceMensal();
     
-    this.formSerializeIrregularity();
-    this.formSerializeIrregularityMonthYear();
     //this.submitFilter();
     this.submitFilterIrregularity();
-    this.formSerializeOccurrenceByPeriod();
     this.submitFilterOccurrenceByPeriod();
-    this.formSerializeIrregularityByPeriod();
     this.submitFilterIrregularityByPeriod();
     this.submitFilterIrregularityMonthYear();
   }
@@ -155,6 +164,7 @@ export class PieChartComponent extends ListPagination
     this.pieChartDataOccurrenceAnual = [];
 
     this.occurrenceService.occurrenciesByYear(occurrenceFilter).subscribe((response: any) => {
+      console.log(response);
       response['months'].map(res => {
         if (res.numOccurrence > 0) {
           this.pieChartLabelsOccurrenceAnual.push(res.name);
@@ -214,7 +224,9 @@ export class PieChartComponent extends ListPagination
 
   private formSerializeFilterOcurrenceAnual(){
     this.occurrenceFilterFormAnual = this.formBiulderAnual.group({
-      year: [2019]
+      year: [2019],
+      month: [""],
+      occurrenceTypesId: [""]
     })
   }
 
@@ -315,7 +327,7 @@ export class PieChartComponent extends ListPagination
   private formSerializeFilterOcurrenceMensal(){
     this.occurrenceFilterFormMensal = this.formBiulderMensal.group({
       year: [2019],
-      month: ["1"]
+      month: ["5"]
     })
   }
 
@@ -349,7 +361,7 @@ export class PieChartComponent extends ListPagination
   private formSerializeIrregularityMonthYear(){
     this.irregularityMonthYearForm = this.formIrregularityMonthYear.group({
       year: [2019],
-      month: [1]
+      month: [5]
     })
   }
 }

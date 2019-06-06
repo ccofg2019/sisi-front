@@ -6,6 +6,9 @@
 
     <ul class="nav nav-tabs mt-1">
         <li class="nav-item">
+          <a class="nav-link" [class.active]=" tipoRelatorio == 'anualIrregularidades' " (click)="tipoRelatorio = 'anualIrregularidades' "  >Anual de Irregularidades</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" [class.active]=" tipoRelatorio == 'mensalOcorrencia' "  (click)="tipoRelatorio = 'mensalOcorrencia' "  >Mensal de Ocorrências</a>
         </li>
         <li class="nav-item">
@@ -19,9 +22,6 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" [class.active]=" tipoRelatorio == 'periodoIrregularidades' " (click)="tipoRelatorio = 'periodoIrregularidades' " >Periodo de Irregularidades</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" [class.active]=" tipoRelatorio == 'anualIrregularidades' " (click)="tipoRelatorio = 'anualIrregularidades' "  >Anual de Irregularidades</a>
         </li>
     </ul>
 
@@ -65,7 +65,7 @@
                 <h3 class="title-chart">Tipos de Irregularidades por mês</h3>
               </div>
               <canvas class="mt-4" baseChart [data]="irregularityMonthYearData" [labels]="irregularityMonthYearLabels"
-              [chartType]="irregularityMonthYearType" [options]="pieChartOptions"></canvas>
+              [chartType]="irregularityMonthYearType" [options]="pieChartOptions" [colors]="backgroundColors"></canvas>
         </div>
       </div>
     </div>
@@ -86,6 +86,45 @@
               </select>
             </div>
 
+            <!--Month-->
+          <div class="form-group col-md-4">
+              <label for="month">Mês</label>
+              <select name="month" id="month" formControlName="month" class="form-control">
+                <option value="">Selecione</option>
+                <option value="1">Janeiro</option>
+                <option value="2">Fevereiro</option>
+                <option value="3">Março</option>
+                <option value="4">Abril</option>
+                <option value="5">Maio</option>
+                <option value="6">Junho</option>
+                <option value="7">Julho</option>
+                <option value="8">Agosto</option>
+                <option value="9">Setembro</option>
+                <option value="10">Outubro</option>
+                <option value="11">Novembro</option>
+                <option value="12">Dezembro</option>
+              </select>
+            </div>
+  
+            <!--OccurrenceType-->
+            <div class="form-group col-md-4">
+              <label for="occurrenceTypesId">Tipo de Ocorrencia</label>
+              <select name="occurrenceTypesId" id="occurrenceTypesId" formControlName="occurrenceTypesId"
+                class="form-control">
+                <option value="" >Selecione</option>
+                <option value="1">Furto</option>
+                <option value="2">Roubo</option>
+                <option value="3">Assalto a grupo</option>
+                <option value="4">Sequestro relâmpago</option>
+                <option value="5">Arrombamento de veículo</option>
+                <option value="6">Roubo de veículo</option>
+                <option value="7">Arrastão</option>
+                <option value="8">Tentativa de assalto</option>
+                <option value="11">Violência contra mulher</option>
+                <option value="12">Violência contra LGBT</option>
+              </select>
+            </div>
+
             <div class="form-group col-md-3"></div>
             
             <button type="submit" style="height: 20%; margin-top: 30px;"
@@ -96,7 +135,7 @@
           <h3 class="title-chart">Quantidade de ocorrências nos meses do ano</h3>
         </div>
         <canvas class="mt-4" baseChart [data]="pieChartDataOccurrenceAnual" [labels]="pieChartLabelsOccurrenceAnual"
-          [chartType]="pieChartTypeOccurrenceAnual" [options]="pieChartOptions"></canvas>
+          [chartType]="pieChartTypeOccurrenceAnual" [options]="pieChartOptions" [colors]="backgroundColors"></canvas>
       </div>
     </div>
 
@@ -144,7 +183,7 @@
           <h3 class="title-chart">Tipos de ocorrências no mês</h3>
         </div>
         <canvas class="mt-4" baseChart [data]="pieChartDataOccurrenceMensal" [labels]="pieChartLabelsOccurrenceMensal"
-          [chartType]="pieChartTypeOccurrenceMensal" [options]="pieChartOptions"></canvas>
+          [chartType]="pieChartTypeOccurrenceMensal" [options]="pieChartOptions" [colors]="backgroundColors"></canvas>
       </div>
   </div>
 </div>
@@ -204,7 +243,7 @@
         <h3 class="title-chart">Quantidade de irregularidades nos meses do ano</h3>
       </div>
       <canvas baseChart [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType"
-        [options]="pieChartOptions"></canvas>
+        [options]="pieChartOptions" [colors]="backgroundColors"></canvas>
     </div>
   </div>
 </div> 
