@@ -64,11 +64,11 @@ export class IrregularityService {
     }
 
     public countIrregularityOfEachType(irregularityByPeriod: IrregularityByPeriod){
-        return this.http.get(`${environment.API_URL}/api/irregularity-reports/countIrregularityOfEachType?date_start=${irregularityByPeriod.date_start}&date_end=${irregularityByPeriod.date_end}`)
+        return this.http.get(`${environment.API_URL}/api/irregularity-reports/countIrregularityOfOneType?irregularity_id=${irregularityByPeriod.irregularityTypes}&date_start=${irregularityByPeriod.date_start}&date_end=${irregularityByPeriod.date_end}`)
     }
 
-    public countIrregularityOfEachType2( irregularityByPeriod2: IrregularityByPeriod2){
-        return this.http.get(`${environment.API_URL}/api/irregularity-reports/countIrregularityOfEachType?date_start=${irregularityByPeriod2.date_start2}&date_end=${irregularityByPeriod2.date_end2}`)
+    public countIrregularityOfEachType2( irregularityByPeriod2: IrregularityByPeriod2, irregularityByPeriod: IrregularityByPeriod){
+        return this.http.get(`${environment.API_URL}/api/irregularity-reports/countIrregularityOfOneType?irregularity_id=${irregularityByPeriod.irregularityTypes}&date_start=${irregularityByPeriod2.date_start2}&date_end=${irregularityByPeriod2.date_end2}`)
     }
 
     public irregularitiesMonthYearFilter(irregularityMonthYear: IrregularityMonthYear) {

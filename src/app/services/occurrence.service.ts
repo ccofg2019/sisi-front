@@ -47,6 +47,13 @@ export class OccurrenceService {
     }
 
     public occurrenciesByYear(occurrenceFilter: OccurrenceFilter){
+        // if (occurrenceFilter.month == null && occurrenceFilter.occurrenceTypesId == null) {
+        //     if (occurrenceFilter.year == null) {
+        //         occurrenceFilter.year = 2019;
+        //     }
+
+        //     return this.http.get(`${environment.API_URL}/api/occurrence-reports/getAllOfTheYear?year=${occurrenceFilter.year}&month=${occurrenceFilter.month}&idOccurrenceType=${occurrenceFilter.occurrenceTypesId}`);
+        // }
         if (occurrenceFilter.month == null && occurrenceFilter.occurrenceTypesId == null) {
             if (occurrenceFilter.year == null) {
                 occurrenceFilter.year = 2019;
@@ -54,6 +61,21 @@ export class OccurrenceService {
 
             return this.http.get(`${environment.API_URL}/api/occurrence-reports/getAllOfTheYear?year=${occurrenceFilter.year}`);
         }
+        else if (occurrenceFilter.month != null && occurrenceFilter.occurrenceTypesId == null) {
+            if (occurrenceFilter.year == null) {
+                occurrenceFilter.year = 2019;
+            }
+
+            return this.http.get(`${environment.API_URL}/api/occurrence-reports/getAllOfTheYear?year=${occurrenceFilter.year}&month=${occurrenceFilter.month}`);
+        
+        } else if (occurrenceFilter.month != null && occurrenceFilter.occurrenceTypesId != null) {
+            console.log(occurrenceFilter.occurrenceTypesId);
+            if (occurrenceFilter.year == null) {
+                occurrenceFilter.year = 2019;
+            }
+            return this.http.get(`${environment.API_URL}/api/occurrence-reports/getAllOfTheYear?year=${occurrenceFilter.year}&month=${occurrenceFilter.month}&idIrregularityType=${occurrenceFilter.occurrenceTypesId}`);
+        }
+
     }
 
     public occurrenceisChartFilter(occurrenceFilter: OccurrenceFilter) {       
@@ -71,10 +93,10 @@ export class OccurrenceService {
     }
 
     public countOccurrenceOfEachType(occurrenceByPeriod: OccurrenceByPeriod){
-        return this.http.get(`${environment.API_URL}/api/occurrence-reports/countOccurrenceOfEachType?date_start=${occurrenceByPeriod.date_start}&date_end=${occurrenceByPeriod.date_end}`)
+        return this.http.get(`${environment.API_URL}/api/occurrence-reports/countOccurrenceOfOneType?occurrence_id=${occurrenceByPeriod.occurrenceTypes}&date_start=${occurrenceByPeriod.date_start}&date_end=${occurrenceByPeriod.date_end}`)
     }
 
-    public countOccurrenceOfEachType2( occurrenceByPeriod2: OccurrenceByPeriod2){
-        return this.http.get(`${environment.API_URL}/api/occurrence-reports/countOccurrenceOfEachType?date_start=${occurrenceByPeriod2.date_start2}&date_end=${occurrenceByPeriod2.date_end2}`)
+    public countOccurrenceOfEachType2( occurrenceByPeriod2: OccurrenceByPeriod2, occurrenceTypeId: OccurrenceByPeriod){
+        return this.http.get(`${environment.API_URL}/api/occurrence-reports/countOccurrenceOfOneType?occurrence_id=${occurrenceTypeId.occurrenceTypes}&date_start=${occurrenceByPeriod2.date_start2}&date_end=${occurrenceByPeriod2.date_end2}`)
     }
 }
