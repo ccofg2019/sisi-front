@@ -55,6 +55,7 @@ export class RecoverComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
+    
         // Stop here if form is invalid
         console.log(this.recoverForm);
         if (this.recoverForm.invalid) {
@@ -62,6 +63,10 @@ export class RecoverComponent implements OnInit {
           return;
         }
         console.log('Enviando');
+        this.recoverForm.value.cpf = this.recoverForm.value.cpf.replace('.', '');
+        this.recoverForm.value.cpf = this.recoverForm.value.cpf.replace('.', '');
+        this.recoverForm.value.cpf = this.recoverForm.value.cpf.replace('-', '');
+        console.log(this.recoverForm.value.cpf);
         this.loading = true;
         this.userService.recoverPassword(this.recoverForm.value)
             .pipe(first())
