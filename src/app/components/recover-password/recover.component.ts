@@ -69,6 +69,8 @@ export class RecoverComponent implements OnInit {
                 data => {
                   console.log(data);
                   this.notifier.show('success', 'Agora digite sua nova senha');
+                  window.sessionStorage.setItem('changepasswordkey', data.key);
+                  this.router.navigate(['input-password']);
                 },
                 error => {
                   console.log(error);

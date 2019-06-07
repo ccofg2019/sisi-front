@@ -1,9 +1,10 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
-import {AuthService} from '../../services/auth/auth.service';
 import { NotifyService } from '../../services/notify/notify.service';
-import { AclService } from 'ng2-acl';
+import { UserService } from '../../services/user.service';
+import { first } from 'rxjs/operators';
+
 
 
 @Component({
@@ -13,79 +14,61 @@ import { AclService } from 'ng2-acl';
 })
 export class InputPasswordComponent implements OnInit {
 
-  public InputPasswordForm: FormGroup;
+  public inputPasswordForm: FormGroup;
   public btn_title: string;
-  public status = { 'loading': false, error: false };
+  submitted;
+  loading = false;
 
   constructor(
-    private authService: AuthService,
     private formBuilder: FormBuilder,
+    private userService: UserService,
     private router: Router,
     private notifier: NotifyService,
-    public aclService: AclService
   ) {
   }
 
   ngOnInit() {
-    if(window.location.pathname !== '/'){
-      if (this.authService.isLoggedIn()) {
-        this.router.navigate(['home']);
-        return;
-      }
-    }
-
     this.btn_title = 'Confirmar';
-
-    this.InputPasswordForm = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required]
-
+    this.inputPasswordForm = this.formBuilder.group({
+      password: ['', Validators.required],
+      confirmPassword: ['', Validators.required]
     });
 
   }
 
-  private controlStateLogin(state: string): void {
+  get f() {return this.inputPasswordForm.controls; }
 
-    if (state === 'loading') {
-      this.status.loading = true;
-      this.status.error = false;
-      this.btn_title = 'Carregando';
-      this.InputPasswordForm.controls.email.setErrors(null);
-      this.InputPasswordForm.controls.password.setErrors(null);
-
-
-    } else {
-      this.status.error = true;
-      this.status.loading = false;
-      this.btn_title = 'Confirmar';
-      this.InputPasswordForm.controls.email.reset();
-      this.InputPasswordForm.controls.password.reset();
-    }
-
+  onSubmit() {
+    this.submitted = true;
+        // Stop here if form is invalid
+        console.log(this.inputPasswordForm);
+        if (this.inputPasswordForm.invalid || this.inputPasswordForm.value.password != this.inputPasswordForm.value.confirmPassword) {
+          console.log('SENHAS INVALIDAS');
+          alert('As senhas não são iguais');
+          return;
+        } else {
+          var newData = {
+            "key": window.sessionStorage.getItem('changepasswordkey'),
+            "newPassword": this.inputPasswordForm.value.password
+          }
+  
+          this.loading = true;
+          this.userService.changePassword(newData)
+              .pipe(first())
+              .subscribe(
+                  data => {
+                    console.log(data);
+                    this.notifier.show('success', 'Sua senha foi alterada!');
+                    this.router.navigate(['']);
+                  },
+                  error => {
+                    console.log(error);
+                    this.notifier.show('error', 'Por favor verifique os dados informados');
+                    this.loading = false;
+                  });
+        }
   }
 
-  public login(): void {
 
-    if (this.InputPasswordForm.invalid) {
-      this.notifier.show('warning', 'Confira se os campos foram preenchidos corretamente.');
-      return;
-    }
-
-    if (this.InputPasswordForm.valid && !this.status.loading) {
-      this.controlStateLogin('loading');
-
-      this.authService.loginUser(this.InputPasswordForm.value.email, this.InputPasswordForm.value.password).subscribe(
-        (res) => {
-          this.router.navigate(['home']);
-          this.authService.loginInfo(true);
-
-        },
-        (err) => {
-          this.controlStateLogin('error');
-        });
-
-    }
-
-  }
-
+  
 }
