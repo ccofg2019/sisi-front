@@ -27,9 +27,10 @@
                   <th scope="col" class="padding-thead-sisi">Situação</th>
                   <th scope="col" class="padding-thead-sisi">Tipo</th>
                   <th scope="col" class="padding-thead-sisi">Registrado por</th>
+                  <th scope="col" class="padding-thead-sisi">Validar</th>
                   <th scope="col" class="padding-thead-sisi">Investigador</th>
                   <ng-template [ngIf]="validaPermissao()">
-                      <th scope="col" class="padding-thead-sisi" >Validar</th>
+                      <th scope="col" class="padding-thead-sisi" >Invertigar</th>
                   </ng-template>
                   <th scope="col" class="padding-thead-sisi">Local</th>
                   <th scope="col" class="padding-thead-sisi">Data</th>
@@ -38,15 +39,13 @@
               <tbody>
                 <tr class="list table-data" *ngFor="let occurrence of filterOcurrences(data)">
                     <th scope="row" [routerLink]="['/home/view-occurrence', occurrence.id]"><div class="table-content">{{ occurrence.id }}</div></th>
-                    <td [routerLink]="['/home/view-occurrence', occurrence.id]"><div class="table-content" *ngIf="occurrence.status == 'NOVO'; then thenBlock else elseBlock"></div>
-                      <ng-template #thenBlock>AGUARDANDO VALIDAÇÃO</ng-template>
-                      <ng-template #elseBlock>{{occurrence.status}}</ng-template>
-                    </td>
+                    <td [routerLink]="['/home/view-occurrence', occurrence.id]"><div class="table-content">{{occurrence.status}}</div></td>
                     <td [routerLink]="['/home/view-occurrence', occurrence.id]"><div class="table-content"><i class=" large material-icons">info</i>{{ occurrence.occurrence_type.name }}</div></td>
                     <td [routerLink]="['/home/view-occurrence', occurrence.id]"><div class="table-content"><i class=" large material-icons">account_circle</i>{{ occurrence.user.name }}</div></td>
+                    <td><button (click)=validaOcorrencia(occurrence.id) class="btn btn-primary buttonValidate" [disabled]="occurrence.status != 'AGUARDANDO VALIDACAO'">Validar</button></td>
                     <td [routerLink]="['/home/view-occurrence', occurrence.id]"><div class="table-content"><i class=" large material-icons">supervised_user_circle</i>{{ occurrence.agent }}</div></td>
                     <ng-template [ngIf]="validaPermissao()">
-                      <td><button (click)=validaInvestigator(occurrence.id) class="btn btn-primary buttonValidate" [disabled]="occurrence.status == 'EM INVESTIGACAO'">Validar</button></td>
+                      <td><button (click)=validaInvestigator(occurrence.id) class="btn btn-primary buttonValidate" [disabled]="occurrence.status != 'NOVO'">Investigar</button></td>
                     </ng-template>
                     <td [routerLink]="['/home/view-occurrence', occurrence.id]"><div class="table-content"><i class=" large material-icons">room</i>{{ occurrence.zone.name }}</div></td>
                     <td [routerLink]="['/home/view-occurrence', occurrence.id]"><div class="table-content"><i class=" large material-icons">calendar_today</i>{{ occurrence.occurrence_date | date }}</div></td>
