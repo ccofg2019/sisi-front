@@ -14,6 +14,8 @@ import { OccurrenceByPeriod2 } from 'src/app/models/occurrenceByPeriod2.model';
 import {IrregularityByPeriod } from 'src/app/models/irregularityByPeriod.model';
 import {IrregularityByPeriod2 } from 'src/app/models/irregularityByPeriod2.model'
 import { IrregularityMonthYear } from 'src/app/models/irregularityMonthYearFilter.model';
+import * as pluginDataLabels from 'chartjs-plugin-datalabels';
+import { ChartType, ChartOptions } from 'chart.js';
 
 @Component({
   selector: 'app-pie-chart',
@@ -33,6 +35,7 @@ export class PieChartComponent extends ListPagination
   public pieChartData = [];
   public pieChartType = 'pie';
   public dataLoaded = false;
+  public pieChartPlugins = [pluginDataLabels];
 
   public pieChartOptions:any = {
     responsive: true,
@@ -61,6 +64,98 @@ export class PieChartComponent extends ListPagination
                         "#18720c", "#1ffc02", "#ff0000", "#bc69ef", "#472160"]
     }
   ];
+  
+  public pieChartOptionsAnualIrregularidades:ChartOptions = {
+    responsive: true,
+    legend: {
+      position: 'left',
+      labels: {
+        fontSize: 16
+      }
+    },
+    plugins: {
+      datalabels: {
+        formatter: (value, ctx) => {
+          var result = 0;
+          if (this.totalAnualIrregularidades > 0) {
+            var result = (100 * (value / this.totalAnualIrregularidades));
+            return parseFloat(result.toFixed(1)) + "%";
+          } 
+        },
+        color: 'black'
+      },
+    }
+  };
+
+  public pieChartOptionsAnualOcorrencias:any = {
+    responsive: true,
+    legend: {
+      position: 'left',
+      labels: {
+        fontSize: 16
+      }
+    },
+    plugins: {
+      datalabels: {
+        formatter: (value, ctx) => {
+          var result = 0;
+          
+          if (this.totalAnualOcorrencias > 0) {
+            var result = (100 * (value / this.totalAnualOcorrencias));
+            return parseFloat(result.toFixed(1)) + "%";
+          } 
+        },
+        color: 'black'
+      },
+    }
+  };  
+
+  public pieChartOptionsMensalIrregularidades:any = {
+    responsive: true,
+    legend: {
+      position: 'left',
+      labels: {
+        fontSize: 16
+      }
+    },
+    plugins: {
+      datalabels: {
+        formatter: (value, ctx) => {
+          var result = 0;
+          
+          if (this.totalMensalIrregularidades > 0) {
+            var result = (100 * (value / this.totalMensalIrregularidades));
+            return parseFloat(result.toFixed(1)) + "%";
+          } 
+          
+        },
+        color: 'black'
+      },
+    }
+  };
+
+  public pieChartOptionsMensalOcorrencias:any = {
+    responsive: true,
+    legend: {
+      position: 'left',
+      labels: {
+        fontSize: 16
+      }
+    },
+    plugins: {
+      datalabels: {
+        formatter: (value, ctx) => {
+          var result = 0;
+          
+          if (this.totalMensalOcorrencias > 0) {
+            var result = (100 * (value / this.totalMensalOcorrencias));
+            return parseFloat(result.toFixed(1)) + "%";
+          }
+        },
+        color: 'black'
+      },
+    }
+  };
 
   public pieChartLabelsOccurrenceAnual = [];  
   public pieChartDataOccurrenceAnual = [];
@@ -102,6 +197,11 @@ export class PieChartComponent extends ListPagination
   public irregularityMonthYearForm: FormGroup;
   public pieChartLabelsIrregularity = [];
   public pieChartDataIrregularity = [];
+
+  public totalAnualIrregularidades = 0;
+  public totalAnualOcorrencias = 0;
+  public totalMensalIrregularidades = 0;
+  public totalMensalOcorrencias = 0;
 
   public tipoRelatorio =  'anual';
 
@@ -153,6 +253,7 @@ export class PieChartComponent extends ListPagination
         if (res.numberOfIrregularitys > 0) {
           this.irregularityMonthYearLabels.push(res.nameTypeIrregularity);
           this.irregularityMonthYearData.push(res.numberOfIrregularitys);
+          this.totalMensalIrregularidades += res.numberOfIrregularitys;
         }
       });
       if( this.irregularityMonthYearLabels.length == 0 || this.irregularityMonthYearData.length == 0){
@@ -175,6 +276,7 @@ export class PieChartComponent extends ListPagination
         if (res.numOccurrence > 0) {
           this.pieChartLabelsOccurrenceAnual.push(res.name);
           this.pieChartDataOccurrenceAnual.push(res.numOccurrence);
+          this.totalAnualOcorrencias += res.numOccurrence;
         }
       });
       if( this.pieChartLabelsOccurrenceAnual.length == 0 || this.pieChartDataOccurrenceAnual.length == 0){
@@ -197,6 +299,7 @@ export class PieChartComponent extends ListPagination
         if (res.numberOfOccurrences > 0) {
           this.pieChartLabelsOccurrenceMensal.push(res.nameTypeOccurrence);
           this.pieChartDataOccurrenceMensal.push(res.numberOfOccurrences);
+          this.totalMensalOcorrencias += res.numberOfOccurrences;
         }
       });
       if( this.pieChartLabelsOccurrenceMensal.length == 0 || this.pieChartDataOccurrenceMensal.length == 0){
@@ -217,6 +320,7 @@ export class PieChartComponent extends ListPagination
         if (res.numIrregularity > 0) {
           this.pieChartLabels.push(res.name);
           this.pieChartData.push(res.numIrregularity);
+          this.totalAnualIrregularidades += res.numIrregularity;
         }
       });
       if( this.pieChartLabels.length == 0 || this.pieChartData.length == 0){

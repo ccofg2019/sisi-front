@@ -65,7 +65,7 @@
                 <h3 class="title-chart">Tipos de Irregularidades por mês</h3>
               </div>
               <canvas class="mt-4" baseChart [data]="irregularityMonthYearData" [labels]="irregularityMonthYearLabels"
-              [chartType]="irregularityMonthYearType" [options]="pieChartOptions" [colors]="backgroundColors"></canvas>
+              [chartType]="irregularityMonthYearType" [options]="pieChartOptionsMensalIrregularidades" [colors]="backgroundColors"></canvas>
         </div>
       </div>
     </div>
@@ -135,7 +135,7 @@
           <h3 class="title-chart">Quantidade de ocorrências nos meses do ano</h3>
         </div>
         <canvas class="mt-4" baseChart [data]="pieChartDataOccurrenceAnual" [labels]="pieChartLabelsOccurrenceAnual"
-          [chartType]="pieChartTypeOccurrenceAnual" [options]="pieChartOptions" [colors]="backgroundColors"></canvas>
+          [chartType]="pieChartTypeOccurrenceAnual" [options]="pieChartOptionsAnualOcorrencias" [colors]="backgroundColors"></canvas>
       </div>
     </div>
 
@@ -183,7 +183,7 @@
           <h3 class="title-chart">Tipos de ocorrências no mês</h3>
         </div>
         <canvas class="mt-4" baseChart [data]="pieChartDataOccurrenceMensal" [labels]="pieChartLabelsOccurrenceMensal"
-          [chartType]="pieChartTypeOccurrenceMensal" [options]="pieChartOptions" [colors]="backgroundColors"></canvas>
+          [chartType]="pieChartTypeOccurrenceMensal" [options]="pieChartOptionsMensalOcorrencias" [colors]="backgroundColors"></canvas>
       </div>
   </div>
 </div>
@@ -243,7 +243,7 @@
         <h3 class="title-chart">Quantidade de irregularidades nos meses do ano</h3>
       </div>
       <canvas baseChart [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType"
-        [options]="pieChartOptions" [colors]="backgroundColors"></canvas>
+        [options]="pieChartOptionsAnualIrregularidades" [colors]="backgroundColors" ></canvas>
     </div>
   </div>
 </div> 
