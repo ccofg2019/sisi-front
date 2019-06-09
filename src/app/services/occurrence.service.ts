@@ -47,33 +47,19 @@ export class OccurrenceService {
     }
 
     public occurrenciesByYear(occurrenceFilter: OccurrenceFilter){
-        // if (occurrenceFilter.month == null && occurrenceFilter.occurrenceTypesId == null) {
-        //     if (occurrenceFilter.year == null) {
-        //         occurrenceFilter.year = 2019;
-        //     }
-
-        //     return this.http.get(`${environment.API_URL}/api/occurrence-reports/getAllOfTheYear?year=${occurrenceFilter.year}&month=${occurrenceFilter.month}&idOccurrenceType=${occurrenceFilter.occurrenceTypesId}`);
-        // }
-        if (occurrenceFilter.month == null && occurrenceFilter.occurrenceTypesId == null) {
+        if (occurrenceFilter.occurrenceTypesId == null) {
             if (occurrenceFilter.year == null) {
                 occurrenceFilter.year = 2019;
             }
 
             return this.http.get(`${environment.API_URL}/api/occurrence-reports/getAllOfTheYear?year=${occurrenceFilter.year}`);
         }
-        else if (occurrenceFilter.month != null && occurrenceFilter.occurrenceTypesId == null) {
-            if (occurrenceFilter.year == null) {
-                occurrenceFilter.year = 2019;
-            }
-
-            return this.http.get(`${environment.API_URL}/api/occurrence-reports/getAllOfTheYear?year=${occurrenceFilter.year}&month=${occurrenceFilter.month}`);
-        
-        } else if (occurrenceFilter.month != null && occurrenceFilter.occurrenceTypesId != null) {
+       else if (occurrenceFilter.occurrenceTypesId != null) {
             console.log(occurrenceFilter.occurrenceTypesId);
             if (occurrenceFilter.year == null) {
                 occurrenceFilter.year = 2019;
             }
-            return this.http.get(`${environment.API_URL}/api/occurrence-reports/getAllOfTheYear?year=${occurrenceFilter.year}&month=${occurrenceFilter.month}&idIrregularityType=${occurrenceFilter.occurrenceTypesId}`);
+            return this.http.get(`${environment.API_URL}/api/occurrence-reports/getAllOfTheYear?year=${occurrenceFilter.year}&idOccurrenceType=${occurrenceFilter.occurrenceTypesId}`);
         }
 
     }

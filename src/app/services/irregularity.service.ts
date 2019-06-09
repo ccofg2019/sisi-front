@@ -41,25 +41,18 @@ export class IrregularityService {
     }
 
     public irregularitiesChartFilter(irregularityFilter: IrregularityFilter) {
-        if (irregularityFilter.month == null && irregularityFilter.irregularityTypesId == null) {
+        if (irregularityFilter.irregularityTypesId == null) {
             if (irregularityFilter.year == null) {
                 irregularityFilter.year = 2019;
             }
 
             return this.http.get(`${environment.API_URL}/api/irregularity-reports/getAllOfTheYear?year=${irregularityFilter.year}`);
         }
-        else if (irregularityFilter.month != null && irregularityFilter.irregularityTypesId == null) {
+        else if (irregularityFilter.irregularityTypesId != null) {
             if (irregularityFilter.year == null) {
                 irregularityFilter.year = 2019;
             }
-
-            return this.http.get(`${environment.API_URL}/api/irregularity-reports/getAllOfTheYear?year=${irregularityFilter.year}&month=${irregularityFilter.month}`);
-        
-        } else if (irregularityFilter.month != null && irregularityFilter.irregularityTypesId != null) {
-            if (irregularityFilter.year == null) {
-                irregularityFilter.year = 2019;
-            }
-            return this.http.get(`${environment.API_URL}/api/irregularity-reports/getAllOfTheYear?year=${irregularityFilter.year}&month=${irregularityFilter.month}&idIrregularityType=${irregularityFilter.irregularityTypesId}`);
+            return this.http.get(`${environment.API_URL}/api/irregularity-reports/getAllOfTheYear?year=${irregularityFilter.year}&idIrregularityType=${irregularityFilter.irregularityTypesId}`);
         }
     }
 
