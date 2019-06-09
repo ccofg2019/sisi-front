@@ -43,6 +43,7 @@ import { OccurrenceService } from './services/occurrence.service';
 import { IrregularityService } from './services/irregularity.service';
 import { AlertService } from './services/alert.service';
 import { EmergencyService } from './services/emergency.service';
+import { ZoneService } from './services/zone.service';
 
 @NgModule({
   declarations: [
@@ -99,6 +100,7 @@ import { EmergencyService } from './services/emergency.service';
       useClass: TokenInterceptor,
       multi: true
     },
+    ZoneService
   ],
   bootstrap: [AppComponent]
 })
