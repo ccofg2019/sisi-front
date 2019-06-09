@@ -7,6 +7,7 @@ import { OccurrenceService } from './../../services/occurrence.service';
 import { AclService } from 'ng2-acl';
 import { NotifyService } from './../../services/notify/notify.service';
 import { Zone } from './../../models/zone.model';
+import { ZoneService } from 'src/app/services/zone.service';
 
 @Component({
   selector: 'app-form-irregularity',
@@ -27,15 +28,19 @@ export class FormIrregularityComponent implements OnInit {
   lat  = -8.05225025;
   lng  = -34.9450490084884;
   locationChosen = true;
+  markerIsSet = true;
+  zoneOutrosId;
 
   // Two Way Databind - passando as cordenadas para o form.
   cord;
 
   onChoseLocation(event) {
-    this.lat = event.coords.lat;
-    this.lng = event.coords.lng;
-    this.locationChosen = true;
-    this.cord = this.lat.toFixed(5) + ',' + this.lng.toFixed(5); // convertendo para string e concatenando cordenadas do mapa
+    if(this.markerIsSet){
+      this.lat = event.coords.lat;
+      this.lng = event.coords.lng;
+      this.locationChosen = true;
+      this.cord = this.lat + ',' + this.lng; // convertendo para string e concatenando cordenadas do mapa
+    }
   }
 
   constructor(
@@ -45,14 +50,22 @@ export class FormIrregularityComponent implements OnInit {
     private occurrenceService: OccurrenceService,
     private notifier: NotifyService,
     public aclService: AclService,
+    public zoneService: ZoneService
 
   ) { }
 
-
-
   ngOnInit() {
 
-    this.occurrenceService.getZones().subscribe((response: any) => this.zones = response.data);
+    this.zoneService.listAllZonesRecife().subscribe((response: Zone[]) => {
+      this.zones = response; 
+      for(let i = 0; i < this.zones.length; i++){
+        if(this.zones[i].name == "Outros"){
+          this.zoneOutrosId = this.zones[i].id;
+          this.zones.splice(i, i);
+          break;
+        }
+      }  
+    });
 
     // Definindo valor default para o mapa
     if (this.cord === undefined) {
@@ -93,8 +106,28 @@ export class FormIrregularityComponent implements OnInit {
                 });
   }
 
+  public changeZone($event){
+    var zoneIdSelected = $event.target.value;
+    var zone:Zone = this.FindIdZone(zoneIdSelected);
+    if(zone != this.zoneOutrosId){      
+      this.markerIsSet = false;
+      this.lat = zone.latitude;
+      this.lng = zone.longitude;
+      this.cord = this.lat + ',' + this.lng;
+    }else{
+      this.markerIsSet = true;
+      this.cord = this.lat + ',' + this.lng;
+    }
+  }
+
+  public FindIdZone(id){
+    if(id <= 0 || this.zoneOutrosId == id || id == ""){
+      return this.zoneOutrosId;
+    }
+    for(let i = 0; i <= this.zones.length; i++){      
+      if(this.zones[i].id == id){        
+        return this.zones[i];
+      }                 
+    } 
+  }
 }
-// <div class="row">
-// <div class="col-md-4">
-//     <input id='file' name="file" type='file' class="file_customizada" accept='image/*'  capture />
-// </div>
