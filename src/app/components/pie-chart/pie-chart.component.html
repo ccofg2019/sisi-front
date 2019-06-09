@@ -6,22 +6,24 @@
 
     <ul class="nav nav-tabs mt-1">
         <li class="nav-item">
-          <a class="nav-link" [class.active]=" tipoRelatorio == 'anualIrregularidades' " (click)="tipoRelatorio = 'anualIrregularidades' "  >Anual de Irregularidades</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" [class.active]=" tipoRelatorio == 'mensalOcorrencia' "  (click)="tipoRelatorio = 'mensalOcorrencia' "  >Mensal de Ocorrências</a>
+          <a class="nav-link" [class.active]=" tipoRelatorio == 'periodoIrregularidades' " (click)="tipoRelatorio = 'periodoIrregularidades' " >Periodo de Irregularidades</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" [class.active]=" tipoRelatorio == 'periodoOcorrencia' " (click)="tipoRelatorio = 'periodoOcorrencia' " >Periodo de Ocorrências</a>
         </li>
+
+        <li class="nav-item">
+          <a class="nav-link" [class.active]=" tipoRelatorio == 'anualIrregularidades' " (click)="tipoRelatorio = 'anualIrregularidades' "  >Anual de Irregularidades</a>
+        </li>
         <li class="nav-item">
           <a class="nav-link" [class.active]=" tipoRelatorio == 'anualOcorrencia' " (click)="tipoRelatorio = 'anualOcorrencia' "  >Anual de Ocorrências</a>
         </li>
+        
         <li class="nav-item">
-          <a class="nav-link" [class.active]=" tipoRelatorio == 'mensalIrregularidades' "  (click)="tipoRelatorio = 'mensalIrregularidades' "  >Mensal de Irregularidades</a>
+          <a class="nav-link" [class.active]=" tipoRelatorio == 'mensalOcorrencia' "  (click)="tipoRelatorio = 'mensalOcorrencia' "  >Mensal de Ocorrências</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" [class.active]=" tipoRelatorio == 'periodoIrregularidades' " (click)="tipoRelatorio = 'periodoIrregularidades' " >Periodo de Irregularidades</a>
+          <a class="nav-link" [class.active]=" tipoRelatorio == 'mensalIrregularidades' "  (click)="tipoRelatorio = 'mensalIrregularidades' "  >Mensal de Irregularidades</a>
         </li>
     </ul>
 

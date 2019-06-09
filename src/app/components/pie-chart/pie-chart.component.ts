@@ -247,7 +247,7 @@ export class PieChartComponent extends ListPagination
     
     this.irregularityMonthYearLabels = [];
     this.irregularityMonthYearData = [];
-
+    this.totalMensalIrregularidades = 0;
     this.irregularityService.irregularitiesMonthYearFilter(irregularityMonthYearFilter).subscribe((response: any) => {
       response.map(res => {
         if (res.numberOfIrregularitys > 0) {
@@ -270,7 +270,7 @@ export class PieChartComponent extends ListPagination
     
     this.pieChartLabelsOccurrenceAnual = [];
     this.pieChartDataOccurrenceAnual = [];
-
+    this.totalAnualOcorrencias = 0;
     this.occurrenceService.occurrenciesByYear(occurrenceFilter).subscribe((response: any) => {
       response['months'].map(res => {
         if (res.numOccurrence > 0) {
@@ -293,7 +293,7 @@ export class PieChartComponent extends ListPagination
     
     this.pieChartLabelsOccurrenceMensal = [];
     this.pieChartDataOccurrenceMensal = [];
-
+    this.totalMensalOcorrencias = 0;
     this.occurrenceService.occurrenceisChartFilter(occurrenceFilter).subscribe((response: any) => {
       response.map(res => {
         if (res.numberOfOccurrences > 0) {
@@ -314,7 +314,7 @@ export class PieChartComponent extends ListPagination
     
     this.pieChartLabels = [];
     this.pieChartData = [];
-
+    this.totalAnualIrregularidades = 0;
     this.irregularityService.irregularitiesChartFilter(irregularityFilter).subscribe((response: any) => {
       response['months'].map(res => {
         if (res.numIrregularity > 0) {
