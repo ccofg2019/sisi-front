@@ -6,30 +6,29 @@
 
     <ul class="nav nav-tabs mt-1">
         <li class="nav-item">
-          <a class="nav-link" [class.active]=" tipoRelatorio == 'mensalOcorrencia' "  (click)="tipoRelatorio = 'mensalOcorrencia' "  >Mensal de Ocorrências</a>
+          <a class="nav-link" [class.active]=" tipoRelatorio == 'periodoIrregularidades' " (click)="tipoRelatorio = 'periodoIrregularidades' " >Periodo de Irregularidades</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" [class.active]=" tipoRelatorio == 'periodoOcorrencia' " (click)="tipoRelatorio = 'periodoOcorrencia' " >Periodo de Ocorrências</a>
         </li>
+
+        <li class="nav-item">
+          <a class="nav-link" [class.active]=" tipoRelatorio == 'anualIrregularidades' " (click)="tipoRelatorio = 'anualIrregularidades' "  >Anual de Irregularidades</a>
+        </li>
         <li class="nav-item">
           <a class="nav-link" [class.active]=" tipoRelatorio == 'anualOcorrencia' " (click)="tipoRelatorio = 'anualOcorrencia' "  >Anual de Ocorrências</a>
         </li>
+        
+        <li class="nav-item">
+          <a class="nav-link" [class.active]=" tipoRelatorio == 'mensalOcorrencia' "  (click)="tipoRelatorio = 'mensalOcorrencia' "  >Mensal de Ocorrências</a>
+        </li>
         <li class="nav-item">
           <a class="nav-link" [class.active]=" tipoRelatorio == 'mensalIrregularidades' "  (click)="tipoRelatorio = 'mensalIrregularidades' "  >Mensal de Irregularidades</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" [class.active]=" tipoRelatorio == 'periodoIrregularidades' " (click)="tipoRelatorio = 'periodoIrregularidades' " >Periodo de Irregularidades</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" [class.active]=" tipoRelatorio == 'anualIrregularidades' " (click)="tipoRelatorio = 'anualIrregularidades' "  >Anual de Irregularidades</a>
         </li>
     </ul>
 
     <div style="display: block" *ngIf="irregularityMonthYearDataLoaded">
       <div class="card" style="padding: 0px;" *ngIf="tipoRelatorio == 'mensalIrregularidades' ">
-        <div class="card-header">
-          <h3 class="title-mobile" style="text-color: white;">Tipos de Irregularidades por mês</h3>
-        </div>
         <div class="card-body">
             <form [formGroup]="irregularityMonthYearForm" (submit)="submitFilterIrregularityMonthYear()">
                 <div class="form-row">
@@ -64,8 +63,11 @@
                   <button type="submit" style="height: 20%; margin-top: 30px;" class="btn btn-primary btn-lg ml-3">Filtrar</button>
                 </div>
               </form> 
+              <div>
+                <h3 class="title-chart">Tipos de Irregularidades por mês</h3>
+              </div>
               <canvas class="mt-4" baseChart [data]="irregularityMonthYearData" [labels]="irregularityMonthYearLabels"
-              [chartType]="irregularityMonthYearType"></canvas>
+              [chartType]="irregularityMonthYearType" [options]="pieChartOptionsMensalIrregularidades" [colors]="backgroundColors"></canvas>
         </div>
       </div>
     </div>
@@ -73,10 +75,6 @@
     <div class="card" style="padding: 0px;">
       <div class="card-body" *ngIf="tipoRelatorio == 'anualOcorrencia' ">
         <form [formGroup]="occurrenceFilterFormAnual" (submit)="submitFilterOcurrenceAnual()">           
-            <div class="card-header">
-              <h3 class="title-mobile" style="color: white"> Quantidade de ocorrências nos meses do ano</h3>
-            </div>
-        
           <div class="form-row">
             <!--Year-->
             <div class="form-group col-md-4">
@@ -88,6 +86,25 @@
                 <option value="2017">2017</option>
                 <option value="2016">2016</option>
               </select>
+            </div>          
+  
+            <!--OccurrenceType-->
+            <div class="form-group col-md-4">
+              <label for="occurrenceTypesId">Tipo de Ocorrencia</label>
+              <select name="occurrenceTypesId" id="occurrenceTypesId" formControlName="occurrenceTypesId"
+                class="form-control">
+                <option value="" >Selecione</option>
+                <option value="1">Furto</option>
+                <option value="2">Roubo</option>
+                <option value="3">Assalto a grupo</option>
+                <option value="4">Sequestro relâmpago</option>
+                <option value="5">Arrombamento de veículo</option>
+                <option value="6">Roubo de veículo</option>
+                <option value="7">Arrastão</option>
+                <option value="8">Tentativa de assalto</option>
+                <option value="11">Violência contra mulher</option>
+                <option value="12">Violência contra LGBT</option>
+              </select>
             </div>
 
             <div class="form-group col-md-3"></div>
@@ -96,17 +113,16 @@
               class="btn btn-primary btn-lg">Filtrar</button>
           </div>
         </form>
+        <div>
+          <h3 class="title-chart">Quantidade de ocorrências nos meses do ano</h3>
+        </div>
         <canvas class="mt-4" baseChart [data]="pieChartDataOccurrenceAnual" [labels]="pieChartLabelsOccurrenceAnual"
-          [chartType]="pieChartTypeOccurrenceAnual"></canvas>
+          [chartType]="pieChartTypeOccurrenceAnual" [options]="pieChartOptionsAnualOcorrencias" [colors]="backgroundColors"></canvas>
       </div>
     </div>
 
     <div class="card-body" *ngIf="tipoRelatorio == 'mensalOcorrencia' ">
         <form [formGroup]="occurrenceFilterFormMensal" (submit)="submitFilterOcurrenceMensal()">    
-  
-          <div class="card-header">
-            <h3 class="title-mobile" style="color: white"> Tipos de ocorrências no mês</h3>
-          </div>
           <div class="form-row">              
             <!--Year-->
             <div class="form-group col-md-4">
@@ -145,17 +161,17 @@
               class="btn btn-primary btn-lg">Filtrar</button>
           </div>
         </form>
+        <div>
+          <h3 class="title-chart">Tipos de ocorrências no mês</h3>
+        </div>
         <canvas class="mt-4" baseChart [data]="pieChartDataOccurrenceMensal" [labels]="pieChartLabelsOccurrenceMensal"
-          [chartType]="pieChartTypeOccurrenceMensal"></canvas>
+          [chartType]="pieChartTypeOccurrenceMensal" [options]="pieChartOptionsMensalOcorrencias" [colors]="backgroundColors"></canvas>
       </div>
   </div>
 </div>
 
 <div style="display: block" *ngIf="dataLoaded" class=" mt-4">
   <div class="card" style="padding: 0px;" *ngIf="tipoRelatorio == 'anualIrregularidades' ">
-    <div class="card-header">
-      <h3 class="title-mobile">Quantidade de irregularidades nos meses do ano</h3>
-    </div>
     <div class="card-body">
       <form [formGroup]="irregularityFilterForm" (submit)="submitFilterIrregularity()">
         <div class="form-row">
@@ -165,27 +181,7 @@
             <label for="year">Ano</label>
             <input type="number" class="form-control" id="year" formControlName="year">
           </div>
-
-          <!--Month-->
-          <div class="form-group col-md-4">
-            <label for="month">Mês</label>
-            <select name="month" id="month" formControlName="month" class="form-control">
-              <option value="">Selecione</option>
-              <option value="1">Janeiro</option>
-              <option value="2">Fevereiro</option>
-              <option value="3">Março</option>
-              <option value="4">Abril</option>
-              <option value="5">Maio</option>
-              <option value="6">Junho</option>
-              <option value="7">Julho</option>
-              <option value="8">Agosto</option>
-              <option value="9">Setembro</option>
-              <option value="10">Outubro</option>
-              <option value="11">Novembro</option>
-              <option value="12">Dezembro</option>
-            </select>
-          </div>
-
+         
           <!--OccurrenceType-->
           <div class="form-group col-md-4">
             <label for="irregularityTypesId">Tipo de Ocorrencia</label>
@@ -205,50 +201,68 @@
             class="btn btn-primary btn-lg ml-3">Filtrar</button>
         </div>
       </form>
-      <canvas baseChart [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType"></canvas>
+      <div>
+        <h3 class="title-chart">Quantidade de irregularidades nos meses do ano</h3>
+      </div>
+      <canvas baseChart [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType"
+        [options]="pieChartOptionsAnualIrregularidades" [colors]="backgroundColors" ></canvas>
     </div>
   </div>
 </div> 
 
 <div style="display: block" *ngIf="occurrenceByPeriodChartDataLoaded && occurrenceByPeriodChartDataLoaded2">
   <div class="card" style="padding: 0px;" *ngIf="tipoRelatorio == 'periodoOcorrencia' ">
-    <div class="card-header">
-      <h3 class="title-mobile" style="text-color: white;">Relatório Comparativo de Ocorrências por Período</h3>
-    </div>
     <div class="card-body">
         <form [formGroup]="occurrenceByPeriodFilterForm" (submit)="submitFilterOccurrenceByPeriod()">
-         
+        <div>
+          <h3 class="title-chart">Relatório Comparativo de Ocorrências por Período</h3>
+        </div> 
         <div class="form-row">
 
-            <div class="col-md-2">
+            <div class="col-md-6" style="padding-left: 168px">
                 <h3> Período 1</h3>
                 
             </div>
-            <div class="col-md-4">
-                
-            </div> 
               <div class="col-md-2">
                   <h3>Período 2</h3>
                   
               </div> 
         </div> 
               <div class="form-row">
+                <!--OccurrenceType-->
+              <div class="form-group col-md-2">
+                <label for="occurrenceTypes">Tipo de Ocorrencia</label>
+                <select name="occurrenceTypes" id="occurrenceTypes" formControlName="occurrenceTypes"
+                  class="form-control">
+                  <option value="" >Selecione</option>
+                  <option value="1">Furto</option>
+                  <option value="2">Roubo</option>
+                  <option value="3">Assalto a grupo</option>
+                  <option value="4">Sequestro relâmpago</option>
+                  <option value="5">Arrombamento de veículo</option>
+                  <option value="6">Roubo de veículo</option>
+                  <option value="7">Arrastão</option>
+                  <option value="8">Tentativa de assalto</option>
+                  <option value="11">Violência contra mulher</option>
+                  <option value="12">Violência contra LGBT</option>
+                </select>
+              </div>
               <!--Período 1-->
-              <div class="form-group col-md-3">
+              <div class="form-group col-md-2">
                 <label for="date_start">Data Inicial</label>
                 <input type="date" class="form-control" id="date_start" formControlName="date_start">
               </div>
-              <div class="form-group col-md-3">
+              <div class="form-group col-md-2">
                 <label for="date_end">Data Final</label>
                 <input type="date" class="form-control" id="date_end" formControlName="date_end">
               </div>
               
               <!--Período 2-->
-              <div class="form-group col-md-3" >
+              <div class="form-group col-md-2" >
                 <label for="date_start2">Data Inicial</label>
                 <input type="date" class="form-control" id="date_start2" formControlName="date_start2">
               </div>
-              <div class="form-group col-md-3">
+              <div class="form-group col-md-2">
                 <label for="date_end2">Data Final</label>
                 <input type="date" class="form-control" id="date_end2" formControlName="date_end2">
               </div>
@@ -258,7 +272,7 @@
             </div>
           </form> 
           <canvas class="mt-4" baseChart [datasets]="occurrenceByPeriodChartDataSet" [labels]="occurrenceByPeriodChartLabels"
-          [chartType]="occurrenceByPeriodChartType"></canvas>
+          [chartType]="occurrenceByPeriodChartType" [options]="barChartOptions" ></canvas>
     </div>
   </div>
 </div>
@@ -266,43 +280,56 @@
 <!-- GRÁFICO IRREGULARIDADES -->
 <div style="display: block" *ngIf="irregularityByPeriodChartDataLoaded && irregularityByPeriodChartDataLoaded2">
     <div class="card" style="padding: 0px;" *ngIf="tipoRelatorio == 'periodoIrregularidades' ">
-      <div class="card-header">
-        <h3 class="title-mobile" style="text-color: white;">Relatório Comparativo de Irregularidades por Período</h3>
-      </div>
       <div class="card-body">
           <form [formGroup]="irregularityByPeriodFilterForm" (submit)="submitFilterIrregularityByPeriod()">
-           
+          <div>
+            <h3 class="title-chart">Relatório Comparativo de Irregularidades por Período</h3>
+          </div> 
           <div class="form-row">
   
-              <div class="col-md-2">
+              <div class="col-md-6" style="padding-left: 168px">
                   <h3> Período 1</h3>
-                  
               </div>
-              <div class="col-md-4">
+              <div class="col-md-2">
+                  <h3>Período 2</h3>
                   
               </div> 
-                <div class="col-md-2">
-                    <h3>Período 2</h3>
-                    
-                </div> 
           </div> 
                 <div class="form-row">
+                   <!--OccurrenceType-->
+              <div class="form-group col-md-2">
+                  <label for="irregularityTypes">Tipo de Ocorrencia</label>
+                  <select name="irregularityTypes" id="irregularityTypes" formControlName="irregularityTypes"
+                    class="form-control">
+                    <option value="" >Selecione</option>
+                    <option value="1">Furto</option>
+                    <option value="2">Roubo</option>
+                    <option value="3">Assalto a grupo</option>
+                    <option value="4">Sequestro relâmpago</option>
+                    <option value="5">Arrombamento de veículo</option>
+                    <option value="6">Roubo de veículo</option>
+                    <option value="7">Arrastão</option>
+                    <option value="8">Tentativa de assalto</option>
+                    <option value="11">Violência contra mulher</option>
+                    <option value="12">Violência contra LGBT</option>
+                  </select>
+                </div>
                 <!--Período 1-->
-                <div class="form-group col-md-3">
+                <div class="form-group col-md-2">
                   <label for="date_start">Data Inicial</label>
                   <input  type="date" class=" form-control"   id="date_start" formControlName="date_start">
                 </div>
-                <div class="form-group col-md-3">
+                <div class="form-group col-md-2">
                   <label for="date_end">Data Final</label>
                   <input type="date" class="form-control"   id="date_end" formControlName="date_end">
                 </div>
                 
                 <!--Período 2-->
-                <div class="form-group col-md-3" >
+                <div class="form-group col-md-2" >
                   <label for="date_start2">Data Inicial</label>
                   <input type="date" class="form-control" id="date_start2" formControlName="date_start2">
                 </div>
-                <div class="form-group col-md-3">
+                <div class="form-group col-md-2">
                   <label for="date_end2">Data Final</label>
                   <input type="date" class="form-control" id="date_end2" formControlName="date_end2">
                 </div>
@@ -312,7 +339,7 @@
               </div>
             </form> 
             <canvas class="mt-4" baseChart [datasets]="irregularityByPeriodChartDataSet" [labels]="irregularityByPeriodChartLabels"
-            [chartType]="irregularityByPeriodChartType"></canvas>
+            [chartType]="irregularityByPeriodChartType" [options]="barChartOptions"></canvas>
       </div>
     </div>
   </div>

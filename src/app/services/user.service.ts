@@ -16,8 +16,12 @@ export class UserService {
         return this.http.post(`${environment.API_URL}/api/mobile/users`, user);
     }
 
-    recoverPassword(data) {
-        return this.http.post(`${environment.API_URL}/api/mobile/recoverpassword`, data);
+    recoverPassword(data) : any {
+        return this.http.post<any>(`${environment.API_URL}/api/passwordRecovery`, data);
+    }
+
+    changePassword(data) {
+        return this.http.post(`${environment.API_URL}/api/passwordRecovery/ChangePassword`, data);
     }
 
     registerFuncionario(user: User) {

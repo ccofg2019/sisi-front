@@ -57,6 +57,27 @@ export class ListOccurrenceComponent extends ListPagination
       });
   }
 
+  validaOcorrencia(id: number) {
+    this.occurrenceService.statusOccurrences(id, 'NOVO')
+    .pipe(first())
+    .subscribe(
+      data => {
+        this.notifier.show('success', 'Registro de ocorrência está em NOVO');
+        this.loadData();
+      },
+      error => {
+        this.notifier.show('error', 'Ocorreu um erro ao tentar alterar o status da ocorrência');
+      });
+  }
+
+  validaStatus(status: String){
+    if(status == 'NOVO') {
+      return true;
+    }else{
+      return false;
+    }
+  }
+
   validaPermissao(){
     if(this.user.role_id == 8 
       || this.user.role_id == 9

@@ -154,4 +154,19 @@ export class EmergencyMapComponent implements OnInit, OnDestroy {
         data =>{});
       this.close_window();
     }
+
+    public changeCoordinateToRecife(){
+      this.lat = -8.0516464;
+      this.lng = -34.9532446;
+    }
+
+    public changeCoordinateToCaruaru(){
+      this.lat = -8.2248809;
+      this.lng = -35.9825639;
+    }
+
+    public changeCoordinateToVitoria(){
+      this.lat = -8.1164625;
+      this.lng = -35.2983545;
+    }
 }
