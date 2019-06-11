@@ -64,7 +64,7 @@
             >
               <option value="" select disabled>Escolha uma opção</option>
               <option [value]="zoneOutrosId">Outros</option>
-              <option *ngFor="let zone of zones" value="{{ zone.id }}">{{ zone.name }}</option>
+              <option *ngFor="let zone of zones" value="{{ zone.id }}">{{ zone.nameBuild }}</option>
             </select>
             <div *ngIf="submitted && f.zone_id.errors" class="invalid-feedback">
               <div *ngIf="f.zone_id.errors.required"> Campo obrigatório*</div>

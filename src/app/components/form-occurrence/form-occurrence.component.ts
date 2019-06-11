@@ -61,7 +61,9 @@ export class FormOccurrenceComponent implements OnInit {
     // this.occurrenceService.getZones().subscribe((response: any) => this.zones = response.data);
     this.zoneService.listAllZonesRecife().subscribe((response: Zone[]) => {
       this.zones = response; 
+      console.log(this.zones);
       for(let i = 0; i < this.zones.length; i++){
+        this.BuildNameZone(this.zones[i]);
         if(this.zones[i].name == "Outros"){
           this.zoneOutrosId = this.zones[i].id;
           this.zones.splice(i, i);
@@ -152,5 +154,12 @@ export class FormOccurrenceComponent implements OnInit {
         return this.zones[i];
       }                 
     } 
-  }  
+  }
+  
+  public BuildNameZone(zone : Zone){
+    if(zone.description != "")        
+          zone.nameBuild = zone.name + " - " + zone.description;        
+        else
+          zone.nameBuild = zone.name;
+  }
 }
