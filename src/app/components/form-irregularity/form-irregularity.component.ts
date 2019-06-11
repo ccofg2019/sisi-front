@@ -57,8 +57,9 @@ export class FormIrregularityComponent implements OnInit {
   ngOnInit() {
 
     this.zoneService.listAllZonesRecife().subscribe((response: Zone[]) => {
-      this.zones = response; 
+      this.zones = response;
       for(let i = 0; i < this.zones.length; i++){
+        this.BuildNameZone(this.zones[i]);
         if(this.zones[i].name == "Outros"){
           this.zoneOutrosId = this.zones[i].id;
           this.zones.splice(i, i);
@@ -129,5 +130,12 @@ export class FormIrregularityComponent implements OnInit {
         return this.zones[i];
       }                 
     } 
+  }
+
+  public BuildNameZone(zone : Zone){
+    if(zone.description != "")        
+          zone.nameBuild = zone.name + " - " + zone.description;        
+        else
+          zone.nameBuild = zone.name;
   }
 }
