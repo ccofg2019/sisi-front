@@ -38,12 +38,7 @@
               [ngClass]="{ 'is-invalid': f.irregularity_type_id.dirty && f.irregularity_type_id.errors }"
             >
               <option value="" select disabled>Escolha uma opção</option>
-              <option value="1">Controle de Animais</option>
-              <option value="2">Iluminação</option>
-              <option value="3">Acessibilidade</option>
-              <option value="4">Poda</option>
-              <option value="5">Poluição</option>
-              <option value="6">Outros</option>
+              <option *ngFor="let irregularityType of irregularityTypes" value="{{ irregularityType.id }}">{{ irregularityType.name }}</option>
             </select>
             <div *ngIf="f.irregularity_type_id.dirty && f.irregularity_type_id.errors" class="invalid-feedback">
               <div *ngIf="f.irregularity_type_id.errors.required"> Campo obrigatório*</div>

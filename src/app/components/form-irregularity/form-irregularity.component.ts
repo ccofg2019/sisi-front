@@ -8,6 +8,7 @@ import { AclService } from 'ng2-acl';
 import { NotifyService } from './../../services/notify/notify.service';
 import { Zone } from './../../models/zone.model';
 import { ZoneService } from 'src/app/services/zone.service';
+import { IrregularityType } from './irregularitytype.model';
 
 @Component({
   selector: 'app-form-irregularity',
@@ -20,6 +21,7 @@ export class FormIrregularityComponent implements OnInit {
   loading = false;
   submitted = false;
   public zones: Zone[];
+  public irregularityTypes: IrregularityType[];
 
   // Validator patterns
   titlePattern = '^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ0-9,.!?*"#%(); -]{6,32}$';
@@ -66,6 +68,10 @@ export class FormIrregularityComponent implements OnInit {
           break;
         }
       }  
+    });
+
+    this.irregularityService.listAllIrregularityType().subscribe((response: IrregularityType[]) => {
+      this.irregularityTypes = response;
     });
 
     // Definindo valor default para o mapa
