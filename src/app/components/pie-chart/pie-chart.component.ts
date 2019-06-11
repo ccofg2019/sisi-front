@@ -432,8 +432,8 @@ export class PieChartComponent extends ListPagination
       occurrenceTypes: "1",
       date_start: ['2019-01-01'],
       date_end: ['2020-01-01'],
-      date_start2: ['2020-01-02'],
-      date_end2: ['2021-01-01']
+      date_start2: ['2019-01-01'],
+      date_end2: ['2020-01-01']
     })
   }
 
@@ -442,8 +442,8 @@ export class PieChartComponent extends ListPagination
       irregularityTypes: "1",
       date_start: ['2019-01-01'],
       date_end: ['2020-01-01'],
-      date_start2: ['2020-01-02'],
-      date_end2: ['2021-01-01']
+      date_start2: ['2019-01-01'],
+      date_end2: ['2020-01-01']
     })
   }
 
