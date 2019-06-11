@@ -7,6 +7,7 @@ import { AclService } from 'ng2-acl';
 import { NotifyService } from './../../services/notify/notify.service';
 import { Zone } from './../../models/zone.model';
 import { ZoneService } from 'src/app/services/zone.service';
+import { OccurrenceType } from './occurrencetype.model';
 
 @Component({
   selector: 'app-form-occurrence',
@@ -24,6 +25,7 @@ export class FormOccurrenceComponent implements OnInit {
   date = new Date();
   minDate: string;
   public zones: Zone[];
+  public occurrenceTypes: OccurrenceType[];
   // Two Way Databind - passando as cordenadas para o form.
   cord;
 
@@ -61,7 +63,6 @@ export class FormOccurrenceComponent implements OnInit {
     // this.occurrenceService.getZones().subscribe((response: any) => this.zones = response.data);
     this.zoneService.listAllZonesRecife().subscribe((response: Zone[]) => {
       this.zones = response; 
-      console.log(this.zones);
       for(let i = 0; i < this.zones.length; i++){
         this.BuildNameZone(this.zones[i]);
         if(this.zones[i].name == "Outros"){
@@ -71,6 +72,11 @@ export class FormOccurrenceComponent implements OnInit {
         }
       }  
     });
+
+    this.occurrenceService.listAllOccurrenceType().subscribe((response: OccurrenceType[]) =>{
+      this.occurrenceTypes = response;
+    });
+
     // definindo valor default para o mapa
     if (this.cord === undefined) {
       this.cord = '-8.05241,-34.94523';

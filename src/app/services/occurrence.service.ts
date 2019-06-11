@@ -11,6 +11,7 @@ import { Observable, from } from 'rxjs';
 import { retry, map } from 'rxjs/operators';
 import { OccurrenceFilter } from '../models/occurrenceFilter.model';
 import { OccurrenceCoordinates } from '../components/map/occurrence.coordinates';
+import { OccurrenceType } from '../components/form-occurrence/occurrencetype.model';
 
 @Injectable()
 export class OccurrenceService {
@@ -84,5 +85,9 @@ export class OccurrenceService {
 
     public countOccurrenceOfEachType2( occurrenceByPeriod2: OccurrenceByPeriod2, occurrenceTypeId: OccurrenceByPeriod){
         return this.http.get(`${environment.API_URL}/api/occurrence-reports/countOccurrenceOfOneType?occurrence_id=${occurrenceTypeId.occurrenceTypes}&date_start=${occurrenceByPeriod2.date_start2}&date_end=${occurrenceByPeriod2.date_end2}`)
+    }
+
+    public listAllOccurrenceType(){
+        return this.http.get<OccurrenceType[]>(`${environment.API_URL}/api/occurrence-types/listAll`)
     }
 }

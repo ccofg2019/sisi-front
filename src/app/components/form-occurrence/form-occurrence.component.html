@@ -112,18 +112,8 @@
               [ngClass]="{ 'is-invalid': f.occurrence_type_id.dirty && f.occurrence_type_id.errors }"
             >
               <option value="" select disabled>Escolha uma opção</option>
-              <option value="1">Furto</option>
-              <option value="2">Roubo</option>
-              <option value="3">Assalto a grupo</option>
-              <option value="4">Sequestro relâmpago</option>
-              <option value="5">Arrombamento de veículo</option>
-              <option value="6">Roubo de veículo</option>
-              <option value="7">Arrastão</option>
-              <option value="8">Tentativa de assalto</option>
-              <option value="11">Violência contra mulher</option>
-              <option value="12">Violência contra LGBT</option>
+              <option *ngFor="let occurrenceType of occurrenceTypes" value="{{ occurrenceType.id }}">{{occurrenceType.name}}</option>
             </select>
-
             <div *ngIf="f.occurrence_type_id.dirty && f.occurrence_type_id.errors" class="invalid-feedback">
               <div *ngIf="f.occurrence_type_id.errors.required"> Campo obrigatório*</div>
             </div>
