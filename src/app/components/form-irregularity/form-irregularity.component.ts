@@ -8,6 +8,7 @@ import { AclService } from 'ng2-acl';
 import { NotifyService } from './../../services/notify/notify.service';
 import { Zone } from './../../models/zone.model';
 import { ZoneService } from 'src/app/services/zone.service';
+import { IrregularityType } from './irregularitytype.model';
 
 @Component({
   selector: 'app-form-irregularity',
@@ -20,6 +21,7 @@ export class FormIrregularityComponent implements OnInit {
   loading = false;
   submitted = false;
   public zones: Zone[];
+  public irregularityTypes: IrregularityType[];
 
   // Validator patterns
   titlePattern = '^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ0-9,.!?*"#%(); -]{6,32}$';
@@ -57,14 +59,19 @@ export class FormIrregularityComponent implements OnInit {
   ngOnInit() {
 
     this.zoneService.listAllZonesRecife().subscribe((response: Zone[]) => {
-      this.zones = response; 
+      this.zones = response;
       for(let i = 0; i < this.zones.length; i++){
+        this.BuildNameZone(this.zones[i]);
         if(this.zones[i].name == "Outros"){
           this.zoneOutrosId = this.zones[i].id;
           this.zones.splice(i, i);
           break;
         }
       }  
+    });
+
+    this.irregularityService.listAllIrregularityType().subscribe((response: IrregularityType[]) => {
+      this.irregularityTypes = response;
     });
 
     // Definindo valor default para o mapa
@@ -129,5 +136,12 @@ export class FormIrregularityComponent implements OnInit {
         return this.zones[i];
       }                 
     } 
+  }
+
+  public BuildNameZone(zone : Zone){
+    if(zone.description != "")        
+          zone.nameBuild = zone.name + " - " + zone.description;        
+        else
+          zone.nameBuild = zone.name;
   }
 }

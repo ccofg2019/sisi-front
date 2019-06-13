@@ -8,6 +8,7 @@ import { NotifyService } from 'src/app/services/notify/notify.service';
 import { first } from 'rxjs/operators';
 import { Irregularity } from 'src/app/models/irregularity.model';
 import { Zone } from './../../models/zone.model';
+import { IrregularityType } from '../form-irregularity/irregularitytype.model';
 
 @Component({
   selector: 'app-view-irregularity',
@@ -19,6 +20,7 @@ export class ViewIrregularityComponent implements OnInit {
   public irregularities: Irregularity;
   public idIrregularities: number;
   public zones: Zone[];
+  public irregularityTypes: IrregularityType[];
 
   formIrregularity: FormGroup;
   loading = false;
@@ -60,6 +62,10 @@ export class ViewIrregularityComponent implements OnInit {
 
   ngOnInit() {
     this.occurrenceService.getZones().subscribe((response: any) => this.zones = response.data);
+
+    this.irregularityService.listAllIrregularityType().subscribe((response: IrregularityType[]) => {
+      this.irregularityTypes = response;
+    });
 
     this.route.params.subscribe(
       (params: Params) => {

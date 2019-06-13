@@ -8,6 +8,7 @@ import { IrregularityFilter } from '../models/irregularityFilter.model';
 import { IrregularityByPeriod } from '../models/irregularityByPeriod.model';
 import { IrregularityByPeriod2 } from '../models/irregularityByPeriod2.model';
 import { IrregularityMonthYear } from '../models/irregularityMonthYearFilter.model';
+import { IrregularityType } from '../components/form-irregularity/irregularitytype.model';
 
 @Injectable()
 export class IrregularityService {
@@ -72,5 +73,9 @@ export class IrregularityService {
             }
         }
         return this.http.get(`${environment.API_URL}/api/irregularity-reports/countAllIrregularityOfMonthOfTheYear?year=${irregularityMonthYear.year}&month=${irregularityMonthYear.month}`);
+    }
+
+    public listAllIrregularityType(){
+        return this.http.get<IrregularityType[]>(`${environment.API_URL}/api/irregularity-types/listAll`)
     }
 }

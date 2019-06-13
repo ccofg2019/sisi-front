@@ -8,6 +8,7 @@ import { Occurrence } from '../../models/occurrence.model';
 import { first } from 'rxjs/operators';
 import { NotifyService } from '../../services/notify/notify.service';
 import { Zone } from './../../models/zone.model';
+import { OccurrenceType } from '../form-occurrence/occurrencetype.model';
 
 @Component({
   selector: 'app-view-occurrence',
@@ -25,6 +26,7 @@ export class ViewOccurrenceComponent implements OnInit {
   date = new Date();
   minDate: string;
   public zones: Zone[];
+  public occurrenceTypes: OccurrenceType[];
 
   formOccurrence: FormGroup;
   loading = false;
@@ -71,6 +73,10 @@ export class ViewOccurrenceComponent implements OnInit {
 
     ngOnInit() {
       this.occurrenceService.getZones().subscribe((response: any) => this.zones = response.data);
+
+      this.occurrenceService.listAllOccurrenceType().subscribe((response: OccurrenceType[]) =>{
+        this.occurrenceTypes = response;
+      });
 
       this.date.setFullYear(this.date.getFullYear() - 1);
       this.minDate = this.date.toJSON().split('T')[0];
