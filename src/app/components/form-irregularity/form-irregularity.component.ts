@@ -20,7 +20,8 @@ export class FormIrregularityComponent implements OnInit {
   formIrregularity: FormGroup;
   loading = false;
   submitted = false;
-  public zones: Zone[];
+  public zones: Zone[] = new Array();
+  public zonesCampus: Zone[] = new Array();
   public irregularityTypes: IrregularityType[];
 
   // Validator patterns
@@ -60,12 +61,16 @@ export class FormIrregularityComponent implements OnInit {
 
     this.zoneService.listAllZonesRecife().subscribe((response: Zone[]) => {
       this.zones = response;
+      var outrosFind:boolean = false;
       for(let i = 0; i < this.zones.length; i++){
         this.BuildNameZone(this.zones[i]);
-        if(this.zones[i].name == "Outros"){
+        if(this.zones[i].campus == "Recife" && this.zones[i].name != "Outros"){
+          this.zonesCampus.push(this.zones[i]);
+        }
+        if(this.zones[i].name == "Outros" && outrosFind == false){
           this.zoneOutrosId = this.zones[i].id;
           this.zones.splice(i, i);
-          break;
+          outrosFind = true;
         }
       }  
     });
@@ -143,5 +148,21 @@ export class FormIrregularityComponent implements OnInit {
           zone.nameBuild = zone.name + " - " + zone.description;        
         else
           zone.nameBuild = zone.name;
+  }
+
+  public changeCampus($event){
+    this.zonesCampus = new  Array();
+    var campusTarget = $event.target.value;
+    if(campusTarget == ""){
+      campusTarget = "Recife";
+    }    
+    this.markerIsSet = true;
+    this.cord = this.lat + ',' + this.lng;
+    for(let i = 0; i < this.zones.length; i++){
+      this.BuildNameZone(this.zones[i]);
+      if(this.zones[i].campus == campusTarget && this.zones[i].name != "Outros"){
+        this.zonesCampus.push(this.zones[i]);
+      }
+    }
   }
 }

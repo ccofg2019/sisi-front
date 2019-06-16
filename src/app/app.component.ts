@@ -80,6 +80,9 @@ export class AppComponent implements OnInit {
             ABILITIES.ADD_IRREGULARITY,
             ABILITIES.LIST_USER,
             ABILITIES.LIST_OCCURRENCE,
+            ABILITIES.LIST_IRREGULARITY,
+            ABILITIES.REGISTER_FUNCTIONARY,
+            ABILITIES.CHARTS
           ],
           investigator: [
             ABILITIES.DEFAULT,

@@ -6,112 +6,103 @@
           <h3 class="title-mobile">Registro de Irregularidades</h3>
         </div>
 
-      <form class="col-md-12" [formGroup]="formIrregularity" (ngSubmit)="onSubmit()">
+        <form class="col-md-12" [formGroup]="formIrregularity" (ngSubmit)="onSubmit()">
 
-        <div class="form-row">
-          <div class="form-group col-md-7">
-            <label for="title">Titulo da Irregularidade*</label>
-            <input
-              data-toggle="tooltip"
-              title='Insira um resumo da descrição da irregularidade'
-              type="text"
-              maxlength="32"
-              class="form-control"
-              placeholder="Título da irregularidade"
-              formControlName="title"
-              [ngClass]="{ 'is-invalid': f.title.dirty && f.title.errors }"
-              />
-            <div *ngIf="f.title.dirty && f.title.errors" class="invalid-feedback">
-              <div *ngIf="f.title.errors.required">Campo obrigatório*</div>
-              <div *ngIf="f.title.errors.pattern">Título deve ter de 6 a 32 caracteres*</div>
+          <div class="form-row">
+            <div class="form-group col-md-7">
+              <label for="title">Titulo da Irregularidade*</label>
+              <input data-toggle="tooltip" title='Insira um resumo da descrição da irregularidade' type="text"
+                maxlength="32" class="form-control" placeholder="Título da irregularidade" formControlName="title"
+                [ngClass]="{ 'is-invalid': f.title.dirty && f.title.errors }" />
+              <div *ngIf="f.title.dirty && f.title.errors" class="invalid-feedback">
+                <div *ngIf="f.title.errors.required">Campo obrigatório*</div>
+                <div *ngIf="f.title.errors.pattern">Título deve ter de 6 a 32 caracteres*</div>
+              </div>
+
+            </div>
+
+            <div class="form-group col-md-5">
+              <label for="title">Tipo de Irregularidade*</label>
+              <select data-toggle="tooltip" title='Selecione o tipo da irregularidade' class="form-control"
+                formControlName="irregularity_type_id"
+                [ngClass]="{ 'is-invalid': f.irregularity_type_id.dirty && f.irregularity_type_id.errors }">
+                <option value="" select disabled>Escolha uma opção</option>
+                <option *ngFor="let irregularityType of irregularityTypes" value="{{ irregularityType.id }}">
+                  {{ irregularityType.name }}</option>
+              </select>
+              <div *ngIf="f.irregularity_type_id.dirty && f.irregularity_type_id.errors" class="invalid-feedback">
+                <div *ngIf="f.irregularity_type_id.errors.required"> Campo obrigatório*</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="title">Campus*</label>
+              <select data-toggle="tooltip" title='Selecione a área em que a ocorrência ocorreu' class="form-control"
+                formControlName="zone_id" [ngClass]="{ 'is-invalid': submitted && f.zone_id.errors }"
+                (change)="changeCampus($event)" #campus>
+                <option value="" selected>Recife</option>
+                <option value="Vitória">Vitória</option>
+                <option value="Caruaru">Caruaru</option>
+              </select>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="title">Local da Irregularidade*</label>
+              <select data-toggle="tooltip" title='Selecione a área em que a irregularidade ocorreu'
+                class="form-control" formControlName="zone_id"
+                [ngClass]="{ 'is-invalid': submitted && f.zone_id.errors }" (change)="changeZone($event)">
+                <option value="" select disabled>Escolha uma opção</option>
+                <option [value]="zoneOutrosId">Outros</option>
+                <option *ngFor="let zone of zonesCampus" value="{{ zone.id }}">{{ zone.nameBuild }}</option>
+              </select>
+              <div *ngIf="submitted && f.zone_id.errors" class="invalid-feedback">
+                <div *ngIf="f.zone_id.errors.required"> Campo obrigatório*</div>
+              </div>
+            </div>
+
+            <div class="form-group col-md-6" style="display: none;">
+              <label for="title">coordinates</label>
+              <input data-toggle="tooltip" type="text" class="form-control" placeholder="coordinates"
+                formControlName="coordinates" [(ngModel)]="cord" />
             </div>
 
           </div>
 
-          <div class="form-group col-md-5">
-            <label for="title">Tipo de Irregularidade*</label>
-            <select
-              data-toggle="tooltip"
-              title='Selecione o tipo da irregularidade'
-              class="form-control"
-              formControlName="irregularity_type_id"
-              [ngClass]="{ 'is-invalid': f.irregularity_type_id.dirty && f.irregularity_type_id.errors }"
-            >
-              <option value="" select disabled>Escolha uma opção</option>
-              <option *ngFor="let irregularityType of irregularityTypes" value="{{ irregularityType.id }}">{{ irregularityType.name }}</option>
-            </select>
-            <div *ngIf="f.irregularity_type_id.dirty && f.irregularity_type_id.errors" class="invalid-feedback">
-              <div *ngIf="f.irregularity_type_id.errors.required"> Campo obrigatório*</div>
-            </div>
-          </div>
-        </div>
+          <!--input type="text" value="41.40338, 2.17403" hidden formControlName="coordinates" /-->
 
-        <div class="form-row">
-          <div class="form-group col-md-6">
-            <label for="title">Local da Irregularidade*</label>
-            <select
-              data-toggle="tooltip"
-              title='Selecione a área em que a irregularidade ocorreu'
-              class="form-control"
-              formControlName="zone_id"
-              [ngClass]="{ 'is-invalid': submitted && f.zone_id.errors }"
-              (change)="changeZone($event)"
-            >
-              <option value="" select disabled>Escolha uma opção</option>
-              <option [value]="zoneOutrosId">Outros</option>
-              <option *ngFor="let zone of zones" value="{{ zone.id }}">{{ zone.nameBuild }}</option>
-            </select>
-            <div *ngIf="submitted && f.zone_id.errors" class="invalid-feedback">
-              <div *ngIf="f.zone_id.errors.required"> Campo obrigatório*</div>
-            </div>
-          </div>
-
-          <div class="form-group col-md-6" style="display: none;">
-            <label for="title">coordinates</label>
-            <input data-toggle="tooltip" type="text" class="form-control"
-              placeholder="coordinates" formControlName="coordinates" [(ngModel)]="cord" />
-          </div>
-
-        </div>
-
-        <!--input type="text" value="41.40338, 2.17403" hidden formControlName="coordinates" /-->
-
-        <div class="form-row">
-          <div class="form-group col-md-12">
-            <label for="story">Descrição da irregularidade*</label>
-            <textarea
-              data-toggle="tooltip"
-              title='Faça uma descrição detalhada da irregularidade'
-              maxlength="256"
-              class="form-control"
-              rows="3"
-              placeholder="Descrição da irregularidade"
-              formControlName="story"
-              [ngClass]="{ 'is-invalid': f.story.dirty && f.story.errors }">
+          <div class="form-row">
+            <div class="form-group col-md-12">
+              <label for="story">Descrição da irregularidade*</label>
+              <textarea data-toggle="tooltip" title='Faça uma descrição detalhada da irregularidade' maxlength="256"
+                class="form-control" rows="3" placeholder="Descrição da irregularidade" formControlName="story"
+                [ngClass]="{ 'is-invalid': f.story.dirty && f.story.errors }">
             </textarea>
-            <div *ngIf="f.story.dirty && f.story.errors" class="invalid-feedback">
-              <div *ngIf="f.story.errors.required"> Campo obrigatório*</div>
-              <div *ngIf="f.story.errors.minlength"> Descrição deve ter mais de 12 dígitos*</div>
-              <div *ngIf="f.story.errors.maxlength"> Descrição deve ter no máximo 256 dígitos*</div>
+              <div *ngIf="f.story.dirty && f.story.errors" class="invalid-feedback">
+                <div *ngIf="f.story.errors.required"> Campo obrigatório*</div>
+                <div *ngIf="f.story.errors.minlength"> Descrição deve ter mais de 12 dígitos*</div>
+                <div *ngIf="f.story.errors.maxlength"> Descrição deve ter no máximo 256 dígitos*</div>
+              </div>
             </div>
           </div>
-        </div>
 
-        <!-- BUTTON SUBMIT -->
-        <button [disabled]="loading" class="btn btn-primary buttom-mobile">Salvar Irregularidade</button>
+          <!-- BUTTON SUBMIT -->
+          <button [disabled]="loading" class="btn btn-primary buttom-mobile">Salvar Irregularidade</button>
 
-      </form>
-    </div>
+        </form>
+      </div>
 
       <div class="col-md-4 container-map-mobile">
-          <div class="card" style="padding:0;">
-              <div class="card-header">
-                <h3>Mapa</h3>
-                <p class="map-info">*Selecione um ponto no mapa*</p>
-              </div>
+        <div class="card" style="padding:0;">
+          <div class="card-header">
+            <h3>Mapa</h3>
+            <p class="map-info">*Selecione um ponto no mapa*</p>
           </div>
-        <agm-map [zoom]="17" [latitude]="lat" [longitude]="lng" (mapClick)="onChoseLocation($event)" [usePanning]="true">
-          <agm-marker [latitude]="lat" [longitude]="lng" *ngIf="locationChosen" [markerClickable]="locationChosen"></agm-marker>
+        </div>
+        <agm-map [zoom]="17" [latitude]="lat" [longitude]="lng" (mapClick)="onChoseLocation($event)"
+          [usePanning]="true">
+          <agm-marker [latitude]="lat" [longitude]="lng" *ngIf="locationChosen" [markerClickable]="locationChosen">
+          </agm-marker>
         </agm-map>
       </div>
     </div> <!-- div background  -->
