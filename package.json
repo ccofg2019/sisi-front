@@ -27,7 +27,7 @@
     "angular-material": "^1.1.10",
     "angular-notifier": "^4.1.1",
     "bootstrap": "^4.1.1",
-    "bootstrap-select": "^1.13.3",
+    "bootstrap-select": "^1.13.6",
     "chart.js": "^2.8.0",
     "chartjs-plugin-datalabels": "^0.6.0",
     "core-js": "^2.5.4",
